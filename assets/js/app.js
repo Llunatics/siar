@@ -376,8 +376,16 @@
     return !els.guideSheet.hidden || !els.settingsSheet.hidden || !els.helpModal.hidden;
   }
 
+  /* ================= Layar penuh ================= */
+  function toggleFs() {
+    if (document.fullscreenElement) document.exitFullscreen();
+    else if (els.tv.requestFullscreen) els.tv.requestFullscreen();
+  }
+
   /* ================= Event: kontrol TV ================= */
   els.powerBtn.addEventListener("click", function () { powered ? powerOff() : powerOn(); });
+  $("fsBtn").addEventListener("click", toggleFs);
+  els.screen.addEventListener("dblclick", toggleFs);
   $("nextBtn").addEventListener("click", function () { if (powered) nextChannel(); });
   $("prevBtn").addEventListener("click", function () { if (powered) prevChannel(); });
   $("randomBtn").addEventListener("click", function () { if (powered) randomChannel(); });
