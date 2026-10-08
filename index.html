@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal Nostalgia — TV Analog</title>
+<meta name="description" content="Portal nostalgia ber-UI TV analog: iklan jadul Indonesia & opening kartun legendaris via embed YouTube.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="room">
+    <header class="brand">
+      <h1>PORTAL&nbsp;NOSTALGIA</h1>
+      <p class="tagline">saluran-saluran dari masa lalu — putar knob-nya, duduk manis.</p>
+    </header>
+
+    <section class="tv" aria-label="Televisi analog">
+      <div class="tv-body">
+        <div class="screen-wrap">
+          <div class="screen">
+            <div id="player" title="Layar TV"></div>
+            <canvas id="staticCanvas" width="160" height="90" aria-hidden="true"></canvas>
+            <div id="powerHint">TEKAN POWER</div>
+            <div id="osd" aria-live="polite"></div>
+            <div class="scanlines" aria-hidden="true"></div>
+            <div class="glass" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <aside class="panel">
+          <button id="powerBtn" class="btn power" title="Power (P)">⏻<span>PWR</span></button>
+          <div class="ch-display" title="Nomor channel">
+            <span class="ch-label">CH</span>
+            <span id="chNum">--</span>
+          </div>
+          <button id="prevBtn" class="btn" title="Channel sebelumnya (↓)">CH−</button>
+          <button id="nextBtn" class="btn" title="Channel berikutnya (↑)">CH+</button>
+          <button id="randomBtn" class="btn wide" title="Channel acak (R)">ACAK</button>
+          <label class="vol">
+            <span>VOL</span>
+            <input id="volSlider" type="range" min="0" max="100" value="70">
+          </label>
+          <button id="muteBtn" class="btn" title="Mute (M)">SUARA: ON</button>
+          <div class="brand-plate">TRINITRON-ISH&nbsp;•&nbsp;1997</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="guide" aria-label="Daftar channel">
+      <h2>Daftar Siaran</h2>
+      <div id="guideList"></div>
+      <p class="hint">Klik judul buat pindah channel. Keyboard: ↑/↓ ganti channel • ←/→ volume • M mute • R acak • P power.</p>
+    </section>
+
+    <footer>
+      <p>Semua video diputar via embed resmi YouTube. Edit <code>channels.js</code> buat nambah siaran.</p>
+    </footer>
+  </main>
+
+  <script src="channels.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
