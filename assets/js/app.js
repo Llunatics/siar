@@ -17,7 +17,8 @@
   var $ = function (id) { return document.getElementById(id); };
   var els = {
     tv: $("tv"), screen: $("screen"), osd: $("osd"), chNum: $("chNum"),
-    staticC: $("staticCanvas"), powerHint: $("powerHint"), powerBtn: $("powerBtn"),
+    staticC: $("staticCanvas"), shield: $("clickShield"),
+    powerHint: $("powerHint"), powerBtn: $("powerBtn"),
     powerFlash: $("powerFlash"), sleepBadge: $("sleepBadge"),
     vol: $("volSlider"), muteBtn: $("muteBtn"), guide: $("guideList"),
     guideSearch: $("guideSearch"), brandPlate: $("brandPlate"),
@@ -251,7 +252,7 @@
   window.onYouTubeIframeAPIReady = function () {
     player = new YT.Player("player", {
       width: "100%", height: "100%",
-      playerVars: { autoplay: 0, controls: 0, modestbranding: 1, rel: 0, playsinline: 1 },
+      playerVars: { autoplay: 0, controls: 0, modestbranding: 1, rel: 0, iv_load_policy: 3, disablekb: 1, playsinline: 1 },
       events: {
         onReady: function () {
           playerReady = true;
@@ -386,6 +387,12 @@
   els.powerBtn.addEventListener("click", function () { powered ? powerOff() : powerOn(); });
   $("fsBtn").addEventListener("click", toggleFs);
   els.screen.addEventListener("dblclick", toggleFs);
+  // Klik di layar: putar / jeda lewat API (dobel-klik tetap layar penuh)
+  els.shield.addEventListener("click", function () {
+    if (!powered || !playerReady || typeof YT === "undefined") return;
+    if (player.getPlayerState() === YT.PlayerState.PLAYING) { player.pauseVideo(); showOsd("❚❚ PAUSE"); }
+    else { player.playVideo(); showOsd("▶ PLAY"); }
+  });
   $("nextBtn").addEventListener("click", function () { if (powered) nextChannel(); });
   $("prevBtn").addEventListener("click", function () { if (powered) prevChannel(); });
   $("randomBtn").addEventListener("click", function () { if (powered) randomChannel(); });

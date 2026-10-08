@@ -1,33 +1,36 @@
 # Siar
 
-Televisi analog dalam browser. Memutar iklan jadul Indonesia dan opening kartun legendaris melalui embed resmi YouTube, dengan efek CRT/VHS, tiga model TV, panduan siaran, favorit, dan channel kustom.
+Televisi analog dalam browser. Memutar 42 siaran TV Indonesia era 1990–2015 (iklan jadul, opening kartun, sinetron, jingle stasiun TV) melalui embed resmi YouTube, dengan bodi TV 3D, efek CRT/VHS, tiga model TV, panduan siaran, favorit, dan channel kustom.
 
 **Live:** https://tv.llunaticsys.web.id
 
 ## Fitur
 
 - **Model TV** — Kayu 80-an, Plastik 90-an, Silver 2000-an (bezel dan plat merek menyesuaikan)
+- **Bodi 3D ala TV asli** — Tombol fisik timbul yang tenggelam saat ditekan, antena teleskopik dua batang, speaker grille perforasi, bezel tebal, kaca layar melengkung (highlight + vignette), tekstur plastik
+- **Video bersih** — Overscan ala CRT memotong strip judul/kontrol YouTube; kontrol pemutar disembunyikan (`controls=0`); klik layar = putar/jeda, dobel-klik = layar penuh
 - **Efek layar** — VHS (tracking, chromatic aberration, jitter), scanline CRT + intensitas, noise latar, animasi power-on CRT, rasio 4:3 / 16:9
 - **Panduan siaran** — Panel berisi seluruh channel per kategori, thumbnail YouTube, pencarian
 - **Favorit** — Tandai siaran dengan bintang; terkumpul di grup teratas panduan
 - **Channel kustom** — Tambah siaran dengan menempelkan URL/ID YouTube; tersimpan di `localStorage`
 - **Sleep timer** — TV mati otomatis setelah 15/30/60/90 menit
-- **Kontrol penuh** — Power, CH+/CH−, acak, volume, mute, layar penuh (tombol FULL / dobel-klik layar)
+- **Kontrol penuh** — Power, CH+/CH−, acak, volume (slider 3D + tick marks), mute, layar penuh (tombol FULL / dobel-klik layar)
 - **Pintasan keyboard** — Lihat tabel di bawah
 
 Pengaturan, favorit, dan channel kustom tersimpan otomatis di browser (localStorage) dan berlaku pada kunjungan berikutnya.
 
 ## Siaran bawaan
 
-| Channel | Kategori |
-| --- | --- |
-| Iklan Agung Podomoro — Kota Podomoro Tenjo | Iklan Jadul |
-| Iklan Meikarta | Iklan Jadul |
-| Opening Chalk Zone | Opening |
-| Opening Doraemon (Bahasa Indonesia) | Opening |
-| Opening Captain Tsubasa (Indonesia) | Opening |
+Total **42 channel** siaran TV Indonesia 1990–2015:
 
-Seluruh `video_id` telah diverifikasi satu per satu dari halaman tonton YouTube. Tidak ada berkas video yang disimpan atau diunggah ulang di repositori ini.
+| Kategori | Jumlah |
+| --- | --- |
+| Iklan Jadul | 14 |
+| Opening Kartun | 15 |
+| Sinetron & Acara TV | 8 |
+| Jingle & Ident | 5 |
+
+Seluruh `video_id` telah diverifikasi satu per satu via YouTube oEmbed (HTTP 200 dan judul sesuai item). Tidak ada berkas video yang disimpan atau diunggah ulang di repositori ini.
 
 ## Pintasan keyboard
 
