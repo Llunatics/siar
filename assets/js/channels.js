@@ -1,4 +1,4 @@
-// Daftar "siaran" portal nostalgia.
+// Daftar "siaran" Siar.
 // Mau nambah channel? Tambah satu objek di bawah, simpan, refresh halaman.
 // id = video_id YouTube (bagian setelah "watch?v=" pada URL video).
 // Semua video diputar lewat embed resmi YouTube — tidak ada file yang di-upload ulang.

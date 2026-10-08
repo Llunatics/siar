@@ -3,26 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portal Nostalgia — TV Analog</title>
-<meta name="description" content="Portal nostalgia ber-UI TV analog: iklan jadul Indonesia & opening kartun legendaris via embed YouTube.">
-<link rel="stylesheet" href="style.css">
+<title>Siar — TV Analog</title>
+<meta name="description" content="Siar: TV analog dalam browser. Iklan jadul Indonesia & opening kartun legendaris via embed YouTube, lengkap dengan efek VHS, 3 model TV, panduan siaran, favorit, dan channel kustom.">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
   <main class="room">
     <header class="brand">
-      <h1>PORTAL&nbsp;NOSTALGIA</h1>
-      <p class="tagline">saluran-saluran dari masa lalu — putar knob-nya, duduk manis.</p>
+      <h1>SIAR</h1>
+      <p class="tagline">televisi analog dalam browser — putar knob-nya, duduk manis.</p>
     </header>
 
-    <section class="tv" aria-label="Televisi analog">
+    <section class="tv model-black" id="tv" aria-label="Televisi analog">
       <div class="tv-body">
         <div class="screen-wrap">
-          <div class="screen">
-            <div id="player" title="Layar TV"></div>
-            <canvas id="staticCanvas" width="160" height="90" aria-hidden="true"></canvas>
+          <div class="screen" id="screen">
+            <div class="screen-inner" id="screenInner">
+              <div id="player" title="Layar TV"></div>
+              <canvas id="staticCanvas" width="160" height="90" aria-hidden="true"></canvas>
+            </div>
+            <div class="vhs-overlay" id="vhsOverlay" aria-hidden="true">
+              <div class="vhs-band"></div>
+              <div class="vhs-lines"></div>
+            </div>
+            <div id="sleepBadge" aria-hidden="true"></div>
+            <div id="powerFlash" aria-hidden="true"></div>
             <div id="powerHint">TEKAN POWER</div>
             <div id="osd" aria-live="polite"></div>
-            <div class="scanlines" aria-hidden="true"></div>
+            <div class="scanlines" id="scanlines" aria-hidden="true"></div>
             <div class="glass" aria-hidden="true"></div>
           </div>
         </div>
@@ -35,29 +43,124 @@
           </div>
           <button id="prevBtn" class="btn" title="Channel sebelumnya (↓)">CH−</button>
           <button id="nextBtn" class="btn" title="Channel berikutnya (↑)">CH+</button>
-          <button id="randomBtn" class="btn wide" title="Channel acak (R)">ACAK</button>
+          <button id="randomBtn" class="btn" title="Channel acak (R)">ACAK</button>
+          <button id="guideBtn" class="btn" title="Panduan siaran (G)">PANDUAN</button>
           <label class="vol">
             <span>VOL</span>
             <input id="volSlider" type="range" min="0" max="100" value="70">
           </label>
           <button id="muteBtn" class="btn" title="Mute (M)">SUARA: ON</button>
-          <div class="brand-plate">TRINITRON-ISH&nbsp;•&nbsp;1997</div>
+          <label class="sleep" title="TV mati otomatis setelah waktu ini">
+            <span>SLEEP</span>
+            <select id="sleepSelect">
+              <option value="0">Mati</option>
+              <option value="15">15 mnt</option>
+              <option value="30">30 mnt</option>
+              <option value="60">60 mnt</option>
+              <option value="90">90 mnt</option>
+            </select>
+          </label>
+          <div class="sleep-left" id="sleepLeft" hidden></div>
+          <div class="panel-row">
+            <button id="settingsBtn" class="btn small" title="Pengaturan (S)">⚙ SET</button>
+            <button id="helpBtn" class="btn small" title="Bantuan & shortcut (H)">? KEY</button>
+          </div>
+          <div class="brand-plate" id="brandPlate">TRINITRON-ISH&nbsp;•&nbsp;1997</div>
         </aside>
       </div>
     </section>
 
-    <section class="guide" aria-label="Daftar channel">
-      <h2>Daftar Siaran</h2>
-      <div id="guideList"></div>
-      <p class="hint">Klik judul buat pindah channel. Keyboard: ↑/↓ ganti channel • ←/→ volume • M mute • R acak • P power.</p>
+    <section class="nowbar" aria-label="Sedang tayang">
+      <div class="now-info">
+        <span class="now-label">SEDANG TAYANG</span>
+        <span class="now-title" id="nowTitle">— TV mati —</span>
+        <span class="now-cat" id="nowCat"></span>
+      </div>
+      <button id="favBtn" class="btn small fav" title="Tandai favorit (F)">☆ FAVORIT</button>
     </section>
 
     <footer>
-      <p>Semua video diputar via embed resmi YouTube. Edit <code>channels.js</code> buat nambah siaran.</p>
+      <p>Siar memutar semua video lewat embed resmi YouTube. Tekan <code>G</code> buat panduan siaran, <code>S</code> buat pengaturan, <code>H</code> buat semua shortcut.</p>
     </footer>
   </main>
 
-  <script src="channels.js"></script>
-  <script src="app.js"></script>
+  <!-- ===== Panduan Siaran (overlay) ===== -->
+  <div class="backdrop" id="backdrop" hidden></div>
+  <aside class="sheet" id="guideSheet" aria-label="Panduan siaran" hidden>
+    <div class="sheet-head">
+      <h2>PANDUAN SIARAN</h2>
+      <button class="btn small" data-close>CLOSE ✕</button>
+    </div>
+    <input id="guideSearch" type="search" placeholder="Cari siaran…" autocomplete="off">
+    <div id="guideList" class="guide-list"></div>
+    <details class="addbox">
+      <summary>＋ Tambah channel sendiri</summary>
+      <form id="addForm">
+        <input id="addUrl" type="text" placeholder="Paste link / ID YouTube" autocomplete="off" required>
+        <input id="addTitle" type="text" placeholder="Nama siaran" autocomplete="off" maxlength="80" required>
+        <button class="btn" type="submit">SIMPAN CHANNEL</button>
+        <p class="form-msg" id="addMsg"></p>
+      </form>
+    </details>
+  </aside>
+
+  <!-- ===== Pengaturan (overlay) ===== -->
+  <aside class="sheet" id="settingsSheet" aria-label="Pengaturan" hidden>
+    <div class="sheet-head">
+      <h2>PENGATURAN</h2>
+      <button class="btn small" data-close>CLOSE ✕</button>
+    </div>
+
+    <div class="set-group">
+      <h3>Model TV</h3>
+      <div class="model-row" id="modelRow">
+        <button class="model-card" data-model="wood"><span class="sw wood"></span>Kayu 80-an</button>
+        <button class="model-card" data-model="black"><span class="sw black"></span>Plastik 90-an</button>
+        <button class="model-card" data-model="silver"><span class="sw silver"></span>Silver 2000-an</button>
+      </div>
+      <label class="set-row"><span>Rasio layar 16:9</span><input type="checkbox" id="setRatio"><i></i></label>
+    </div>
+
+    <div class="set-group">
+      <h3>Efek Layar</h3>
+      <label class="set-row"><span>Efek VHS (tracking & jitter)</span><input type="checkbox" id="setVhs"><i></i></label>
+      <label class="set-row"><span>Scanline CRT</span><input type="checkbox" id="setScan"><i></i></label>
+      <label class="set-row column"><span>Intensitas scanline <b id="scanVal"></b></span><input type="range" id="setScanInt" min="0" max="100"></label>
+      <label class="set-row column"><span>Noise / static latar <b id="noiseVal"></b></span><input type="range" id="setNoise" min="0" max="100"></label>
+    </div>
+
+    <div class="set-group">
+      <h3>Data</h3>
+      <button class="btn wide" id="resetBtn">RESET SEMUA PENGATURAN</button>
+      <p class="set-note">Pengaturan, favorit, & channel kustom tersimpan lokal di browser ini (localStorage).</p>
+    </div>
+  </aside>
+
+  <!-- ===== Bantuan (modal) ===== -->
+  <div class="modal" id="helpModal" hidden>
+    <div class="modal-card">
+      <div class="sheet-head">
+        <h2>SHORTCUT KEYBOARD</h2>
+        <button class="btn small" data-close>CLOSE ✕</button>
+      </div>
+      <table class="keys">
+        <tr><td><kbd>P</kbd></td><td>Power nyala / mati</td></tr>
+        <tr><td><kbd>↑</kbd> <kbd>↓</kbd></td><td>Channel berikutnya / sebelumnya</td></tr>
+        <tr><td><kbd>←</kbd> <kbd>→</kbd></td><td>Volume turun / naik</td></tr>
+        <tr><td><kbd>M</kbd></td><td>Mute / unmute</td></tr>
+        <tr><td><kbd>R</kbd></td><td>Channel acak</td></tr>
+        <tr><td><kbd>1</kbd>–<kbd>9</kbd></td><td>Lompat ke channel nomor itu</td></tr>
+        <tr><td><kbd>F</kbd></td><td>Favoritkan siaran yang sedang tayang</td></tr>
+        <tr><td><kbd>G</kbd></td><td>Panduan siaran</td></tr>
+        <tr><td><kbd>S</kbd></td><td>Pengaturan</td></tr>
+        <tr><td><kbd>H</kbd></td><td>Bantuan ini</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>Tutup panel / modal</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <script src="assets/js/channels.js"></script>
+  <script src="assets/js/settings.js"></script>
+  <script src="assets/js/app.js"></script>
 </body>
 </html>
