@@ -6,18 +6,18 @@ Televisi analog dalam browser. Memutar 84 siaran TV Indonesia era 1990–2015 (i
 
 ## Fitur
 
-- **Remote control fisik** — Remote ala remote TV asli di samping TV: numpad 0–9 (ketik nomor channel, angka tampil di OSD, TV lompat setelah jeda singkat), rocker CH/VOL, power, mute, favorit, panduan, layar penuh
+- **Remote overlay melayang** — Ketuk tombol remote melayang di kanan bawah: remote muncul meluncur dari bawah dengan perspektif 3D seolah diarahkan ke TV. LED inframerah remote berkedip dan sensor di bodi TV menyala tiap tombol ditekan, plus bunyi klik dan getar halus di ponsel. Isinya: numpad 0–9 (ketik nomor channel, angka tampil di OSD, TV lompat setelah jeda singkat), rocker CH/VOL, power, mute, acak, favorit, panduan, Blok Stasiun, sleep timer, pengaturan, layar penuh. Tutup via tombol yang sama, ketuk di luar, atau `Esc`
 - **Antena interaktif** — Dua batang antena bisa diseret; tiap channel punya posisi sinyal terbaik sendiri. Kualitas sinyal (persen di panel dan OSD) menggerakkan noise, tracking band, dan ketajaman gambar secara real-time. Posisi antena tersimpan di `localStorage`
 - **Blok Stasiun** — Di Panduan Siaran: chip filter per stasiun + tombol **PUTAR BLOK** untuk marathon satu stasiun (dimulai dari ident stasiunnya). Selama blok aktif, CH+/CH−, auto-next, dan numpad tetap di dalam blok; badge blok tampil di bilah "Sedang Tayang"
 - **Model TV** — Kayu 80-an, Plastik 90-an, Silver 2000-an (bezel dan plat merek menyesuaikan)
-- **Bodi 3D ala TV asli** — Tombol fisik timbul yang tenggelam saat ditekan, antena teleskopik dua batang, speaker grille perforasi, bezel tebal, kaca layar melengkung (highlight + vignette), tekstur plastik
+- **Bodi TV lebar ala TV asli** — Chassis persegi panjang menyamping: layar + kolom speaker grille dan sensor IR dalam satu bodi, strip status (power, display CH, meteran sinyal) di bawah layar, kaki/stand TV dengan bayangan lantai, dan cahaya layar yang memantul halus ke ruangan saat TV menyala. Tombol fisik timbul yang tenggelam saat ditekan, antena teleskopik dua batang, bezel tebal, kaca layar melengkung (highlight + vignette), tekstur plastik
 - **Video bersih** — Overscan ala CRT memotong strip judul/kontrol YouTube; kontrol pemutar disembunyikan (`controls=0`); klik layar = putar/jeda, dobel-klik = layar penuh
 - **Efek layar** — VHS (tracking, chromatic aberration, jitter), scanline CRT + intensitas, noise latar yang bereaksi terhadap kualitas sinyal, animasi power-on CRT, rasio 4:3 / 16:9
 - **Panduan siaran** — Seluruh channel per kategori dengan thumbnail YouTube, pencarian, label stasiun, penanda ✓ sudah-ditonton, dan progres koleksi (X/84 ditonton)
 - **Favorit** — Tandai siaran dengan bintang; terkumpul di grup teratas panduan
 - **Channel kustom** — Tambah siaran dengan menempelkan URL/ID YouTube; tersimpan di `localStorage`
 - **Sleep timer** — TV mati otomatis setelah 15/30/60/90 menit
-- **Kontrol penuh** — Power, CH+/CH−, acak, volume (slider 3D + tick marks), mute, layar penuh (tombol FULL / dobel-klik layar)
+- **Kontrol penuh** — Semua kontrol utama hidup di remote overlay: power, CH+/CH−, acak, volume (rocker + slider 3D bertick marks, bar volumenya tampil di OSD ala TV asli), mute, layar penuh (tombol FULL / dobel-klik layar). Di bodi TV tinggal elemen status: tombol power, display CH, meteran sinyal
 - **Pintasan keyboard** — Lihat tabel di bawah
 
 Pengaturan, favorit, channel kustom, posisi antena, dan riwayat tontonan tersimpan otomatis di browser (localStorage) dan berlaku pada kunjungan berikutnya.
@@ -66,7 +66,7 @@ Seluruh `video_id` telah diverifikasi satu per satu via YouTube oEmbed (HTTP 200
 | `G` | Panduan siaran |
 | `S` | Pengaturan |
 | `H` | Bantuan |
-| `Esc` | Tutup panel / modal |
+| `Esc` | Tutup remote / panel / modal |
 
 Batang antena diatur dengan menyeretnya langsung (mouse/sentuh); tidak ada pintasan keyboard khusus.
 

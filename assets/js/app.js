@@ -41,7 +41,9 @@
     stationChips: $("stationChips"), blockBar: $("blockBar"),
     blockLabel: $("blockLabel"), blockPlayBtn: $("blockPlayBtn"),
     blockExitBtn: $("blockExitBtn"), blockBadge: $("blockBadge"),
-    guideProgress: $("guideProgress"), remPower: $("remPower")
+    guideProgress: $("guideProgress"), remPower: $("remPower"),
+    remote: $("remote"), veil: $("remoteVeil"), fab: $("remoteFab"),
+    irLed: $("irLed"), irEye: $("irEye")
   };
 
   var MODEL_PLATES = {
@@ -538,7 +540,10 @@
 
   function updateMuteLabel() {
     if (!playerReady) return;
-    els.muteBtn.textContent = player.isMuted() ? "SUARA: MATI" : "SUARA: ON";
+    var m = player.isMuted();
+    els.muteBtn.textContent = "MUTE";
+    els.muteBtn.classList.toggle("on", m);
+    els.muteBtn.title = m ? "Suara mati — klik untuk menyalakan (M)" : "Mute (M)";
   }
 
   /* ================= Sleep timer ================= */
@@ -574,6 +579,7 @@
 
   /* ================= Panel / overlay ================= */
   function openSheet(which) {
+    closeRemote();
     closeSheets();
     els.backdrop.hidden = false;
     if (which === "guide") { els.guideSheet.hidden = false; els.guideSheet.classList.add("open"); els.guideSearch.focus(); }
@@ -601,9 +607,66 @@
     els.vol.dispatchEvent(new Event("input"));
   }
 
+  /* ================= Remote overlay & efek IR ================= */
+  var remoteOpen = false;
+  function openRemote() {
+    remoteOpen = true;
+    els.remote.classList.add("open");
+    els.remote.setAttribute("aria-hidden", "false");
+    els.veil.classList.add("on");
+    els.fab.classList.add("on");
+    els.fab.setAttribute("aria-expanded", "true");
+    els.fab.setAttribute("aria-label", "Tutup remote");
+  }
+  function closeRemote() {
+    if (!remoteOpen) return;
+    remoteOpen = false;
+    els.remote.classList.remove("open");
+    els.remote.setAttribute("aria-hidden", "true");
+    els.veil.classList.remove("on");
+    els.fab.classList.remove("on");
+    els.fab.setAttribute("aria-expanded", "false");
+    els.fab.setAttribute("aria-label", "Buka remote");
+  }
+  function toggleRemote() { remoteOpen ? closeRemote() : openRemote(); }
+
+  // Bunyi klik mekanis pendek ala tombol remote (WebAudio, tanpa aset).
+  function playClick() {
+    try {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === "suspended") audioCtx.resume();
+      var t = audioCtx.currentTime;
+      var osc = audioCtx.createOscillator(), g = audioCtx.createGain();
+      osc.type = "square";
+      osc.frequency.setValueAtTime(1900, t);
+      g.gain.setValueAtTime(0.045, t);
+      g.gain.exponentialRampToValueAtTime(0.0008, t + 0.045);
+      osc.connect(g); g.connect(audioCtx.destination);
+      osc.start(t); osc.stop(t + 0.05);
+    } catch (e) { /* audio tidak tersedia */ }
+  }
+
+  // LED inframerah remote berkedip + sensor di bodi TV menyala menerima sinyal.
+  function flashIR() {
+    [els.irLed, els.irEye].forEach(function (el) {
+      if (!el) return;
+      el.classList.remove("flash");
+      void el.offsetWidth; // restart animasi
+      el.classList.add("flash");
+    });
+    playClick();
+    if (navigator.vibrate) { try { navigator.vibrate(10); } catch (e) { /* abaikan */ } }
+  }
+
+  function volBar(v) {
+    var filled = Math.round(v / 10);
+    var s = "";
+    for (var i = 0; i < 10; i++) s += i < filled ? "▮" : "▯";
+    return s;
+  }
+
   /* ================= Event: kontrol TV ================= */
   els.powerBtn.addEventListener("click", function () { powered ? powerOff() : powerOn(); });
-  $("fsBtn").addEventListener("click", toggleFs);
   els.screen.addEventListener("dblclick", toggleFs);
   // Klik di layar: putar / jeda lewat API (dobel-klik tetap layar penuh)
   els.shield.addEventListener("click", function () {
@@ -611,12 +674,6 @@
     if (player.getPlayerState() === YT.PlayerState.PLAYING) { player.pauseVideo(); showOsd("❚❚ PAUSE"); }
     else { player.playVideo(); showOsd("▶ PLAY"); }
   });
-  $("nextBtn").addEventListener("click", function () { if (powered) nextChannel(); });
-  $("prevBtn").addEventListener("click", function () { if (powered) prevChannel(); });
-  $("randomBtn").addEventListener("click", function () { if (powered) randomChannel(); });
-  $("guideBtn").addEventListener("click", function () { openSheet("guide"); });
-  $("settingsBtn").addEventListener("click", function () { openSheet("settings"); });
-  $("helpBtn").addEventListener("click", function () { openSheet("help"); });
   els.backdrop.addEventListener("click", closeSheets);
   Array.prototype.forEach.call(document.querySelectorAll("[data-close]"), function (b) {
     b.addEventListener("click", closeSheets);
@@ -631,6 +688,7 @@
       if (S.muted) player.mute(); else player.unMute();
       updateMuteLabel();
     }
+    if (powered) showOsdText("VOLUME " + S.volume, volBar(S.volume));
   });
   els.muteBtn.addEventListener("click", function () {
     if (!playerReady) return;
@@ -638,6 +696,7 @@
     if (S.muted) player.mute(); else player.unMute();
     PNStore.saveSettings();
     updateMuteLabel();
+    if (powered) showOsdText(S.muted ? "MUTE" : "VOLUME " + S.volume, S.muted ? "Suara dibisukan" : volBar(S.volume));
   });
   els.sleepSelect.addEventListener("change", function () {
     startSleep(parseInt(els.sleepSelect.value, 10));
@@ -649,7 +708,17 @@
     syncFavBtn(); buildGuide();
   });
 
-  /* ================= Event: remote fisik ================= */
+  /* ================= Event: remote overlay ================= */
+  els.fab.addEventListener("click", function () {
+    if (anyOpen()) closeSheets();
+    toggleRemote();
+  });
+  els.veil.addEventListener("click", closeRemote);
+  // Tiap tombol remote ditekan: LED IR + sensor TV berkedip, klik, getar halus.
+  els.remote.addEventListener("pointerdown", function (e) {
+    if (e.target.closest(".rbtn")) flashIR();
+  });
+  $("remClose").addEventListener("click", closeRemote);
   els.remPower.addEventListener("click", function () { powered ? powerOff() : powerOn(); });
   Array.prototype.forEach.call(document.querySelectorAll("[data-digit]"), function (b) {
     b.addEventListener("click", function () { pushDigit(b.getAttribute("data-digit")); });
@@ -658,10 +727,12 @@
   $("remChDn").addEventListener("click", function () { if (powered) prevChannel(); });
   $("remVolUp").addEventListener("click", function () { bumpVolume(5); });
   $("remVolDn").addEventListener("click", function () { bumpVolume(-5); });
-  $("remMute").addEventListener("click", function () { els.muteBtn.click(); });
+  $("remRandom").addEventListener("click", function () { if (powered) randomChannel(); });
   $("remFav").addEventListener("click", function () { els.favBtn.click(); });
   $("remGuide").addEventListener("click", function () { openSheet("guide"); });
-  $("remFull").addEventListener("click", toggleFs);
+  $("remSet").addEventListener("click", function () { openSheet("settings"); });
+  $("remHelp").addEventListener("click", function () { openSheet("help"); });
+  $("remFull").addEventListener("click", function () { toggleFs(); closeRemote(); });
   $("remBlock").addEventListener("click", function () {
     if (blockStation) exitBlock(true);
     else openSheet("guide");
@@ -719,7 +790,7 @@
   document.addEventListener("keydown", function (e) {
     var tag = e.target.tagName;
     var typing = (tag === "INPUT" && e.target.type !== "range") || tag === "TEXTAREA" || tag === "SELECT";
-    if (e.key === "Escape") { closeSheets(); return; }
+    if (e.key === "Escape") { closeSheets(); closeRemote(); return; }
     if (typing) return;
     switch (e.key) {
       case "ArrowUp": if (powered) { nextChannel(); e.preventDefault(); } break;

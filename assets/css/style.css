@@ -29,7 +29,7 @@ body {
 
 /* ---------- Badan TV & model ---------- */
 .tv-body {
-  display: flex;
+  display: flex; flex-direction: column;
   border: 1px solid var(--line);
   border-radius: 26px;
   padding: 22px;
@@ -60,8 +60,6 @@ body {
   border-color: #6f747e;
   color: #23252b;
 }
-.model-silver .panel { border-left-color: rgba(0,0,0,.25); }
-.model-silver .vol, .model-silver .sleep { color: #4a4d55; }
 .model-silver .brand-plate { color: #5b5e66; border-top-color: rgba(0,0,0,.25); }
 
 /* ---------- Antena teleskopik ---------- */
@@ -241,12 +239,66 @@ body {
   94% { opacity: 1; } 97% { opacity: .75; } 98% { opacity: 1; }
 }
 
-/* ---------- Panggung: TV + remote ---------- */
-.stage { display: block; }
-@media (min-width: 940px) {
-  .stage { display: flex; gap: 24px; align-items: flex-start; }
-  .stage .tv { flex: 1 1 auto; min-width: 0; }
-  .stage .remote { flex: 0 0 236px; margin-top: 130px; }
+/* ---------- Chassis lebar: layar + kolom samping + strip status ---------- */
+.tv-main { display: flex; gap: 18px; align-items: stretch; }
+.screen-wrap { flex: 0 1 660px; min-width: 0; }
+.tv-side {
+  flex: 1 1 auto; min-width: 120px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.ir-zone {
+  display: flex; align-items: center; gap: 8px; justify-content: center;
+  padding: 8px 6px; border-radius: 8px;
+  background: rgba(0,0,0,.22);
+  box-shadow: inset 0 2px 6px rgba(0,0,0,.5), inset 0 -1px 0 rgba(255,255,255,.05);
+}
+.ir-eye {
+  width: 12px; height: 12px; border-radius: 50%; flex: 0 0 auto;
+  background: radial-gradient(circle at 38% 32%, #4a4a55, #17171c 70%);
+  box-shadow: inset 0 1px 2px rgba(255,255,255,.25), 0 1px 2px rgba(0,0,0,.6);
+}
+.ir-eye.flash { animation: ir-flash .28s ease-out; }
+@keyframes ir-flash {
+  0% { background: radial-gradient(circle at 50% 50%, #ff5a4d, #a1120a 75%); box-shadow: 0 0 12px 3px rgba(255,60,45,.75); }
+  100% { background: radial-gradient(circle at 38% 32%, #4a4a55, #17171c 70%); box-shadow: inset 0 1px 2px rgba(255,255,255,.25); }
+}
+.ir-label { font-size: 8px; letter-spacing: .3em; color: var(--dim); }
+
+.statusbar {
+  display: flex; align-items: center; gap: 14px;
+  margin-top: 16px; padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.model-silver .statusbar { border-top-color: rgba(0,0,0,.25); }
+.statusbar .sig-meter { flex: 0 1 190px; }
+.statusbar .sleep-left { margin-left: auto; }
+.statusbar .btn.power { padding: 10px 16px 8px; border-radius: 12px; }
+
+/* Kaki / stand TV + bayangan lantai */
+.tv-stand {
+  display: flex; justify-content: space-between;
+  padding: 0 clamp(40px, 12%, 110px);
+}
+.tv-stand .foot {
+  width: clamp(64px, 12%, 104px); height: 24px;
+  background: linear-gradient(180deg, #26262e, #0c0c0f);
+  clip-path: polygon(12% 0, 88% 0, 100% 100%, 0 100%);
+  box-shadow: inset 0 2px 3px rgba(255,255,255,.10);
+}
+.model-wood .tv-stand .foot { background: linear-gradient(180deg, #4b3419, #241605); }
+.model-silver .tv-stand .foot { background: linear-gradient(180deg, #9ea3ad, #565b64); }
+.tv::after { /* bayangan lantai di bawah stand */
+  content: ""; display: block; height: 26px; margin-top: 2px;
+  background: radial-gradient(ellipse 62% 100% at 50% 0%, rgba(0,0,0,.55), transparent 70%);
+}
+/* Cahaya layar memantul halus ke "ruangan" saat TV menyala */
+.tv.on .tv-body {
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.65),
+    0 4px 14px rgba(0,0,0,.5),
+    0 0 110px rgba(126,156,255,.10),
+    inset 0 1px 0 rgba(255,255,255,.07),
+    inset 0 -3px 8px rgba(0,0,0,.45);
 }
 
 /* ---------- Meter sinyal ---------- */
@@ -265,19 +317,90 @@ body {
 .tv.sig-bad #player iframe { filter: saturate(.5) contrast(1.1) brightness(.94); }
 .tv.sig-mid #player iframe { filter: saturate(.8) contrast(1.04); }
 
-/* ---------- Remote control fisik ---------- */
+/* ---------- Remote overlay: melayang dari bawah, seolah diarahkan ke TV ---------- */
+.remote-veil {
+  position: fixed; inset: 0; z-index: 44;
+  background: rgba(0,0,0,.45);
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s ease;
+}
+.remote-veil.on { opacity: 1; pointer-events: auto; }
 .remote {
-  margin: 26px auto 0; max-width: 300px;
+  position: fixed; left: 50%; bottom: 0; z-index: 46;
+  width: min(320px, 94vw);
+  max-height: min(82dvh, 760px); overflow-y: auto; overscroll-behavior: contain;
   background: linear-gradient(165deg, #23232b 0%, #141419 55%, #0c0c0f 100%);
-  border: 1px solid #30303a; border-radius: 30px;
-  padding: 20px 18px 16px;
+  border: 1px solid #30303a; border-bottom: 0; border-radius: 30px 30px 0 0;
+  padding: 14px 18px 18px;
   box-shadow:
-    0 24px 50px rgba(0,0,0,.6),
+    0 -18px 60px rgba(0,0,0,.55),
+    0 30px 80px rgba(0,0,0,.65),
     inset 0 1px 0 rgba(255,255,255,.10),
     inset 0 -6px 14px rgba(0,0,0,.55);
+  transform: translate(-50%, 112%) perspective(1100px) rotateX(18deg);
+  transform-origin: 50% 100%;
+  visibility: hidden;
+  transition: transform .48s cubic-bezier(.22, 1.25, .36, 1), visibility 0s .48s;
 }
+.remote.open {
+  transform: translate(-50%, 0) perspective(1100px) rotateX(5deg);
+  visibility: visible;
+  transition: transform .48s cubic-bezier(.22, 1.25, .36, 1);
+}
+.remote-grip {
+  width: 44px; height: 4px; border-radius: 2px;
+  background: #33333d; margin: 0 auto 10px;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.8), 0 1px 0 rgba(255,255,255,.06);
+}
+.remote-led-wrap { display: flex; justify-content: center; margin-bottom: 8px; }
+.ir-led {
+  width: 13px; height: 13px; border-radius: 50%;
+  background: radial-gradient(circle at 38% 32%, #5a2320, #230b09 72%);
+  box-shadow: inset 0 1px 2px rgba(255,255,255,.22), 0 1px 3px rgba(0,0,0,.6);
+}
+.ir-led.flash { animation: ir-flash .28s ease-out; }
 .remote-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.remote-top-btns { display: flex; gap: 8px; align-items: center; }
 .remote-brand { font-size: 10px; letter-spacing: .3em; color: var(--dim); }
+.rbtn.rclose { width: 42px; height: 42px; padding: 0; border-radius: 50%; font-size: 14px; }
+.rbtn.on { color: var(--accent); border-color: var(--accent); }
+.rsleep {
+  display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 7px;
+  font-size: 9px; letter-spacing: .18em; color: var(--dim);
+  padding: 0 6px;
+}
+.rsleep select {
+  background: linear-gradient(180deg, #2b2b34, #141419); color: var(--ink);
+  border: 1px solid #36363f; border-radius: 8px;
+  padding: 7px 2px; font: inherit; font-size: 11px; letter-spacing: .03em; cursor: pointer;
+  box-shadow: 0 3px 0 #050506, inset 0 1px 0 rgba(255,255,255,.13);
+}
+.rvol { margin-top: 12px; }
+.rhelp {
+  width: 100%; margin-top: 12px; padding: 9px 4px;
+  background: none; border: 1px dashed #2c2c34; border-radius: 10px;
+  color: var(--dim); font: inherit; font-size: 10px; letter-spacing: .14em; cursor: pointer;
+}
+.rhelp:hover { color: var(--accent); border-color: var(--accent); }
+
+/* Tombol melayang pembuka remote */
+.remote-fab {
+  position: fixed; right: 18px; bottom: calc(18px + env(safe-area-inset-bottom)); z-index: 45;
+  width: 58px; height: 58px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(160deg, #26262f, #101014);
+  color: var(--accent);
+  border: 1px solid #3a3a45;
+  box-shadow:
+    0 10px 26px rgba(0,0,0,.6),
+    inset 0 1px 0 rgba(255,255,255,.14),
+    inset 0 -4px 8px rgba(0,0,0,.55);
+  cursor: pointer;
+  transition: transform .25s ease, color .2s, border-color .2s;
+}
+.remote-fab svg { width: 26px; height: 26px; }
+.remote-fab:hover { color: var(--ink); transform: translateY(-2px); }
+.remote-fab.on { color: var(--osd); border-color: #35502f; }
 .rbtn {
   background: linear-gradient(180deg, #2e2e38 0%, #1d1d24 55%, #131318 100%);
   color: var(--ink); border: 1px solid #3a3a45; border-radius: 12px;
@@ -340,11 +463,7 @@ body {
 .guide-list .seen { color: var(--osd); font-size: 12px; flex: 0 0 auto; }
 .guide-list li.watched .ttl { color: #b9b6aa; }
 
-/* ---------- Panel samping ---------- */
-.panel {
-  flex: 0 0 126px; display: flex; flex-direction: column; align-items: stretch;
-  gap: 9px; padding: 6px 0 6px 18px; margin-left: 18px; border-left: 1px solid var(--line);
-}
+/* ---------- Tombol fisik & display (dipakai statusbar + nowbar) ---------- */
 .btn {
   background: linear-gradient(180deg, #2b2b34 0%, #1c1c22 52%, #131318 100%);
   color: var(--ink); border: 1px solid #36363f; border-radius: 10px;
@@ -455,7 +574,7 @@ body {
 
 /* Speaker grille: perforasi titik-titik ala bodi TV asli */
 .speaker {
-  height: 72px; margin-top: 4px; border-radius: 8px;
+  flex: 1 1 auto; min-height: 110px; border-radius: 8px;
   background-color: rgba(0,0,0,.22);
   background-image: radial-gradient(circle at center, rgba(0,0,0,.70) 1.1px, transparent 1.6px);
   background-size: 7px 7px;
@@ -467,8 +586,6 @@ body {
 }
 .model-wood .speaker { background-color: rgba(0,0,0,.30); }
 .sleep-left { font-size: 10px; letter-spacing: .18em; color: var(--osd); text-align: center; }
-.panel-row { display: flex; gap: 8px; }
-.panel-row .btn { flex: 1; }
 .brand-plate { margin-top: auto; text-align: center; font-size: 9px; letter-spacing: .18em; color: #4c4c55; border-top: 1px dashed #232329; padding-top: 10px; }
 
 /* ---------- Sedang tayang ---------- */
@@ -581,24 +698,29 @@ footer code { color: var(--accent); }
 /* ---------- Mobile ---------- */
 @media (max-width: 720px) {
   .room { padding: 26px 12px 48px; }
+  .brand { margin-bottom: 18px; }
   .tv { margin-top: 96px; }
   .antenna .rod-l { height: 72px; }
   .antenna .rod-r { height: 88px; }
   .antenna .mount { width: 46px; height: 13px; }
-  .speaker { flex: 1 1 100%; height: 34px; margin-top: 0; }
-  .tv-body { flex-direction: column; padding: 14px; border-radius: 20px; }
-  .panel {
-    flex-direction: row; flex-wrap: wrap; align-items: center;
-    margin: 16px 0 0; padding: 16px 0 0; border-left: 0; border-top: 1px solid var(--line);
-  }
-  .panel .btn, .panel .ch-display, .panel .sig-meter { flex: 1 1 28%; }
-  .remote { margin-top: 22px; }
-  .panel .vol, .panel .sleep { flex: 1 1 42%; }
-  .panel-row { flex: 1 1 100%; }
-  .sleep-left { flex: 1 1 100%; }
-  .brand-plate { display: none; }
+  .tv-body { padding: 13px; border-radius: 20px; }
+  .tv-main { flex-direction: column; }
+  .screen-wrap { flex: none; width: 100%; }
+  .tv-side { display: none; }
+  .statusbar { flex-wrap: wrap; gap: 10px; margin-top: 12px; padding-top: 12px; }
+  .statusbar .sig-meter { flex: 1 1 150px; }
+  .statusbar .sleep-left { flex: 1 1 100%; margin-left: 0; }
+  .tv-stand { padding: 0 34px; }
+  .tv-stand .foot { height: 18px; }
   .nowbar { flex-direction: column; align-items: stretch; }
   .nowbar .btn { align-self: flex-end; }
-  .sheet { width: 100vw; }
+  .sheet { width: 100vw; border-left: 0; padding: 16px 14px calc(16px + env(safe-area-inset-bottom)); }
   .guide-list .th { width: 64px; }
+  .guide-list li { min-height: 52px; }
+  .chip { padding: 9px 13px; }
+  .remote { width: 94vw; max-height: 86dvh; padding: 12px 14px calc(14px + env(safe-area-inset-bottom)); }
+  .rbtn { min-height: 44px; }
+  .numpad .rbtn { min-height: 48px; }
+  .rocker .rbtn { min-height: 48px; }
+  .remote-fab { right: 14px; bottom: calc(14px + env(safe-area-inset-bottom)); width: 56px; height: 56px; }
 }
