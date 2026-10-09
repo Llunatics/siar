@@ -18,6 +18,8 @@
   var digitBuf = "";                  // buffer nomor channel dari numpad/keyboard
   var digitTimer = null;
   var blockStation = null;            // stasiun blok aktif; null = navigasi bebas
+  var hourBlock = null;               // label blok jam aktif (PAGI/SIANG/…); null = mati
+  var hourIdxs = [];                  // antrean indeks global untuk blok jam aktif
   var guideStation = "SEMUA";         // filter chip di panduan (visual saja)
   var signalQ = 100;                  // kualitas sinyal channel aktif, 0..100
 
@@ -42,7 +44,10 @@
     blockExitBtn: $("blockExitBtn"), blockBadge: $("blockBadge"),
     guideProgress: $("guideProgress"), remPower: $("remPower"),
     remote: $("remote"), veil: $("remoteVeil"), fab: $("remoteFab"),
-    irLed: $("irLed"), irEye: $("irEye")
+    irLed: $("irLed"), irEye: $("irEye"),
+    stationBug: $("stationBug"), roomClock: $("roomClock"),
+    clockDigital: $("clockDigital"), clockH: $("clockH"),
+    clockM: $("clockM"), clockS: $("clockS")
   };
 
   // Plat merek mengikuti BENTUK TV (terinspirasi, bukan logo asli)
@@ -151,6 +156,12 @@
     setChk("setAutoPower", S.autoPower);
     setChk("setRemember", S.rememberCh);
     setChk("setAutoNext", S.autoNext);
+    setChk("setImmersive", S.immersive);
+    setChk("setClock", S.roomClock);
+    setChk("setBug", S.stationBug);
+    document.body.classList.toggle("immersive", !!S.immersive);
+    document.body.classList.toggle("clock-off", !S.roomClock);
+    refreshBug();
 
     applyAntenna();
     refreshSignal();
@@ -218,6 +229,10 @@
     els.sigBar.style.width = (powered ? signalQ : 0) + "%";
     els.tv.classList.toggle("sig-bad", powered && signalQ < 45);
     els.tv.classList.toggle("sig-mid", powered && signalQ >= 45 && signalQ < 75);
+    // Pantulan cahaya layar ke ruangan (dipakai Mode Imersif): hidup mengikuti
+    // nyala TV, kecerahan knob, dan bersihnya sinyal.
+    var glow = powered ? Math.min(1, (S.bright / 150) * (0.45 + signalQ / 100 * 0.55)) : 0;
+    els.tv.style.setProperty("--screen-glow", glow.toFixed(2));
     applyPicture();
   }
   function signalHint() {
@@ -259,6 +274,7 @@
   // Daftar indeks global yang sedang "dijelajahi" CH+/CH−, auto-next & numpad.
   function navList() {
     var all = list.map(function (_, i) { return i; });
+    if (hourBlock && hourIdxs.length) return hourIdxs;
     if (!blockStation) return all;
     var inBlock = all.filter(function (i) { return list[i].station === blockStation; });
     return inBlock.length ? inBlock : all;
@@ -269,6 +285,7 @@
       .filter(function (i) { return list[i].station === station; });
     if (!nav.length) return;
     blockStation = station;
+    hourBlock = null; hourIdxs = [];
     if (!powered) powerOn();
     // Awali dari ident stasiunnya kalau ada — seperti TV asli mulai dari station ID.
     var startIdx = nav[0];
@@ -293,6 +310,14 @@
         " siaran — CH+/CH−, auto-next & numpad tetap di blok ini";
       els.blockPlayBtn.hidden = true;
       els.blockExitBtn.hidden = false;
+      els.blockExitBtn.textContent = "✕ KELUAR BLOK";
+    } else if (hourBlock) {
+      els.blockBar.hidden = false;
+      els.blockLabel.textContent = "⏰ BLOK JAM AKTIF: " + hourBlock + " • " + hourIdxs.length +
+        " siaran — CH+/CH−, auto-next & numpad tetap di antrean jam ini";
+      els.blockPlayBtn.hidden = true;
+      els.blockExitBtn.hidden = false;
+      els.blockExitBtn.textContent = "✕ KELUAR BLOK JAM";
     } else if (guideStation !== "SEMUA") {
       els.blockBar.hidden = false;
       els.blockLabel.textContent = "Blok " + guideStation + ": " + countOf(guideStation) + " siaran siap diputar marathon";
@@ -301,8 +326,48 @@
     } else {
       els.blockBar.hidden = true;
     }
-    els.blockBadge.hidden = !blockStation;
+    els.blockBadge.hidden = !(blockStation || hourBlock);
     if (blockStation) els.blockBadge.textContent = "BLOK " + blockStation;
+    else if (hourBlock) els.blockBadge.textContent = "⏰ JAM " + hourBlock;
+  }
+
+  /* ================= Blok Jam (jam tayang asli, WIB) ================= */
+  // Susunan seperti jadwal TV betulan: pagi kartun, siang iklan,
+  // sore sinetron, malam acara. Jam dihitung selalu dengan zona WIB.
+  function wibNow() {
+    return new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Jakarta" }));
+  }
+  function hourBlockInfo() {
+    var h = wibNow().getHours();
+    if (h >= 5 && h < 11) return { label: "PAGI", name: "Blok Kartun Pagi", cats: ["Opening Kartun", "Opening Tokusatsu"] };
+    if (h >= 11 && h < 15) return { label: "SIANG", name: "Blok Iklan Siang", cats: ["Iklan Jadul"] };
+    if (h >= 15 && h < 19) return { label: "SORE", name: "Sinetron Sore", cats: ["Sinetron & Acara TV"] };
+    if (h >= 19 && h < 23) return { label: "MALAM", name: "Acara Malam", cats: ["Sinetron & Acara TV", "Jingle & Ident"] };
+    return { label: "TENGAH MALAM", name: "Iklan Tengah Malam", cats: ["Iklan Jadul", "Jingle & Ident"] };
+  }
+  function startHourBlock() {
+    var info = hourBlockInfo();
+    var idxs = [];
+    list.forEach(function (ch, i) { if (info.cats.indexOf(ch.cat) !== -1) idxs.push(i); });
+    if (!idxs.length) return;
+    hourIdxs = idxs;
+    hourBlock = info.label;
+    blockStation = null;
+    if (!powered) powerOn();
+    tuneTo(idxs[0]);
+    showOsd("⏰ " + info.name + " • " + idxs.length + " SIARAN");
+    updateBlockUI();
+  }
+  function exitHourBlock(announce) {
+    if (!hourBlock) return;
+    hourBlock = null;
+    hourIdxs = [];
+    updateBlockUI();
+    if (announce && powered) showOsd("BLOK JAM MATI — SEMUA CHANNEL");
+  }
+  function toggleHourBlock() {
+    if (hourBlock) exitHourBlock(true);
+    else startHourBlock();
   }
   function buildChips() {
     var counts = {};
@@ -439,6 +504,14 @@
     }
     els.chNum.textContent = powered && list.length ? pad(current + 1) : "--";
     syncFavBtn();
+    refreshBug();
+  }
+  // Logo bug stasiun ala watermark TV asli (pojok layar, mengikuti st channel).
+  function refreshBug() {
+    if (!els.stationBug) return;
+    var show = powered && S.stationBug && list.length;
+    els.stationBug.hidden = !show;
+    if (show) els.stationBug.textContent = cur().station;
   }
   function syncFavBtn() {
     var on = list.length && PNStore.isFavorite(cur().key);
@@ -722,6 +795,8 @@
     current = ((idx % list.length) + list.length) % list.length;
     // Keluar dari blok kalau pindah ke stasiun lain (mis. lewat panduan)
     if (blockStation && cur().station !== blockStation) exitBlock(false);
+    // Keluar dari blok jam kalau pindah ke siaran di luar antrean jam
+    if (hourBlock && hourIdxs.indexOf(current) === -1) exitHourBlock(false);
     PNStore.markWatched(cur().key);
     if (S.rememberCh) { S.lastCh = cur().key; PNStore.saveSettings(); }
     refreshSignal();
@@ -774,6 +849,12 @@
     void els.powerFlash.offsetWidth; // restart animasi
     els.powerFlash.classList.add("go");
   }
+  // Animasi mati CRT: gambar kolaps jadi garis cahaya lalu padam.
+  function crtOffFx() {
+    els.powerFlash.classList.remove("go-off");
+    void els.powerFlash.offsetWidth; // restart animasi
+    els.powerFlash.classList.add("go-off");
+  }
 
   function powerOn() {
     if (!list.length) return;
@@ -800,7 +881,7 @@
     els.osd.classList.remove("show");
     flashEye();
     refreshSignal();
-    if (!silent) staticFx(220);
+    if (!silent) { crtOffFx(); staticFx(220); }
     vpStop();
     markActive();
     syncNow();
@@ -1019,13 +1100,21 @@
     if (blockStation) exitBlock(true);
     else openSheet("guide");
   });
+  $("remJam").addEventListener("click", function () { toggleHourBlock(); });
 
   /* ================= Event: Blok Stasiun ================= */
   els.blockPlayBtn.addEventListener("click", function () {
     startBlock(guideStation);
     closeSheets();
   });
-  els.blockExitBtn.addEventListener("click", function () { exitBlock(true); });
+  els.blockExitBtn.addEventListener("click", function () {
+    if (hourBlock) exitHourBlock(true);
+    else exitBlock(true);
+  });
+  $("guideJamBtn").addEventListener("click", function () {
+    startHourBlock();
+    closeSheets();
+  });
 
   /* ================= Event: panduan ================= */
   els.guideSearch.addEventListener("input", buildGuide);
@@ -1083,6 +1172,9 @@
   bindChk("setAutoPower", "autoPower");
   bindChk("setRemember", "rememberCh");
   bindChk("setAutoNext", "autoNext");
+  bindChk("setImmersive", "immersive");
+  bindChk("setClock", "roomClock");
+  bindChk("setBug", "stationBug");
   bindCards("shape", "shape");
   bindCards("finish", "finish");
   bindCards("rmode", "remoteMode");
@@ -1109,6 +1201,7 @@
       case "ArrowLeft": bumpVolume(-5); break;
       case "m": case "M": els.muteBtn.click(); break;
       case "r": case "R": if (powered) randomChannel(); break;
+      case "j": case "J": toggleHourBlock(); break;
       case "p": case "P": powered ? powerOff() : powerOn(); break;
       case "f": case "F": els.favBtn.click(); break;
       case "g": case "G": anyOpen() ? closeSheets() : openSheet("guide"); break;
@@ -1118,6 +1211,18 @@
         if (/^[0-9]$/.test(e.key)) pushDigit(e.key);
     }
   });
+
+  /* ================= Jam dinding ruangan (WIB) ================= */
+  function updateClock() {
+    if (!els.clockDigital) return;
+    var now = wibNow();
+    var hh = now.getHours(), mm = now.getMinutes(), ss = now.getSeconds();
+    els.clockDigital.textContent = pad(hh) + ":" + pad(mm) + " WIB";
+    if (els.clockH) els.clockH.style.transform = "translateX(-50%) rotate(" + ((hh % 12) * 30 + mm * 0.5) + "deg)";
+    if (els.clockM) els.clockM.style.transform = "translateX(-50%) rotate(" + (mm * 6 + ss * 0.1) + "deg)";
+    if (els.clockS) els.clockS.style.transform = "translateX(-50%) rotate(" + (ss * 6) + "deg)";
+  }
+  setInterval(updateClock, 1000);
 
   /* ================= Init ================= */
   try { els.remote.inert = true; } catch (e) { /* abaikan */ }
@@ -1132,6 +1237,7 @@
   applySettings();
   buildGuide();
   syncNow();
+  updateClock();
   drawStatic();
   if (S.autoPower && list.length) powerOn();
 })();

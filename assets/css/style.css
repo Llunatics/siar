@@ -874,6 +874,138 @@ footer code { color: var(--accent); }
 .pv-wood { border-radius: 5px; } .pv-wood .pv-screen { inset: 11px 27px 11px 11px; border-radius: 4px; }
 .guide-list .th-none { background: #0a0a0d; border: 1px solid var(--line); border-radius: 6px; }
 
+/* ---------- Logo bug stasiun (watermark TV asli) ---------- */
+#stationBug {
+  position: absolute; top: 5.5%; right: 5%; z-index: 7; pointer-events: none;
+  padding: 3px 9px; border-radius: 4px;
+  font-size: clamp(10px, 1.7vw, 15px); letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(255,255,255,.92); background: rgba(8,8,12,.42);
+  border: 1px solid rgba(255,255,255,.20);
+  text-shadow: 0 1px 3px rgba(0,0,0,.85); opacity: .88;
+}
+#stationBug[hidden] { display: none; }
+
+/* ---------- Animasi mati CRT: gambar kolaps jadi garis lalu padam ---------- */
+#powerFlash.go-off { animation: crt-off .38s ease-in; }
+@keyframes crt-off {
+  0% { opacity: .85; transform: scaleY(1); }
+  45% { opacity: .95; transform: scaleY(.008); }
+  72% { opacity: .95; transform: scaleY(.008) scaleX(1); }
+  100% { opacity: 0; transform: scaleY(.008) scaleX(0); }
+}
+
+/* ---------- Remote: tombol Blok Jam ---------- */
+.remote-row.one { grid-template-columns: 1fr; }
+.rbtn.rjam { font-size: 10px; letter-spacing: .16em; color: var(--accent); }
+.jam-btn { margin-bottom: 10px; letter-spacing: .12em; }
+
+/* ---------- Mode Imersif: ruang tamu ---------- */
+.room { position: relative; }
+.room-scene { display: none; }
+body.immersive .room-scene { display: block; }
+body.immersive {
+  background:
+    linear-gradient(180deg, #2b2016 0%, #1e150e 60%, #120c07 100%);
+}
+body.immersive::after { /* lantai papan kayu (perspektif ringan) */
+  content: ""; position: fixed; left: -6%; right: -6%; top: 64%; bottom: -4%; z-index: -1;
+  background:
+    repeating-linear-gradient(90deg, rgba(0,0,0,.30) 0 2px, transparent 2px 130px),
+    linear-gradient(180deg, #3c2812, #180e04);
+  transform: perspective(340px) rotateX(22deg);
+  transform-origin: 50% 0;
+  opacity: .85;
+  pointer-events: none;
+}
+body.immersive .brand, body.immersive .nowbar, body.immersive footer { display: none; }
+body.immersive .tv { z-index: 1; }
+body.immersive .tv::before { /* pantulan cahaya layar ke dinding & ruangan */
+  content: ""; position: absolute; inset: -70px -95px; z-index: -1; pointer-events: none;
+  background: radial-gradient(ellipse 58% 52% at 50% 46%,
+    rgba(165,185,255, calc(.55 * var(--screen-glow, 0))) 0%,
+    rgba(165,185,255, 0) 70%);
+  filter: blur(6px);
+  transition: opacity .6s ease;
+}
+body.immersive .tv-stand { /* papan atas lemari TV */
+  position: relative; height: 20px; margin-top: 4px; padding: 0;
+  background: linear-gradient(180deg, #6b4e30, #412c17);
+  border-radius: 5px;
+  box-shadow: 0 16px 26px rgba(0,0,0,.55),
+    inset 0 1px 0 rgba(255,255,255,.18), inset 0 -3px 6px rgba(0,0,0,.5);
+}
+body.immersive .tv-stand .foot { display: none; }
+body.immersive .tv-stand::after { /* badan lemari dengan dua pintu */
+  content: ""; position: absolute; top: 100%; left: 1.5%; right: 1.5%; height: 56px;
+  background:
+    linear-gradient(90deg, transparent 49.4%, rgba(0,0,0,.45) 49.4%, rgba(0,0,0,.45) 50.6%, transparent 50.6%),
+    linear-gradient(180deg, #54391f, #2c1c0d);
+  border-radius: 0 0 7px 7px;
+  box-shadow: inset 0 0 0 3px rgba(0,0,0,.30), inset 0 2px 0 rgba(255,255,255,.07),
+    0 26px 30px rgba(0,0,0,.5);
+}
+/* Lampu berdiri hangat */
+.lamp { position: absolute; right: 1%; bottom: 2%; width: 90px; height: 250px; z-index: 0; pointer-events: none; }
+.lamp-glow {
+  position: absolute; top: -48px; left: 50%; transform: translateX(-50%);
+  width: 270px; height: 270px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,186,105,.34) 0%, rgba(255,186,105,.12) 42%, transparent 68%);
+}
+.lamp-shade {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 74px; height: 56px;
+  background: linear-gradient(180deg, #f6ddab, #cfa35f 70%, #94703c);
+  clip-path: polygon(22% 0, 78% 0, 100% 100%, 0 100%);
+  box-shadow: 0 0 34px rgba(255,190,110,.45);
+}
+.lamp-pole {
+  position: absolute; top: 52px; left: 50%; transform: translateX(-50%);
+  width: 5px; height: 172px;
+  background: linear-gradient(90deg, #191410, #4a3a26, #191410);
+}
+.lamp-base {
+  position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 56px; height: 10px; border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 35%, #4a3a26, #171008);
+}
+/* Jam dinding analog + digital */
+.room-clock { position: absolute; top: 4px; left: 8px; z-index: 0; text-align: center; pointer-events: none; }
+body.clock-off .room-clock { display: none; }
+.clock-face {
+  position: relative; width: 76px; height: 76px; margin: 0 auto; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f6efdd, #d8cbae 70%, #b3a17c);
+  border: 4px solid #3a2c1a;
+  box-shadow: 0 6px 18px rgba(0,0,0,.5), inset 0 0 0 2px rgba(255,255,255,.35);
+}
+.clock-face::before {
+  content: ""; position: absolute; inset: 5px; border-radius: 50%;
+  border: 1px dashed rgba(60,45,25,.35);
+}
+.clock-face .hand {
+  position: absolute; left: 50%; bottom: 50%;
+  transform-origin: 50% 100%;
+  border-radius: 3px; background: #2b2118;
+}
+.clock-face .hand.hh { width: 5px; height: 19px; }
+.clock-face .hand.mh { width: 3.5px; height: 27px; }
+.clock-face .hand.sh { width: 1.5px; height: 31px; background: #a03a2a; }
+.clock-pin {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 7px; height: 7px; border-radius: 50%; background: #2b2118;
+}
+.clock-digital {
+  margin-top: 7px; font-size: 10px; letter-spacing: .24em; color: #e8dcc0;
+  text-shadow: 0 1px 4px rgba(0,0,0,.75);
+}
+@media (max-width: 720px) {
+  .lamp { transform: scale(.72); transform-origin: bottom right; right: -8px; }
+  .room-clock { transform: scale(.82); transform-origin: top left; }
+}
+@media (max-height: 560px) {
+  .room-clock { display: none; }
+  .lamp { display: none; }
+}
+
 /* ---------- Mobile ---------- */
 /* Layar pendek (HP landscape, laptop mungil): ringkas elemen non-TV
    supaya panggung tetap besar & fokus ke TV */

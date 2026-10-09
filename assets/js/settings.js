@@ -30,6 +30,10 @@ var PNStore = (function () {
     saturate: 100,       // kejenuhan warna 50..150
     // Sinyal
     signalMode: "antenna", // antenna = interaktif | clean = selalu bersih | random = acak
+    // Ruang & rasa (v8): Mode Imersif, logo bug stasiun, jam dinding ruangan
+    immersive: false,    // Mode Imersif / Ruang Tamu (chrome halaman hilang)
+    stationBug: true,    // logo bug stasiun di pojok layar saat video diputar
+    roomClock: true,     // jam analog+digital di dinding saat Mode Imersif
     // Putar
     autoPower: false,    // TV langsung nyala saat halaman dibuka
     rememberCh: true,    // ingat channel terakhir ditonton

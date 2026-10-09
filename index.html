@@ -13,6 +13,25 @@
 </head>
 <body>
   <main class="room">
+    <!-- Adegan ruang tamu (hanya tampil di Mode Imersif) -->
+    <div class="room-scene" aria-hidden="true">
+      <div class="room-clock" id="roomClock">
+        <div class="clock-face">
+          <i class="hand hh" id="clockH"></i>
+          <i class="hand mh" id="clockM"></i>
+          <i class="hand sh" id="clockS"></i>
+          <span class="clock-pin"></span>
+        </div>
+        <div class="clock-digital" id="clockDigital">--:-- WIB</div>
+      </div>
+      <div class="lamp">
+        <span class="lamp-glow"></span>
+        <span class="lamp-shade"></span>
+        <span class="lamp-pole"></span>
+        <span class="lamp-base"></span>
+      </div>
+    </div>
+
     <header class="brand">
       <h1>SIAR</h1>
       <p class="tagline">televisi analog dalam browser — nyalakan, arahkan remote-nya, duduk manis.</p>
@@ -40,6 +59,7 @@
                 <div class="vhs-band"></div>
                 <div class="vhs-lines"></div>
               </div>
+              <div id="stationBug" aria-hidden="true" hidden></div>
               <div id="sleepBadge" aria-hidden="true"></div>
               <div id="powerFlash" aria-hidden="true"></div>
               <div id="powerHint">TEKAN POWER</div>
@@ -90,7 +110,7 @@
     </section>
 
     <footer>
-      <p>Siar memutar video lewat embed resmi YouTube, Dailymotion & Vimeo (pemutar juga mendukung Internet Archive). Ketuk tombol remote melayang di kanan bawah buat mengendalikan TV dari "depan layar", tekan <code>G</code> buat panduan siaran, <code>S</code> buat pengaturan, <code>H</code> buat semua shortcut. Seret antenanya — sinyal tiap channel beda posisi.</p>
+      <p>Siar memutar video lewat embed resmi YouTube, Dailymotion & Vimeo (pemutar juga mendukung Internet Archive). Ketuk tombol remote melayang di kanan bawah buat mengendalikan TV dari "depan layar", tekan <code>G</code> buat panduan siaran, <code>S</code> buat pengaturan, <code>H</code> buat semua shortcut. Seret antenanya — sinyal tiap channel beda posisi. Coba juga ⏰ Blok Jam di remote (antrean ikut jam tayang asli) dan Mode Imersif di pengaturan (ruang tamu betulan).</p>
     </footer>
   </main>
 
@@ -137,6 +157,9 @@
       <button class="rbtn" id="remRandom" title="Channel acak (R)">ACAK</button>
       <button class="rbtn" id="remBlock" title="Putar blok stasiun (dari panduan)">BLOK ▦</button>
     </div>
+    <div class="remote-row one">
+      <button class="rbtn rjam" id="remJam" title="Putar blok sesuai jam tayang asli WIB (J)">⏰ BLOK JAM — IKUT JAM TAYANG ASLI</button>
+    </div>
     <div class="remote-row">
       <button class="rbtn" id="remSet" title="Pengaturan (S)">⚙ SET</button>
       <label class="sleep rsleep" title="TV mati otomatis setelah waktu ini">
@@ -176,6 +199,7 @@
       <h2>PANDUAN SIARAN</h2>
       <button class="btn small" data-close>CLOSE ✕</button>
     </div>
+    <button class="btn wide jam-btn" id="guideJamBtn" title="Antrean siaran mengikuti jam sekarang (WIB)">⏰ PUTAR BLOK JAM — IKUT JAM SEKARANG</button>
     <input id="guideSearch" type="search" placeholder="Cari siaran…" autocomplete="off">
     <div class="guide-progress" id="guideProgress"></div>
     <div class="chips" id="stationChips" aria-label="Filter stasiun"></div>
@@ -283,6 +307,14 @@
     </div>
 
     <div class="set-group">
+      <h3>Ruang &amp; Rasa (Imersif)</h3>
+      <label class="set-row"><span>Mode Imersif — ruang tamu (lampu, lemari TV, cahaya layar)</span><input type="checkbox" id="setImmersive"><i></i></label>
+      <label class="set-row"><span>Jam dinding di ruangan (Mode Imersif)</span><input type="checkbox" id="setClock"><i></i></label>
+      <label class="set-row"><span>Logo bug stasiun di pojok layar</span><input type="checkbox" id="setBug"><i></i></label>
+      <p class="set-note">Mode Imersif menyembunyikan header/footer supaya ruangan terasa seperti ruang TV betulan: dinding hangat, lampu menyala, TV di atas lemari, dan pantulan cahaya layar yang hidup mengikuti kecerahan gambar. Blok Jam (tombol ⏰ di remote) menyusun antrean seperti jam tayang asli: pagi kartun, siang iklan, sore sinetron, malam acara.</p>
+    </div>
+
+    <div class="set-group">
       <h3>Sinyal</h3>
       <div class="model-row wrap" id="sigRow">
         <button class="model-card" data-sig="antenna">Antena interaktif</button>
@@ -324,6 +356,8 @@
         <tr><td><kbd>0</kbd>–<kbd>9</kbd></td><td>Ketik nomor channel (tampil di OSD), TV lompat setelah jeda singkat — sama seperti numpad di remote</td></tr>
         <tr><td><kbd>Seret antena</kbd></td><td>Geser batang antena di atas TV: tiap channel punya posisi sinyal terbaik. Sinyal tampil di panel status & OSD</td></tr>
         <tr><td><kbd>PUTAR BLOK</kbd></td><td>Di panduan: pilih chip stasiun lalu PUTAR BLOK — marathon satu stasiun (CH+/CH− & auto-next tetap di dalam blok)</td></tr>
+        <tr><td><kbd>J</kbd></td><td>Blok Jam — antrean mengikuti jam tayang asli WIB (pagi: kartun, siang: iklan, sore: sinetron, malam: acara); tekan lagi untuk keluar</td></tr>
+        <tr><td><kbd>Ruang &amp; Rasa</kbd></td><td>Di pengaturan: Mode Imersif (ruang tamu: lampu, lemari TV, jam dinding, pantulan cahaya layar) &amp; logo bug stasiun di pojok layar</td></tr>
         <tr><td><kbd>F</kbd></td><td>Favoritkan siaran yang sedang tayang</td></tr>
         <tr><td><kbd>G</kbd></td><td>Panduan siaran</td></tr>
         <tr><td><kbd>S</kbd></td><td>Pengaturan</td></tr>
