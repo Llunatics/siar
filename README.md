@@ -1,6 +1,6 @@
 # Siar
 
-Televisi analog dalam browser. Memutar 158 siaran TV Indonesia era 1990–2015 (iklan jadul, opening kartun dan tokusatsu, sinetron, jingle stasiun TV) melalui embed resmi YouTube, Dailymotion, dan Vimeo — dengan bodi TV yang bisa diganti bentuknya, remote control fisik, antena interaktif, dan Blok Stasiun.
+Televisi analog dalam browser. Memutar 265 siaran TV Indonesia era 1990–2015 (iklan jadul, opening kartun dan tokusatsu, sinetron, jingle stasiun TV) melalui embed resmi YouTube, Dailymotion, dan Vimeo — dengan bodi TV yang bisa diganti bentuknya, remote control fisik, antena interaktif, Blok Stasiun, Blok Jam sesuai jam tayang, dan Mode Imersif ruang tamu.
 
 **Live:** https://tv.llunaticsys.web.id
 
@@ -22,6 +22,13 @@ Televisi analog dalam browser. Memutar 158 siaran TV Indonesia era 1990–2015 (
 - Remote membuka dengan animasi naik berpegas dan menutup dengan animasi meluncur turun (perspektif mereda + fade) lewat tombol melayang, ketukan di luar, atau `Esc`
 - Isi remote: numpad 0–9 (angka tampil di OSD, TV lompat setelah jeda singkat), rocker CH/VOL, power, mute, acak, favorit, panduan, Blok Stasiun, sleep timer, volume slider, pengaturan, layar penuh
 
+### Ruang & rasa
+
+- **Mode Imersif**: header/footer hilang, TV tampil di ruang tamu betulan — dinding hangat, lantai papan, lampu berdiri menyala, TV di atas lemari, dan pantulan cahaya layar yang hidup mengikuti kecerahan gambar, mode sinyal, dan knob kecerahan
+- **Jam dinding WIB** (analog + digital) di ruangan selama Mode Imersif; bisa dimatikan terpisah
+- **Logo bug stasiun** di pojok layar mengikuti stasiun channel yang sedang tayang, seperti watermark TV asli
+- Animasi mati CRT: gambar kolaps menjadi garis cahaya lalu padam saat TV dimatikan
+
 ### Layar & sinyal
 
 - Efek VHS (tracking, chromatic aberration, jitter), scanline CRT + intensitas, noise latar, **kelengkungan kaca** on/off, **flicker** on/off
@@ -38,48 +45,49 @@ Televisi analog dalam browser. Memutar 158 siaran TV Indonesia era 1990–2015 (
 ### Panduan & koleksi
 
 - **Blok Stasiun**: chip filter per stasiun + **PUTAR BLOK** untuk marathon satu stasiun (dimulai dari ident stasiunnya); CH+/CH−, auto-next, dan numpad tetap di dalam blok
-- Panduan berkategori dengan thumbnail per sumber, pencarian, label stasiun, penanda ✓ sudah-ditonton, progres koleksi (X/158)
+- **Blok Jam** (tombol ⏰ di remote atau `J`): antrean otomatis mengikuti jam tayang asli WIB — pagi kartun, siang iklan, sore sinetron, malam acara, tengah malam iklan & ident
+- Panduan berkategori dengan thumbnail per sumber, pencarian, label stasiun, penanda ✓ sudah-ditonton, progres koleksi (X/265)
 - Favorit (grup teratas panduan), channel kustom via URL/ID YouTube
 
 Semua pengaturan, favorit, channel kustom, posisi antena, dan riwayat tontonan tersimpan di `localStorage` browser. Skema lama otomatis dimigrasikan (model TV lama → bentuk + warna).
 
 ## Siaran bawaan
 
-Total **158 channel**:
+Total **265 channel**:
 
 | Kategori | Jumlah |
 | --- | --- |
-| Iklan Jadul | 47 |
-| Opening Kartun | 54 |
+| Iklan Jadul | 121 |
+| Opening Kartun | 87 |
 | Opening Tokusatsu | 12 |
 | Sinetron & Acara TV | 17 |
 | Jingle & Ident | 28 |
 
 | Stasiun | Jumlah |
 | --- | --- |
-| Multi-Stasiun (iklan TVC) | 47 |
+| Multi-Stasiun (iklan TVC) | 150 |
 | RCTI | 30 |
 | Indosiar | 30 |
-| Global TV | 15 |
+| Global TV | 16 |
+| MNCTV/TPI | 8 |
 | TVRI | 7 |
-| MNCTV/TPI | 6 |
 | SCTV | 5 |
 | ANTV | 5 |
 | Trans7 | 4 |
 | NET. | 3 |
+| RTV | 3 |
 | Trans TV | 2 |
-| RTV | 2 |
 | B Channel | 2 |
 
 | Sumber | Jumlah |
 | --- | --- |
-| YouTube | 149 |
+| YouTube | 256 |
 | Dailymotion | 8 |
 | Vimeo | 1 |
 
-Sorotan katalog: Marsupilami, Curious George, The Jungle Book (Shōnen Mowgli), Dragon Quest, Digimon Adventure/Tamers/Frontier, Ultraman Mebius/Tiga/Dyna/Gaia/Cosmos, iklan Kumon, Djarum 76, Gudang Garam, dan puluhan ident stasiun (TVRI, RCTI Sawah 1994, SCTV Satu Untuk Semua, TPI 1999).
+Sorotan katalog: Shaun the Sheep, Upin & Ipin, Marsupilami, Curious George, The Jungle Book (Shōnen Mowgli), Dragon Quest, Digimon Adventure/Tamers/Frontier, Ultraman Mebius/Tiga/Dyna/Gaia/Cosmos, iklan Kumon, Djarum 76, Gudang Garam, dan puluhan ident stasiun (TVRI, RCTI Sawah 1994, SCTV Satu Untuk Semua, TPI 1999).
 
-**Verifikasi:** seluruh 158 id dicek satu per satu ke endpoint resmi (YouTube/Dailymotion/Vimeo oEmbed, HTTP 200, judul = klip iklan/opening/bumper asli — bukan video lirik, episode, atau cover) dan disapu ulang penuh pada audit terakhir. Arsip verifikasi disimpan di luar repo bersama state program. Tidak ada berkas video yang disimpan atau diunggah ulang di repositori ini.
+**Verifikasi:** seluruh 265 id dicek satu per satu ke endpoint resmi (YouTube/Dailymotion/Vimeo oEmbed, HTTP 200, judul = klip iklan/opening/bumper asli — bukan video lirik, episode, atau cover) dan disapu ulang penuh pada audit terakhir. Arsip verifikasi disimpan di luar repo bersama state program. Tidak ada berkas video yang disimpan atau diunggah ulang di repositori ini.
 
 ## Pengaturan
 
@@ -89,6 +97,7 @@ Sorotan katalog: Marsupilami, Curious George, The Jungle Book (Shōnen Mowgli), 
 | Remote | Mode Mengarah ke TV / Datar, bunyi klik, getar |
 | Efek Layar | VHS, scanline + intensitas, noise, kelengkungan kaca, flicker, kecerahan/kontras/warna |
 | Sinyal | Antena interaktif / Selalu bersih / Acak per channel |
+| Ruang & Rasa | Mode Imersif (ruang tamu), jam dinding ruangan, logo bug stasiun |
 | Putar | Power otomatis, ingat channel terakhir, auto-pindah saat video habis |
 | Data | Reset semua pengaturan |
 
@@ -101,6 +110,7 @@ Sorotan katalog: Marsupilami, Curious George, The Jungle Book (Shōnen Mowgli), 
 | `←` `→` | Volume naik / turun |
 | `M` | Mute / unmute |
 | `R` | Channel acak |
+| `J` | Blok Jam — antrean sesuai jam tayang WIB |
 | `F` | Favoritkan siaran yang sedang tayang |
 | `0`–`9` | Ketik nomor channel (tampil di OSD); TV lompat setelah jeda singkat |
 | `G` | Panduan siaran |
