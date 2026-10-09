@@ -32,7 +32,7 @@
     powerFlash: $("powerFlash"), sleepBadge: $("sleepBadge"),
     vol: $("volSlider"), muteBtn: $("muteBtn"), guide: $("guideList"),
     guideSearch: $("guideSearch"), brandPlate: $("brandPlate"),
-    nowTitle: $("nowTitle"), nowCat: $("nowCat"), favBtn: $("favBtn"),
+    favBtn: $("favBtn"),
     sleepSelect: $("sleepSelect"), sleepLeft: $("sleepLeft"),
     scanVal: $("scanVal"), noiseVal: $("noiseVal"),
     backdrop: $("backdrop"), guideSheet: $("guideSheet"),
@@ -493,15 +493,8 @@
     current = ni === -1 ? Math.min(current, Math.max(0, list.length - 1)) : ni;
   }
 
-  /* ================= Info sedang tayang ================= */
+  /* ================= Info sedang tayang (di OSD layar saja) ================= */
   function syncNow() {
-    if (!powered || !list.length) {
-      els.nowTitle.textContent = "— TV mati —";
-      els.nowCat.textContent = "";
-    } else {
-      els.nowTitle.textContent = "CH " + pad(current + 1) + " — " + cur().title;
-      els.nowCat.textContent = cur().cat + " • " + cur().station;
-    }
     els.chNum.textContent = powered && list.length ? pad(current + 1) : "--";
     syncFavBtn();
     refreshBug();
@@ -515,7 +508,7 @@
   }
   function syncFavBtn() {
     var on = list.length && PNStore.isFavorite(cur().key);
-    els.favBtn.textContent = on ? "★ FAVORIT" : "☆ FAVORIT";
+    els.favBtn.textContent = on ? "★" : "☆";
     els.favBtn.classList.toggle("on", !!on);
   }
 
@@ -1195,6 +1188,11 @@
     if (e.key === "Escape") { closeSheets(); closeRemote(); return; }
     if (typing) return;
     switch (e.key) {
+      case " ":
+        // Spasi = putar/jeda; jangan rebut bila fokus lagi di tombol/kontrol.
+        if (e.target.closest && e.target.closest("button, select, a")) break;
+        if (powered) { vpToggle(); e.preventDefault(); }
+        break;
       case "ArrowUp": if (powered) { nextChannel(); e.preventDefault(); } break;
       case "ArrowDown": if (powered) { prevChannel(); e.preventDefault(); } break;
       case "ArrowRight": bumpVolume(5); break;

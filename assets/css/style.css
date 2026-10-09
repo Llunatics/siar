@@ -30,13 +30,23 @@ body {
 }
 
 .room {
-  max-width: 1060px; margin: 0 auto; padding: 40px 20px 64px;
+  max-width: 1240px; margin: 0 auto; padding: 40px 20px 64px;
   transform-origin: 50% 0;
 }
 
-.brand { text-align: center; margin-bottom: 28px; }
-.brand h1 { margin: 0; font-size: clamp(22px, 4vw, 34px); letter-spacing: .35em; font-weight: 700; }
-.tagline { color: var(--dim); margin: 10px 0 0; font-size: 13px; letter-spacing: .04em; }
+/* Panggung: TV + legenda shortcut ringkas di sampingnya. Halaman nyaris cuma TV. */
+.stage { display: flex; align-items: flex-start; justify-content: center; gap: 26px; }
+.stage .tv { flex: 0 1 auto; min-width: 0; }
+.legend {
+  flex: 0 0 auto; margin-top: 150px;
+  font-size: 11px; letter-spacing: .06em; color: var(--dim);
+  line-height: 1.5; white-space: nowrap; user-select: none;
+}
+.legend p { margin: 0 0 8px; }
+.legend b {
+  color: var(--accent); font-weight: 700; letter-spacing: .1em;
+  display: inline-block; min-width: 34px;
+}
 
 /* ---------- Badan TV & model ---------- */
 .tv-body {
@@ -613,15 +623,9 @@ body {
 .sleep-left { font-size: 10px; letter-spacing: .18em; color: var(--osd); text-align: center; }
 .brand-plate { margin-top: auto; text-align: center; font-size: 9px; letter-spacing: .18em; padding-top: 10px; border-top: 1px dashed; }
 
-/* ---------- Sedang tayang ---------- */
-.nowbar {
-  margin-top: 18px; display: flex; align-items: center; justify-content: space-between; gap: 14px;
-  background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 12px 16px;
-}
-.now-info { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; min-width: 0; }
-.now-label { font-size: 9px; letter-spacing: .3em; color: var(--dim); }
-.now-title { font-size: 14px; }
-.now-cat { font-size: 11px; color: var(--accent); letter-spacing: .12em; text-transform: uppercase; }
+/* Tombol favorit mini & badge blok hidup di strip status TV (seminimal mungkin) */
+.fav-mini { min-width: 42px; font-size: 14px; }
+.statusbar .block-badge { flex: 0 0 auto; }
 
 /* ---------- Overlay: panduan & pengaturan ---------- */
 .backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 40; backdrop-filter: blur(2px); }
@@ -735,9 +739,6 @@ kbd {
   background: #1b1b21; border: 1px solid #34343e; border-bottom-width: 2px; border-radius: 5px;
   padding: 1px 7px; font: inherit; font-size: 12px; color: var(--accent);
 }
-
-footer { margin-top: 40px; text-align: center; color: #55555f; font-size: 12px; }
-footer code { color: var(--accent); }
 
 /* ---------- Bentuk TV (chassis) ---------- */
 .side-l { display: none; }
@@ -917,7 +918,7 @@ body.immersive::after { /* lantai papan kayu (perspektif ringan) */
   opacity: .85;
   pointer-events: none;
 }
-body.immersive .brand, body.immersive .nowbar, body.immersive footer { display: none; }
+body.immersive .legend { display: none; }
 body.immersive .tv { z-index: 1; }
 body.immersive .tv::before { /* pantulan cahaya layar ke dinding & ruangan */
   content: ""; position: absolute; inset: -70px -95px; z-index: -1; pointer-events: none;
@@ -1011,17 +1012,14 @@ body.clock-off .room-clock { display: none; }
    supaya panggung tetap besar & fokus ke TV */
 @media (max-height: 560px) {
   .room { padding: 14px 16px 24px; }
-  .brand { margin-bottom: 10px; }
-  .brand h1 { font-size: 20px; }
-  .brand .tagline { display: none; }
   .tv { margin-top: 84px; }
-  footer { display: none; }
-  .nowbar { margin-top: 12px; padding: 9px 13px; }
+  .legend { display: none; }
 }
 
 @media (max-width: 720px) {
   .room { padding: 26px 12px 48px; }
-  .brand { margin-bottom: 18px; }
+  .stage { display: block; }
+  .legend { display: none; }
   .tv { margin-top: 96px; }
   .antenna .rod-l { height: 72px; }
   .antenna .rod-r { height: 88px; }
@@ -1035,8 +1033,6 @@ body.clock-off .room-clock { display: none; }
   .statusbar .sleep-left { flex: 1 1 100%; margin-left: 0; }
   .tv-stand { padding: 0 34px; }
   .tv-stand .foot { height: 18px; }
-  .nowbar { flex-direction: column; align-items: stretch; }
-  .nowbar .btn { align-self: flex-end; }
   .sheet { width: 100vw; border-left: 0; padding: 16px 14px calc(16px + env(safe-area-inset-bottom)); }
   .guide-list .th { width: 64px; }
   .guide-list li { min-height: 52px; }

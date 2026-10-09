@@ -32,11 +32,7 @@
       </div>
     </div>
 
-    <header class="brand">
-      <h1>SIAR</h1>
-      <p class="tagline">televisi analog dalam browser — nyalakan, arahkan remote-nya, duduk manis.</p>
-    </header>
-
+    <div class="stage">
     <section class="tv shape-trinitron finish-hitam" id="tv" aria-label="Televisi analog">
       <div class="antenna" id="antenna">
         <span class="rod rod-l" id="rodL" title="Seret untuk mengatur antena kiri"></span>
@@ -90,6 +86,8 @@
             <span id="sigVal">--%</span>
             <span class="sig-bar"><i id="sigBar"></i></span>
           </div>
+          <button id="favBtn" class="btn small fav fav-mini" title="Tandai favorit (F)">☆</button>
+          <span class="block-badge" id="blockBadge" hidden></span>
           <div class="sleep-left" id="sleepLeft" hidden></div>
         </div>
       </div>
@@ -99,19 +97,22 @@
       </div>
     </section>
 
-    <section class="nowbar" aria-label="Sedang tayang">
-      <div class="now-info">
-        <span class="now-label">SEDANG TAYANG</span>
-        <span class="now-title" id="nowTitle">— TV mati —</span>
-        <span class="now-cat" id="nowCat"></span>
-        <span class="block-badge" id="blockBadge" hidden></span>
-      </div>
-      <button id="favBtn" class="btn small fav" title="Tandai favorit (F)">☆ FAVORIT</button>
-    </section>
-
-    <footer>
-      <p>Siar memutar video lewat embed resmi YouTube, Dailymotion & Vimeo (pemutar juga mendukung Internet Archive). Ketuk tombol remote melayang di kanan bawah buat mengendalikan TV dari "depan layar", tekan <code>G</code> buat panduan siaran, <code>S</code> buat pengaturan, <code>H</code> buat semua shortcut. Seret antenanya — sinyal tiap channel beda posisi. Coba juga ⏰ Blok Jam di remote (antrean ikut jam tayang asli) dan Mode Imersif di pengaturan (ruang tamu betulan).</p>
-    </footer>
+    <aside class="legend" aria-label="Shortcut keyboard">
+      <p><b>P</b> — Power</p>
+      <p><b>SPASI</b> — Putar / Jeda</p>
+      <p><b>↑ ↓</b> — Channel</p>
+      <p><b>← →</b> — Volume</p>
+      <p><b>0–9</b> — Nomor Channel</p>
+      <p><b>R</b> — Acak</p>
+      <p><b>J</b> — Blok Jam</p>
+      <p><b>F</b> — Favorit</p>
+      <p><b>M</b> — Mute</p>
+      <p><b>G</b> — Panduan</p>
+      <p><b>S</b> — Pengaturan</p>
+      <p><b>H</b> — Bantuan</p>
+      <p><b>ESC</b> — Tutup</p>
+    </aside>
+    </div>
   </main>
 
   <!-- ===== Remote control overlay (melayang dari bawah) ===== -->
@@ -179,7 +180,6 @@
       <input id="volSlider" type="range" min="0" max="100" value="70">
     </label>
     <button class="rhelp" id="remHelp" title="Bantuan & shortcut (H)">Shortcut keyboard (H)</button>
-    <p class="remote-hint">Ketik nomor channel di numpad — angka tampil di OSD, TV lompat sendiri. Seret batang antena di atas TV buat berburu sinyal bersih.</p>
   </section>
 
   <!-- Tombol melayang pembuka remote -->
@@ -229,7 +229,6 @@
 
     <div class="set-group">
       <h3>Bentuk TV</h3>
-      <p class="set-desc">Siluet mengikuti TV betulan (plat gaya terinspirasi, bukan logo asli). Preview memakai finishing terpilih.</p>
       <div class="model-grid shapes" id="shapeRow">
         <button class="model-card" data-shape="trinitron" aria-pressed="false">
           <span class="pv pv-trinitron finish-hitam"><span class="pv-screen"></span><span class="pv-spk spk-r"></span><span class="pv-feet"><i></i><i></i></span></span>
@@ -280,7 +279,7 @@
         <button class="model-card fin" data-finish="dongker" aria-pressed="false"><span class="sw dongker"></span><span class="card-name">Biru dongker</span></button>
       </div>
       <label class="set-row"><span>Rasio layar 16:9</span><input type="checkbox" id="setRatio"><i></i></label>
-      <p class="set-note">Warna dipilih terpisah dari bentuk; finishing metalik (silver/grafit) tidak ditawari buat kabinet Kayu 80-an.</p>
+      <p class="set-note">Metalik nonaktif buat kabinet Kayu 80-an.</p>
     </div>
 
     <div class="set-group">
@@ -311,7 +310,7 @@
       <label class="set-row"><span>Mode Imersif — ruang tamu (lampu, lemari TV, cahaya layar)</span><input type="checkbox" id="setImmersive"><i></i></label>
       <label class="set-row"><span>Jam dinding di ruangan (Mode Imersif)</span><input type="checkbox" id="setClock"><i></i></label>
       <label class="set-row"><span>Logo bug stasiun di pojok layar</span><input type="checkbox" id="setBug"><i></i></label>
-      <p class="set-note">Mode Imersif menyembunyikan header/footer supaya ruangan terasa seperti ruang TV betulan: dinding hangat, lampu menyala, TV di atas lemari, dan pantulan cahaya layar yang hidup mengikuti kecerahan gambar. Blok Jam (tombol ⏰ di remote) menyusun antrean seperti jam tayang asli: pagi kartun, siang iklan, sore sinetron, malam acara.</p>
+      <p class="set-note">Ruangan remang gelap; cahaya layar &amp; lampu menyala mengikuti gambar.</p>
     </div>
 
     <div class="set-group">
@@ -321,7 +320,7 @@
         <button class="model-card" data-sig="clean">Selalu bersih</button>
         <button class="model-card" data-sig="random">Acak per channel</button>
       </div>
-      <p class="set-note">Mode antena: seret batang antena di atas TV — tiap channel punya posisi sinyal terbaik sendiri. Mode acak memberi kualitas sinyal beda di tiap channel tanpa perlu menggeser antena.</p>
+      <p class="set-note">Seret batang antena di atas TV — tiap channel punya posisi terbaik.</p>
     </div>
 
     <div class="set-group">
@@ -329,7 +328,6 @@
       <label class="set-row"><span>TV langsung nyala saat halaman dibuka</span><input type="checkbox" id="setAutoPower"><i></i></label>
       <label class="set-row"><span>Ingat channel terakhir</span><input type="checkbox" id="setRemember"><i></i></label>
       <label class="set-row"><span>Auto-pindah saat video habis</span><input type="checkbox" id="setAutoNext"><i></i></label>
-      <p class="set-note">Channel arsip (archive.org) diputar dengan kontrol bawaan videonya; auto-pindah berlaku penuh di YouTube, Dailymotion, dan Vimeo.</p>
     </div>
 
     <div class="set-group">
@@ -347,24 +345,20 @@
         <button class="btn small" data-close>CLOSE ✕</button>
       </div>
       <table class="keys">
-        <tr><td><kbd>Remote</kbd></td><td>Ketuk ikon remote melayang (kanan bawah) — remote muncul dari bawah seolah diarahkan ke TV; LED remote & sensor TV berkedip tiap tombol ditekan</td></tr>
-        <tr><td><kbd>P</kbd></td><td>Power nyala / mati</td></tr>
-        <tr><td><kbd>↑</kbd> <kbd>↓</kbd></td><td>Channel berikutnya / sebelumnya</td></tr>
-        <tr><td><kbd>←</kbd> <kbd>→</kbd></td><td>Volume turun / naik</td></tr>
-        <tr><td><kbd>M</kbd></td><td>Mute / unmute</td></tr>
-        <tr><td><kbd>R</kbd></td><td>Channel acak</td></tr>
-        <tr><td><kbd>0</kbd>–<kbd>9</kbd></td><td>Ketik nomor channel (tampil di OSD), TV lompat setelah jeda singkat — sama seperti numpad di remote</td></tr>
-        <tr><td><kbd>Seret antena</kbd></td><td>Geser batang antena di atas TV: tiap channel punya posisi sinyal terbaik. Sinyal tampil di panel status & OSD</td></tr>
-        <tr><td><kbd>PUTAR BLOK</kbd></td><td>Di panduan: pilih chip stasiun lalu PUTAR BLOK — marathon satu stasiun (CH+/CH− & auto-next tetap di dalam blok)</td></tr>
-        <tr><td><kbd>J</kbd></td><td>Blok Jam — antrean mengikuti jam tayang asli WIB (pagi: kartun, siang: iklan, sore: sinetron, malam: acara); tekan lagi untuk keluar</td></tr>
-        <tr><td><kbd>Ruang &amp; Rasa</kbd></td><td>Di pengaturan: Mode Imersif (ruang tamu: lampu, lemari TV, jam dinding, pantulan cahaya layar) &amp; logo bug stasiun di pojok layar</td></tr>
-        <tr><td><kbd>F</kbd></td><td>Favoritkan siaran yang sedang tayang</td></tr>
-        <tr><td><kbd>G</kbd></td><td>Panduan siaran</td></tr>
+        <tr><td><kbd>P</kbd></td><td>Power</td></tr>
+        <tr><td><kbd>Spasi</kbd></td><td>Putar / jeda</td></tr>
+        <tr><td><kbd>↑</kbd> <kbd>↓</kbd></td><td>Channel</td></tr>
+        <tr><td><kbd>←</kbd> <kbd>→</kbd></td><td>Volume</td></tr>
+        <tr><td><kbd>0</kbd>–<kbd>9</kbd></td><td>Nomor channel</td></tr>
+        <tr><td><kbd>R</kbd></td><td>Acak</td></tr>
+        <tr><td><kbd>J</kbd></td><td>Blok Jam</td></tr>
+        <tr><td><kbd>F</kbd></td><td>Favorit</td></tr>
+        <tr><td><kbd>M</kbd></td><td>Mute</td></tr>
+        <tr><td><kbd>G</kbd></td><td>Panduan</td></tr>
         <tr><td><kbd>S</kbd></td><td>Pengaturan</td></tr>
-        <tr><td><kbd>H</kbd></td><td>Bantuan ini</td></tr>
-        <tr><td><kbd>Esc</kbd></td><td>Tutup remote / panel / modal</td></tr>
-        <tr><td><kbd>Klik</kbd></td><td>Putar / jeda video (klik di layar)</td></tr>
-        <tr><td><kbd>⛶</kbd></td><td>Layar penuh (tombol FULL di remote / dobel-klik layar)</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>Tutup</td></tr>
+        <tr><td><kbd>Klik layar</kbd></td><td>Putar / jeda · 2× klik = layar penuh</td></tr>
+        <tr><td><kbd>Seret antena</kbd></td><td>Berburu sinyal</td></tr>
       </table>
     </div>
   </div>
