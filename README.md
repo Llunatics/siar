@@ -8,8 +8,9 @@ Televisi analog dalam browser. Memutar 158 siaran TV Indonesia era 1990–2015 (
 
 ### Bodi TV
 
-- **5 bentuk chassis** meniru siluet TV betulan: Trinitron (layar silinder, speaker samping), Philips (bodi rounded, speaker bawah), Sharp (bezel tipis, speaker bawah), Polytron (speaker ganda kiri–kanan), Kayu 80-an (kabinet kayu, kain speaker). Plat merek bergaya terinspirasi mengikuti bentuk (tanpa logo asli)
-- **4 warna/finishing terpisah dari bentuk**: Hitam, Silver, Kayu, Putih gading
+- **9 bentuk chassis** meniru siluet TV betulan: Trinitron (layar silinder, speaker samping), Toshiba (tabung membulat, speaker samping), Polytron (speaker ganda kiri–kanan), Philips (bodi rounded, speaker bawah), Sharp (bezel tipis, speaker bawah), JVC (grille bilah, speaker bawah), Panasonic (layar nyaris datar, bezel ramping), Akari (grille slot, speaker bawah), Kayu 80-an (kabinet kayu, kain speaker). Plat merek bergaya terinspirasi mengikuti bentuk (tanpa logo asli). Di Pengaturan, tiap bentuk tampil sebagai **preview mini chassis** yang mengikuti finishing terpilih
+- **8 warna/finishing terpisah dari bentuk**: Hitam, Silver, Grafit, Putih gading, Krem retro, Kayu, Marun, Biru dongker (finishing metalik tidak ditawari untuk kabinet Kayu 80-an)
+- **Satu layar terkunci**: halaman tidak bisa di-scroll atau di-zoom (pinch/double-tap dimatikan); panggung TV otomatis diskalakan agar pas viewport di semua ukuran termasuk HP landscape pendek — panduan & pengaturan tetap bisa scroll di dalam panelnya
 - Chassis persegi panjang lebar: layar + kolom speaker grille + sensor IR dalam satu bodi, strip status (power, display CH, meteran sinyal) di bawah layar, kaki/stand dengan bayangan lantai, cahaya layar memantul halus ke ruangan saat TV menyala
 - Tombol fisik timbul yang tenggelam saat ditekan; antena teleskopik dua batang yang bisa diseret
 
@@ -18,6 +19,7 @@ Televisi analog dalam browser. Memutar 158 siaran TV Indonesia era 1990–2015 (
 - **Dua mode tampilan**: *Mengarah ke TV* (perspektif 3D — ujung jauh mengecil, LED IR menembak ke TV) atau *Datar*. Mode mengarah ke TV adalah default
 - Ukuran mobile kompak (maks. 330px, ≤78% tinggi layar, tombol tetap ≥44px), nyaman satu tangan
 - LED inframerah remote berkedip + sensor di bodi TV menyala tiap tombol ditekan; bunyi klik mekanis dan getar halus (keduanya bisa dimatikan)
+- Remote membuka dengan animasi naik berpegas dan menutup dengan animasi meluncur turun (perspektif mereda + fade) lewat tombol melayang, ketukan di luar, atau `Esc`
 - Isi remote: numpad 0–9 (angka tampil di OSD, TV lompat setelah jeda singkat), rocker CH/VOL, power, mute, acak, favorit, panduan, Blok Stasiun, sleep timer, volume slider, pengaturan, layar penuh
 
 ### Layar & sinyal
@@ -83,7 +85,7 @@ Sorotan katalog: Marsupilami, Curious George, The Jungle Book (Shōnen Mowgli), 
 
 | Kelompok | Isi |
 | --- | --- |
-| Bentuk TV | 5 chassis, 4 finishing, rasio 4:3 / 16:9 |
+| Bentuk TV | 9 chassis (dengan preview bentuk), 8 finishing, rasio 4:3 / 16:9 |
 | Remote | Mode Mengarah ke TV / Datar, bunyi klik, getar |
 | Efek Layar | VHS, scanline + intensitas, noise, kelengkungan kaca, flicker, kecerahan/kontras/warna |
 | Sinyal | Antena interaktif / Selalu bersih / Acak per channel |
