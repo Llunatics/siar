@@ -787,6 +787,28 @@ kbd {
 .shape-philips .tv-stand .foot { height: 18px; border-radius: 0 0 8px 8px; }
 .shape-wood .tv-stand .foot { height: 20px; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
 
+/* LG Flatron (dari foto TV masa kecil user): bodi silver, speaker mesh
+   full-height di KEDUA sisi mengapit layar, bezel dalam hitam, layar agak
+   cembung, strip kontrol silver di bawah layar, titik logo bulat di tengah. */
+.shape-flatron .side-l { display: flex; }
+.shape-flatron .screen-wrap { flex-basis: 545px; position: relative; }
+.shape-flatron .tv-body { border-radius: 15px; padding: 20px; }
+.shape-flatron .screen { border-radius: 12px / 14px; } /* tabung agak cembung */
+.shape-flatron .speaker { background-size: 5px 5px; } /* mesh perak rapat */
+.shape-flatron .screen-wrap::after { /* titik logo bulat di tengah bawah layar */
+  content: ""; position: absolute; left: 50%; bottom: -16px; transform: translateX(-50%);
+  width: 11px; height: 11px; border-radius: 50%;
+  background: radial-gradient(circle at 38% 32%, #f5f6f8, #9aa0a9 58%, #52575f);
+  box-shadow: 0 1px 2px rgba(0,0,0,.55), inset 0 -1px 2px rgba(0,0,0,.35);
+}
+.shape-flatron .statusbar { /* strip kontrol silver di bawah layar */
+  margin-top: 18px; padding: 10px 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,.14), rgba(0,0,0,.20));
+  border: 1px solid rgba(0,0,0,.28); border-radius: 12px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.22), inset 0 -3px 6px rgba(0,0,0,.28);
+}
+.shape-flatron .tv-stand .foot { height: 15px; }
+
 /* Kelengkungan kaca & flicker bisa dimatikan dari pengaturan */
 .tv.curve-off .screen { border-radius: 6px / 8px; }
 .tv.curve-off .screen::after { background: none; }
@@ -872,6 +894,13 @@ kbd {
 .pv-trinitron .pv-screen { border-radius: 12px / 5px; }
 .pv-toshiba { border-radius: 15px; } .pv-toshiba .pv-screen { border-radius: 14px / 11px; }
 .pv-polytron .pv-screen { inset: 7px 21px; }
+.pv-strip {
+  position: absolute; left: 6px; right: 6px; bottom: 5px; height: 5px; border-radius: 2px;
+  background: linear-gradient(180deg, rgba(255,255,255,.38), rgba(0,0,0,.16));
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.35);
+}
+.pv-flatron { border-radius: 8px; }
+.pv-flatron .pv-screen { inset: 6px 22px 17px; border-radius: 6px / 7px; }
 .pv-wood { border-radius: 5px; } .pv-wood .pv-screen { inset: 11px 27px 11px 11px; border-radius: 4px; }
 .guide-list .th-none { background: #0a0a0d; border: 1px solid var(--line); border-radius: 6px; }
 
@@ -900,64 +929,76 @@ kbd {
 .rbtn.rjam { font-size: 10px; letter-spacing: .16em; color: var(--accent); }
 .jam-btn { margin-bottom: 10px; letter-spacing: .12em; }
 
-/* ---------- Mode Imersif: ruang tamu ---------- */
+/* ---------- Mode Imersif: ruang tamu remang, se-realistis mungkin ---------- */
+/* Palet gelap moody: dinding arang-cokelat desaturasi, grain film tipis,
+   vignette tepi, kolam cahaya lampu hangat yang lembut — bukan kartun. */
 .room { position: relative; }
 .room-scene { display: none; }
 body.immersive .room-scene { display: block; }
 body.immersive {
   background:
-    linear-gradient(180deg, #2b2016 0%, #1e150e 60%, #120c07 100%);
+    radial-gradient(760px 460px at 82% 26%, rgba(255,176,105,.10) 0%, rgba(255,176,105,0) 62%),
+    radial-gradient(1150px 720px at 50% 10%, #221c14 0%, #16120d 55%, #0a0908 100%);
 }
-body.immersive::after { /* lantai papan kayu (perspektif ringan) */
-  content: ""; position: fixed; left: -6%; right: -6%; top: 64%; bottom: -4%; z-index: -1;
+body.immersive .room-scene::before { /* vignette tepi ruangan */
+  content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(ellipse 118% 88% at 50% 42%, transparent 52%, rgba(0,0,0,.55) 100%);
+}
+body.immersive .room-scene::after { /* grain tekstur dinding, sangat tipis */
+  content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .05;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+}
+body.immersive::after { /* lantai kayu gelap: gradasi shading + pantulan samar di dekat dinding */
+  content: ""; position: fixed; left: -6%; right: -6%; top: 65%; bottom: -4%; z-index: -1;
   background:
-    repeating-linear-gradient(90deg, rgba(0,0,0,.30) 0 2px, transparent 2px 130px),
-    linear-gradient(180deg, #3c2812, #180e04);
+    linear-gradient(180deg, rgba(255,186,120,.05), transparent 34%),
+    repeating-linear-gradient(90deg, rgba(0,0,0,.38) 0 2px, transparent 2px 132px),
+    linear-gradient(180deg, #2b1e11 0%, #170f07 55%, #0b0704 100%);
   transform: perspective(340px) rotateX(22deg);
   transform-origin: 50% 0;
-  opacity: .85;
+  opacity: .9;
   pointer-events: none;
 }
 body.immersive .legend { display: none; }
 body.immersive .tv { z-index: 1; }
-body.immersive .tv::before { /* pantulan cahaya layar ke dinding & ruangan */
-  content: ""; position: absolute; inset: -70px -95px; z-index: -1; pointer-events: none;
+body.immersive .tv::before { /* pantulan cahaya layar: tipis & desaturasi, mengikuti konten */
+  content: ""; position: absolute; inset: -80px -110px; z-index: -1; pointer-events: none;
   background: radial-gradient(ellipse 58% 52% at 50% 46%,
-    rgba(165,185,255, calc(.55 * var(--screen-glow, 0))) 0%,
-    rgba(165,185,255, 0) 70%);
-  filter: blur(6px);
+    rgba(148,162,190, calc(.38 * var(--screen-glow, 0))) 0%,
+    rgba(148,162,190, 0) 70%);
+  filter: blur(10px);
   transition: opacity .6s ease;
 }
-body.immersive .tv-stand { /* papan atas lemari TV */
+body.immersive .tv-stand { /* papan atas lemari: walnut gelap desaturasi */
   position: relative; height: 20px; margin-top: 4px; padding: 0;
-  background: linear-gradient(180deg, #6b4e30, #412c17);
+  background: linear-gradient(180deg, #4c3a24, #2a1c0e);
   border-radius: 5px;
-  box-shadow: 0 16px 26px rgba(0,0,0,.55),
-    inset 0 1px 0 rgba(255,255,255,.18), inset 0 -3px 6px rgba(0,0,0,.5);
+  box-shadow: 0 18px 34px rgba(0,0,0,.65),
+    inset 0 1px 0 rgba(255,255,255,.10), inset 0 -3px 6px rgba(0,0,0,.55);
 }
 body.immersive .tv-stand .foot { display: none; }
-body.immersive .tv-stand::after { /* badan lemari dengan dua pintu */
+body.immersive .tv-stand::after { /* badan lemari dua pintu, nada gelap realistis */
   content: ""; position: absolute; top: 100%; left: 1.5%; right: 1.5%; height: 56px;
   background:
-    linear-gradient(90deg, transparent 49.4%, rgba(0,0,0,.45) 49.4%, rgba(0,0,0,.45) 50.6%, transparent 50.6%),
-    linear-gradient(180deg, #54391f, #2c1c0d);
+    linear-gradient(90deg, transparent 49.4%, rgba(0,0,0,.5) 49.4%, rgba(0,0,0,.5) 50.6%, transparent 50.6%),
+    linear-gradient(180deg, #3a2a16, #1c1108);
   border-radius: 0 0 7px 7px;
-  box-shadow: inset 0 0 0 3px rgba(0,0,0,.30), inset 0 2px 0 rgba(255,255,255,.07),
-    0 26px 30px rgba(0,0,0,.5);
+  box-shadow: inset 0 0 0 3px rgba(0,0,0,.35), inset 0 2px 0 rgba(255,255,255,.05),
+    0 30px 36px rgba(0,0,0,.6);
 }
 /* Lampu berdiri hangat */
 .lamp { position: absolute; right: 1%; bottom: 2%; width: 90px; height: 250px; z-index: 0; pointer-events: none; }
-.lamp-glow {
-  position: absolute; top: -48px; left: 50%; transform: translateX(-50%);
-  width: 270px; height: 270px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,186,105,.34) 0%, rgba(255,186,105,.12) 42%, transparent 68%);
+.lamp-glow { /* kolam cahaya hangat: besar, lembut, tidak jenuh */
+  position: absolute; top: -70px; left: 50%; transform: translateX(-50%);
+  width: 360px; height: 360px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,178,100,.17) 0%, rgba(255,178,100,.06) 45%, transparent 70%);
 }
 .lamp-shade {
   position: absolute; top: 0; left: 50%; transform: translateX(-50%);
   width: 74px; height: 56px;
-  background: linear-gradient(180deg, #f6ddab, #cfa35f 70%, #94703c);
+  background: linear-gradient(180deg, #c8ab7a, #8a6c42 72%, #5d472a);
   clip-path: polygon(22% 0, 78% 0, 100% 100%, 0 100%);
-  box-shadow: 0 0 34px rgba(255,190,110,.45);
+  box-shadow: 0 0 42px rgba(255,182,104,.28), inset 0 -8px 14px rgba(0,0,0,.35);
 }
 .lamp-pole {
   position: absolute; top: 52px; left: 50%; transform: translateX(-50%);
@@ -974,9 +1015,9 @@ body.immersive .tv-stand::after { /* badan lemari dengan dua pintu */
 body.clock-off .room-clock { display: none; }
 .clock-face {
   position: relative; width: 76px; height: 76px; margin: 0 auto; border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #f6efdd, #d8cbae 70%, #b3a17c);
-  border: 4px solid #3a2c1a;
-  box-shadow: 0 6px 18px rgba(0,0,0,.5), inset 0 0 0 2px rgba(255,255,255,.35);
+  background: radial-gradient(circle at 35% 30%, #d8cdb6, #a3937a 72%, #7c6c52);
+  border: 4px solid #241a10;
+  box-shadow: 0 8px 22px rgba(0,0,0,.65), inset 0 0 0 2px rgba(255,255,255,.18);
 }
 .clock-face::before {
   content: ""; position: absolute; inset: 5px; border-radius: 50%;
@@ -995,8 +1036,8 @@ body.clock-off .room-clock { display: none; }
   width: 7px; height: 7px; border-radius: 50%; background: #2b2118;
 }
 .clock-digital {
-  margin-top: 7px; font-size: 10px; letter-spacing: .24em; color: #e8dcc0;
-  text-shadow: 0 1px 4px rgba(0,0,0,.75);
+  margin-top: 7px; font-size: 10px; letter-spacing: .24em; color: #c9bb9d;
+  text-shadow: 0 1px 4px rgba(0,0,0,.8);
 }
 @media (max-width: 720px) {
   .lamp { transform: scale(.72); transform-origin: bottom right; right: -8px; }

@@ -11,7 +11,7 @@ var PNStore = (function () {
 
   var DEFAULTS = {
     // Bentuk & warna TV (dipisah sejak v6; dulu menyatu di "model")
-    shape: "trinitron",  // trinitron|toshiba|akari|philips|sharp|polytron|jvc|panasonic|wood
+    shape: "trinitron",  // trinitron|toshiba|akari|philips|sharp|polytron|flatron|jvc|panasonic|wood
     finish: "hitam",     // hitam|silver|grafit|ivory|krem|kayu|marun|dongker
     ratio169: false,     // false = 4:3, true = 16:9
     // Remote

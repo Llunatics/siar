@@ -58,12 +58,13 @@
     philips: "PHILIPS-ISH&nbsp;•&nbsp;2001",
     sharp: "SHARP-ISH&nbsp;•&nbsp;2004",
     polytron: "POLITRON-ISH&nbsp;•&nbsp;2003",
+    flatron: "FLATRON-ISH&nbsp;•&nbsp;2002",
     jvc: "JVC-ISH&nbsp;•&nbsp;2005",
     panasonic: "PANAFLAT-ISH&nbsp;•&nbsp;2006",
     wood: "WOODTONE&nbsp;•&nbsp;1984"
   };
   // Daftar bentuk & finishing — dipakai applySettings buat bersih-bersih kelas.
-  var SHAPES = ["trinitron", "toshiba", "akari", "philips", "sharp", "polytron", "jvc", "panasonic", "wood"];
+  var SHAPES = ["trinitron", "toshiba", "akari", "philips", "sharp", "polytron", "flatron", "jvc", "panasonic", "wood"];
   var FINISHES = ["hitam", "silver", "grafit", "ivory", "krem", "kayu", "marun", "dongker"];
   // Finishing yang masuk akal per bentuk (kabinet kayu tak ditawari metalik)
   var FINISH_BY_SHAPE = { wood: ["kayu", "hitam", "ivory", "krem", "marun", "dongker"] };
@@ -1168,7 +1169,15 @@
   bindChk("setImmersive", "immersive");
   bindChk("setClock", "roomClock");
   bindChk("setBug", "stationBug");
-  bindCards("shape", "shape");
+  // Kartu bentuk: memilih LG Flatron ikut menyamakan finishing ke Silver —
+  // bodi aslinya memang silver (TV masa kecil user), user tetap bebas ganti warna sesudahnya.
+  Array.prototype.forEach.call(document.querySelectorAll("[data-shape]"), function (b) {
+    b.addEventListener("click", function () {
+      S.shape = b.getAttribute("data-shape");
+      if (S.shape === "flatron") S.finish = "silver";
+      saveAndApply();
+    });
+  });
   bindCards("finish", "finish");
   bindCards("rmode", "remoteMode");
   bindCards("sig", "signalMode");
