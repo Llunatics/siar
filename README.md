@@ -1,6 +1,6 @@
 # Siar
 
-Televisi analog dalam browser. Memutar 265 siaran TV Indonesia era 1990–2015 (iklan jadul, opening kartun dan tokusatsu, sinetron, jingle stasiun TV) melalui embed resmi YouTube, Dailymotion, dan Vimeo — dengan bodi TV yang bisa diganti bentuknya, remote control fisik, antena interaktif, Blok Stasiun, Blok Jam sesuai jam tayang, dan Mode Imersif ruang tamu.
+Televisi analog dalam browser. Memutar 265 siaran TV Indonesia era 1990–2015 (iklan jadul, opening kartun dan tokusatsu, sinetron, jingle stasiun TV) melalui embed resmi YouTube, Dailymotion, dan Vimeo — dengan bodi TV yang bisa diganti bentuknya, remote control fisik, antena interaktif, Blok Stasiun, Blok Jam sesuai jam tayang, dan Mode Imersif ruang tamu. Antarmuka sengaja bersih: halaman nyaris cuma TV, ditemani legenda shortcut ringkas di sampingnya.
 
 **Live:** https://tv.llunaticsys.web.id
 
@@ -8,7 +8,7 @@ Televisi analog dalam browser. Memutar 265 siaran TV Indonesia era 1990–2015 (
 
 ### Bodi TV
 
-- **9 bentuk chassis** meniru siluet TV betulan: Trinitron (layar silinder, speaker samping), Toshiba (tabung membulat, speaker samping), Polytron (speaker ganda kiri–kanan), Philips (bodi rounded, speaker bawah), Sharp (bezel tipis, speaker bawah), JVC (grille bilah, speaker bawah), Panasonic (layar nyaris datar, bezel ramping), Akari (grille slot, speaker bawah), Kayu 80-an (kabinet kayu, kain speaker). Plat merek bergaya terinspirasi mengikuti bentuk (tanpa logo asli). Di Pengaturan, tiap bentuk tampil sebagai **preview mini chassis** yang mengikuti finishing terpilih
+- **10 bentuk chassis** meniru siluet TV betulan: Trinitron (layar silinder, speaker samping), Toshiba (tabung membulat, speaker samping), Polytron (speaker ganda kiri–kanan), Philips (bodi rounded, speaker bawah), Sharp (bezel tipis, speaker bawah), JVC (grille bilah, speaker bawah), Panasonic (layar nyaris datar, bezel ramping), Akari (grille slot, speaker bawah), Kayu 80-an (kabinet kayu, kain speaker), dan **LG Flatron** (speaker mesh full-height di kedua sisi, bezel hitam, strip kontrol silver di bawah layar — dimodelkan dari foto TV tabung 14 inci; memilihnya ikut menyamakan finishing ke Silver). Plat merek bergaya terinspirasi mengikuti bentuk (tanpa logo asli). Di Pengaturan, tiap bentuk tampil sebagai **preview mini chassis** yang mengikuti finishing terpilih
 - **8 warna/finishing terpisah dari bentuk**: Hitam, Silver, Grafit, Putih gading, Krem retro, Kayu, Marun, Biru dongker (finishing metalik tidak ditawari untuk kabinet Kayu 80-an)
 - **Satu layar terkunci**: halaman tidak bisa di-scroll atau di-zoom (pinch/double-tap dimatikan); panggung TV otomatis diskalakan agar pas viewport di semua ukuran termasuk HP landscape pendek — panduan & pengaturan tetap bisa scroll di dalam panelnya
 - Chassis persegi panjang lebar: layar + kolom speaker grille + sensor IR dalam satu bodi, strip status (power, display CH, meteran sinyal) di bawah layar, kaki/stand dengan bayangan lantai, cahaya layar memantul halus ke ruangan saat TV menyala
@@ -24,7 +24,7 @@ Televisi analog dalam browser. Memutar 265 siaran TV Indonesia era 1990–2015 (
 
 ### Ruang & rasa
 
-- **Mode Imersif**: header/footer hilang, TV tampil di ruang tamu betulan — dinding hangat, lantai papan, lampu berdiri menyala, TV di atas lemari, dan pantulan cahaya layar yang hidup mengikuti kecerahan gambar, mode sinyal, dan knob kecerahan
+- **Mode Imersif**: semua teks halaman hilang, TV tampil di ruang tamu remang yang realistis — dinding arang-cokelat desaturasi bertekstur grain tipis, vignette tepi, kolam cahaya lampu hangat yang lembut, lantai & lemari kayu nada gelap, dan pantulan cahaya layar tipis yang hidup mengikuti kecerahan gambar, mode sinyal, dan knob kecerahan
 - **Jam dinding WIB** (analog + digital) di ruangan selama Mode Imersif; bisa dimatikan terpisah
 - **Logo bug stasiun** di pojok layar mengikuti stasiun channel yang sedang tayang, seperti watermark TV asli
 - Animasi mati CRT: gambar kolaps menjadi garis cahaya lalu padam saat TV dimatikan
