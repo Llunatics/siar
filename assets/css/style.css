@@ -12,16 +12,27 @@
 
 * { box-sizing: border-box; }
 
+/* Halaman terkunci satu layar: tidak ada scroll & tidak bisa pinch-zoom.
+   Panggung (.room) diskalakan dari JS (fitStage) agar pas viewport;
+   hanya isi sheets (panduan/pengaturan) yang boleh scroll di dalamnya. */
+html, body {
+  height: 100dvh;
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: manipulation; /* cegah double-tap zoom di HP */
+}
+
 body {
   margin: 0;
   background: radial-gradient(1200px 700px at 50% 20%, #121218 0%, var(--bg) 60%);
   color: var(--ink);
   font-family: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
-  min-height: 100vh;
-  overflow-x: hidden;
 }
 
-.room { max-width: 1060px; margin: 0 auto; padding: 40px 20px 64px; }
+.room {
+  max-width: 1060px; margin: 0 auto; padding: 40px 20px 64px;
+  transform-origin: 50% 0;
+}
 
 .brand { text-align: center; margin-bottom: 28px; }
 .brand h1 { margin: 0; font-size: clamp(22px, 4vw, 34px); letter-spacing: .35em; font-weight: 700; }
@@ -45,6 +56,10 @@ body {
 .finish-silver { --f-a: #dde0e6; --f-b: #878c96; --f-line: #6f747e; --ring1: #33363d; --ring2: #c3c7cf; --plate: #5b5e66; }
 .finish-kayu { --f-a: #7d5a38; --f-b: #463017; --f-line: #2e1f0f; --ring1: #120b04; --ring2: #33200e; --plate: #33220f; }
 .finish-ivory { --f-a: #f0e9da; --f-b: #c9bda2; --f-line: #a89a7d; --ring1: #4a4232; --ring2: #e6ddc9; --plate: #8a7c5f; }
+.finish-grafit { --f-a: #3d434c; --f-b: #20242a; --f-line: #12151a; --ring1: #0a0c0f; --ring2: #4c545f; --plate: #9aa3ae; }
+.finish-krem { --f-a: #e7ddc6; --f-b: #b3a586; --f-line: #8f8262; --ring1: #453c2a; --ring2: #ded2b6; --plate: #7d6f52; }
+.finish-marun { --f-a: #72262f; --f-b: #3f131a; --f-line: #2a0b10; --ring1: #1a0508; --ring2: #5e2129; --plate: #d3a5a5; }
+.finish-dongker { --f-a: #263a5e; --f-b: #101c31; --f-line: #0a1424; --ring1: #050a15; --ring2: #354f7c; --plate: #a8bdd9; }
 .tv-body {
   background:
     repeating-linear-gradient(0deg, rgba(255,255,255,.014) 0 2px, transparent 2px 4px),
@@ -90,7 +105,8 @@ body {
   background: linear-gradient(180deg, #33333c, #101014);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.14), inset 0 -3px 5px rgba(0,0,0,.6), 0 3px 5px rgba(0,0,0,.45);
 }
-.finish-silver .antenna .mount, .finish-ivory .antenna .mount { background: linear-gradient(180deg, #9ea3ad, #565b64); }
+.finish-silver .antenna .mount, .finish-ivory .antenna .mount, .finish-krem .antenna .mount { background: linear-gradient(180deg, #9ea3ad, #565b64); }
+.finish-grafit .antenna .mount { background: linear-gradient(180deg, #79818c, #2c3138); }
 .finish-kayu .antenna .mount { background: linear-gradient(180deg, #4b3419, #241605); }
 
 .screen-wrap { min-width: 0; }
@@ -259,7 +275,7 @@ body {
   margin-top: 16px; padding-top: 14px;
   border-top: 1px solid var(--line);
 }
-.finish-silver .statusbar, .finish-ivory .statusbar { border-top-color: rgba(0,0,0,.25); }
+.finish-silver .statusbar, .finish-ivory .statusbar, .finish-krem .statusbar { border-top-color: rgba(0,0,0,.25); }
 .statusbar .sig-meter { flex: 0 1 190px; }
 .statusbar .sleep-left { margin-left: auto; }
 .statusbar .btn.power { padding: 10px 16px 8px; border-radius: 12px; }
@@ -276,7 +292,8 @@ body {
   box-shadow: inset 0 2px 3px rgba(255,255,255,.10);
 }
 .finish-kayu .tv-stand .foot { background: linear-gradient(180deg, #4b3419, #241605); }
-.finish-silver .tv-stand .foot, .finish-ivory .tv-stand .foot { background: linear-gradient(180deg, #9ea3ad, #565b64); }
+.finish-silver .tv-stand .foot, .finish-ivory .tv-stand .foot, .finish-krem .tv-stand .foot { background: linear-gradient(180deg, #9ea3ad, #565b64); }
+.finish-grafit .tv-stand .foot { background: linear-gradient(180deg, #79818c, #2c3138); }
 .tv::after { /* bayangan lantai di bawah stand */
   content: ""; display: block; height: 26px; margin-top: 2px;
   background: radial-gradient(ellipse 62% 100% at 50% 0%, rgba(0,0,0,.55), transparent 70%);
@@ -328,13 +345,24 @@ body {
     inset 0 -6px 14px rgba(0,0,0,.55);
   transform: translate(-50%, 112%) perspective(1100px) rotateX(18deg);
   transform-origin: 50% 100%;
+  opacity: 0;
   visibility: hidden;
-  transition: transform .48s cubic-bezier(.22, 1.25, .36, 1), visibility 0s .48s;
+  will-change: transform;
+  /* Tutup: meluncur turun, perspektif mereda, fade halus menjelang sampai —
+     simetris sebaliknya dari animasi buka */
+  transition:
+    transform .46s cubic-bezier(.55, .06, .68, .19),
+    opacity .34s ease .1s,
+    visibility 0s .5s;
 }
 .remote.open {
   transform: translate(-50%, 0) perspective(1100px) rotateX(5deg);
+  opacity: 1;
   visibility: visible;
-  transition: transform .48s cubic-bezier(.22, 1.25, .36, 1);
+  /* Buka: naik dengan pegas lembut */
+  transition:
+    transform .55s cubic-bezier(.22, 1.18, .36, 1),
+    opacity .3s ease;
 }
 .remote-grip {
   width: 44px; height: 4px; border-radius: 2px;
@@ -577,7 +605,7 @@ body {
   background-size: 7px 7px;
   box-shadow: inset 0 2px 6px rgba(0,0,0,.55), inset 0 -1px 0 rgba(255,255,255,.05);
 }
-.finish-silver .speaker, .finish-ivory .speaker {
+.finish-silver .speaker, .finish-ivory .speaker, .finish-krem .speaker {
   background-color: rgba(0,0,0,.13);
   background-image: radial-gradient(circle at center, rgba(0,0,0,.42) 1.1px, transparent 1.6px);
 }
@@ -600,6 +628,7 @@ body {
 .sheet {
   position: fixed; top: 0; right: 0; z-index: 50;
   width: min(420px, 94vw); height: 100dvh; overflow-y: auto;
+  overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
   background: #0d0d11; border-left: 1px solid var(--line);
   padding: 20px; transform: translateX(105%); visibility: hidden;
   transition: transform .28s ease, visibility 0s .28s;
@@ -666,13 +695,31 @@ body {
 .set-note { color: var(--dim); font-size: 11px; line-height: 1.5; }
 
 .model-row { display: flex; gap: 8px; margin-bottom: 10px; }
+.model-grid { display: grid; gap: 10px; margin-bottom: 12px; }
+.model-grid.shapes { grid-template-columns: repeat(3, 1fr); }
+.model-grid.finishes { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.set-desc { color: var(--dim); font-size: 11px; line-height: 1.5; margin: -6px 0 12px; }
 .model-card {
-  flex: 1; background: #121218; border: 1px solid var(--line); border-radius: 10px;
-  color: var(--ink); font: inherit; font-size: 11px; padding: 10px 6px; cursor: pointer;
-  display: flex; flex-direction: column; align-items: center; gap: 7px;
+  position: relative;
+  flex: 1; background: linear-gradient(180deg, #14141a, #0f0f13); border: 1px solid var(--line); border-radius: 12px;
+  color: var(--ink); font: inherit; font-size: 11px; padding: 11px 7px 10px; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  transition: border-color .18s, transform .18s, box-shadow .18s, background .18s;
 }
-.model-card.sel { border-color: var(--accent); color: var(--accent); }
+.model-card:hover { border-color: #3d3d48; transform: translateY(-1px); }
+.model-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.model-card.sel {
+  border-color: var(--accent); color: var(--ink);
+  background: linear-gradient(180deg, #1a1a12, #12120c);
+  box-shadow: 0 0 0 1px var(--accent) inset, 0 4px 14px rgba(0,0,0,.45);
+}
+.model-card.sel::after { content: "✓"; position: absolute; top: 5px; right: 8px; font-size: 11px; font-weight: 700; color: var(--accent); }
+.card-name { font-size: 12px; font-weight: 700; letter-spacing: .02em; }
+.model-card.sel .card-name { color: var(--accent); }
+.card-sub { font-size: 9px; color: var(--dim); letter-spacing: .05em; text-align: center; line-height: 1.35; }
 .model-card .sw { width: 100%; height: 20px; border-radius: 5px; border: 1px solid rgba(0,0,0,.5); }
+.model-card.fin .sw { height: 26px; border-radius: 7px; }
+.model-card.fin.sel .sw { box-shadow: 0 0 0 2px rgba(216,198,144,.85); border-color: transparent; }
 .sw.wood { background: linear-gradient(160deg, #7d5a38, #463017); }
 .sw.black { background: linear-gradient(160deg, #1b1b20, #0e0e11); }
 .sw.silver { background: linear-gradient(160deg, #dde0e6, #878c96); }
@@ -696,16 +743,35 @@ footer code { color: var(--accent); }
 .side-l { display: none; }
 .shape-polytron .side-l { display: flex; }
 .shape-polytron .screen-wrap { flex-basis: 540px; }
-/* Speaker di bawah layar: Philips (rounded) & Sharp (bezel tipis) */
-.shape-philips .tv-main, .shape-sharp .tv-main { flex-direction: column; }
-.shape-philips .tv-side.side-r, .shape-sharp .tv-side.side-r { flex-direction: row; align-items: center; min-width: 0; }
-.shape-philips .speaker, .shape-sharp .speaker { min-height: 44px; }
-.shape-philips .brand-plate, .shape-sharp .brand-plate { margin-top: 0; border-top: 0; padding-top: 0; white-space: nowrap; }
+/* Speaker di bawah layar */
+.shape-philips .tv-main, .shape-sharp .tv-main, .shape-jvc .tv-main,
+.shape-panasonic .tv-main, .shape-akari .tv-main { flex-direction: column; }
+.shape-philips .tv-side.side-r, .shape-sharp .tv-side.side-r, .shape-jvc .tv-side.side-r,
+.shape-panasonic .tv-side.side-r, .shape-akari .tv-side.side-r { flex-direction: row; align-items: center; min-width: 0; }
+.shape-philips .speaker, .shape-sharp .speaker, .shape-jvc .speaker,
+.shape-panasonic .speaker, .shape-akari .speaker { min-height: 44px; }
+.shape-philips .brand-plate, .shape-sharp .brand-plate, .shape-jvc .brand-plate,
+.shape-panasonic .brand-plate, .shape-akari .brand-plate { margin-top: 0; border-top: 0; padding-top: 0; white-space: nowrap; }
+/* Siluet per bentuk */
 .shape-philips .tv-body { border-radius: 38px; }
 .shape-philips .screen { border-radius: 26px / 30px; }
 .shape-sharp .tv-body { border-radius: 12px; }
 .shape-sharp .screen { border-radius: 8px / 10px; }
 .shape-trinitron .screen { border-radius: 26px / 14px; } /* silinder: tepi samping melengkung */
+.shape-toshiba .tv-body { border-radius: 30px; padding: 26px; }
+.shape-toshiba .screen { border-radius: 30px / 24px; } /* tabung membulat semua sisi */
+.shape-jvc .tv-body { border-radius: 16px; }
+.shape-jvc .screen { border-radius: 12px / 14px; }
+.shape-jvc .speaker { /* grille bilah vertikal */
+  background-image: repeating-linear-gradient(90deg, rgba(0,0,0,.55) 0 3px, transparent 3px 8px);
+}
+.shape-panasonic .tv-body { border-radius: 14px; padding: 17px; }
+.shape-panasonic .screen { border-radius: 6px / 8px; } /* layar nyaris datar */
+.shape-akari .tv-body { border-radius: 22px; }
+.shape-akari .screen { border-radius: 16px / 12px; }
+.shape-akari .speaker { /* grille slot horizontal */
+  background-image: repeating-linear-gradient(0deg, rgba(0,0,0,.6) 0 3px, transparent 3px 9px);
+}
 .shape-wood .tv-body { border-radius: 14px; padding: 26px; }
 .shape-wood .screen { border-radius: 10px / 12px; }
 .shape-wood .speaker { /* kain speaker ala kabinet 80-an */
@@ -713,6 +779,10 @@ footer code { color: var(--accent); }
   background-image: radial-gradient(circle at center, rgba(0,0,0,.5) 1.8px, transparent 2.4px);
 }
 .shape-sharp .tv-stand .foot { height: 14px; }
+.shape-panasonic .tv-stand .foot { height: 13px; }
+.shape-toshiba .tv-stand .foot { height: 16px; }
+.shape-jvc .tv-stand .foot { height: 16px; border-radius: 0 0 6px 6px; }
+.shape-akari .tv-stand .foot { height: 18px; }
 .shape-philips .tv-stand .foot { height: 18px; border-radius: 0 0 8px 8px; }
 .shape-wood .tv-stand .foot { height: 20px; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
 
@@ -746,18 +816,77 @@ footer code { color: var(--accent); }
   width: 100%; height: 24px; border: 1px solid rgba(0,0,0,.5); border-radius: 6px;
   background: linear-gradient(160deg, #2a2a33, #101014);
 }
-.swp.philips { border-radius: 12px; background: linear-gradient(160deg, #dde0e6, #878c96); }
-.swp.sharp { border-radius: 2px; }
-.swp.polytron { box-shadow: inset 7px 0 0 #45454f, inset -7px 0 0 #45454f; }
-.swp.wood { border-radius: 3px; background: linear-gradient(160deg, #7d5a38, #463017); }
 .swp.rpoint { transform: perspective(70px) rotateX(38deg); transform-origin: 50% 100%; background: linear-gradient(180deg, #3a3a44, #141419); }
 .swp.rflat { background: linear-gradient(180deg, #2e2e38, #131318); }
 .sw.hitam { background: linear-gradient(160deg, #1b1b20, #0e0e11); }
 .sw.kayu { background: linear-gradient(160deg, #7d5a38, #463017); }
 .sw.ivory { background: linear-gradient(160deg, #f0e9da, #c9bda2); }
+.sw.grafit { background: linear-gradient(160deg, #4c545f, #22262d); }
+.sw.krem { background: linear-gradient(160deg, #efe3cc, #b5a888); }
+.sw.marun { background: linear-gradient(160deg, #83303c, #42161e); }
+.sw.dongker { background: linear-gradient(160deg, #2e4876, #111f38); }
+
+/* ---------- Preview mini bentuk TV di kartu pengaturan ---------- */
+/* Render CSS kecil yang meniru chassis asli; variabel --f-* datang dari
+   kelas finish-* di elemen .pv (JS menyelaraskan dengan finishing aktif) */
+.pv {
+  display: block; position: relative;
+  width: 100%; max-width: 92px; height: 58px; margin: 0 auto 8px;
+  border-radius: 9px; border: 1px solid var(--f-line);
+  background: linear-gradient(160deg, var(--f-a), var(--f-b) 75%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 2px 5px rgba(0,0,0,.45);
+}
+.pv-screen {
+  position: absolute; inset: 7px 27px 7px 7px; border-radius: 5px / 6px;
+  background: radial-gradient(120% 90% at 30% 18%, #41544a 0%, #111711 55%, #050705 100%);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.65), inset 0 2px 7px rgba(0,0,0,.75), inset 0 -3px 6px rgba(255,255,255,.05);
+}
+.pv-spk {
+  position: absolute; border-radius: 3px;
+  background-color: rgba(0,0,0,.24);
+  background-image: radial-gradient(circle at center, rgba(0,0,0,.66) 1px, transparent 1.5px);
+  background-size: 5px 5px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.5);
+}
+.pv-spk.spk-r { top: 7px; bottom: 7px; right: 6px; width: 14px; }
+.pv-spk.spk-l { top: 7px; bottom: 7px; left: 6px; width: 14px; }
+.pv-spk.spk-b { left: 6px; right: 6px; bottom: 6px; height: 10px; }
+.pv-spk.spk-fabric { background-size: 7px 7px; background-image: radial-gradient(circle at center, rgba(0,0,0,.55) 1.6px, transparent 2.2px); }
+.pv-spk.spk-slat { background-image: repeating-linear-gradient(90deg, rgba(0,0,0,.55) 0 2px, transparent 2px 5px); }
+.pv-spk.spk-slot { background-image: repeating-linear-gradient(0deg, rgba(0,0,0,.6) 0 2px, transparent 2px 5px); }
+.pv-feet { position: absolute; left: 9px; right: 9px; bottom: -6px; height: 6px; display: flex; justify-content: space-between; }
+.pv-feet i {
+  width: 17px; height: 100%;
+  background: linear-gradient(180deg, var(--f-b), rgba(0,0,0,.45));
+  border-radius: 0 0 3px 3px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.10);
+}
+.pv-feet.block i { width: 26px; border-radius: 0 0 2px 2px; }
+/* Siluet preview per bentuk — meniru radius & tata letak chassis asli */
+.pv-philips { border-radius: 18px; } .pv-philips .pv-screen { inset: 6px 6px 21px; border-radius: 11px / 13px; }
+.pv-sharp { border-radius: 6px; } .pv-sharp .pv-screen { inset: 6px 6px 21px; border-radius: 3px / 4px; }
+.pv-jvc { border-radius: 7px; } .pv-jvc .pv-screen { inset: 6px 6px 21px; border-radius: 5px / 6px; }
+.pv-panasonic { border-radius: 6px; } .pv-panasonic .pv-screen { inset: 5px 5px 18px; border-radius: 2px / 3px; }
+.pv-akari { border-radius: 11px; } .pv-akari .pv-screen { inset: 6px 6px 21px; border-radius: 7px / 5px; }
+.pv-trinitron .pv-screen { border-radius: 12px / 5px; }
+.pv-toshiba { border-radius: 15px; } .pv-toshiba .pv-screen { border-radius: 14px / 11px; }
+.pv-polytron .pv-screen { inset: 7px 21px; }
+.pv-wood { border-radius: 5px; } .pv-wood .pv-screen { inset: 11px 27px 11px 11px; border-radius: 4px; }
 .guide-list .th-none { background: #0a0a0d; border: 1px solid var(--line); border-radius: 6px; }
 
 /* ---------- Mobile ---------- */
+/* Layar pendek (HP landscape, laptop mungil): ringkas elemen non-TV
+   supaya panggung tetap besar & fokus ke TV */
+@media (max-height: 560px) {
+  .room { padding: 14px 16px 24px; }
+  .brand { margin-bottom: 10px; }
+  .brand h1 { font-size: 20px; }
+  .brand .tagline { display: none; }
+  .tv { margin-top: 84px; }
+  footer { display: none; }
+  .nowbar { margin-top: 12px; padding: 9px 13px; }
+}
+
 @media (max-width: 720px) {
   .room { padding: 26px 12px 48px; }
   .brand { margin-bottom: 18px; }

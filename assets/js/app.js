@@ -48,13 +48,20 @@
   // Plat merek mengikuti BENTUK TV (terinspirasi, bukan logo asli)
   var PLATES = {
     trinitron: "TRINITRON-ISH&nbsp;•&nbsp;1997",
+    toshiba: "TOSHIBA-ISH&nbsp;•&nbsp;2002",
+    akari: "AKARI-ISH&nbsp;•&nbsp;1999",
     philips: "PHILIPS-ISH&nbsp;•&nbsp;2001",
     sharp: "SHARP-ISH&nbsp;•&nbsp;2004",
     polytron: "POLITRON-ISH&nbsp;•&nbsp;2003",
+    jvc: "JVC-ISH&nbsp;•&nbsp;2005",
+    panasonic: "PANAFLAT-ISH&nbsp;•&nbsp;2006",
     wood: "WOODTONE&nbsp;•&nbsp;1984"
   };
-  // Finishing yang masuk akal per bentuk (kabinet kayu tak ditawari silver metalik)
-  var FINISH_BY_SHAPE = { wood: ["kayu", "hitam", "ivory"] };
+  // Daftar bentuk & finishing — dipakai applySettings buat bersih-bersih kelas.
+  var SHAPES = ["trinitron", "toshiba", "akari", "philips", "sharp", "polytron", "jvc", "panasonic", "wood"];
+  var FINISHES = ["hitam", "silver", "grafit", "ivory", "krem", "kayu", "marun", "dongker"];
+  // Finishing yang masuk akal per bentuk (kabinet kayu tak ditawari metalik)
+  var FINISH_BY_SHAPE = { wood: ["kayu", "hitam", "ivory", "krem", "marun", "dongker"] };
   function finishAllowed(shape, finish) {
     var allow = FINISH_BY_SHAPE[shape];
     return !allow || allow.indexOf(finish) !== -1;
@@ -89,16 +96,18 @@
   function setLbl(id, v) { var e = $(id); if (e) e.textContent = v; }
   function markCards(attr, val) {
     Array.prototype.forEach.call(document.querySelectorAll("[data-" + attr + "]"), function (b) {
-      b.classList.toggle("sel", b.getAttribute("data-" + attr) === String(val));
+      var on = b.getAttribute("data-" + attr) === String(val);
+      b.classList.toggle("sel", on);
+      b.setAttribute("aria-pressed", on ? "true" : "false");
     });
   }
 
   function applySettings() {
     if (!finishAllowed(S.shape, S.finish)) S.finish = S.shape === "wood" ? "kayu" : "hitam";
-    ["trinitron", "philips", "sharp", "polytron", "wood"].forEach(function (s) {
+    SHAPES.forEach(function (s) {
       els.tv.classList.toggle("shape-" + s, S.shape === s);
     });
-    ["hitam", "silver", "kayu", "ivory"].forEach(function (f) {
+    FINISHES.forEach(function (f) {
       els.tv.classList.toggle("finish-" + f, S.finish === f);
     });
     els.tv.classList.toggle("ratio-169", !!S.ratio169);
@@ -114,6 +123,10 @@
     markCards("finish", S.finish);
     Array.prototype.forEach.call(document.querySelectorAll("[data-finish]"), function (b) {
       b.classList.toggle("disabled", !finishAllowed(S.shape, b.getAttribute("data-finish")));
+    });
+    // Preview mini bentuk TV mengikuti finishing yang lagi aktif
+    Array.prototype.forEach.call(document.querySelectorAll(".pv"), function (pv) {
+      FINISHES.forEach(function (f) { pv.classList.toggle("finish-" + f, S.finish === f); });
     });
     markCards("rmode", S.remoteMode);
     markCards("sig", S.signalMode);
@@ -143,7 +156,24 @@
     refreshSignal();
     vpApplyVolume();
     updateMuteLabel();
+    fitStage(); // bentuk/warna/rasio mengubah tinggi panggung — samakan skala
   }
+
+  /* Panggung satu layar: halaman terkunci (tidak bisa scroll/zoom), jadi
+     bila konten alami lebih tinggi dari viewport, panggung diskalakan
+     proporsional sampai pas — fokus selalu di TV, di semua ukuran layar
+     (termasuk HP landscape pendek). Panel sheets tidak ikut terskala. */
+  function fitStage() {
+    var room = document.querySelector(".room");
+    if (!room) return;
+    room.style.transform = "";
+    var s = Math.min(1,
+      window.innerHeight / Math.max(1, room.offsetHeight),
+      window.innerWidth / Math.max(1, room.offsetWidth));
+    room.style.transform = s < 0.999 ? "scale(" + s.toFixed(4) + ")" : "";
+  }
+  window.addEventListener("resize", fitStage);
+  window.addEventListener("orientationchange", fitStage);
 
   /* Filter gambar ala knob TV (kecerahan/kontras/warna) + degradasi sinyal + VHS.
      Diterapkan ke wadah player — berlaku untuk semua sumber video. */
@@ -1018,6 +1048,15 @@
   });
 
   /* ================= Event: pengaturan ================= */
+  // Simpan ke localStorage lalu terapkan ulang SELURUH tampilan.
+  // (Dulu helper ini dipanggil bindChk/bindRange/bindCards tapi TIDAK PERNAH
+  //  didefinisikan — setiap klik/geser melempar ReferenceError tepat setelah
+  //  state di-assign, jadi applySettings() & penyimpanan tak pernah jalan.
+  //  Itulah bug "opsi Model & Warna tidak bisa diklik" di v6.)
+  function saveAndApply() {
+    PNStore.saveSettings();
+    applySettings();
+  }
   function bindChk(id, key) {
     $(id).addEventListener("change", function (e) { S[key] = e.target.checked; saveAndApply(); });
   }
