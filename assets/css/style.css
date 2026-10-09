@@ -95,7 +95,7 @@ body {
 .model-silver .antenna .mount { background: linear-gradient(180deg, #9ea3ad, #565b64); }
 .model-wood .antenna .mount { background: linear-gradient(180deg, #4b3419, #241605); }
 
-.screen-wrap { flex: 1 1 auto; min-width: 0; }
+.screen-wrap { min-width: 0; }
 
 /* ---------- Layar ---------- */
 .screen {
@@ -367,8 +367,9 @@ body {
 .rsleep {
   display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 7px;
   font-size: 9px; letter-spacing: .18em; color: var(--dim);
-  padding: 0 6px;
+  padding: 0 6px; min-width: 0;
 }
+.rsleep select { max-width: 100%; }
 .rsleep select {
   background: linear-gradient(180deg, #2b2b34, #141419); color: var(--ink);
   border: 1px solid #36363f; border-radius: 8px;
@@ -401,6 +402,13 @@ body {
 .remote-fab svg { width: 26px; height: 26px; }
 .remote-fab:hover { color: var(--ink); transform: translateY(-2px); }
 .remote-fab.on { color: var(--osd); border-color: #35502f; }
+/* Denyut halus biar ketahuan ada remote — berhenti setelah pertama dibuka */
+.remote-fab:not(.seen) { animation: fab-pulse 2.8s ease-out infinite; }
+@keyframes fab-pulse {
+  0% { box-shadow: 0 10px 26px rgba(0,0,0,.6), 0 0 0 0 rgba(216,198,144,.40), inset 0 1px 0 rgba(255,255,255,.14), inset 0 -4px 8px rgba(0,0,0,.55); }
+  70% { box-shadow: 0 10px 26px rgba(0,0,0,.6), 0 0 0 15px rgba(216,198,144,0), inset 0 1px 0 rgba(255,255,255,.14), inset 0 -4px 8px rgba(0,0,0,.55); }
+  100% { box-shadow: 0 10px 26px rgba(0,0,0,.6), 0 0 0 0 rgba(216,198,144,0), inset 0 1px 0 rgba(255,255,255,.14), inset 0 -4px 8px rgba(0,0,0,.55); }
+}
 .rbtn {
   background: linear-gradient(180deg, #2e2e38 0%, #1d1d24 55%, #131318 100%);
   color: var(--ink); border: 1px solid #3a3a45; border-radius: 12px;
@@ -717,7 +725,7 @@ footer code { color: var(--accent); }
   .sheet { width: 100vw; border-left: 0; padding: 16px 14px calc(16px + env(safe-area-inset-bottom)); }
   .guide-list .th { width: 64px; }
   .guide-list li { min-height: 52px; }
-  .chip { padding: 9px 13px; }
+  .chip { padding: 9px 13px; min-height: 44px; display: inline-flex; align-items: center; }
   .remote { width: 94vw; max-height: 86dvh; padding: 12px 14px calc(14px + env(safe-area-inset-bottom)); }
   .rbtn { min-height: 44px; }
   .numpad .rbtn { min-height: 48px; }

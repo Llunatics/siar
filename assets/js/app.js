@@ -456,6 +456,7 @@
     if (blockStation && cur().station !== blockStation) exitBlock(false);
     PNStore.markWatched(cur().id);
     refreshSignal();
+    flashEye();
     staticFx(signalQ < 45 ? 800 : 450);
     showOsd(signalHint());
     markActive();
@@ -517,6 +518,7 @@
     els.powerBtn.classList.add("on");
     els.remPower.classList.add("on");
     crtOnFx();
+    flashEye();
     refreshSignal();
     staticFx(650);
     if (playerReady) player.loadVideoById(cur().id);
@@ -531,6 +533,7 @@
     els.powerBtn.classList.remove("on");
     els.remPower.classList.remove("on");
     els.osd.classList.remove("show");
+    flashEye();
     refreshSignal();
     if (!silent) staticFx(220);
     if (playerReady) player.stopVideo();
@@ -613,8 +616,10 @@
     remoteOpen = true;
     els.remote.classList.add("open");
     els.remote.setAttribute("aria-hidden", "false");
+    try { els.remote.inert = false; } catch (e) { /* abaikan */ }
     els.veil.classList.add("on");
     els.fab.classList.add("on");
+    els.fab.classList.add("seen");
     els.fab.setAttribute("aria-expanded", "true");
     els.fab.setAttribute("aria-label", "Tutup remote");
   }
@@ -623,6 +628,7 @@
     remoteOpen = false;
     els.remote.classList.remove("open");
     els.remote.setAttribute("aria-hidden", "true");
+    try { els.remote.inert = true; } catch (e) { /* abaikan */ }
     els.veil.classList.remove("on");
     els.fab.classList.remove("on");
     els.fab.setAttribute("aria-expanded", "false");
@@ -647,13 +653,21 @@
   }
 
   // LED inframerah remote berkedip + sensor di bodi TV menyala menerima sinyal.
+  function flashEye() {
+    var el = els.irEye;
+    if (!el) return;
+    el.classList.remove("flash");
+    void el.offsetWidth; // restart animasi
+    el.classList.add("flash");
+  }
   function flashIR() {
-    [els.irLed, els.irEye].forEach(function (el) {
-      if (!el) return;
-      el.classList.remove("flash");
-      void el.offsetWidth; // restart animasi
-      el.classList.add("flash");
-    });
+    var led = els.irLed;
+    if (led) {
+      led.classList.remove("flash");
+      void led.offsetWidth;
+      led.classList.add("flash");
+    }
+    flashEye();
     playClick();
     if (navigator.vibrate) { try { navigator.vibrate(10); } catch (e) { /* abaikan */ } }
   }
@@ -689,6 +703,7 @@
       updateMuteLabel();
     }
     if (powered) showOsdText("VOLUME " + S.volume, volBar(S.volume));
+    flashEye();
   });
   els.muteBtn.addEventListener("click", function () {
     if (!playerReady) return;
@@ -697,6 +712,7 @@
     PNStore.saveSettings();
     updateMuteLabel();
     if (powered) showOsdText(S.muted ? "MUTE" : "VOLUME " + S.volume, S.muted ? "Suara dibisukan" : volBar(S.volume));
+    flashEye();
   });
   els.sleepSelect.addEventListener("change", function () {
     startSleep(parseInt(els.sleepSelect.value, 10));
@@ -810,6 +826,7 @@
   });
 
   /* ================= Init ================= */
+  try { els.remote.inert = true; } catch (e) { /* abaikan */ }
   bindRod(els.rodL, "antL");
   bindRod(els.rodR, "antR");
   els.vol.value = S.volume;
