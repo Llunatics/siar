@@ -1,56 +1,94 @@
 # Siar
 
-Televisi analog dalam browser. Memutar 84 siaran TV Indonesia era 1990–2015 (iklan jadul, opening kartun dan tokusatsu, sinetron, jingle stasiun TV) melalui embed resmi YouTube, dengan bodi TV 3D, remote control fisik, antena interaktif, dan Blok Stasiun.
+Televisi analog dalam browser. Memutar 158 siaran TV Indonesia era 1990–2015 (iklan jadul, opening kartun dan tokusatsu, sinetron, jingle stasiun TV) melalui embed resmi YouTube, Dailymotion, dan Vimeo — dengan bodi TV yang bisa diganti bentuknya, remote control fisik, antena interaktif, dan Blok Stasiun.
 
 **Live:** https://tv.llunaticsys.web.id
 
 ## Fitur
 
-- **Remote overlay melayang** — Ketuk tombol remote melayang di kanan bawah: remote muncul meluncur dari bawah dengan perspektif 3D seolah diarahkan ke TV. LED inframerah remote berkedip dan sensor di bodi TV menyala tiap tombol ditekan, plus bunyi klik dan getar halus di ponsel. Isinya: numpad 0–9 (ketik nomor channel, angka tampil di OSD, TV lompat setelah jeda singkat), rocker CH/VOL, power, mute, acak, favorit, panduan, Blok Stasiun, sleep timer, pengaturan, layar penuh. Tutup via tombol yang sama, ketuk di luar, atau `Esc`
-- **Antena interaktif** — Dua batang antena bisa diseret; tiap channel punya posisi sinyal terbaik sendiri. Kualitas sinyal (persen di panel dan OSD) menggerakkan noise, tracking band, dan ketajaman gambar secara real-time. Posisi antena tersimpan di `localStorage`
-- **Blok Stasiun** — Di Panduan Siaran: chip filter per stasiun + tombol **PUTAR BLOK** untuk marathon satu stasiun (dimulai dari ident stasiunnya). Selama blok aktif, CH+/CH−, auto-next, dan numpad tetap di dalam blok; badge blok tampil di bilah "Sedang Tayang"
-- **Model TV** — Kayu 80-an, Plastik 90-an, Silver 2000-an (bezel dan plat merek menyesuaikan)
-- **Bodi TV lebar ala TV asli** — Chassis persegi panjang menyamping: layar + kolom speaker grille dan sensor IR dalam satu bodi, strip status (power, display CH, meteran sinyal) di bawah layar, kaki/stand TV dengan bayangan lantai, dan cahaya layar yang memantul halus ke ruangan saat TV menyala. Tombol fisik timbul yang tenggelam saat ditekan, antena teleskopik dua batang, bezel tebal, kaca layar melengkung (highlight + vignette), tekstur plastik
-- **Video bersih** — Overscan ala CRT memotong strip judul/kontrol YouTube; kontrol pemutar disembunyikan (`controls=0`); klik layar = putar/jeda, dobel-klik = layar penuh
-- **Efek layar** — VHS (tracking, chromatic aberration, jitter), scanline CRT + intensitas, noise latar yang bereaksi terhadap kualitas sinyal, animasi power-on CRT, rasio 4:3 / 16:9
-- **Panduan siaran** — Seluruh channel per kategori dengan thumbnail YouTube, pencarian, label stasiun, penanda ✓ sudah-ditonton, dan progres koleksi (X/84 ditonton)
-- **Favorit** — Tandai siaran dengan bintang; terkumpul di grup teratas panduan
-- **Channel kustom** — Tambah siaran dengan menempelkan URL/ID YouTube; tersimpan di `localStorage`
-- **Sleep timer** — TV mati otomatis setelah 15/30/60/90 menit
-- **Kontrol penuh** — Semua kontrol utama hidup di remote overlay: power, CH+/CH−, acak, volume (rocker + slider 3D bertick marks, bar volumenya tampil di OSD ala TV asli), mute, layar penuh (tombol FULL / dobel-klik layar). Di bodi TV tinggal elemen status: tombol power, display CH, meteran sinyal
-- **Pintasan keyboard** — Lihat tabel di bawah
+### Bodi TV
 
-Pengaturan, favorit, channel kustom, posisi antena, dan riwayat tontonan tersimpan otomatis di browser (localStorage) dan berlaku pada kunjungan berikutnya.
+- **5 bentuk chassis** meniru siluet TV betulan: Trinitron (layar silinder, speaker samping), Philips (bodi rounded, speaker bawah), Sharp (bezel tipis, speaker bawah), Polytron (speaker ganda kiri–kanan), Kayu 80-an (kabinet kayu, kain speaker). Plat merek bergaya terinspirasi mengikuti bentuk (tanpa logo asli)
+- **4 warna/finishing terpisah dari bentuk**: Hitam, Silver, Kayu, Putih gading
+- Chassis persegi panjang lebar: layar + kolom speaker grille + sensor IR dalam satu bodi, strip status (power, display CH, meteran sinyal) di bawah layar, kaki/stand dengan bayangan lantai, cahaya layar memantul halus ke ruangan saat TV menyala
+- Tombol fisik timbul yang tenggelam saat ditekan; antena teleskopik dua batang yang bisa diseret
+
+### Remote control
+
+- **Dua mode tampilan**: *Mengarah ke TV* (perspektif 3D — ujung jauh mengecil, LED IR menembak ke TV) atau *Datar*. Mode mengarah ke TV adalah default
+- Ukuran mobile kompak (maks. 330px, ≤78% tinggi layar, tombol tetap ≥44px), nyaman satu tangan
+- LED inframerah remote berkedip + sensor di bodi TV menyala tiap tombol ditekan; bunyi klik mekanis dan getar halus (keduanya bisa dimatikan)
+- Isi remote: numpad 0–9 (angka tampil di OSD, TV lompat setelah jeda singkat), rocker CH/VOL, power, mute, acak, favorit, panduan, Blok Stasiun, sleep timer, volume slider, pengaturan, layar penuh
+
+### Layar & sinyal
+
+- Efek VHS (tracking, chromatic aberration, jitter), scanline CRT + intensitas, noise latar, **kelengkungan kaca** on/off, **flicker** on/off
+- Knob gambar: **Kecerahan / Kontras / Warna** (filter CSS ke video, semua sumber)
+- Rasio 4:3 / 16:9; animasi power-on CRT; overscan memotong strip judul/kontrol bawaan embed
+- **Tiga mode sinyal**: *Antena interaktif* (geser batang antena — tiap channel punya posisi terbaik sendiri), *Selalu bersih*, *Acak per channel*. Kualitas sinyal menggerakkan noise, tracking band, dan ketajaman gambar real-time
+
+### Pemutaran
+
+- **Multi-sumber**: YouTube, Dailymotion, dan Vimeo diputar lewat API resmi masing-masing (volume, play/pause, auto-pindah saat habis); pemutar juga mendukung Internet Archive via iframe standar
+- Power otomatis saat halaman dibuka (opsional), ingat channel terakhir (opsional), auto-pindah on/off (opsional)
+- Klik layar = putar/jeda, dobel-klik = layar penuh; sleep timer 15/30/60/90 menit
+
+### Panduan & koleksi
+
+- **Blok Stasiun**: chip filter per stasiun + **PUTAR BLOK** untuk marathon satu stasiun (dimulai dari ident stasiunnya); CH+/CH−, auto-next, dan numpad tetap di dalam blok
+- Panduan berkategori dengan thumbnail per sumber, pencarian, label stasiun, penanda ✓ sudah-ditonton, progres koleksi (X/158)
+- Favorit (grup teratas panduan), channel kustom via URL/ID YouTube
+
+Semua pengaturan, favorit, channel kustom, posisi antena, dan riwayat tontonan tersimpan di `localStorage` browser. Skema lama otomatis dimigrasikan (model TV lama → bentuk + warna).
 
 ## Siaran bawaan
 
-Total **84 channel** siaran TV Indonesia 1990–2015:
+Total **158 channel**:
 
 | Kategori | Jumlah |
 | --- | --- |
-| Iklan Jadul | 14 |
-| Opening Kartun | 37 |
-| Opening Tokusatsu | 2 |
-| Sinetron & Acara TV | 13 |
-| Jingle & Ident | 18 |
+| Iklan Jadul | 47 |
+| Opening Kartun | 54 |
+| Opening Tokusatsu | 12 |
+| Sinetron & Acara TV | 17 |
+| Jingle & Ident | 28 |
 
 | Stasiun | Jumlah |
 | --- | --- |
-| RCTI | 21 |
+| Multi-Stasiun (iklan TVC) | 47 |
+| RCTI | 30 |
+| Indosiar | 30 |
 | Global TV | 15 |
-| Multi-Stasiun (iklan TVC) | 14 |
-| Indosiar | 11 |
-| MNCTV/TPI | 4 |
-| SCTV | 3 |
-| Trans7 | 3 |
-| ANTV | 3 |
+| TVRI | 7 |
+| MNCTV/TPI | 6 |
+| SCTV | 5 |
+| ANTV | 5 |
+| Trans7 | 4 |
 | NET. | 3 |
 | Trans TV | 2 |
 | RTV | 2 |
 | B Channel | 2 |
-| TVRI | 1 |
 
-Seluruh `video_id` telah diverifikasi satu per satu via YouTube oEmbed (HTTP 200 dan judul klip asli — bukan video lirik, episode, atau cover). Tidak ada berkas video yang disimpan atau diunggah ulang di repositori ini.
+| Sumber | Jumlah |
+| --- | --- |
+| YouTube | 149 |
+| Dailymotion | 8 |
+| Vimeo | 1 |
+
+Sorotan katalog: Marsupilami, Curious George, The Jungle Book (Shōnen Mowgli), Dragon Quest, Digimon Adventure/Tamers/Frontier, Ultraman Mebius/Tiga/Dyna/Gaia/Cosmos, iklan Kumon, Djarum 76, Gudang Garam, dan puluhan ident stasiun (TVRI, RCTI Sawah 1994, SCTV Satu Untuk Semua, TPI 1999).
+
+**Verifikasi:** seluruh 158 id dicek satu per satu ke endpoint resmi (YouTube/Dailymotion/Vimeo oEmbed, HTTP 200, judul = klip iklan/opening/bumper asli — bukan video lirik, episode, atau cover) dan disapu ulang penuh pada audit terakhir. Arsip verifikasi disimpan di luar repo bersama state program. Tidak ada berkas video yang disimpan atau diunggah ulang di repositori ini.
+
+## Pengaturan
+
+| Kelompok | Isi |
+| --- | --- |
+| Bentuk TV | 5 chassis, 4 finishing, rasio 4:3 / 16:9 |
+| Remote | Mode Mengarah ke TV / Datar, bunyi klik, getar |
+| Efek Layar | VHS, scanline + intensitas, noise, kelengkungan kaca, flicker, kecerahan/kontras/warna |
+| Sinyal | Antena interaktif / Selalu bersih / Acak per channel |
+| Putar | Power otomatis, ingat channel terakhir, auto-pindah saat video habis |
+| Data | Reset semua pengaturan |
 
 ## Pintasan keyboard
 
@@ -75,12 +113,16 @@ Batang antena diatur dengan menyeretnya langsung (mouse/sentuh); tidak ada pinta
 **Permanen (lewat kode)** — tambahkan satu objek ke `assets/js/channels.js`:
 
 ```js
-{ id: "VIDEO_ID_11_CHAR", title: "Nama Siaran", cat: "Kategori", st: "Stasiun" }
+{ id: "VIDEO_ID", title: "Nama Siaran", cat: "Kategori", st: "Stasiun" }
+{ id: "x123abc", title: "Opening Contoh", cat: "Opening Kartun", st: "TVRI", src: "dm", th: "https://…thumbnail…" }
 ```
 
-Kategori yang dikenali: `Iklan Jadul`, `Opening Kartun`, `Opening Tokusatsu`, `Sinetron & Acara TV`, `Jingle & Ident`. Nilai `st` dipakai filter dan Blok Stasiun, misalnya `RCTI`, `SCTV`, `Indosiar`, `Global TV`, `MNCTV/TPI`.
+- `cat`: `Iklan Jadul`, `Opening Kartun`, `Opening Tokusatsu`, `Sinetron & Acara TV`, atau `Jingle & Ident`
+- `st`: stasiun asal siaran untuk filter dan Blok Stasiun, mis. `RCTI`, `Indosiar`, `TVRI`, `Multi-Stasiun`
+- `src` (opsional, default `"yt"`): `"yt"` (YouTube), `"dm"` (Dailymotion), `"vimeo"` (Vimeo), `"ia"` (Internet Archive)
+- `th` (opsional): URL thumbnail untuk sumber non-YouTube (dari oEmbed sumbernya); YouTube memakai `i.ytimg.com` otomatis
 
-**Sementara (lewat UI)** — buka Panduan Siaran → "Tambah channel sendiri", tempel URL/ID YouTube dan nama siaran. Berlaku hanya di browser tersebut.
+**Sementara (lewat UI)** — buka Panduan Siaran → "Tambah channel sendiri", tempel URL/ID YouTube dan nama siaran. Channel kustom hanya mendukung YouTube dan berlaku di browser tersebut saja.
 
 ## Struktur proyek
 
@@ -89,11 +131,11 @@ Kategori yang dikenali: `Iklan Jadul`, `Opening Kartun`, `Opening Tokusatsu`, `S
 ├── index.html            # Halaman utama
 ├── assets/
 │   ├── css/
-│   │   └── style.css     # Seluruh gaya, efek CRT/VHS, model TV, remote
+│   │   └── style.css     # Gaya, efek CRT/VHS, bentuk TV, finishing, remote
 │   └── js/
-│       ├── channels.js   # Daftar siaran bawaan
+│       ├── channels.js   # Daftar siaran bawaan (multi-sumber)
 │       ├── settings.js   # localStorage: pengaturan, favorit, channel kustom, riwayat
-│       └── app.js        # Logika TV, player YouTube, remote, antena, blok stasiun
+│       └── app.js        # Logika TV, lapisan pemutar multi-sumber, remote, antena, blok stasiun
 ├── LICENSE
 └── README.md
 ```
@@ -109,16 +151,16 @@ python3 -m http.server 8000
 # atau: npx serve .
 ```
 
-Buka http://localhost:8000. Koneksi internet diperlukan karena video disiarkan langsung dari YouTube.
+Buka http://localhost:8000. Koneksi internet diperlukan karena video disiarkan langsung dari sumbernya.
 
 ## Teknologi
 
 - HTML, CSS, JavaScript murni (tanpa dependensi runtime)
-- YouTube IFrame API — pemutaran dan kontrol volume
-- Canvas 2D — efek static; WebAudio — bunyi kresek
+- YouTube IFrame API, Dailymotion Player API, Vimeo Player API — pemutaran dan kontrol volume; Internet Archive — embed iframe standar
+- Canvas 2D — efek static; WebAudio — bunyi kresek dan klik remote
 - `localStorage` — preferensi, favorit, channel kustom, posisi antena, riwayat tontonan
 - Hosting: Vercel (situs statis)
 
 ## Lisensi
 
-Kode berlisensi MIT — lihat berkas `LICENSE`. Seluruh video yang tertanam adalah milik kreator dan pemegang haknya masing-masing di YouTube.
+Kode berlisensi MIT — lihat berkas `LICENSE`. Seluruh video yang tertanam adalah milik kreator dan pemegang haknya masing-masing di platform sumbernya.

@@ -1,13 +1,15 @@
 // Daftar "siaran" Siar — siaran TV Indonesia 1990–2015.
 // Mau nambah channel? Tambah satu objek di bawah, simpan, refresh halaman.
-// id    = video_id YouTube (bagian setelah "watch?v=" pada URL video).
+// id    = id video di sumbernya (YouTube: bagian setelah "watch?v=").
 // cat   = kategori: Iklan Jadul | Opening Kartun | Opening Tokusatsu |
 //         Sinetron & Acara TV | Jingle & Ident.
 // st    = stasiun TV asal siaran (buat filter & Blok Stasiun di panduan).
-// Semua id diverifikasi via YouTube oEmbed (HTTP 200 + judul klip asli,
-// bukan video lirik/episode/cover); daftar lengkap + judul asli YouTube:
-// siar-channels-verified.json di arsip program repo.
-// Semua video diputar lewat embed resmi YouTube — tidak ada file yang di-upload ulang.
+// src   = sumber video: "yt" (default) | "dm" (Dailymotion) | "vimeo" | "ia" (arsip).
+// th    = URL thumbnail (sumber non-YouTube; dari oEmbed sumbernya).
+// Semua id diverifikasi via oEmbed/metadata resmi sumbernya (HTTP 200 +
+// judul klip asli, bukan video lirik/episode/cover); arsip verifikasi
+// disimpan bersama state program repo (siar-channels-verified.json).
+// Semua video diputar lewat embed resmi sumbernya — tidak ada file yang di-upload ulang.
 const CHANNELS = [
   // --- Iklan Jadul (TVC lintas stasiun) ---
   { id: "KfyHxh0029M", title: "Iklan Agung Podomoro (APG)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
