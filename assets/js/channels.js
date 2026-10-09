@@ -46,7 +46,7 @@ const CHANNELS = [
   { id: "IbirQfeFXT4", title: "Opening Slam Dunk", cat: "Opening Kartun", st: "Trans7" },
   { id: "UIcvHSUCiAs", title: "Opening Samurai X (Original)", cat: "Opening Kartun", st: "SCTV" },
   { id: "Sa-WxWeQi4E", title: "Opening Shaman King (Indonesia)", cat: "Opening Kartun", st: "ANTV" },
-  { id: "jF21eSABOf4", title: "Opening One Piece (Indonesia)", cat: "Opening Kartun", st: "Global TV" },
+  { id: "jF21eSABOf4", title: "Opening One Piece (Indonesia)", cat: "Opening Kartun", st: "RCTI" },
   { id: "RiQrbSuLrsU", title: "Opening Naruto (Original)", cat: "Opening Kartun", st: "Global TV" },
   { id: "GYKVugt0I9M", title: "Opening Chalk Zone", cat: "Opening Kartun", st: "Global TV" },
   { id: "r9L4AseD-aA", title: "Opening SpongeBob SquarePants", cat: "Opening Kartun", st: "Global TV" },
@@ -61,6 +61,7 @@ const CHANNELS = [
   { id: "QT_eQEuPscE", title: "Opening Rocket Power", cat: "Opening Kartun", st: "Global TV" },
   { id: "QGlF39Cgc4U", title: "Opening As Told by Ginger", cat: "Opening Kartun", st: "Global TV" },
   { id: "WgX2cu9N6_8", title: "Opening Invader Zim", cat: "Opening Kartun", st: "Global TV" },
+  { id: "tn9pJUk1i28", title: "Opening Si Unyil", cat: "Opening Kartun", st: "NET." },
   // --- Opening Tokusatsu ---
   { id: "FJS13e8ms3I", title: "Opening Ksatria Baja Hitam (Indonesia)", cat: "Opening Tokusatsu", st: "RCTI" },
   { id: "CUfUeOWbVp0", title: "Opening Kamen Rider Kuuga (Indonesia)", cat: "Opening Tokusatsu", st: "RCTI" },
@@ -87,10 +88,14 @@ const CHANNELS = [
   { id: "j7bXYQZJiW8", title: "Station ID MNCTV (2012)", cat: "Jingle & Ident", st: "MNCTV/TPI" },
   { id: "k1P-Fmj-7yg", title: "Station ID Global TV (2005)", cat: "Jingle & Ident", st: "Global TV" },
   { id: "DTSDU18D5z0", title: "Station ID ANteve (1993)", cat: "Jingle & Ident", st: "ANTV" },
+  { id: "M9SLsxRUj6o", title: "Station ID ANteve (1994)", cat: "Jingle & Ident", st: "ANTV" },
   { id: "73ykFIJ8nbQ", title: "Station ID Trans TV (2004)", cat: "Jingle & Ident", st: "Trans TV" },
   { id: "mWwrrPy9iTA", title: "Station ID TV7 (2002)", cat: "Jingle & Ident", st: "Trans7" },
+  { id: "roQJ4zGAA6E", title: "Station ID RTV (2014)", cat: "Jingle & Ident", st: "RTV" },
   { id: "X2yEqF9yveQ", title: "Station ID RTV (2015)", cat: "Jingle & Ident", st: "RTV" },
   { id: "3eQudWI4dt0", title: "Station ID B Channel (2011)", cat: "Jingle & Ident", st: "B Channel" },
+  { id: "ov_Pb1VQEEg", title: "Station ID B Channel (2011–2012)", cat: "Jingle & Ident", st: "B Channel" },
   { id: "6-USB5tg00o", title: "Station ID NET. (2013)", cat: "Jingle & Ident", st: "NET." },
+  { id: "ypS3Sq8qFdw", title: "Opening Bumper NET. 24 (2013)", cat: "Jingle & Ident", st: "NET." },
   { id: "waxybtVbLsQ", title: "Station ID TVRI (1999)", cat: "Jingle & Ident", st: "TVRI" }
 ];

@@ -1,6 +1,6 @@
 # Siar
 
-Televisi analog dalam browser. Memutar 79 siaran TV Indonesia era 1990–2015 (iklan jadul, opening kartun dan tokusatsu, sinetron, jingle stasiun TV) melalui embed resmi YouTube, dengan bodi TV 3D, remote control fisik, antena interaktif, dan Blok Stasiun.
+Televisi analog dalam browser. Memutar 84 siaran TV Indonesia era 1990–2015 (iklan jadul, opening kartun dan tokusatsu, sinetron, jingle stasiun TV) melalui embed resmi YouTube, dengan bodi TV 3D, remote control fisik, antena interaktif, dan Blok Stasiun.
 
 **Live:** https://tv.llunaticsys.web.id
 
@@ -13,7 +13,7 @@ Televisi analog dalam browser. Memutar 79 siaran TV Indonesia era 1990–2015 (i
 - **Bodi 3D ala TV asli** — Tombol fisik timbul yang tenggelam saat ditekan, antena teleskopik dua batang, speaker grille perforasi, bezel tebal, kaca layar melengkung (highlight + vignette), tekstur plastik
 - **Video bersih** — Overscan ala CRT memotong strip judul/kontrol YouTube; kontrol pemutar disembunyikan (`controls=0`); klik layar = putar/jeda, dobel-klik = layar penuh
 - **Efek layar** — VHS (tracking, chromatic aberration, jitter), scanline CRT + intensitas, noise latar yang bereaksi terhadap kualitas sinyal, animasi power-on CRT, rasio 4:3 / 16:9
-- **Panduan siaran** — Seluruh channel per kategori dengan thumbnail YouTube, pencarian, label stasiun, penanda ✓ sudah-ditonton, dan progres koleksi (X/79 ditonton)
+- **Panduan siaran** — Seluruh channel per kategori dengan thumbnail YouTube, pencarian, label stasiun, penanda ✓ sudah-ditonton, dan progres koleksi (X/84 ditonton)
 - **Favorit** — Tandai siaran dengan bintang; terkumpul di grup teratas panduan
 - **Channel kustom** — Tambah siaran dengan menempelkan URL/ID YouTube; tersimpan di `localStorage`
 - **Sleep timer** — TV mati otomatis setelah 15/30/60/90 menit
@@ -24,31 +24,31 @@ Pengaturan, favorit, channel kustom, posisi antena, dan riwayat tontonan tersimp
 
 ## Siaran bawaan
 
-Total **79 channel** siaran TV Indonesia 1990–2015:
+Total **84 channel** siaran TV Indonesia 1990–2015:
 
 | Kategori | Jumlah |
 | --- | --- |
 | Iklan Jadul | 14 |
-| Opening Kartun | 36 |
+| Opening Kartun | 37 |
 | Opening Tokusatsu | 2 |
 | Sinetron & Acara TV | 13 |
-| Jingle & Ident | 14 |
+| Jingle & Ident | 18 |
 
 | Stasiun | Jumlah |
 | --- | --- |
-| RCTI | 20 |
-| Global TV | 16 |
+| RCTI | 21 |
+| Global TV | 15 |
 | Multi-Stasiun (iklan TVC) | 14 |
 | Indosiar | 11 |
 | MNCTV/TPI | 4 |
 | SCTV | 3 |
 | Trans7 | 3 |
-| ANTV | 2 |
+| ANTV | 3 |
+| NET. | 3 |
 | Trans TV | 2 |
+| RTV | 2 |
+| B Channel | 2 |
 | TVRI | 1 |
-| RTV | 1 |
-| B Channel | 1 |
-| NET. | 1 |
 
 Seluruh `video_id` telah diverifikasi satu per satu via YouTube oEmbed (HTTP 200 dan judul klip asli — bukan video lirik, episode, atau cover). Tidak ada berkas video yang disimpan atau diunggah ulang di repositori ini.
 
