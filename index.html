@@ -18,7 +18,7 @@
       <p class="tagline">televisi analog dalam browser — nyalakan, arahkan remote-nya, duduk manis.</p>
     </header>
 
-    <section class="tv model-black" id="tv" aria-label="Televisi analog">
+    <section class="tv shape-trinitron finish-hitam" id="tv" aria-label="Televisi analog">
       <div class="antenna" id="antenna">
         <span class="rod rod-l" id="rodL" title="Seret untuk mengatur antena kiri"></span>
         <span class="rod rod-r" id="rodR" title="Seret untuk mengatur antena kanan"></span>
@@ -26,6 +26,9 @@
       </div>
       <div class="tv-body">
         <div class="tv-main">
+          <div class="tv-side side-l" aria-hidden="true">
+            <div class="speaker"></div>
+          </div>
           <div class="screen-wrap">
             <div class="screen" id="screen">
               <div class="screen-inner" id="screenInner">
@@ -87,7 +90,7 @@
     </section>
 
     <footer>
-      <p>Siar memutar semua video lewat embed resmi YouTube. Ketuk tombol remote melayang di kanan bawah buat mengendalikan TV dari "depan layar", tekan <code>G</code> buat panduan siaran, <code>S</code> buat pengaturan, <code>H</code> buat semua shortcut. Seret antenanya — sinyal tiap channel beda posisi.</p>
+      <p>Siar memutar video lewat embed resmi YouTube, Dailymotion, Vimeo & Internet Archive. Ketuk tombol remote melayang di kanan bawah buat mengendalikan TV dari "depan layar", tekan <code>G</code> buat panduan siaran, <code>S</code> buat pengaturan, <code>H</code> buat semua shortcut. Seret antenanya — sinyal tiap channel beda posisi.</p>
     </footer>
   </main>
 
@@ -95,7 +98,7 @@
   <div class="remote-veil" id="remoteVeil"></div>
   <section class="remote" id="remote" aria-label="Remote control" aria-hidden="true">
     <div class="remote-grip" aria-hidden="true"></div>
-    <div class="remote-led-wrap" aria-hidden="true"><span class="ir-led" id="irLed"></span></div>
+    <div class="remote-led-wrap" aria-hidden="true"><span class="ir-beam" id="irBeam"></span><span class="ir-led" id="irLed"></span></div>
     <div class="remote-top">
       <span class="remote-brand">SIAR&nbsp;REMOTE</span>
       <span class="remote-top-btns">
@@ -201,13 +204,33 @@
     </div>
 
     <div class="set-group">
-      <h3>Model TV</h3>
-      <div class="model-row" id="modelRow">
-        <button class="model-card" data-model="wood"><span class="sw wood"></span>Kayu 80-an</button>
-        <button class="model-card" data-model="black"><span class="sw black"></span>Plastik 90-an</button>
-        <button class="model-card" data-model="silver"><span class="sw silver"></span>Silver 2000-an</button>
+      <h3>Bentuk TV</h3>
+      <div class="model-row wrap" id="shapeRow">
+        <button class="model-card" data-shape="trinitron"><span class="swp trinitron"></span>Trinitron</button>
+        <button class="model-card" data-shape="philips"><span class="swp philips"></span>Philips</button>
+        <button class="model-card" data-shape="sharp"><span class="swp sharp"></span>Sharp</button>
+        <button class="model-card" data-shape="polytron"><span class="swp polytron"></span>Polytron</button>
+        <button class="model-card" data-shape="wood"><span class="swp wood"></span>Kayu 80-an</button>
+      </div>
+      <h3 class="sub">Warna / Finishing</h3>
+      <div class="model-row" id="finishRow">
+        <button class="model-card" data-finish="hitam"><span class="sw hitam"></span>Hitam</button>
+        <button class="model-card" data-finish="silver"><span class="sw silver"></span>Silver</button>
+        <button class="model-card" data-finish="kayu"><span class="sw kayu"></span>Kayu</button>
+        <button class="model-card" data-finish="ivory"><span class="sw ivory"></span>Putih gading</button>
       </div>
       <label class="set-row"><span>Rasio layar 16:9</span><input type="checkbox" id="setRatio"><i></i></label>
+      <p class="set-note">Bentuk mengikuti siluet TV betulan (plat merek gaya terinspirasi, bukan logo asli); warna dipilih terpisah dari bentuk.</p>
+    </div>
+
+    <div class="set-group">
+      <h3>Remote</h3>
+      <div class="model-row" id="rmodeRow">
+        <button class="model-card" data-rmode="point"><span class="swp rpoint"></span>Mengarah ke TV</button>
+        <button class="model-card" data-rmode="flat"><span class="swp rflat"></span>Datar</button>
+      </div>
+      <label class="set-row"><span>Bunyi klik remote</span><input type="checkbox" id="setClick"><i></i></label>
+      <label class="set-row"><span>Getar di ponsel</span><input type="checkbox" id="setVibrate"><i></i></label>
     </div>
 
     <div class="set-group">
@@ -216,6 +239,29 @@
       <label class="set-row"><span>Scanline CRT</span><input type="checkbox" id="setScan"><i></i></label>
       <label class="set-row column"><span>Intensitas scanline <b id="scanVal"></b></span><input type="range" id="setScanInt" min="0" max="100"></label>
       <label class="set-row column"><span>Noise / static latar <b id="noiseVal"></b></span><input type="range" id="setNoise" min="0" max="100"></label>
+      <label class="set-row"><span>Kelengkungan kaca tabung</span><input type="checkbox" id="setCurve"><i></i></label>
+      <label class="set-row"><span>Kedip kaca (flicker)</span><input type="checkbox" id="setFlicker"><i></i></label>
+      <label class="set-row column"><span>Kecerahan <b id="brightVal"></b></span><input type="range" id="setBright" min="50" max="150"></label>
+      <label class="set-row column"><span>Kontras <b id="contrastVal"></b></span><input type="range" id="setContrast" min="50" max="150"></label>
+      <label class="set-row column"><span>Warna <b id="saturateVal"></b></span><input type="range" id="setSaturate" min="50" max="150"></label>
+    </div>
+
+    <div class="set-group">
+      <h3>Sinyal</h3>
+      <div class="model-row wrap" id="sigRow">
+        <button class="model-card" data-sig="antenna">Antena interaktif</button>
+        <button class="model-card" data-sig="clean">Selalu bersih</button>
+        <button class="model-card" data-sig="random">Acak per channel</button>
+      </div>
+      <p class="set-note">Mode antena: seret batang antena di atas TV — tiap channel punya posisi sinyal terbaik sendiri. Mode acak memberi kualitas sinyal beda di tiap channel tanpa perlu menggeser antena.</p>
+    </div>
+
+    <div class="set-group">
+      <h3>Putar</h3>
+      <label class="set-row"><span>TV langsung nyala saat halaman dibuka</span><input type="checkbox" id="setAutoPower"><i></i></label>
+      <label class="set-row"><span>Ingat channel terakhir</span><input type="checkbox" id="setRemember"><i></i></label>
+      <label class="set-row"><span>Auto-pindah saat video habis</span><input type="checkbox" id="setAutoNext"><i></i></label>
+      <p class="set-note">Channel arsip (archive.org) diputar dengan kontrol bawaan videonya; auto-pindah berlaku penuh di YouTube, Dailymotion, dan Vimeo.</p>
     </div>
 
     <div class="set-group">

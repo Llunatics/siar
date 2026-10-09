@@ -9,8 +9,6 @@
   var list = PNStore.allChannels();   // daftar gabungan bawaan + kustom
   var current = 0;
   var powered = false;
-  var player = null;
-  var playerReady = false;
   var osdTimer = null;
   var audioCtx = null;
   var sleepDeadline = 0;              // timestamp ms; 0 = sleep mati
@@ -26,6 +24,7 @@
   var $ = function (id) { return document.getElementById(id); };
   var els = {
     tv: $("tv"), screen: $("screen"), osd: $("osd"), chNum: $("chNum"),
+    playerBox: $("player"),
     staticC: $("staticCanvas"), shield: $("clickShield"),
     powerHint: $("powerHint"), powerBtn: $("powerBtn"),
     powerFlash: $("powerFlash"), sleepBadge: $("sleepBadge"),
@@ -46,11 +45,20 @@
     irLed: $("irLed"), irEye: $("irEye")
   };
 
-  var MODEL_PLATES = {
-    wood: "WOODTONE&nbsp;•&nbsp;1984",
-    black: "TRINITRON-ISH&nbsp;•&nbsp;1997",
-    silver: "FLATRON-ISH&nbsp;•&nbsp;2004"
+  // Plat merek mengikuti BENTUK TV (terinspirasi, bukan logo asli)
+  var PLATES = {
+    trinitron: "TRINITRON-ISH&nbsp;•&nbsp;1997",
+    philips: "PHILIPS-ISH&nbsp;•&nbsp;2001",
+    sharp: "SHARP-ISH&nbsp;•&nbsp;2004",
+    polytron: "POLITRON-ISH&nbsp;•&nbsp;2003",
+    wood: "WOODTONE&nbsp;•&nbsp;1984"
   };
+  // Finishing yang masuk akal per bentuk (kabinet kayu tak ditawari silver metalik)
+  var FINISH_BY_SHAPE = { wood: ["kayu", "hitam", "ivory"] };
+  function finishAllowed(shape, finish) {
+    var allow = FINISH_BY_SHAPE[shape];
+    return !allow || allow.indexOf(finish) !== -1;
+  }
 
   // Urutan tampil chip stasiun di panduan
   var STATION_ORDER = ["RCTI", "SCTV", "Indosiar", "Trans TV", "Trans7", "Global TV",
@@ -59,7 +67,13 @@
 
   function pad(n) { return (n < 10 ? "0" : "") + n; }
   function cur() { return list[current]; }
-  function thumb(id) { return "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg"; }
+  function thumbOf(ch) {
+    if (ch.thumb) return ch.thumb;
+    if (ch.src === "yt") return "https://i.ytimg.com/vi/" + ch.id + "/hqdefault.jpg";
+    if (ch.src === "dm") return "https://www.dailymotion.com/thumbnail/video/" + ch.id;
+    if (ch.src === "ia") return "https://archive.org/services/img/" + ch.id;
+    return ""; // vimeo tanpa thumbnail tersimpan → tanpa gambar
+  }
   function esc(s) {
     return String(s).replace(/[&<>"']/g, function (c) {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
@@ -70,31 +84,77 @@
   }
 
   /* ================= Pengaturan tampilan ================= */
+  function setChk(id, v) { var e = $(id); if (e) e.checked = !!v; }
+  function setRange(id, v) { var e = $(id); if (e) e.value = v; }
+  function setLbl(id, v) { var e = $(id); if (e) e.textContent = v; }
+  function markCards(attr, val) {
+    Array.prototype.forEach.call(document.querySelectorAll("[data-" + attr + "]"), function (b) {
+      b.classList.toggle("sel", b.getAttribute("data-" + attr) === String(val));
+    });
+  }
+
   function applySettings() {
-    els.tv.classList.remove("model-wood", "model-black", "model-silver");
-    els.tv.classList.add("model-" + S.model);
+    if (!finishAllowed(S.shape, S.finish)) S.finish = S.shape === "wood" ? "kayu" : "hitam";
+    ["trinitron", "philips", "sharp", "polytron", "wood"].forEach(function (s) {
+      els.tv.classList.toggle("shape-" + s, S.shape === s);
+    });
+    ["hitam", "silver", "kayu", "ivory"].forEach(function (f) {
+      els.tv.classList.toggle("finish-" + f, S.finish === f);
+    });
     els.tv.classList.toggle("ratio-169", !!S.ratio169);
     els.tv.classList.toggle("vhs-on", !!S.vhs);
     els.tv.classList.toggle("scan-off", !S.scanlines);
+    els.tv.classList.toggle("flicker-off", !S.flicker);
+    els.tv.classList.toggle("curve-off", !S.curvature);
     els.tv.style.setProperty("--scan-alpha", (S.scanIntensity / 100 * 0.5).toFixed(2));
-    els.brandPlate.innerHTML = MODEL_PLATES[S.model] || MODEL_PLATES.black;
-    $("setVhs").checked = !!S.vhs;
-    $("setScan").checked = !!S.scanlines;
-    $("setRatio").checked = !!S.ratio169;
-    $("setScanInt").value = S.scanIntensity;
-    $("setNoise").value = S.noise;
-    els.scanVal.textContent = S.scanIntensity + "%";
-    els.noiseVal.textContent = S.noise + "%";
-    Array.prototype.forEach.call(document.querySelectorAll(".model-card"), function (b) {
-      b.classList.toggle("sel", b.getAttribute("data-model") === S.model);
+    els.brandPlate.innerHTML = PLATES[S.shape] || PLATES.trinitron;
+    els.remote.classList.toggle("point", S.remoteMode === "point");
+
+    markCards("shape", S.shape);
+    markCards("finish", S.finish);
+    Array.prototype.forEach.call(document.querySelectorAll("[data-finish]"), function (b) {
+      b.classList.toggle("disabled", !finishAllowed(S.shape, b.getAttribute("data-finish")));
     });
+    markCards("rmode", S.remoteMode);
+    markCards("sig", S.signalMode);
+
+    setChk("setRatio", S.ratio169);
+    setChk("setClick", S.remoteClick);
+    setChk("setVibrate", S.vibrate);
+    setChk("setVhs", S.vhs);
+    setChk("setScan", S.scanlines);
+    setRange("setScanInt", S.scanIntensity);
+    setLbl("scanVal", S.scanIntensity + "%");
+    setRange("setNoise", S.noise);
+    setLbl("noiseVal", S.noise + "%");
+    setChk("setCurve", S.curvature);
+    setChk("setFlicker", S.flicker);
+    setRange("setBright", S.bright);
+    setLbl("brightVal", S.bright + "%");
+    setRange("setContrast", S.contrast);
+    setLbl("contrastVal", S.contrast + "%");
+    setRange("setSaturate", S.saturate);
+    setLbl("saturateVal", S.saturate + "%");
+    setChk("setAutoPower", S.autoPower);
+    setChk("setRemember", S.rememberCh);
+    setChk("setAutoNext", S.autoNext);
+
     applyAntenna();
     refreshSignal();
-    if (playerReady) {
-      player.setVolume(S.volume);
-      if (S.muted) player.mute(); else player.unMute();
-      updateMuteLabel();
-    }
+    vpApplyVolume();
+    updateMuteLabel();
+  }
+
+  /* Filter gambar ala knob TV (kecerahan/kontras/warna) + degradasi sinyal + VHS.
+     Diterapkan ke wadah player — berlaku untuk semua sumber video. */
+  function applyPicture() {
+    var b = S.bright, c = S.contrast, s = S.saturate;
+    if (S.vhs) { b *= 1.03; c *= 1.06; s *= 1.25; }
+    var f = "brightness(" + (b / 100).toFixed(3) + ") contrast(" + (c / 100).toFixed(3) +
+            ") saturate(" + (s / 100).toFixed(3) + ")";
+    if (powered && signalQ < 45) f += " saturate(0.5) contrast(1.08) brightness(0.94)";
+    else if (powered && signalQ < 75) f += " saturate(0.85) contrast(1.03)";
+    els.playerBox.style.filter = f;
   }
 
   /* ================= Antena & sinyal ================= */
@@ -106,11 +166,13 @@
     return Math.abs(h);
   }
   function antTarget(ch) {
-    var h = hashStr(ch.id);
+    var h = hashStr(ch.key);
     return { l: -55 + (h % 110), r: -55 + (((h >> 4) % 110) + 110) % 110 };
   }
   function computeSignal() {
     if (!list.length) { signalQ = 100; return signalQ; }
+    if (S.signalMode === "clean") { signalQ = 100; return signalQ; }
+    if (S.signalMode === "random") { signalQ = 30 + (hashStr(cur().key) % 67); return signalQ; } // 30–96, beda tiap channel
     var t = antTarget(cur());
     var dist = Math.abs(S.antL - t.l) + Math.abs(S.antR - t.r);
     signalQ = Math.max(4, Math.round(100 - dist * 0.62));
@@ -126,6 +188,7 @@
     els.sigBar.style.width = (powered ? signalQ : 0) + "%";
     els.tv.classList.toggle("sig-bad", powered && signalQ < 45);
     els.tv.classList.toggle("sig-mid", powered && signalQ >= 45 && signalQ < 75);
+    applyPicture();
   }
   function signalHint() {
     return "SINYAL " + signalQ + "%" + (signalQ < 45 ? " — GESER ANTENA" : "");
@@ -233,7 +296,7 @@
 
   /* ================= Panduan siaran ================= */
   function groupOf(ch) {
-    if (guideStation === "SEMUA" && PNStore.isFavorite(ch.id)) return "★ Favorit";
+    if (guideStation === "SEMUA" && PNStore.isFavorite(ch.key)) return "★ Favorit";
     return ch.cat;
   }
   function matchGuide(ch) {
@@ -275,10 +338,11 @@
       list.forEach(function (ch, i) {
         if (groupOf(ch) !== g) return;
         if (!matchGuide(ch)) return;
-        var fav = PNStore.isFavorite(ch.id);
-        var seen = PNStore.isWatched(ch.id);
+        var fav = PNStore.isFavorite(ch.key);
+        var seen = PNStore.isWatched(ch.key);
+        var th = thumbOf(ch);
         html += '<li data-idx="' + i + '"' + (seen ? ' class="watched"' : "") + '>' +
-          '<img class="th" src="' + thumb(ch.id) + '" alt="" loading="lazy">' +
+          (th ? '<img class="th" src="' + th + '" alt="" loading="lazy">' : '<span class="th th-none" aria-hidden="true"></span>') +
           '<span class="num">' + pad(i + 1) + "</span>" +
           '<span class="ttl">' + esc(ch.title) +
           '<span class="stn">' + esc(ch.station) + "</span></span>" +
@@ -303,7 +367,7 @@
     Array.prototype.forEach.call(els.guide.querySelectorAll("[data-fav]"), function (b) {
       b.addEventListener("click", function () {
         var idx = parseInt(b.getAttribute("data-fav"), 10);
-        PNStore.toggleFavorite(list[idx].id);
+        PNStore.toggleFavorite(list[idx].key);
         buildGuide(); markActive(); syncFavBtn();
       });
     });
@@ -328,9 +392,9 @@
   }
 
   function refreshList() {
-    var keepId = list.length ? list[current].id : null;
+    var keepKey = list.length ? list[current].key : null;
     list = PNStore.allChannels();
-    var ni = keepId ? list.findIndex(function (c) { return c.id === keepId; }) : -1;
+    var ni = keepKey ? list.findIndex(function (c) { return c.key === keepKey; }) : -1;
     current = ni === -1 ? Math.min(current, Math.max(0, list.length - 1)) : ni;
   }
 
@@ -347,7 +411,7 @@
     syncFavBtn();
   }
   function syncFavBtn() {
-    var on = list.length && PNStore.isFavorite(cur().id);
+    var on = list.length && PNStore.isFavorite(cur().key);
     els.favBtn.textContent = on ? "★ FAVORIT" : "☆ FAVORIT";
     els.favBtn.classList.toggle("on", !!on);
   }
@@ -424,48 +488,219 @@
     } catch (e) { /* audio tidak tersedia */ }
   }
 
-  /* ================= YouTube player ================= */
-  function loadApi() {
-    var tag = document.createElement("script");
-    tag.src = "https://www.youtube.com/iframe_api";
-    document.head.appendChild(tag);
+  /* ================= Lapisan pemutar multi-sumber ================= */
+  // YouTube / Dailymotion / Vimeo lewat API resmi masing-masing;
+  // archive.org memakai iframe standar (kontrol bawaan videonya).
+  var vpMode = "none";        // yt | dm | vimeo | ia | none
+  var vpPlaying = false;
+  var ytPlayer = null, ytReady = false, ytWanted = null;
+  var dmPlayer = null, vmPlayer = null;
+  var apiLoading = {};
+
+  function vpInject(src, cb) {
+    var t = document.createElement("script");
+    t.src = src;
+    t.onload = function () { cb(true); };
+    t.onerror = function () { cb(false); };
+    document.head.appendChild(t);
   }
-  window.onYouTubeIframeAPIReady = function () {
-    player = new YT.Player("player", {
-      width: "100%", height: "100%",
-      playerVars: { autoplay: 0, controls: 0, modestbranding: 1, rel: 0, iv_load_policy: 3, disablekb: 1, playsinline: 1 },
+  function vpSetBox() {
+    els.playerBox.className = "src-" + vpMode;
+    els.playerBox.style.opacity = "1";
+    els.screen.classList.toggle("native-ui", vpMode === "ia");
+  }
+  function vpTeardown(keep) {
+    if (keep !== "yt" && ytPlayer) { try { ytPlayer.destroy(); } catch (e) { /* abaikan */ } ytPlayer = null; ytReady = false; }
+    if (keep !== "vimeo" && vmPlayer) { try { vmPlayer.destroy(); } catch (e) { /* abaikan */ } vmPlayer = null; }
+    if (keep !== "dm") dmPlayer = null;
+    els.playerBox.innerHTML = "";
+    vpPlaying = false;
+  }
+  function vpEnded() {
+    vpPlaying = false;
+    if (S.autoNext && powered) nextChannel();
+  }
+  function vpApplyVolume() {
+    try {
+      if (vpMode === "yt" && ytPlayer && ytReady) {
+        ytPlayer.setVolume(S.volume);
+        if (S.muted) ytPlayer.mute(); else ytPlayer.unMute();
+      } else if (vpMode === "dm" && dmPlayer) {
+        if (dmPlayer.setVolume) dmPlayer.setVolume(S.muted ? 0 : S.volume / 100);
+        if (dmPlayer.setMuted) dmPlayer.setMuted(!!S.muted);
+      } else if (vpMode === "vimeo" && vmPlayer) {
+        var p = vmPlayer.setVolume(S.muted ? 0 : S.volume / 100);
+        if (p && p.catch) p.catch(function () {});
+        if (vmPlayer.setMuted) vmPlayer.setMuted(!!S.muted);
+      }
+    } catch (e) { /* abaikan */ }
+  }
+  function vpLoad(ch) {
+    if (!ch) return;
+    var src = ch.src || "yt";
+    if (src === "dm") vpLoadDm(ch);
+    else if (src === "vimeo") vpLoadVm(ch);
+    else if (src === "ia") vpLoadIa(ch);
+    else vpLoadYt(ch);
+  }
+
+  function vpLoadYt(ch) {
+    var reuse = (vpMode === "yt" && ytPlayer && ytReady);
+    vpMode = "yt"; vpSetBox();
+    if (reuse) { try { ytPlayer.loadVideoById(ch.id); } catch (e) { /* abaikan */ } vpApplyVolume(); return; }
+    vpTeardown("yt");
+    ytWanted = ch;
+    if (window.YT && YT.Player) { buildYt(ch); return; }
+    window.onYouTubeIframeAPIReady = function () { if (vpMode === "yt" && ytWanted) buildYt(ytWanted); };
+    if (!apiLoading.yt) { apiLoading.yt = true; vpInject("https://www.youtube.com/iframe_api", function () {}); }
+  }
+  function buildYt(ch) {
+    els.playerBox.innerHTML = "";
+    var slot = document.createElement("div");
+    slot.id = "ytSlot";
+    els.playerBox.appendChild(slot);
+    ytPlayer = new YT.Player("ytSlot", {
+      width: "100%", height: "100%", videoId: ch.id,
+      playerVars: { autoplay: 1, controls: 0, modestbranding: 1, rel: 0, iv_load_policy: 3, disablekb: 1, playsinline: 1 },
       events: {
         onReady: function () {
-          playerReady = true;
-          player.setVolume(S.volume);
-          if (S.muted) player.mute();
-          updateMuteLabel();
-          if (powered && list.length) player.loadVideoById(cur().id);
+          ytReady = true;
+          vpApplyVolume();
+          try { ytPlayer.playVideo(); } catch (e) { /* abaikan */ }
         },
         onStateChange: function (e) {
-          if (e.data === YT.PlayerState.ENDED && powered) nextChannel();
+          if (e.data === YT.PlayerState.PLAYING) vpPlaying = true;
+          else if (e.data === YT.PlayerState.PAUSED) vpPlaying = false;
+          else if (e.data === YT.PlayerState.ENDED) vpEnded();
         }
       }
     });
-  };
+  }
+
+  function vpLoadDm(ch) {
+    vpMode = "dm"; vpSetBox();
+    vpTeardown("dm");
+    if (window.DM && DM.Player) { buildDm(ch); return; }
+    if (!apiLoading.dm) {
+      apiLoading.dm = true;
+      vpInject("https://api.dmcdn.net/all.js", function (ok) {
+        if (ok && vpMode === "dm" && list.length) buildDm(cur());
+      });
+    }
+  }
+  function buildDm(ch) {
+    els.playerBox.innerHTML = "";
+    var slot = document.createElement("div");
+    slot.id = "dmSlot";
+    els.playerBox.appendChild(slot);
+    try {
+      dmPlayer = new DM.Player(slot, {
+        video: ch.id, width: "100%", height: "100%",
+        params: { autoplay: true, controls: false, "ui-logo": false, sharing_enable: false }
+      });
+      dmPlayer.addEventListener("play", function () { vpPlaying = true; });
+      dmPlayer.addEventListener("playing", function () { vpPlaying = true; });
+      dmPlayer.addEventListener("pause", function () { vpPlaying = false; });
+      dmPlayer.addEventListener("video_end", function () { vpEnded(); });
+      dmPlayer.addEventListener("apiready", function () { vpApplyVolume(); });
+    } catch (e) {
+      dmPlayer = null;
+      els.playerBox.innerHTML = '<iframe src="https://www.dailymotion.com/embed/video/' +
+        encodeURIComponent(ch.id) + '?autoplay=1" allow="autoplay; fullscreen" allowfullscreen title=""></iframe>';
+    }
+  }
+
+  function vpLoadVm(ch) {
+    vpMode = "vimeo"; vpSetBox();
+    if (vmPlayer && window.Vimeo) {
+      try {
+        var pr = vmPlayer.loadVideo(ch.id);
+        if (pr && pr.then) {
+          pr.then(function () { vpApplyVolume(); try { vmPlayer.play(); } catch (e) { /* abaikan */ } },
+                  function () { buildVm(ch); });
+          return;
+        }
+      } catch (e) { /* bangun ulang di bawah */ }
+    }
+    vpTeardown("vimeo");
+    if (window.Vimeo && Vimeo.Player) { buildVm(ch); return; }
+    if (!apiLoading.vm) {
+      apiLoading.vm = true;
+      vpInject("https://player.vimeo.com/api/player.js", function (ok) {
+        if (ok && vpMode === "vimeo" && list.length) buildVm(cur());
+      });
+    }
+  }
+  function buildVm(ch) {
+    els.playerBox.innerHTML = "";
+    var slot = document.createElement("div");
+    slot.id = "vmSlot";
+    els.playerBox.appendChild(slot);
+    try {
+      vmPlayer = new Vimeo.Player(slot, {
+        id: ch.id, width: "100%", height: "100%", autoplay: true,
+        controls: false, title: false, byline: false, portrait: false, loop: false
+      });
+      vmPlayer.on("play", function () { vpPlaying = true; });
+      vmPlayer.on("pause", function () { vpPlaying = false; });
+      vmPlayer.on("ended", function () { vpEnded(); });
+      vmPlayer.ready().then(function () { vpApplyVolume(); });
+    } catch (e) { vmPlayer = null; }
+  }
+
+  function vpLoadIa(ch) {
+    vpMode = "ia"; vpSetBox();
+    vpTeardown("ia");
+    var f = document.createElement("iframe");
+    f.src = "https://archive.org/embed/" + encodeURIComponent(ch.id) + "?autoplay=1";
+    f.setAttribute("allow", "autoplay; fullscreen");
+    f.setAttribute("allowfullscreen", "");
+    f.title = ch.title;
+    els.playerBox.appendChild(f);
+    vpPlaying = true; // kontrol play/pause dari UI bawaan arsip
+  }
+
+  function vpStop() {
+    try {
+      if (vpMode === "yt" && ytPlayer && ytReady) ytPlayer.stopVideo();
+      else if (vpMode === "dm" && dmPlayer && dmPlayer.pause) dmPlayer.pause();
+      else if (vpMode === "vimeo" && vmPlayer) { var p = vmPlayer.pause(); if (p && p.catch) p.catch(function () {}); }
+      else if (vpMode === "ia") els.playerBox.innerHTML = "";
+    } catch (e) { /* abaikan */ }
+    vpPlaying = false;
+    els.playerBox.style.opacity = "0";
+  }
+  function vpToggle() {
+    if (vpMode === "ia" || vpMode === "none") return; // ia: shield disembunyikan, pakai kontrol arsip
+    try {
+      if (vpMode === "yt" && ytPlayer && ytReady) {
+        if (vpPlaying) { ytPlayer.pauseVideo(); showOsd("❚❚ PAUSE"); }
+        else { ytPlayer.playVideo(); showOsd("▶ PLAY"); }
+      } else if (vpMode === "dm" && dmPlayer) {
+        if (dmPlayer.togglePlay) dmPlayer.togglePlay();
+        else if (vpPlaying) dmPlayer.pause(); else dmPlayer.play();
+        showOsd(vpPlaying ? "❚❚ PAUSE" : "▶ PLAY");
+      } else if (vpMode === "vimeo" && vmPlayer) {
+        if (vpPlaying) vmPlayer.pause(); else vmPlayer.play();
+        showOsd(vpPlaying ? "❚❚ PAUSE" : "▶ PLAY");
+      }
+    } catch (e) { /* abaikan */ }
+  }
 
   function tuneTo(idx) {
     if (!list.length) return;
     current = ((idx % list.length) + list.length) % list.length;
     // Keluar dari blok kalau pindah ke stasiun lain (mis. lewat panduan)
     if (blockStation && cur().station !== blockStation) exitBlock(false);
-    PNStore.markWatched(cur().id);
+    PNStore.markWatched(cur().key);
+    if (S.rememberCh) { S.lastCh = cur().key; PNStore.saveSettings(); }
     refreshSignal();
     flashEye();
     staticFx(signalQ < 45 ? 800 : 450);
     showOsd(signalHint());
     markActive();
     syncNow();
-    if (playerReady) {
-      player.loadVideoById(cur().id);
-      player.setVolume(S.volume);
-      updateMuteLabel();
-    }
+    vpLoad(cur());
   }
 
   function stepChannel(dir) {
@@ -521,7 +756,7 @@
     flashEye();
     refreshSignal();
     staticFx(650);
-    if (playerReady) player.loadVideoById(cur().id);
+    vpLoad(cur());
     showOsd(signalHint());
     markActive();
     syncNow();
@@ -536,14 +771,13 @@
     flashEye();
     refreshSignal();
     if (!silent) staticFx(220);
-    if (playerReady) player.stopVideo();
+    vpStop();
     markActive();
     syncNow();
   }
 
   function updateMuteLabel() {
-    if (!playerReady) return;
-    var m = player.isMuted();
+    var m = !!S.muted;
     els.muteBtn.textContent = "MUTE";
     els.muteBtn.classList.toggle("on", m);
     els.muteBtn.title = m ? "Suara mati — klik untuk menyalakan (M)" : "Mute (M)";
@@ -667,9 +901,16 @@
       void led.offsetWidth;
       led.classList.add("flash");
     }
+    // Mode "mengarah ke TV": pancaran IR terasa menembak ke depan.
+    var beam = $("irBeam");
+    if (beam && S.remoteMode === "point") {
+      beam.classList.remove("flash");
+      void beam.offsetWidth;
+      beam.classList.add("flash");
+    }
     flashEye();
-    playClick();
-    if (navigator.vibrate) { try { navigator.vibrate(10); } catch (e) { /* abaikan */ } }
+    if (S.remoteClick) playClick();
+    if (S.vibrate && navigator.vibrate) { try { navigator.vibrate(10); } catch (e) { /* abaikan */ } }
   }
 
   function volBar(v) {
@@ -682,11 +923,10 @@
   /* ================= Event: kontrol TV ================= */
   els.powerBtn.addEventListener("click", function () { powered ? powerOff() : powerOn(); });
   els.screen.addEventListener("dblclick", toggleFs);
-  // Klik di layar: putar / jeda lewat API (dobel-klik tetap layar penuh)
+  // Klik di layar: putar / jeda lewat API pemutar aktif (dobel-klik tetap layar penuh)
   els.shield.addEventListener("click", function () {
-    if (!powered || !playerReady || typeof YT === "undefined") return;
-    if (player.getPlayerState() === YT.PlayerState.PLAYING) { player.pauseVideo(); showOsd("❚❚ PAUSE"); }
-    else { player.playVideo(); showOsd("▶ PLAY"); }
+    if (!powered) return;
+    vpToggle();
   });
   els.backdrop.addEventListener("click", closeSheets);
   Array.prototype.forEach.call(document.querySelectorAll("[data-close]"), function (b) {
@@ -697,19 +937,15 @@
     S.volume = parseInt(els.vol.value, 10);
     if (S.volume > 0 && S.muted) S.muted = false;
     PNStore.saveSettings();
-    if (playerReady) {
-      player.setVolume(S.volume);
-      if (S.muted) player.mute(); else player.unMute();
-      updateMuteLabel();
-    }
+    vpApplyVolume();
+    updateMuteLabel();
     if (powered) showOsdText("VOLUME " + S.volume, volBar(S.volume));
     flashEye();
   });
   els.muteBtn.addEventListener("click", function () {
-    if (!playerReady) return;
-    S.muted = !player.isMuted();
-    if (S.muted) player.mute(); else player.unMute();
+    S.muted = !S.muted;
     PNStore.saveSettings();
+    vpApplyVolume();
     updateMuteLabel();
     if (powered) showOsdText(S.muted ? "MUTE" : "VOLUME " + S.volume, S.muted ? "Suara dibisukan" : volBar(S.volume));
     flashEye();
@@ -720,7 +956,7 @@
   els.favBtn.addEventListener("click", function () {
     if (!list.length) return;
     if (!powered) powerOn();
-    PNStore.toggleFavorite(cur().id);
+    PNStore.toggleFavorite(cur().key);
     syncFavBtn(); buildGuide();
   });
 
@@ -782,17 +1018,36 @@
   });
 
   /* ================= Event: pengaturan ================= */
-  $("setVhs").addEventListener("change", function (e) { S.vhs = e.target.checked; PNStore.saveSettings(); applySettings(); });
-  $("setScan").addEventListener("change", function (e) { S.scanlines = e.target.checked; PNStore.saveSettings(); applySettings(); });
-  $("setRatio").addEventListener("change", function (e) { S.ratio169 = e.target.checked; PNStore.saveSettings(); applySettings(); });
-  $("setScanInt").addEventListener("input", function (e) { S.scanIntensity = parseInt(e.target.value, 10); PNStore.saveSettings(); applySettings(); });
-  $("setNoise").addEventListener("input", function (e) { S.noise = parseInt(e.target.value, 10); PNStore.saveSettings(); applySettings(); });
-  Array.prototype.forEach.call(document.querySelectorAll(".model-card"), function (b) {
-    b.addEventListener("click", function () {
-      S.model = b.getAttribute("data-model");
-      PNStore.saveSettings(); applySettings();
+  function bindChk(id, key) {
+    $(id).addEventListener("change", function (e) { S[key] = e.target.checked; saveAndApply(); });
+  }
+  function bindRange(id, key) {
+    $(id).addEventListener("input", function (e) { S[key] = parseInt(e.target.value, 10); saveAndApply(); });
+  }
+  function bindCards(attr, key) {
+    Array.prototype.forEach.call(document.querySelectorAll("[data-" + attr + "]"), function (b) {
+      b.addEventListener("click", function () { S[key] = b.getAttribute("data-" + attr); saveAndApply(); });
     });
-  });
+  }
+  bindChk("setRatio", "ratio169");
+  bindChk("setClick", "remoteClick");
+  bindChk("setVibrate", "vibrate");
+  bindChk("setVhs", "vhs");
+  bindChk("setScan", "scanlines");
+  bindRange("setScanInt", "scanIntensity");
+  bindRange("setNoise", "noise");
+  bindChk("setCurve", "curvature");
+  bindChk("setFlicker", "flicker");
+  bindRange("setBright", "bright");
+  bindRange("setContrast", "contrast");
+  bindRange("setSaturate", "saturate");
+  bindChk("setAutoPower", "autoPower");
+  bindChk("setRemember", "rememberCh");
+  bindChk("setAutoNext", "autoNext");
+  bindCards("shape", "shape");
+  bindCards("finish", "finish");
+  bindCards("rmode", "remoteMode");
+  bindCards("sig", "signalMode");
   $("resetBtn").addEventListener("click", function () {
     PNStore.resetAll();
     S = PNStore.settings;
@@ -830,9 +1085,14 @@
   bindRod(els.rodL, "antL");
   bindRod(els.rodR, "antR");
   els.vol.value = S.volume;
+  // Ingat channel terakhir: mulai dari siaran terakhir yang ditonton.
+  if (S.rememberCh && S.lastCh) {
+    var lastIdx = list.findIndex(function (c) { return c.key === S.lastCh; });
+    if (lastIdx !== -1) current = lastIdx;
+  }
   applySettings();
   buildGuide();
   syncNow();
   drawStatic();
-  loadApi();
+  if (S.autoPower && list.length) powerOn();
 })();
