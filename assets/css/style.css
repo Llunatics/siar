@@ -36,7 +36,10 @@ body {
 
 /* Panggung: TV + legenda shortcut ringkas di sampingnya. Halaman nyaris cuma TV. */
 .stage { display: flex; align-items: flex-start; justify-content: center; gap: 26px; }
-.stage .tv { flex: 0 1 auto; min-width: 0; }
+/* Lebar TV HARUS definit (basis 920px), bukan max-content. Regresi v9.1:
+   saat .tv hanya flex-basis:auto, lebar chassis dihitung dari konten dan
+   flex-basis .screen-wrap diabaikan sizing intrinsik → layar kolaps. */
+.stage .tv { flex: 0 1 920px; min-width: 0; }
 .legend {
   flex: 0 0 auto; margin-top: 150px;
   font-size: 11px; letter-spacing: .06em; color: var(--dim);
@@ -47,6 +50,9 @@ body {
   color: var(--accent); font-weight: 700; letter-spacing: .1em;
   display: inline-block; min-width: 34px;
 }
+/* Di bawah 1080px legenda disembunyikan supaya tidak mendesak panggung;
+   di desktop lebar ia tampil penuh sebagai kolom di samping TV. */
+@media (max-width: 1080px) { .legend { display: none; } }
 
 /* ---------- Badan TV & model ---------- */
 .tv-body {
@@ -119,7 +125,7 @@ body {
 .finish-grafit .antenna .mount { background: linear-gradient(180deg, #79818c, #2c3138); }
 .finish-kayu .antenna .mount { background: linear-gradient(180deg, #4b3419, #241605); }
 
-.screen-wrap { min-width: 0; }
+/* (min-width kolom layar diatur di blok chassis .tv-main di bawah) */
 
 /* ---------- Layar ---------- */
 .screen {
@@ -256,10 +262,14 @@ body {
 }
 
 /* ---------- Chassis lebar: layar + kolom samping + strip status ---------- */
-.tv-main { display: flex; gap: 18px; align-items: stretch; }
-.screen-wrap { flex: 0 1 660px; min-width: 0; }
+.tv-main { display: flex; gap: 18px; align-items: stretch; width: 100%; }
+/* Kolom layar = penerima sisa ruang utama: flex-grow 1 + lantai min-width
+   46% dari lebar chassis. Tidak boleh kolaps seperti regresi v9.1, di mana
+   .screen-wrap (flex-shrink 1, min-width 0, basis diabaikan saat sizing
+   max-content) menyerap seluruh defisit sampai tersisa 12px. */
+.screen-wrap { flex: 1 1 auto; min-width: 46%; }
 .tv-side {
-  flex: 1 1 auto; min-width: 120px;
+  flex: 0 0 172px; min-width: 0;
   display: flex; flex-direction: column; gap: 12px;
 }
 .ir-zone {
@@ -743,7 +753,7 @@ kbd {
 /* ---------- Bentuk TV (chassis) ---------- */
 .side-l { display: none; }
 .shape-polytron .side-l { display: flex; }
-.shape-polytron .screen-wrap { flex-basis: 540px; }
+.shape-polytron .tv-side { flex-basis: 118px; } /* grille ganda tetap ramping, layar dominan */
 /* Speaker di bawah layar */
 .shape-philips .tv-main, .shape-sharp .tv-main, .shape-jvc .tv-main,
 .shape-panasonic .tv-main, .shape-akari .tv-main { flex-direction: column; }
@@ -791,7 +801,8 @@ kbd {
    full-height di KEDUA sisi mengapit layar, bezel dalam hitam, layar agak
    cembung, strip kontrol silver di bawah layar, titik logo bulat di tengah. */
 .shape-flatron .side-l { display: flex; }
-.shape-flatron .screen-wrap { flex-basis: 545px; position: relative; }
+.shape-flatron .tv-side { flex-basis: 104px; } /* mesh sempit full-height mengapit layar (foto referensi) */
+.shape-flatron .screen-wrap { position: relative; }
 .shape-flatron .tv-body { border-radius: 15px; padding: 20px; }
 .shape-flatron .screen { border-radius: 12px / 14px; } /* tabung agak cembung */
 .shape-flatron .speaker { background-size: 5px 5px; } /* mesh perak rapat */
@@ -969,22 +980,28 @@ body.immersive .tv::before { /* pantulan cahaya layar: tipis & desaturasi, mengi
   filter: blur(10px);
   transition: opacity .6s ease;
 }
-body.immersive .tv-stand { /* papan atas lemari: walnut gelap desaturasi */
-  position: relative; height: 20px; margin-top: 4px; padding: 0;
-  background: linear-gradient(180deg, #4c3a24, #2a1c0e);
+/* Lemari TV DALAM ALUR LAYOUT (bukan absolut): tinggi lemari ikut terukur
+   fitStage, sehingga dasar lemari selalu menapak di lantai ruangan —
+   regresi v9.1: ::after absolut tidak masuk offsetHeight dan melayang. */
+body.immersive .tv-stand { /* papan atas 18px digambar sebagai lapisan latar */
+  display: block; position: relative; height: auto; margin-top: 4px; padding: 0;
+  background: linear-gradient(180deg, #4c3a24, #2a1c0e) top / 100% 18px no-repeat;
   border-radius: 5px;
-  box-shadow: 0 18px 34px rgba(0,0,0,.65),
-    inset 0 1px 0 rgba(255,255,255,.10), inset 0 -3px 6px rgba(0,0,0,.55);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.10);
 }
 body.immersive .tv-stand .foot { display: none; }
-body.immersive .tv-stand::after { /* badan lemari dua pintu, nada gelap realistis */
-  content: ""; position: absolute; top: 100%; left: 1.5%; right: 1.5%; height: 56px;
+body.immersive .tv-stand::after { /* badan lemari dua pintu, menapak lantai */
+  content: ""; display: block; height: 64px; margin: 18px 1.5% 0;
   background:
     linear-gradient(90deg, transparent 49.4%, rgba(0,0,0,.5) 49.4%, rgba(0,0,0,.5) 50.6%, transparent 50.6%),
     linear-gradient(180deg, #3a2a16, #1c1108);
   border-radius: 0 0 7px 7px;
   box-shadow: inset 0 0 0 3px rgba(0,0,0,.35), inset 0 2px 0 rgba(255,255,255,.05),
-    0 30px 36px rgba(0,0,0,.6);
+    inset 0 -12px 16px rgba(0,0,0,.55), 0 24px 30px rgba(0,0,0,.55);
+}
+body.immersive .tv::after { /* bayangan kontak tepat di bawah lemari */
+  height: 34px;
+  background: radial-gradient(ellipse 60% 100% at 50% 0%, rgba(0,0,0,.78), transparent 72%);
 }
 /* Lampu berdiri hangat */
 .lamp { position: absolute; right: 1%; bottom: 2%; width: 90px; height: 250px; z-index: 0; pointer-events: none; }
