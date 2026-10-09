@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Siar — TV Analog</title>
-<meta name="description" content="Siar: TV analog dalam browser. Iklan jadul Indonesia & opening kartun legendaris via embed YouTube, lengkap dengan efek VHS, 3 model TV, panduan siaran, favorit, dan channel kustom.">
+<meta name="description" content="Siar: TV analog dalam browser. 79 siaran TV Indonesia 1990–2015 via embed YouTube — iklan jadul, opening kartun, sinetron, ident stasiun — lengkap dengan remote fisik, antena interaktif, Blok Stasiun, efek VHS, dan 3 model TV.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📺</text></svg>">
 <meta property="og:title" content="Siar — TV Analog">
 <meta property="og:description" content="Televisi analog dalam browser: iklan jadul Indonesia & opening kartun legendaris.">
@@ -18,10 +18,11 @@
       <p class="tagline">televisi analog dalam browser — putar knob-nya, duduk manis.</p>
     </header>
 
+    <div class="stage">
     <section class="tv model-black" id="tv" aria-label="Televisi analog">
-      <div class="antenna" aria-hidden="true">
-        <span class="rod rod-l"></span>
-        <span class="rod rod-r"></span>
+      <div class="antenna" id="antenna">
+        <span class="rod rod-l" id="rodL" title="Seret untuk mengatur antena kiri"></span>
+        <span class="rod rod-r" id="rodR" title="Seret untuk mengatur antena kanan"></span>
         <span class="mount"></span>
       </div>
       <div class="tv-body">
@@ -50,6 +51,11 @@
           <div class="ch-display" title="Nomor channel">
             <span class="ch-label">CH</span>
             <span id="chNum">--</span>
+          </div>
+          <div class="sig-meter" title="Kekuatan sinyal channel ini — seret batang antena di atas TV untuk memperbaikinya">
+            <span class="sig-label">SINYAL</span>
+            <span id="sigVal">--%</span>
+            <span class="sig-bar"><i id="sigBar"></i></span>
           </div>
           <button id="prevBtn" class="btn" title="Channel sebelumnya (↓)">CH−</button>
           <button id="nextBtn" class="btn" title="Channel berikutnya (↑)">CH+</button>
@@ -82,17 +88,59 @@
       </div>
     </section>
 
+    <!-- ===== Remote control fisik ===== -->
+    <section class="remote" id="remote" aria-label="Remote control">
+      <div class="remote-top">
+        <span class="remote-brand">SIAR&nbsp;REMOTE</span>
+        <button class="rbtn rpower" id="remPower" title="Power">⏻</button>
+      </div>
+      <div class="numpad" role="group" aria-label="Numpad channel">
+        <button class="rbtn" data-digit="1">1</button>
+        <button class="rbtn" data-digit="2">2</button>
+        <button class="rbtn" data-digit="3">3</button>
+        <button class="rbtn" data-digit="4">4</button>
+        <button class="rbtn" data-digit="5">5</button>
+        <button class="rbtn" data-digit="6">6</button>
+        <button class="rbtn" data-digit="7">7</button>
+        <button class="rbtn" data-digit="8">8</button>
+        <button class="rbtn" data-digit="9">9</button>
+        <button class="rbtn rwide" id="remFav" title="Favorit (F)">★ FAV</button>
+        <button class="rbtn" data-digit="0">0</button>
+        <button class="rbtn rwide" id="remGuide" title="Panduan siaran (G)">PANDUAN</button>
+      </div>
+      <div class="rockers">
+        <div class="rocker">
+          <button class="rbtn" id="remChUp" title="Channel naik">CH +</button>
+          <span class="rocker-label">CHANNEL</span>
+          <button class="rbtn" id="remChDn" title="Channel turun">CH −</button>
+        </div>
+        <div class="rocker">
+          <button class="rbtn" id="remVolUp" title="Volume naik">VOL +</button>
+          <span class="rocker-label">VOLUME</span>
+          <button class="rbtn" id="remVolDn" title="Volume turun">VOL −</button>
+        </div>
+      </div>
+      <div class="remote-row">
+        <button class="rbtn" id="remMute" title="Mute (M)">MUTE</button>
+        <button class="rbtn" id="remBlock" title="Putar blok stasiun dari panduan">BLOK ▦</button>
+        <button class="rbtn" id="remFull" title="Layar penuh">⛶ FULL</button>
+      </div>
+      <p class="remote-hint">Ketik nomor channel di numpad (atau keyboard) — angka tampil di OSD, TV lompat sendiri. Seret batang antena di atas TV buat berburu sinyal bersih.</p>
+    </section>
+    </div>
+
     <section class="nowbar" aria-label="Sedang tayang">
       <div class="now-info">
         <span class="now-label">SEDANG TAYANG</span>
         <span class="now-title" id="nowTitle">— TV mati —</span>
         <span class="now-cat" id="nowCat"></span>
+        <span class="block-badge" id="blockBadge" hidden></span>
       </div>
       <button id="favBtn" class="btn small fav" title="Tandai favorit (F)">☆ FAVORIT</button>
     </section>
 
     <footer>
-      <p>Siar memutar semua video lewat embed resmi YouTube. Tekan <code>G</code> buat panduan siaran, <code>S</code> buat pengaturan, <code>H</code> buat semua shortcut.</p>
+      <p>Siar memutar semua video lewat embed resmi YouTube. Pakai remote di samping TV atau tekan <code>G</code> buat panduan siaran, <code>S</code> buat pengaturan, <code>H</code> buat semua shortcut. Seret antenanya — sinyal tiap channel beda posisi.</p>
     </footer>
   </main>
 
@@ -104,6 +152,13 @@
       <button class="btn small" data-close>CLOSE ✕</button>
     </div>
     <input id="guideSearch" type="search" placeholder="Cari siaran…" autocomplete="off">
+    <div class="guide-progress" id="guideProgress"></div>
+    <div class="chips" id="stationChips" aria-label="Filter stasiun"></div>
+    <div class="block-bar" id="blockBar" hidden>
+      <span class="block-label" id="blockLabel"></span>
+      <button class="btn small block-play" id="blockPlayBtn">▶ PUTAR BLOK</button>
+      <button class="btn small block-exit" id="blockExitBtn" hidden>✕ KELUAR BLOK</button>
+    </div>
     <div id="guideList" class="guide-list"></div>
     <details class="addbox">
       <summary>＋ Tambah channel sendiri</summary>
@@ -161,7 +216,9 @@
         <tr><td><kbd>←</kbd> <kbd>→</kbd></td><td>Volume turun / naik</td></tr>
         <tr><td><kbd>M</kbd></td><td>Mute / unmute</td></tr>
         <tr><td><kbd>R</kbd></td><td>Channel acak</td></tr>
-        <tr><td><kbd>1</kbd>–<kbd>9</kbd></td><td>Lompat ke channel nomor itu</td></tr>
+        <tr><td><kbd>0</kbd>–<kbd>9</kbd></td><td>Ketik nomor channel (tampil di OSD), TV lompat setelah jeda singkat — sama seperti numpad di remote</td></tr>
+        <tr><td><kbd>Seret antena</kbd></td><td>Geser batang antena di atas TV: tiap channel punya posisi sinyal terbaik. Sinyal tampil di panel & OSD</td></tr>
+        <tr><td><kbd>PUTAR BLOK</kbd></td><td>Di panduan: pilih chip stasiun lalu PUTAR BLOK — marathon satu stasiun (CH+/CH− & auto-next tetap di dalam blok)</td></tr>
         <tr><td><kbd>F</kbd></td><td>Favoritkan siaran yang sedang tayang</td></tr>
         <tr><td><kbd>G</kbd></td><td>Panduan siaran</td></tr>
         <tr><td><kbd>S</kbd></td><td>Pengaturan</td></tr>

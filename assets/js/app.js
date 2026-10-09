@@ -1,5 +1,7 @@
-// Siar v2 — logika TV analog.
+// Siar — logika TV analog.
 // YouTube IFrame API buat putar embed resmi; pengaturan/favorit/channel kustom dari PNStore.
+// Fitur: remote fisik (numpad + rocker), antena interaktif berburu sinyal,
+// Blok Stasiun (marathon satu stasiun), penanda sudah-ditonton.
 (function () {
   "use strict";
 
@@ -14,6 +16,13 @@
   var sleepDeadline = 0;              // timestamp ms; 0 = sleep mati
   var sleepTick = null;
 
+  // --- State fitur baru ---
+  var digitBuf = "";                  // buffer nomor channel dari numpad/keyboard
+  var digitTimer = null;
+  var blockStation = null;            // stasiun blok aktif; null = navigasi bebas
+  var guideStation = "SEMUA";         // filter chip di panduan (visual saja)
+  var signalQ = 100;                  // kualitas sinyal channel aktif, 0..100
+
   var $ = function (id) { return document.getElementById(id); };
   var els = {
     tv: $("tv"), screen: $("screen"), osd: $("osd"), chNum: $("chNum"),
@@ -26,7 +35,13 @@
     sleepSelect: $("sleepSelect"), sleepLeft: $("sleepLeft"),
     scanVal: $("scanVal"), noiseVal: $("noiseVal"),
     backdrop: $("backdrop"), guideSheet: $("guideSheet"),
-    settingsSheet: $("settingsSheet"), helpModal: $("helpModal")
+    settingsSheet: $("settingsSheet"), helpModal: $("helpModal"),
+    rodL: $("rodL"), rodR: $("rodR"), antenna: $("antenna"),
+    sigVal: $("sigVal"), sigBar: $("sigBar"),
+    stationChips: $("stationChips"), blockBar: $("blockBar"),
+    blockLabel: $("blockLabel"), blockPlayBtn: $("blockPlayBtn"),
+    blockExitBtn: $("blockExitBtn"), blockBadge: $("blockBadge"),
+    guideProgress: $("guideProgress"), remPower: $("remPower")
   };
 
   var MODEL_PLATES = {
@@ -35,6 +50,11 @@
     silver: "FLATRON-ISH&nbsp;•&nbsp;2004"
   };
 
+  // Urutan tampil chip stasiun di panduan
+  var STATION_ORDER = ["RCTI", "SCTV", "Indosiar", "Trans TV", "Trans7", "Global TV",
+    "ANTV", "MNCTV/TPI", "TVRI", "RTV", "NET.", "B Channel", "Space Toon",
+    "Multi-Stasiun", "Channel Saya"];
+
   function pad(n) { return (n < 10 ? "0" : "") + n; }
   function cur() { return list[current]; }
   function thumb(id) { return "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg"; }
@@ -42,6 +62,9 @@
     return String(s).replace(/[&<>"']/g, function (c) {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
     });
+  }
+  function countOf(station) {
+    return list.filter(function (ch) { return ch.station === station; }).length;
   }
 
   /* ================= Pengaturan tampilan ================= */
@@ -63,6 +86,8 @@
     Array.prototype.forEach.call(document.querySelectorAll(".model-card"), function (b) {
       b.classList.toggle("sel", b.getAttribute("data-model") === S.model);
     });
+    applyAntenna();
+    refreshSignal();
     if (playerReady) {
       player.setVolume(S.volume);
       if (S.muted) player.mute(); else player.unMute();
@@ -70,17 +95,160 @@
     }
   }
 
+  /* ================= Antena & sinyal ================= */
+  // Tiap channel punya "posisi antena terbaik" sendiri, diturunkan deterministik
+  // dari video id — jadi berburu sinyal terasa beda tiap channel, tanpa data ekstra.
+  function hashStr(s) {
+    var h = 0;
+    for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0;
+    return Math.abs(h);
+  }
+  function antTarget(ch) {
+    var h = hashStr(ch.id);
+    return { l: -55 + (h % 110), r: -55 + (((h >> 4) % 110) + 110) % 110 };
+  }
+  function computeSignal() {
+    if (!list.length) { signalQ = 100; return signalQ; }
+    var t = antTarget(cur());
+    var dist = Math.abs(S.antL - t.l) + Math.abs(S.antR - t.r);
+    signalQ = Math.max(4, Math.round(100 - dist * 0.62));
+    return signalQ;
+  }
+  function applyAntenna() {
+    els.rodL.style.transform = "rotate(" + S.antL + "deg)";
+    els.rodR.style.transform = "rotate(" + S.antR + "deg)";
+  }
+  function refreshSignal() {
+    computeSignal();
+    els.sigVal.textContent = powered ? signalQ + "%" : "--%";
+    els.sigBar.style.width = (powered ? signalQ : 0) + "%";
+    els.tv.classList.toggle("sig-bad", powered && signalQ < 45);
+    els.tv.classList.toggle("sig-mid", powered && signalQ >= 45 && signalQ < 75);
+  }
+  function signalHint() {
+    return "SINYAL " + signalQ + "%" + (signalQ < 45 ? " — GESER ANTENA" : "");
+  }
+
+  function bindRod(rod, key) {
+    rod.addEventListener("pointerdown", function (e) {
+      e.preventDefault();
+      try { rod.setPointerCapture(e.pointerId); } catch (err) { /* abaikan */ }
+      var pivot = els.antenna.getBoundingClientRect();
+      var px = pivot.left, py = pivot.top;
+      function move(ev) {
+        var dx = ev.clientX - px, dy = py - ev.clientY;
+        if (dy < 8) dy = 8;
+        var deg = Math.atan2(dx, dy) * 180 / Math.PI;
+        deg = Math.max(-75, Math.min(75, Math.round(deg)));
+        if (S[key] !== deg) {
+          S[key] = deg;
+          applyAntenna();
+          refreshSignal();
+          if (powered && signalQ < 60 && Math.random() < 0.25) playNoise(50);
+        }
+      }
+      function up() {
+        rod.removeEventListener("pointermove", move);
+        rod.removeEventListener("pointerup", up);
+        rod.removeEventListener("pointercancel", up);
+        PNStore.saveSettings();
+        if (powered) showOsd(signalHint());
+      }
+      rod.addEventListener("pointermove", move);
+      rod.addEventListener("pointerup", up);
+      rod.addEventListener("pointercancel", up);
+    });
+  }
+
+  /* ================= Blok Stasiun ================= */
+  // Daftar indeks global yang sedang "dijelajahi" CH+/CH−, auto-next & numpad.
+  function navList() {
+    var all = list.map(function (_, i) { return i; });
+    if (!blockStation) return all;
+    var inBlock = all.filter(function (i) { return list[i].station === blockStation; });
+    return inBlock.length ? inBlock : all;
+  }
+  function startBlock(station) {
+    if (!station || station === "SEMUA") return;
+    var nav = list.map(function (_, i) { return i; })
+      .filter(function (i) { return list[i].station === station; });
+    if (!nav.length) return;
+    blockStation = station;
+    if (!powered) powerOn();
+    // Awali dari ident stasiunnya kalau ada — seperti TV asli mulai dari station ID.
+    var startIdx = nav[0];
+    for (var k = 0; k < nav.length; k++) {
+      if (list[nav[k]].cat === "Jingle & Ident") { startIdx = nav[k]; break; }
+    }
+    tuneTo(startIdx);
+    showOsd("📡 BLOK " + station + " • " + nav.length + " SIARAN");
+    updateBlockUI();
+  }
+  function exitBlock(announce) {
+    if (!blockStation) return;
+    blockStation = null;
+    updateBlockUI();
+    if (announce && powered) showOsd("BLOK MATI — SEMUA CHANNEL");
+  }
+  function updateBlockUI() {
+    buildChips();
+    if (blockStation) {
+      els.blockBar.hidden = false;
+      els.blockLabel.textContent = "📡 BLOK AKTIF: " + blockStation + " • " + countOf(blockStation) +
+        " siaran — CH+/CH−, auto-next & numpad tetap di blok ini";
+      els.blockPlayBtn.hidden = true;
+      els.blockExitBtn.hidden = false;
+    } else if (guideStation !== "SEMUA") {
+      els.blockBar.hidden = false;
+      els.blockLabel.textContent = "Blok " + guideStation + ": " + countOf(guideStation) + " siaran siap diputar marathon";
+      els.blockPlayBtn.hidden = false;
+      els.blockExitBtn.hidden = true;
+    } else {
+      els.blockBar.hidden = true;
+    }
+    els.blockBadge.hidden = !blockStation;
+    if (blockStation) els.blockBadge.textContent = "BLOK " + blockStation;
+  }
+  function buildChips() {
+    var counts = {};
+    list.forEach(function (ch) { counts[ch.station] = (counts[ch.station] || 0) + 1; });
+    var html = '<button class="chip' + (guideStation === "SEMUA" ? " sel" : "") +
+      '" data-st="SEMUA">Semua (' + list.length + ")</button>";
+    STATION_ORDER.forEach(function (st) {
+      if (!counts[st]) return;
+      html += '<button class="chip' + (guideStation === st ? " sel" : "") +
+        (blockStation === st ? " blk" : "") + '" data-st="' + esc(st) + '">' +
+        esc(st) + " (" + counts[st] + ")</button>";
+    });
+    els.stationChips.innerHTML = html;
+    Array.prototype.forEach.call(els.stationChips.querySelectorAll("[data-st]"), function (b) {
+      b.addEventListener("click", function () {
+        guideStation = b.getAttribute("data-st");
+        buildGuide();
+      });
+    });
+  }
+
   /* ================= Panduan siaran ================= */
   function groupOf(ch) {
-    if (PNStore.isFavorite(ch.id)) return "★ Favorit";
+    if (guideStation === "SEMUA" && PNStore.isFavorite(ch.id)) return "★ Favorit";
     return ch.cat;
+  }
+  function matchGuide(ch) {
+    if (guideStation !== "SEMUA" && ch.station !== guideStation) return false;
+    var q = (els.guideSearch.value || "").trim().toLowerCase();
+    return !q || ch.title.toLowerCase().indexOf(q) !== -1;
   }
 
   function buildGuide() {
-    var q = (els.guideSearch.value || "").trim().toLowerCase();
+    buildChips();
+    updateBlockUI();
+    els.guideProgress.innerHTML = "Koleksi: <b>" + PNStore.watchedCount() + "</b>/" +
+      list.length + " siaran sudah ditonton";
+
     var groups = [];
-    list.forEach(function (ch, i) {
-      if (q && ch.title.toLowerCase().indexOf(q) === -1) return;
+    list.forEach(function (ch) {
+      if (!matchGuide(ch)) return;
       var g = groupOf(ch);
       if (groups.indexOf(g) === -1) groups.push(g);
     });
@@ -104,12 +272,15 @@
       html += '<div class="cat">' + esc(g) + "</div><ul>";
       list.forEach(function (ch, i) {
         if (groupOf(ch) !== g) return;
-        if (q && ch.title.toLowerCase().indexOf(q) === -1) return;
+        if (!matchGuide(ch)) return;
         var fav = PNStore.isFavorite(ch.id);
-        html += '<li data-idx="' + i + '">' +
+        var seen = PNStore.isWatched(ch.id);
+        html += '<li data-idx="' + i + '"' + (seen ? ' class="watched"' : "") + '>' +
           '<img class="th" src="' + thumb(ch.id) + '" alt="" loading="lazy">' +
           '<span class="num">' + pad(i + 1) + "</span>" +
-          '<span class="ttl">' + esc(ch.title) + "</span>" +
+          '<span class="ttl">' + esc(ch.title) +
+          '<span class="stn">' + esc(ch.station) + "</span></span>" +
+          (seen ? '<span class="seen" title="Sudah ditonton">✓</span>' : "") +
           '<button class="star' + (fav ? " on" : "") + '" data-fav="' + i + '" title="Favorit (F)">' + (fav ? "★" : "☆") + "</button>" +
           (ch.custom ? '<button class="del" data-del="' + i + '" title="Hapus channel">✕</button>' : "") +
           "</li>";
@@ -139,6 +310,7 @@
         var idx = parseInt(b.getAttribute("data-del"), 10);
         var goneId = list[idx].id;
         PNStore.removeCustom(goneId);
+        if (blockStation && !countOf(blockStation)) blockStation = null;
         refreshList();
         if (powered && list.length) tuneTo(Math.min(current, list.length - 1));
         buildGuide(); markActive(); syncNow();
@@ -167,7 +339,7 @@
       els.nowCat.textContent = "";
     } else {
       els.nowTitle.textContent = "CH " + pad(current + 1) + " — " + cur().title;
-      els.nowCat.textContent = cur().cat;
+      els.nowCat.textContent = cur().cat + " • " + cur().station;
     }
     els.chNum.textContent = powered && list.length ? pad(current + 1) : "--";
     syncFavBtn();
@@ -179,14 +351,19 @@
   }
 
   /* ================= OSD ================= */
-  function showOsd(extra) {
-    if (!list.length) return;
-    els.osd.innerHTML = "CH " + pad(current + 1) + "<small>" + esc(cur().title) + "</small>" +
-      (extra ? "<small>" + esc(extra) + "</small>" : "");
+  function osdRender(main, sub, sub2) {
+    els.osd.innerHTML = esc(main) +
+      (sub ? "<small>" + esc(sub) + "</small>" : "") +
+      (sub2 ? "<small>" + esc(sub2) + "</small>" : "");
     els.osd.classList.add("show");
     clearTimeout(osdTimer);
     osdTimer = setTimeout(function () { els.osd.classList.remove("show"); }, 2400);
   }
+  function showOsd(extra) {
+    if (!list.length) return;
+    osdRender("CH " + pad(current + 1), cur().title, extra || null);
+  }
+  function showOsdText(main, sub) { osdRender(main, sub, null); }
 
   /* ================= Static / noise ================= */
   function drawStatic() {
@@ -214,11 +391,13 @@
     }, ms);
   }
 
-  // Noise latar pelan saat TV nyala (intensitas dari pengaturan)
+  // Noise latar pelan saat TV nyala: pengaturan user + bonus dari sinyal buruk
   setInterval(function () {
     if (!powered || document.hidden) return;
-    if (S.noise <= 0 || els.staticC.classList.contains("burst")) return;
-    els.staticC.style.opacity = (S.noise / 100 * 0.28).toFixed(2);
+    if (els.staticC.classList.contains("burst")) return;
+    var eff = Math.min(100, S.noise + (100 - signalQ) * 0.5);
+    if (eff <= 0) { els.staticC.style.opacity = "0"; return; }
+    els.staticC.style.opacity = (eff / 100 * 0.55).toFixed(2);
     drawStatic();
   }, 140);
 
@@ -271,8 +450,12 @@
   function tuneTo(idx) {
     if (!list.length) return;
     current = ((idx % list.length) + list.length) % list.length;
-    staticFx(500);
-    showOsd();
+    // Keluar dari blok kalau pindah ke stasiun lain (mis. lewat panduan)
+    if (blockStation && cur().station !== blockStation) exitBlock(false);
+    PNStore.markWatched(cur().id);
+    refreshSignal();
+    staticFx(signalQ < 45 ? 800 : 450);
+    showOsd(signalHint());
     markActive();
     syncNow();
     if (playerReady) {
@@ -282,13 +465,39 @@
     }
   }
 
-  function nextChannel() { tuneTo(current + 1); }
-  function prevChannel() { tuneTo(current - 1); }
+  function stepChannel(dir) {
+    var nav = navList();
+    var pos = nav.indexOf(current);
+    if (pos === -1) pos = dir > 0 ? -1 : 0;
+    tuneTo(nav[(pos + dir + nav.length) % nav.length]);
+  }
+  function nextChannel() { stepChannel(1); }
+  function prevChannel() { stepChannel(-1); }
   function randomChannel() {
-    if (list.length < 2) return tuneTo(current);
-    var n;
-    do { n = (Math.random() * list.length) | 0; } while (n === current);
-    tuneTo(n);
+    var nav = navList();
+    if (nav.length < 2) return tuneTo(current);
+    var pick;
+    do { pick = nav[(Math.random() * nav.length) | 0]; } while (pick === current);
+    tuneTo(pick);
+  }
+
+  /* ================= Numpad / digit buffer ================= */
+  function pushDigit(d) {
+    if (!list.length) return;
+    if (!powered) powerOn();
+    digitBuf = (digitBuf + d).slice(-3);
+    showOsdText("CH " + digitBuf + "_",
+      blockStation ? "Blok " + blockStation + " — nomor urut dalam blok" : "Ketik nomor channel…");
+    clearTimeout(digitTimer);
+    digitTimer = setTimeout(commitDigit, 900);
+  }
+  function commitDigit() {
+    if (!digitBuf) return;
+    var n = parseInt(digitBuf, 10);
+    digitBuf = "";
+    var nav = navList();
+    if (n >= 1 && n <= nav.length) tuneTo(nav[n - 1]);
+    else showOsdText("CH " + n + " TIDAK ADA", blockStation ? "Blok " + blockStation + " cuma " + nav.length + " siaran" : "Cuma ada " + nav.length + " channel");
   }
 
   /* ================= Power ================= */
@@ -304,10 +513,12 @@
     els.tv.classList.add("on");
     els.powerHint.classList.add("off");
     els.powerBtn.classList.add("on");
+    els.remPower.classList.add("on");
     crtOnFx();
+    refreshSignal();
     staticFx(650);
     if (playerReady) player.loadVideoById(cur().id);
-    showOsd();
+    showOsd(signalHint());
     markActive();
     syncNow();
   }
@@ -316,7 +527,9 @@
     els.tv.classList.remove("on");
     els.powerHint.classList.remove("off");
     els.powerBtn.classList.remove("on");
+    els.remPower.classList.remove("on");
     els.osd.classList.remove("show");
+    refreshSignal();
     if (!silent) staticFx(220);
     if (playerReady) player.stopVideo();
     markActive();
@@ -383,6 +596,11 @@
     else if (els.tv.requestFullscreen) els.tv.requestFullscreen();
   }
 
+  function bumpVolume(delta) {
+    els.vol.value = Math.max(0, Math.min(100, +els.vol.value + delta));
+    els.vol.dispatchEvent(new Event("input"));
+  }
+
   /* ================= Event: kontrol TV ================= */
   els.powerBtn.addEventListener("click", function () { powered ? powerOff() : powerOn(); });
   $("fsBtn").addEventListener("click", toggleFs);
@@ -431,6 +649,31 @@
     syncFavBtn(); buildGuide();
   });
 
+  /* ================= Event: remote fisik ================= */
+  els.remPower.addEventListener("click", function () { powered ? powerOff() : powerOn(); });
+  Array.prototype.forEach.call(document.querySelectorAll("[data-digit]"), function (b) {
+    b.addEventListener("click", function () { pushDigit(b.getAttribute("data-digit")); });
+  });
+  $("remChUp").addEventListener("click", function () { if (powered) nextChannel(); });
+  $("remChDn").addEventListener("click", function () { if (powered) prevChannel(); });
+  $("remVolUp").addEventListener("click", function () { bumpVolume(5); });
+  $("remVolDn").addEventListener("click", function () { bumpVolume(-5); });
+  $("remMute").addEventListener("click", function () { els.muteBtn.click(); });
+  $("remFav").addEventListener("click", function () { els.favBtn.click(); });
+  $("remGuide").addEventListener("click", function () { openSheet("guide"); });
+  $("remFull").addEventListener("click", toggleFs);
+  $("remBlock").addEventListener("click", function () {
+    if (blockStation) exitBlock(true);
+    else openSheet("guide");
+  });
+
+  /* ================= Event: Blok Stasiun ================= */
+  els.blockPlayBtn.addEventListener("click", function () {
+    startBlock(guideStation);
+    closeSheets();
+  });
+  els.blockExitBtn.addEventListener("click", function () { exitBlock(true); });
+
   /* ================= Event: panduan ================= */
   els.guideSearch.addEventListener("input", buildGuide);
   $("addForm").addEventListener("submit", function (e) {
@@ -466,6 +709,7 @@
   $("resetBtn").addEventListener("click", function () {
     PNStore.resetAll();
     S = PNStore.settings;
+    blockStation = null;
     refreshList();
     els.vol.value = S.volume;
     applySettings(); buildGuide(); syncNow();
@@ -480,8 +724,8 @@
     switch (e.key) {
       case "ArrowUp": if (powered) { nextChannel(); e.preventDefault(); } break;
       case "ArrowDown": if (powered) { prevChannel(); e.preventDefault(); } break;
-      case "ArrowRight": els.vol.value = Math.min(100, +els.vol.value + 5); els.vol.dispatchEvent(new Event("input")); break;
-      case "ArrowLeft": els.vol.value = Math.max(0, +els.vol.value - 5); els.vol.dispatchEvent(new Event("input")); break;
+      case "ArrowRight": bumpVolume(5); break;
+      case "ArrowLeft": bumpVolume(-5); break;
       case "m": case "M": els.muteBtn.click(); break;
       case "r": case "R": if (powered) randomChannel(); break;
       case "p": case "P": powered ? powerOff() : powerOn(); break;
@@ -490,14 +734,13 @@
       case "s": case "S": anyOpen() ? closeSheets() : openSheet("settings"); break;
       case "h": case "H": anyOpen() ? closeSheets() : openSheet("help"); break;
       default:
-        if (/^[1-9]$/.test(e.key)) {
-          var n = parseInt(e.key, 10) - 1;
-          if (n < list.length) { if (!powered) powerOn(); tuneTo(n); }
-        }
+        if (/^[0-9]$/.test(e.key)) pushDigit(e.key);
     }
   });
 
   /* ================= Init ================= */
+  bindRod(els.rodL, "antL");
+  bindRod(els.rodR, "antR");
   els.vol.value = S.volume;
   applySettings();
   buildGuide();

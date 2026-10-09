@@ -7,6 +7,7 @@ var PNStore = (function () {
   var SKEY = "pn-settings-v2";
   var FKEY = "pn-favorites-v1";
   var CKEY = "pn-custom-v1";
+  var WKEY = "pn-watched-v1";
 
   var DEFAULTS = {
     vhs: false,          // efek VHS (tracking lines, chromatic aberration, jitter)
@@ -16,7 +17,9 @@ var PNStore = (function () {
     model: "black",      // wood | black | silver
     ratio169: false,     // false = 4:3, true = 16:9
     volume: 70,
-    muted: false
+    muted: false,
+    antL: -27,           // sudut batang antena kiri (derajat) — bisa digeser user
+    antR: 17             // sudut batang antena kanan (derajat)
   };
 
   function loadJSON(key, fallback) {
@@ -32,38 +35,50 @@ var PNStore = (function () {
   var settings = Object.assign({}, DEFAULTS, loadJSON(SKEY, {}));
   var favorites = loadJSON(FKEY, []);            // array video_id
   var customs = loadJSON(CKEY, []);              // array {id, title}
+  var watched = loadJSON(WKEY, []);              // array video_id yang pernah ditonton
 
   if (!Array.isArray(favorites)) favorites = [];
   if (!Array.isArray(customs)) customs = [];
+  if (!Array.isArray(watched)) watched = [];
 
   function saveSettings() { saveJSON(SKEY, settings); }
   function saveFavorites() { saveJSON(FKEY, favorites); }
   function saveCustoms() { saveJSON(CKEY, customs); }
+  function saveWatched() { saveJSON(WKEY, watched); }
 
   function resetAll() {
     settings = Object.assign({}, DEFAULTS);
     favorites = [];
     customs = [];
+    watched = [];
     try {
       localStorage.removeItem(SKEY);
       localStorage.removeItem(FKEY);
       localStorage.removeItem(CKEY);
+      localStorage.removeItem(WKEY);
     } catch (e) { /* abaikan */ }
     saveSettings();
   }
 
   /* ---------- Channel ---------- */
   // Daftar gabungan: bawaan (channels.js) + kustom user.
-  // Setiap item dinormalisasi: {id, title, cat, custom:boolean}
+  // Setiap item dinormalisasi: {id, title, cat, station, custom:boolean}
   function allChannels() {
     var base = (typeof CHANNELS !== "undefined" ? CHANNELS : []).map(function (ch) {
-      return { id: ch.id, title: ch.title, cat: ch.cat || "Siaran", custom: false };
+      return { id: ch.id, title: ch.title, cat: ch.cat || "Siaran", station: ch.st || "Multi-Stasiun", custom: false };
     });
     var mine = customs.map(function (ch) {
-      return { id: ch.id, title: ch.title, cat: "Channel Saya", custom: true };
+      return { id: ch.id, title: ch.title, cat: "Channel Saya", station: "Channel Saya", custom: true };
     });
     return base.concat(mine);
   }
+
+  /* ---------- Riwayat tontonan ---------- */
+  function isWatched(id) { return watched.indexOf(id) !== -1; }
+  function markWatched(id) {
+    if (watched.indexOf(id) === -1) { watched.push(id); saveWatched(); }
+  }
+  function watchedCount() { return watched.length; }
 
   function isFavorite(id) { return favorites.indexOf(id) !== -1; }
   function toggleFavorite(id) {
@@ -105,6 +120,9 @@ var PNStore = (function () {
     allChannels: allChannels,
     isFavorite: isFavorite,
     toggleFavorite: toggleFavorite,
+    isWatched: isWatched,
+    markWatched: markWatched,
+    watchedCount: watchedCount,
     extractVideoId: extractVideoId,
     addCustom: addCustom,
     removeCustom: removeCustom
