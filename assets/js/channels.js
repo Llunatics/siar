@@ -413,4 +413,6 @@ const CHANNELS = [
   { id: "-IP2J3MxWQ8", title: "Doraemon versi Bahasa Indonesia - Ost Opening With Lyrics", cat: "Opening Kartun", st: "Multi-Stasiun" },
   { id: "p2--m4epRwE", title: "Bintang Iklan Sabun Lux Jadul 80-90an (kompilasi shorts)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "r8vL42zBSfo", title: "Hamtaro ED (Indonesian/Bahasa Indonesia)", cat: "Opening Kartun", st: "Multi-Stasiun" },
+  { id: "0i6h95ITZ4w", title: "Iklan Rokok Minak Djinggo - Ari Wibowo (shorts)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "OFO9S600e-Q", title: "Nostalgia Iklan Rokok Commodore (shorts)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];

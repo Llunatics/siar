@@ -1022,6 +1022,20 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 
 **Total siklus tercatat: 70**
 
+---
+
+## Siklus 71 — 2026-10-11 06:15 WIB — Batch YouTube iklan rokok: +2 entri
+
+- **Area:** Katalog (389 → **391**).
+- **Metode:** 1 web search → 7 kandidat → oEmbed → cek duplikat → review.
+- **Hasil:** **2 YA** (Minak Djinggo Ari Wibowo shorts, Commodore shorts). 5 duplikat.
+  Ditolak: 2 kompilasi campur iklan modern (1990-2023, 1994-2017), 1 video obrolan
+  (bukan iklan), 1 iklan 2010 (terlalu modern). Kategori rokok sudah mapan (13 entri).
+- **Test:** append → 391 entri unik; smoke 18/18 PASS.
+- **Next:** Lanjut.
+
+**Total siklus tercatat: 71**
+
 > **Koreksi waktu (04:01 WIB):** timestamp siklus 33–55 di atas adalah estimasi dan
 > ternyata kelebihan ±5 jam. Waktu terverifikasi saat siklus 55: **2026-10-11 04:01 WIB**
 > (`date` sistem). Mulai siklus 56, timestamp memakai jam sistem yang benar.
