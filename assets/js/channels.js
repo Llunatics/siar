@@ -588,4 +588,8 @@ const CHANNELS = [
   { id: "_uARvt8IRGs", title: "Jeda Iklan Lativi (September 2007)", cat: "Iklan Jadul", st: "Lativi" },
   { id: "0PaMULQO5hI", title: "Jeda Iklan Trans 7 (Maret 2007)", cat: "Iklan Jadul", st: "Trans7" },
   { id: "RUtcTIv5b0M", title: "Jeda Iklan Trans7 pada saat \"Fenomena\" (Maret 2007)", cat: "Iklan Jadul", st: "Trans7" },
+  { id: "iSaS08347ak", title: "Jeda Iklan Trans 7 (29 Juli 2010)", cat: "Iklan Jadul", st: "Trans7" },
+  { id: "AqdV_s68OcI", title: "Jeda Iklan TPI (April 2010)", cat: "Iklan Jadul", st: "TPI" },
+  { id: "y9GLuaIB3mo", title: "Jeda Iklan Trans TV (April 2009) | Part 1", cat: "Iklan Jadul", st: "Trans TV" },
+  { id: "lVX-9C-vb6k", title: "Jeda Iklan TVRI (11 Desember 2009)", cat: "Iklan Jadul", st: "TVRI" },
 ];

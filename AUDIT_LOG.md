@@ -2984,3 +2984,19 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 212**
 
 ---
+
+## Siklus 213 — 2026-10-11 06:14 WIB — Batch YouTube iklan 2007-2008: +8 entri (556→564)
+
+- **Area:** Katalog (tahun spesifik 2007/2008).
+- **Metode:** web search -> 11 kandidat -> oEmbed (8 OK baru, 1 DUP,
+  1 FAIL 401, 1 remake SKIP).
+- **Hasil:** 8 YA (Mandiri Fiesta 2007, PSA Kemenkes 2007,
+  Jeda Indosiar 2008, Jeda Global TV 2008, Jeda Trans TV 2007,
+  Jeda Lativi 2007, Jeda Trans7 2007 x2).
+- **Test:** append -> 564 unik; smoke 18/18 PASS (dari 211).
+- **Commit:** lokal.
+- **Next:** Lanjut.
+
+**Total siklus tercatat: 213**
+
+---
