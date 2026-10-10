@@ -418,4 +418,5 @@ const CHANNELS = [
   { id: "SqYDHM4INQo", title: "Iklan Salam Mie - Abadi Nan Jaya (1999/2000) (shorts)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "cMeQtRlC7KI", title: "Iklan Pop Mie - Kantor feat. Hengky Tornado (1989, Pra Revisi) (shorts)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "DO4rgGH6Rfg", title: "\"Iklan jadul Indomie \"\"Dari Sabang sampai Marauke\"\" (shorts)\"", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "UujBfINGeTo", title: "Sailor Moon indonesia Opening Lyrics", cat: "Opening Kartun", st: "Multi-Stasiun" },
 ];
