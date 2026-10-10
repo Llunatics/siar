@@ -959,11 +959,6 @@
   "code": 200,
   "oembed_title": "Iklan Indomie Goreng Versi Jadul Banget"
  },
- "yt:XaDLvlDUSnQ": {
-  "status": "OK",
-  "code": 200,
-  "oembed_title": "Iklan Indomie tahun 1993"
- },
  "yt:yoysXOatpKM": {
   "status": "OK",
   "code": 200,
@@ -1168,11 +1163,6 @@
   "status": "OK",
   "code": 200,
   "oembed_title": "Iklan Permen Mentos dengan jingle tahun 1994"
- },
- "yt:_V0Nuuy1jLI": {
-  "status": "OK",
-  "code": 200,
-  "oembed_title": "Iklan Mie ABC Selera Warisan Indosiar tahun 1995"
  },
  "yt:ZneznGNCR74": {
   "status": "OK",
@@ -7097,5 +7087,25 @@
  "yt:m7rL-zvoiXU": {
   "status": "OK",
   "title": "Lagu Ninja Ranger Opening Versi Indonesia HD | Ninja Sentai Kakuranger"
+ },
+ "yt:0zFjqpA6t3Y": {
+  "status": "OK",
+  "title": "[ARSIP IKLAN PREMIERE] Iklan Michiyo - Mii Mii Mii Terus Yang Lain Dong.... (1994) (versi 30 detik)"
+ },
+ "yt:D-rsKVcAt5w": {
+  "status": "OK",
+  "title": "Iklan Indomie - Nuansa Pegunungan (1997) @ Indosiar, TPI, SCTV, & RCTI"
+ },
+ "yt:td2C8vmMDnI": {
+  "status": "OK",
+  "title": "Kompilasi Iklan Pop Mie dari Indofood "
+ },
+ "yt:XaDLvlDUSnQ": {
+  "status": "OK",
+  "title": "Iklan Indomie tahun 1993"
+ },
+ "yt:_V0Nuuy1jLI": {
+  "status": "OK",
+  "title": "Iklan Mie ABC Selera Warisan Indosiar tahun 1995"
  }
 }

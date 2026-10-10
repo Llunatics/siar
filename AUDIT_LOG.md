@@ -568,3 +568,21 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 - **Next:** Lanjut katalog via YouTube.
 
 **Total siklus tercatat: 39**
+
+---
+
+## Siklus 40 — 2026-10-11 06:55 WIB — Batch YouTube iklan mie: +3 entri + bug pipeline diperbaiki
+
+- **Area:** Katalog (340 → **343**) + `scripts/review.py` (bug).
+- **Bug nyata ditemukan:** `review.py oembed()` mengembalikan entri cache verify.py (`oembed_title`)
+  tanpa normalisasi → kolom `title_oembed` TSV kosong untuk video yang sudah terverifikasi
+  siklus 1. Berisiko memicu putusan SKIP yang salah ("judul kosong").
+  **Bukti:** 6 video batch mie tampil kosong; cache tunjukkan format `oembed_title`;
+  uji cache-miss terbukti normal. **Fix:** normalisasi `oembed_title`→`title` saat cache hit.
+  Re-run: semua judul terisi.
+- **Katalog:** 9 kandidat → **3 YA** (Iklan Michiyo 1994, Indomie Pegunungan 1997, kompilasi Pop Mie);
+  6 lainnya ternyata SUDAH di katalog baseline (duplikat discovery — append menolak dengan benar).
+- **Test:** append → 343 entri unik; smoke 18/18 PASS.
+- **Next:** Lanjut batch; probe DM berkala.
+
+**Total siklus tercatat: 40**

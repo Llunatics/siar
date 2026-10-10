@@ -75,7 +75,11 @@ def oembed(src, vid):
         return {"status": "UNKNOWN_SRC"}
     key = src + ":" + vid
     if key in _oembed_cache:
-        return _oembed_cache[key]
+        # Normalisasi format cache verify.py ("oembed_title") ke format review.py ("title")
+        res = dict(_oembed_cache[key])
+        if "title" not in res and "oembed_title" in res:
+            res["title"] = res["oembed_title"]
+        return res
     code, body = fetch(url)
     time.sleep(0.5)
     res = {"status": "FAIL", "code": code}

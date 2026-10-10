@@ -364,4 +364,7 @@ const CHANNELS = [
   { id: "_1SKNFjpw3Y", title: "Kompilasi Iklan Rokok Djarum Super (1990-2023)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "UwzeVpqWbPg", title: "Kompilasi Iklan Rokok Jadul (Part. 3)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "m7rL-zvoiXU", title: "Lagu Ninja Ranger Opening Versi Indonesia HD", cat: "Opening Tokusatsu", st: "Multi-Stasiun" },
+  { id: "0zFjqpA6t3Y", title: "Iklan Michiyo - Mii Mii Mii Terus Yang Lain Dong (1994)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "D-rsKVcAt5w", title: "Iklan Indomie - Nuansa Pegunungan (1997)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "td2C8vmMDnI", title: "Kompilasi Iklan Pop Mie dari Indofood", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
