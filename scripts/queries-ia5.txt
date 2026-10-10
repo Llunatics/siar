@@ -1,0 +1,6 @@
+# Kueri discovery Internet Archive — batch 5 (2026-10-11), ident stasiun
+rcti ident 1990
+sctv ident 1990
+indosiar ident
+tpi ident 1990
+station identification indonesia tv

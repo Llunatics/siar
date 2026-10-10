@@ -549,4 +549,5 @@ const CHANNELS = [
   { id: "iklan-rokok-jadul-era-90an", title: "Kumpulan Iklan TV Rokok jadul era 90an", cat: "Iklan Jadul", st: "Multi-Stasiun", src: "ia" },
   { id: "x2v0isx", title: "Opening Sinetron HIKMAH 1", cat: "Sinetron & Acara TV", st: "Multi-Stasiun", src: "dm" },
   { id: "arsip-iklan-solo-akame-hiragi-tahun-2000an", title: "Arsip Iklan Solo Akame Hiragi (tahun 2000an)", cat: "Iklan Jadul", st: "Multi-Stasiun", src: "ia" },
+  { id: "indonesia-christmas-archives-part-1", title: "Indonesian Christmas Archives Part 1", cat: "Jingle & Ident", st: "Multi-Stasiun", src: "ia" },
 ];
