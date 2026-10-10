@@ -424,4 +424,9 @@ const CHANNELS = [
   { id: "UeMjLnY8HcE", title: "Cardcaptor Sakura OP2 - Tobira wo Akete (Buka Pintu) versi Indonesia HD", cat: "Opening Kartun", st: "MNCTV/TPI" },
   { id: "H9SPcyMSy04", title: "Kumpulan Ost. Cardcaptor Sakura (Versi Indonesia) - Opening & Ending", cat: "Opening Kartun", st: "Multi-Stasiun" },
   { id: "cOIRv-JOxYQ", title: "Station ID TVRI Programa 2 Surabaya (1990-1999)", cat: "Jingle & Ident", st: "TVRI" },
+  { id: "4brfLBx46DI", title: "Iklan pasta gigi Zwitsal 1990an (temuan kaset beta)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "X9A271Kr7y4", title: "Iklan Pepsodent - Pak Raden Sakit Gigi (1997)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "KSm24ZKCe-E", title: "Iklan A Mild / International - Waktunya Unjuk Gigi (1998)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "iV_ELRZJeRU", title: "Iklan Colgate 1994", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "tpM_-TX9vlM", title: "Iklan Oralit tahun 1995", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
