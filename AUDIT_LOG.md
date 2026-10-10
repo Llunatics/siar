@@ -424,3 +424,15 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 - **Next:** Batch katalog berikutnya.
 
 **Total siklus tercatat: 28**
+
+---
+
+## Siklus 29 — 2026-10-11 05:05 WIB — Batch YouTube Ninja Hatori/Saint Seiya: +2 entri
+
+- **Area:** Katalog (321 → **323**).
+- **Metode:** 2 web search → 4 kandidat → oEmbed → review.
+- **Hasil:** **2 YA** (Opening Ninja Hattori Returns 2012 dub RCTI; Opening Ninja Hattori RCTI HD), **2 SKIP** (oEmbed gagal — video lama kemungkinan dihapus). Ditolak di search: 4 cover, mashup, AMV.
+- **Test:** append → 323 entri unik; smoke 18/18 PASS.
+- **Next:** Cek verify DM ident (segera selesai); batch berikutnya.
+
+**Total siklus tercatat: 29**

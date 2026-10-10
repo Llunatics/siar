@@ -345,4 +345,6 @@ const CHANNELS = [
   { id: "colwIUe-Bi0", title: "Lagu Opening Dragon Ball Versi Indonesia (Indosiar)", cat: "Opening Kartun", st: "Indosiar" },
   { id: "jB42wvldJkk", title: "Ost. Dragon Ball & Dragon Ball Z (Versi Indonesia)", cat: "Opening Kartun", st: "Indosiar" },
   { id: "KO0F37GrAs8", title: "Sailor Moon First Opening HQ (Indonesian)", cat: "Opening Kartun", st: "Indosiar" },
+  { id: "hxiHcrjguqs", title: "Opening NINJA HATTORI RETURNS (2012) Dub Indo RCTI", cat: "Opening Kartun", st: "RCTI" },
+  { id: "ZJDzcFexjC4", title: "Opening Ninja Hattori RCTI HD", cat: "Opening Kartun", st: "RCTI" },
 ];
