@@ -1374,6 +1374,20 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 
 **Total siklus tercatat: 94**
 
+---
+
+## Siklus 95 — 2026-10-11 09:35 WIB — Batch YouTube teh/kompilasi: +3 entri
+
+- **Area:** Katalog (434 → **437**).
+- **Metode:** 1 web search → 7 kandidat → oEmbed → cek duplikat → review.
+- **Hasil:** **3 YA** (Iklan Jadul Episode 7 1994-95 RCTI, Part 7 1991,
+  Jilid 16 1994/95). 4 duplikat. Ditolak: 1 kompilasi Sosro (mencakup 2007),
+  1 perbandingan 1993 vs 2021 (modern).
+- **Test:** append → 437 entri unik; smoke 18/18 PASS.
+- **Next:** Regression (tiap 5 siklus).
+
+**Total siklus tercatat: 95**
+
 > **Koreksi waktu (04:01 WIB):** timestamp siklus 33–55 di atas adalah estimasi dan
 > ternyata kelebihan ±5 jam. Waktu terverifikasi saat siklus 55: **2026-10-11 04:01 WIB**
 > (`date` sistem). Mulai siklus 56, timestamp memakai jam sistem yang benar.

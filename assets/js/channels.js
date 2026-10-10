@@ -458,4 +458,7 @@ const CHANNELS = [
   { id: "3Rw2wRzDO6Y", title: "OST P-Man - Opening + Lirik", cat: "Opening Kartun", st: "RCTI" },
   { id: "1kjdyauOpvg", title: "Lagu pembuka P man Versi Bahasa Indonesia by OST ANIME ID", cat: "Opening Kartun", st: "RCTI" },
   { id: "pZXkNeGvNo0", title: "HUNTER X HUNTER OPENING SONG - OHAYOU INDONESIAN VERSION", cat: "Opening Kartun", st: "Multi-Stasiun" },
+  { id: "5rBAWqiye8I", title: "Iklan Jadul Episode 7 - 1994 & 1995 RCTI", cat: "Iklan Jadul", st: "RCTI" },
+  { id: "t8S7p4qcDBk", title: "iklan Jadul Part 7 (1991) + Undian Dari Lubuk Hati", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "YVxK-Y7E2jY", title: "Iklan Jadul Jilid 16 - 1994/1995 (Indonesia Merdeka 45 Menit)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
