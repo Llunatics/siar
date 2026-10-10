@@ -559,4 +559,8 @@ const CHANNELS = [
   { id: "8NKUwpIt6fc", title: "Iklan Gelar Anugerah Festival Film SCTV tahun 1996", cat: "Iklan Jadul", st: "SCTV" },
   { id: "P_03Eaf9gig", title: "Iklan Gelar Anugerah Festival Sinetron Indonesia Indosiar 1996", cat: "Iklan Jadul", st: "Indosiar" },
   { id: "oegJXYr1ZCA", title: "Iklan Layanan Masyarakat tentang AIDS tahun 1996", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "hwjHVVarnKw", title: "Iklan Loggo - Sepatu Generasi Prestasi (1997) @ Indosiar, RCTI, TPI, ANteve, & SCTV", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "j_oyQmNhiCA", title: "Iklan Super Pell - Belum Lima Menit (Revisi 1997)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "D-f8yn7O2uw", title: "Iklan Kompas dan Indosiar - Tampil Berbeda dengan Membaca (1997)", cat: "Iklan Jadul", st: "Indosiar" },
+  { id: "8ynsGbXyuyQ", title: "Break Iklan 1 (RCTI)-Seputar Indonesia (1997)", cat: "Iklan Jadul", st: "RCTI" },
 ];

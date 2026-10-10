@@ -2838,3 +2838,17 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 201**
 
 ---
+
+## Siklus 202 — 2026-10-11 06:09 WIB — Batch YouTube iklan 1995-1996: +4 entri (531→535)
+
+- **Area:** Katalog (tahun spesifik 1995/1996).
+- **Metode:** web search -> 7 kandidat -> oEmbed (4 OK baru, 3 DUP).
+- **Hasil:** 4 YA (PSA Bobo 1996, promo Festival Film SCTV 1996,
+  promo Festival Sinetron Indosiar 1996, PSA AIDS 1996).
+- **Test:** append -> 535 unik; smoke 18/18 PASS (dari 199).
+- **Commit:** lokal.
+- **Next:** Lanjut.
+
+**Total siklus tercatat: 202**
+
+---
