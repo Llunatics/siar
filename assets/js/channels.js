@@ -372,4 +372,6 @@ const CHANNELS = [
   { id: "rLsAMTbM7Gs", title: "Kompilasi Iklan-iklan Jadul Terpopuler 1990-an", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "Mow8XE_qsxw", title: "Iklan Jadul Teh Sosro (RCTI'93)", cat: "Iklan Jadul", st: "RCTI" },
   { id: "QGEFfYIBZC4", title: "8 Iklan Terkenal Jadul yang legendaris (kompilasi)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "0MqT7yZe9cU", title: "Nippon Cha Cha - Opening Kobo Chan (Bahasa Indonesia)", cat: "Opening Kartun", st: "RCTI" },
+  { id: "M3XkdR8Me4A", title: "Cyborg Kurochan Opening Song Indonesian Version", cat: "Opening Kartun", st: "Multi-Stasiun" },
 ];
