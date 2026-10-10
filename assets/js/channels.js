@@ -647,4 +647,6 @@ const CHANNELS = [
   { id: "wIsriymFSPo", title: "Iklan Garuda Indonesia  - Kesibukan 30s  (2002) @ Indosiar & Metro TV", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "eQWbOTWIqno", title: "Garuda Indonesia Ad - 1992", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "qhKLlpKtC8U", title: "Kompilasi Iklan Teh Botol dan Teh Celup Sosro P1 (Remake)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "CY1SUXGGoUw", title: "Iklan Kapal Api (Sekitar 1998) Versi Piano", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "gDjToiPqGBg", title: "Kecap ABC - Untuk Semua {1997-1998 16:9 HD}", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
