@@ -490,4 +490,5 @@ const CHANNELS = [
   { id: "ErOjBKL5JI4", title: "OST Opening Honey Bee Hutch | Lagu Pembuka Kartun", cat: "Opening Kartun", st: "Multi-Stasiun" },
   { id: "FzhgZoCdXH0", title: "Opening Honey Bee Hutch versi Indonesia", cat: "Opening Kartun", st: "Multi-Stasiun" },
   { id: "s-3SPMMj3CU", title: "Mojacko ending klip lagu versi Indonesia", cat: "Opening Kartun", st: "Multi-Stasiun" },
+  { id: "_zRaaBuXGcc", title: "Minky Momo Opening Song - Spacetoon Indonesia", cat: "Opening Kartun", st: "Spacetoon" },
 ];
