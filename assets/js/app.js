@@ -714,6 +714,16 @@
       }
     } catch (e) { /* abaikan */ }
   }
+  var vpErrorTimer = null;
+  function vpError() {
+    // Video gagal dimuat (dihapus/privat/embed diblokir): ala TV analog —
+    // layar semut + OSD, lalu otomatis pindah ke channel berikutnya.
+    if (!powered) return;
+    staticFx(900);
+    showOsdText("SINYAL HILANG", "VIDEO TIDAK DAPAT DIPUTAR");
+    clearTimeout(vpErrorTimer);
+    vpErrorTimer = setTimeout(function () { if (powered) nextChannel(); }, 2600);
+  }
   function vpLoad(ch) {
     if (!ch) return;
     var src = ch.src || "yt";
@@ -751,7 +761,8 @@
           if (e.data === YT.PlayerState.PLAYING) vpPlaying = true;
           else if (e.data === YT.PlayerState.PAUSED) vpPlaying = false;
           else if (e.data === YT.PlayerState.ENDED) vpEnded();
-        }
+        },
+        onError: function () { vpError(); }
       }
     });
   }
@@ -787,6 +798,7 @@
       dmPlayer.addEventListener("playing", function () { vpPlaying = true; });
       dmPlayer.addEventListener("pause", function () { vpPlaying = false; });
       dmPlayer.addEventListener("video_end", function () { vpEnded(); });
+      dmPlayer.addEventListener("error", function () { vpError(); });
       dmPlayer.addEventListener("apiready", function () { vpApplyVolume(); });
     } catch (e) {
       dmPlayer = null;
@@ -842,6 +854,7 @@
       vmPlayer.on("play", function () { vpPlaying = true; });
       vmPlayer.on("pause", function () { vpPlaying = false; });
       vmPlayer.on("ended", function () { vpEnded(); });
+      vmPlayer.on("error", function () { vpError(); });
       vmPlayer.ready().then(function () { vpApplyVolume(); });
     } catch (e) { vmPlayer = null; }
   }
@@ -894,6 +907,7 @@
     if (hourBlock && hourIdxs.indexOf(current) === -1) exitHourBlock(false);
     PNStore.markWatched(cur().key);
     if (S.rememberCh) { S.lastCh = cur().key; PNStore.saveSettings(); }
+    clearTimeout(vpErrorTimer);
     refreshSignal();
     flashEye();
     staticFx(signalQ < 45 ? 800 : 450);

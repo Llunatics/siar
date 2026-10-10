@@ -846,6 +846,26 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 
 **Total siklus tercatat: 58**
 
+---
+
+## Siklus 59 — 2026-10-11 04:45 WIB — Robustness: penanganan video gagal dimuat
+
+- **Area:** `assets/js/app.js` (player YT/DM/Vimeo).
+- **Masalah:** Ketiga player tanpa error handler — video yang dihapus/privat/embed-diblokir
+  membuat layar diam tanpa feedback dan auto-next tak terpicu.
+- **Severity:** Sedang (dimensi 8; katalog 375 video, satu saja mati = UX rusak).
+- **Implementasi:** `vpError()` baru — static burst 900ms + OSD "SINYAL HILANG /
+  VIDEO TIDAK DAPAT DIPUTAR", lalu auto-pindah channel setelah 2,6 dtk.
+  Di-wire ke `onError` YT.Player, `error` DM.Player, `error` Vimeo.Player;
+  `tuneTo()` clear timer agar error basi tak melewati channel bagus.
+- **Test:** `node --check` OK; smoke 18/18 PASS; remote-click 18/18, 0 pageerror.
+  **Limitasi jujur:** jalur error live (video sungguhan mati) belum diuji —
+  butuh video dead nyata; wiring mengikuti pola `vpEnded` yang sudah teruji.
+- **Before/after:** Dimensi 8: 8.0→8.3.
+- **Next:** Lanjut katalog.
+
+**Total siklus tercatat: 59**
+
 > **Koreksi waktu (04:01 WIB):** timestamp siklus 33–55 di atas adalah estimasi dan
 > ternyata kelebihan ±5 jam. Waktu terverifikasi saat siklus 55: **2026-10-11 04:01 WIB**
 > (`date` sistem). Mulai siklus 56, timestamp memakai jam sistem yang benar.
