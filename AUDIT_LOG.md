@@ -447,3 +447,17 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 - **Next:** Lanjut siklus produk/katalog.
 
 **Total siklus tercatat: 30**
+
+---
+
+## Siklus 31 — 2026-10-11 05:22 WIB — Efek nyala CRT (garis terang mengembang)
+
+- **Area:** `assets/css/style.css` (`.screen-inner::after`, `@keyframes crt-on`), `assets/js/app.js` (`powerOn`).
+- **Masalah:** TV menyala instan tanpa transisi — CRT asli menampilkan garis putih horizontal yang mengembang memenuhi layar.
+- **Severity:** Sedang (dimensi 1/8).
+- **Implementasi:** Class `.turning-on` 550ms → `::after` menganimasikan garis 3px → 102% tinggi layar dalam 0.5s; restart-aman bila dinyalakan beruntun; nonaktif otomatis di reduced-motion via media query global.
+- **Test:** Playwright headless: class `turning-on` aktif di 50–300ms, lepas di 600ms; screenshot `tmp-crton.png` tunjukkan pita terang mengembang; smoke 18/18 PASS.
+- **Before/after:** Dimensi 1: 7.2→7.6.
+- **Next:** Batch katalog berikutnya.
+
+**Total siklus tercatat: 31**

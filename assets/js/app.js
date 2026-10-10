@@ -955,6 +955,10 @@
     if (!list.length) return;
     powered = true;
     els.tv.classList.add("on");
+    els.tv.classList.remove("turning-on");
+    void els.tv.offsetWidth; // restart animasi bila dinyalakan beruntun
+    els.tv.classList.add("turning-on");
+    setTimeout(function () { els.tv.classList.remove("turning-on"); }, 550);
     els.powerHint.classList.add("off");
     els.powerBtn.classList.add("on");
     els.remPower.classList.add("on");

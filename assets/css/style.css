@@ -168,6 +168,19 @@ body {
 }
 
 .screen-inner { position: absolute; inset: 0; }
+/* Efek nyala CRT: garis terang horizontal mengembang memenuhi layar */
+.screen-inner::after {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; bottom: 0; margin: auto;
+  height: 3px; background: #eaf2ff;
+  box-shadow: 0 0 30px 8px rgba(200,220,255,.75);
+  opacity: 0; pointer-events: none; z-index: 6;
+}
+.tv.turning-on .screen-inner::after { animation: crt-on .5s ease-out; }
+@keyframes crt-on {
+  0% { opacity: 1; height: 3px; }
+  55% { opacity: 1; height: 102%; }
+  100% { opacity: 0; height: 102%; }
+}
 #player { position: absolute; inset: 0; overflow: hidden; background: #000; }
 #player > div { position: absolute; inset: 0; }
 /* Overscan ala CRT: iframe diperbesar & digeser supaya strip judul atas,
