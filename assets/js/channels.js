@@ -564,4 +564,11 @@ const CHANNELS = [
   { id: "D-f8yn7O2uw", title: "Iklan Kompas dan Indosiar - Tampil Berbeda dengan Membaca (1997)", cat: "Iklan Jadul", st: "Indosiar" },
   { id: "8ynsGbXyuyQ", title: "Break Iklan 1 (RCTI)-Seputar Indonesia (1997)", cat: "Iklan Jadul", st: "RCTI" },
   { id: "xqrktaIyiAA", title: "Iklan Inzana - Si Kecil lagi Panas Demam, Iklan Minati Atmanegara (15s) (1999)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "LOU7ruS7LbY", title: "Jeda Iklan Metro TV (26 September 2002)", cat: "Iklan Jadul", st: "Metro TV" },
+  { id: "UtswHzTqVtw", title: "Iklan  sinetron wah cantiknya   SCTV 2001", cat: "Iklan Jadul", st: "SCTV" },
+  { id: "eLwfhKZvtR0", title: "Iklan WWF Smackdown versi Indonesia tahun 2001 2002", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "mUKxZ6XGjMo", title: "Jeda iklan TV 2002 Indosiar", cat: "Iklan Jadul", st: "Indosiar" },
+  { id: "PnPAABuiW18", title: "Nostalgia Iklan Televisi Swasta tahun 2002 by widiajier", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "rbdnz-_KczQ", title: "Iklan Ardath kenikmatan sukses   Tahun 2001", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "K7i2xqaDgoY", title: "Jeda Iklan RCTI (15 Mei 2001)", cat: "Iklan Jadul", st: "RCTI" },
 ];
