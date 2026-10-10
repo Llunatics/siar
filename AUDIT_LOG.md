@@ -2527,3 +2527,37 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 180**
 
 ---
+
+## Siklus 181 — 2026-10-11 05:30 WIB — Tier-1 auto-SKIP konservatif kandidat DM
+
+- **Area:** Katalog (pipa DM 3.575 YA|OK belum direview).
+- **Implementasi:** `scripts/tier1_skip.py` baru — hanya menandai SKIP bila judul
+  JELAS junk (klip film jadul, ident stasiun asing, konten anak modern,
+  judul generik tak terverifikasi, iklan modern). Tidak pernah menandai YA.
+  Dry-run dulu, sampel diperiksa manual, lalu diterapkan.
+- **Hasil:** 169 baris SKIP (iklan 88, ident 55, kartun 26). Sisa YA|OK:
+  iklan 1.262, ident 1.405, kartun 739.
+- **Test:** Dry-run 169 sampel OK; tidak ada append → tidak perlu smoke.
+- **Next:** Tier-2 filter judul untuk review manusia.
+
+**Total siklus tercatat: 181**
+
+---
+
+## Siklus 182 — 2026-10-11 05:35 WIB — Tier-2 filter + review manual: +16 entri DM (480→496)
+
+- **Area:** Katalog (480 → **496**).
+- **Implementasi:** `scripts/tier2_filter.py` — saring judul yang JELAS valid
+  (stasiun ID + kata materi). 47 baris lolos → review manusia judul-per-judul:
+  16 YA (7 ident, 7 iklan, 2 kartun), 31 DITOLAK (konten 2017–2025 di luar era,
+  parodi, karaoke, iklan Malaysia/Thailand, stand-up tentang iklan, reaksi
+  YouTuber, opening duplikat yang sudah ada di katalog).
+- **Verifikasi:** ke-16 ID dicek ulang via oEmbed DM resmi (16/16 OK, judul cocok).
+  Stasiun baru: Metro TV. RCTI +4 ident, TPI +1 (1998).
+- **Test:** append → 496 unik, 0 duplikat; `node --check` OK; smoke 18/18 PASS.
+- **Commit:** `9cd6a29` (lokal).
+- **Next:** Lanjut review DM / batch YT; regression tiap 5 siklus.
+
+**Total siklus tercatat: 182**
+
+---
