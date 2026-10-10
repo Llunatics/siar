@@ -77,7 +77,7 @@
   // (harus mencakup SEMUA nilai st di katalog; entri tanpa chip tak bisa difilter)
   var STATION_ORDER = ["RCTI", "SCTV", "Indosiar", "Trans TV", "Trans7", "Global TV",
     "ANTV", "MNCTV/TPI", "MNCTV", "TPI", "TVRI", "RTV", "NET.", "B Channel",
-    "Spacetoon", "Space Toon", "TV7", "Metro TV",
+    "Spacetoon", "Space Toon", "TV7", "Metro TV", "Lativi",
     "Multi-Stasiun", "Channel Saya"];
 
   function pad(n) { return (n < 10 ? "0" : "") + n; }
