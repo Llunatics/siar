@@ -908,6 +908,22 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 
 **Total siklus tercatat: 62**
 
+---
+
+## Siklus 63 — 2026-10-11 05:18 WIB — QA: remote di mobile 390×844
+
+- **Area:** Remote (viewport mobile).
+- **Hasil:** Screenshot `shots/tmp-remote63.png` — panel remote bottom-sheet tampil penuh,
+  semua tombol proporsional dan terbaca (numpad, CH/VOL rocker, MUTE/ACAK/BLOK,
+  BLOK JAM, SLEEP, SET, FULL). Volume slider di bawah lipatan (scrollable) — wajar.
+- **Catatan infra:** Satu launch Chromium sempat gagal dengan pesan path executable
+  yang salah (tanpa `chromium-1243/`); retry dengan path absolut eksplisit berhasil.
+  Executable ada dan jalan (`Google Chrome for Testing 153.0.8010.12`).
+- **Test:** Screenshot nyata diambil & direview; tidak ada perubahan kode.
+- **Next:** Lanjut katalog.
+
+**Total siklus tercatat: 63**
+
 > **Koreksi waktu (04:01 WIB):** timestamp siklus 33–55 di atas adalah estimasi dan
 > ternyata kelebihan ±5 jam. Waktu terverifikasi saat siklus 55: **2026-10-11 04:01 WIB**
 > (`date` sistem). Mulai siklus 56, timestamp memakai jam sistem yang benar.
