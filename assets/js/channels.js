@@ -678,4 +678,6 @@ const CHANNELS = [
   { id: "xKsC25qAfNg", title: "Iklan Es Krim Walls Dimpi tahun 1997", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "5Nnw5TQg6qM", title: "Station Ident TransTV (awal siaran 2001-2002, Rare)", cat: "Jingle & Ident", st: "Trans TV" },
   { id: "2BfgFj8EZ1k", title: "Ident Prima Entertainment (2000-2001)", cat: "Jingle & Ident", st: "Multi-Stasiun" },
+  { id: "Vo16cyx0T_Q", title: "IKLAN JADUL - BANK LIPPO (1996)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "1s80w4vrBVM", title: "Iklan Tahapan BCA - Gebyar Kemenangan (1999)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
