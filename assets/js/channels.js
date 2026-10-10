@@ -542,4 +542,9 @@ const CHANNELS = [
   { id: "tayangan-ikl-4-n-pariwara-di-thn-81-360-p", title: "Tayangan IKLAN PARIWARA 1981", cat: "Iklan Jadul", st: "Multi-Stasiun", src: "ia" },
   { id: "90stvintros_indonesia_rcti", title: "90s TV Show Intro Collection: Indonesia, RCTI", cat: "Sinetron & Acara TV", st: "RCTI", src: "ia" },
   { id: "oh-ranger-opening-indonesian-version-short-prev-you-tube", title: "OH RANGER OPENING INDONESIAN VERSION + Short Prev You Tube", cat: "Opening Tokusatsu", st: "Multi-Stasiun", src: "ia" },
+  { id: "QyxvB-sMb7A", title: "Iklan Gudang Garam Merah - Terjun Payung (1992) @ RCTI", cat: "Iklan Jadul", st: "RCTI" },
+  { id: "fxu6Wk_MfoM", title: "Iklan Gudang Garam International - Hunter (1994, Revisi 2001) @ RCTI", cat: "Iklan Jadul", st: "RCTI" },
+  { id: "MqxrXsy8_qI", title: "Iklan Gudang Garam International - Shooting (1989?)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "pGqVZxERXQ4", title: "Iklan Gudang Garam International - Survive (2006) @ RCTI, TPI, Indosiar, Trans TV, & SCTV", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "iklan-rokok-jadul-era-90an", title: "Kumpulan Iklan TV Rokok jadul era 90an", cat: "Iklan Jadul", st: "Multi-Stasiun", src: "ia" },
 ];
