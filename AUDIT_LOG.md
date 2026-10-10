@@ -2788,3 +2788,53 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 197**
 
 ---
+
+## Siklus 198 — 2026-10-11 05:59 WIB — Batch YouTube sinetron 90an: +1 entri (530→531)
+
+- **Area:** Katalog (opening sinetron).
+- **Metode:** web search -> 2 kandidat -> oEmbed (1 OK, 1 FAIL 401).
+- **Hasil:** 1 YA (Opening Sinetron Tersanjung 1998-2005, Indosiar).
+- **Test:** append -> 531 unik; smoke 18/18 PASS (dari 194).
+- **Commit:** lokal.
+- **Next:** Regression (5 siklus).
+
+**Total siklus tercatat: 198**
+
+---
+
+## Siklus 199 — 2026-10-11 05:59 WIB — Regression pass siklus 195–199
+
+- **Area:** Test suite (katalog +4).
+- **Hasil:** smoke 18/18, remote-click 18/18, hold-repeat 3/3, guide-chunk 7/7.
+  46/46 hijau.
+- **Test:** Semua dijalankan nyata.
+- **Next:** Lanjut.
+
+**Total siklus tercatat: 199**
+
+---
+
+## Siklus 200 — 2026-10-11 06:00 WIB — Discovery IA batch 6 (stasiun spesifik): +0 entri
+
+- **Area:** Katalog (4 kueri IA stasiun: RCTI/SCTV/Indosiar/TPI + iklan 1990).
+- **Hasil:** 0 kandidat baru (semua sudah di katalog atau tidak ada).
+- **Next:** Coba sudut lain.
+
+**Total siklus tercatat: 200**
+
+---
+
+## Siklus 201 — 2026-10-11 06:08 WIB — Discovery IA batch 7 (luas): +0 entri
+
+- **Area:** Katalog (4 kueri luas IA: televisi/siaran indonesia, jakarta tv).
+- **Metode:** discover.py --source ia (196 kandidat) -> verify (194 OK, 2 REVIEW)
+  -> filter judul + cek metadata.
+- **Hasil:** 0 baru. 196 kandidat didominasi iklan Samsung modern, VOA,
+  radio amatir; 3 kandidat potensial (OBB iNews, kompilasi jeda iklan)
+  ternyata 2019-2026 (di luar era).
+- **Test:** Tidak ada append.
+- **Next:** Evaluasi strategi katalog.
+
+**Total siklus tercatat: 201**
+
+---

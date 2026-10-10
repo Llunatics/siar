@@ -555,4 +555,8 @@ const CHANNELS = [
   { id: "VU-D4pg5OtE", title: "Iklan Rinso - Interview (1992-1993) @ RCTI Bandung", cat: "Iklan Jadul", st: "RCTI" },
   { id: "aJ3eiI5x6ug", title: "Iklan Lifebuoy Body Wash - Perlindungan Nonstop (15s) (1998-1999)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "LnZlWK5a6v4", title: "Opening Sinetron Jadul Tersanjung (1998-2005) @ Indosiar", cat: "Sinetron & Acara TV", st: "Indosiar" },
+  { id: "0yUXBRPKQ2g", title: "Iklan (ILM/PSA) dari Depdikbud dan Majalah Bobo - Buku adalah Jendela Dunia (1996)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "8NKUwpIt6fc", title: "Iklan Gelar Anugerah Festival Film SCTV tahun 1996", cat: "Iklan Jadul", st: "SCTV" },
+  { id: "P_03Eaf9gig", title: "Iklan Gelar Anugerah Festival Sinetron Indonesia Indosiar 1996", cat: "Iklan Jadul", st: "Indosiar" },
+  { id: "oegJXYr1ZCA", title: "Iklan Layanan Masyarakat tentang AIDS tahun 1996", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
