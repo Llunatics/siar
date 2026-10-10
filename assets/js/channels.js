@@ -387,4 +387,5 @@ const CHANNELS = [
   { id: "626sgjmaXDw", title: "Logo Animasi Bumper RCTI (1993-2000)", cat: "Jingle & Ident", st: "RCTI" },
   { id: "rByqxWPh4iA", title: "RCTI Idents 1993-2011 (kompilasi)", cat: "Jingle & Ident", st: "RCTI" },
   { id: "gA-TRhUrbBQ", title: "Iklan Jadul Part 6 (1989-1997) + ident RCTI 1990 (kompilasi)", cat: "Iklan Jadul", st: "RCTI" },
+  { id: "ciaCVelQYjo", title: "Opening Song Hutchi (Honey Bee Hutch) bahasa Indonesia", cat: "Opening Kartun", st: "Multi-Stasiun" },
 ];
