@@ -457,4 +457,5 @@ const CHANNELS = [
   { id: "Gguii1lV6x4", title: "Iklan Nutrima 3 (Sekitar 1999/2000)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "3Rw2wRzDO6Y", title: "OST P-Man - Opening + Lirik", cat: "Opening Kartun", st: "RCTI" },
   { id: "1kjdyauOpvg", title: "Lagu pembuka P man Versi Bahasa Indonesia by OST ANIME ID", cat: "Opening Kartun", st: "RCTI" },
+  { id: "pZXkNeGvNo0", title: "HUNTER X HUNTER OPENING SONG - OHAYOU INDONESIAN VERSION", cat: "Opening Kartun", st: "Multi-Stasiun" },
 ];
