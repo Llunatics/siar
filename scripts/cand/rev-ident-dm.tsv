@@ -1,36 +1,36 @@
 putusan	status	src	id	title_oembed	title_discovery	cat	st	note	query
-YA	OK	dm	x3myni4	RCTI Idents 1993-2011	RCTI Idents 1993-2011				ident rcti
+YA	OK	dm	x3myni4	RCTI Idents 1993-2011	RCTI Idents 1993-2011	Jingle & Ident	RCTI	review manual 05:35 WIB: YA terverifikasi	ident rcti
 YA	OK	dm	x10au7	ident	ident				ident rcti
 YA	OK	dm	x3gnfgv	IDENT	IDENT				ident rcti
 YA	OK	dm	x7ul2a1	ident	ident				ident rcti
 YA	OK	dm	x66r6jr	Ident	Ident				ident rcti
 YA	OK	dm	x3a151i	TRTHABER IDENT	TRTHABER IDENT				ident rcti
-YA	OK	dm	x6ogav4	Nickelodeon Idents	Nickelodeon Idents				ident rcti
+SKIP	OK	dm	x6ogav4	Nickelodeon Idents	Nickelodeon Idents			tier1: ident stasiun asing, bukan siaran Indonesia	ident rcti
 YA	OK	dm	x1i6od	Pin Ident	Pin Ident				ident rcti
-YA	OK	dm	x5o4s7f	Canal+ - ident	Canal+ - ident				ident rcti
-YA	OK	dm	xl90s9	OSN Idents	OSN Idents				ident rcti
-YA	OK	dm	xybswx	Surfersvillage Ident	Surfersvillage Ident				ident rcti
-YA	OK	dm	x9gzsya	Noggin Idents	Noggin Idents				ident rcti
-YA	OK	dm	x1xjv6	Central ident	Central ident				ident rcti
-YA	OK	dm	x2mik0r	NewsONE Ident	NewsONE Ident				ident rcti
-YA	OK	dm	x5txyua	Astrion ident	Astrion ident				ident rcti
-YA	OK	dm	x440ahp	E4 Ident	E4 Ident				ident rcti
-YA	OK	dm	xa87mrs	OWL-Ident	OWL-Ident				ident rcti
-YA	OK	dm	x5zhhqu	Speed.fm - Ident	Speed.fm - Ident				ident rcti
-YA	OK	dm	x1ezj1	Five Idents	Five Idents				ident rcti
-YA	OK	dm	x3vup0	Carlton Ident	Carlton Ident				ident rcti
+SKIP	OK	dm	x5o4s7f	Canal+ - ident	Canal+ - ident			tier1: ident stasiun asing, bukan siaran Indonesia	ident rcti
+SKIP	OK	dm	xl90s9	OSN Idents	OSN Idents			tier1: ident stasiun asing, bukan siaran Indonesia	ident rcti
+SKIP	OK	dm	xybswx	Surfersvillage Ident	Surfersvillage Ident			tier1: ident stasiun asing, bukan siaran Indonesia	ident rcti
+SKIP	OK	dm	x9gzsya	Noggin Idents	Noggin Idents			tier1: ident stasiun asing, bukan siaran Indonesia	ident rcti
+SKIP	OK	dm	x1xjv6	Central ident	Central ident			tier1: ident stasiun asing, bukan siaran Indonesia	ident rcti
+SKIP	OK	dm	x2mik0r	NewsONE Ident	NewsONE Ident			tier1: ident stasiun asing, bukan siaran Indonesia	ident rcti
+SKIP	OK	dm	x5txyua	Astrion ident	Astrion ident			tier1: ident stasiun asing, bukan siaran Indonesia	ident rcti
+SKIP	OK	dm	x440ahp	E4 Ident	E4 Ident			tier1: ident stasiun asing, bukan siaran Indonesia	ident rcti
+SKIP	OK	dm	xa87mrs	OWL-Ident	OWL-Ident			tier1: ident stasiun asing, bukan siaran Indonesia	ident rcti
+SKIP	OK	dm	x5zhhqu	Speed.fm - Ident	Speed.fm - Ident			tier1: ident stasiun asing, bukan siaran Indonesia	ident rcti
+SKIP	OK	dm	x1ezj1	Five Idents	Five Idents			tier1: ident stasiun asing, bukan siaran Indonesia	ident rcti
+SKIP	OK	dm	x3vup0	Carlton Ident	Carlton Ident			tier1: ident stasiun asing, bukan siaran Indonesia	ident rcti
 YA	OK	dm	x3giqnc	IDENT 03	IDENT 03				ident rcti
 YA	OK	dm	x7lfysp	RCTI 1989 - 2015	RCTI 1989 - 2015				ident rcti
-YA	OK	dm	x5zaiae	Sky Ident	Sky Ident				ident rcti
-YA	OK	dm	x6h25pw	Ident House 2	Ident House 2				ident rcti
-YA	OK	dm	xwt80l	Brahal Ident Bumper	Brahal Ident Bumper				ident rcti
+SKIP	OK	dm	x5zaiae	Sky Ident	Sky Ident			tier1: ident stasiun asing, bukan siaran Indonesia	ident rcti
+SKIP	OK	dm	x6h25pw	Ident House 2	Ident House 2			tier1: ident stasiun asing, bukan siaran Indonesia	ident rcti
+SKIP	OK	dm	xwt80l	Brahal Ident Bumper	Brahal Ident Bumper			tier1: ident stasiun asing, bukan siaran Indonesia	ident rcti
 YA	OK	dm	x2xfxur	Kerrang! TV Idents	Kerrang! TV Idents				ident rcti
-YA	OK	dm	x2yf0hb	Carlton Ident (2002)	Carlton Ident (2002)				ident rcti
+SKIP	OK	dm	x2yf0hb	Carlton Ident (2002)	Carlton Ident (2002)			tier1: ident stasiun asing, bukan siaran Indonesia	ident rcti
 YA	OK	dm	x82zp3	LWT  IDENT 1978	LWT  IDENT 1978				ident rcti
 YA	OK	dm	x9qglr6	F.H.E. Paintbrush Ident	F.H.E. Paintbrush Ident				ident rcti
 YA	OK	dm	xaqr5t	Pickwick Video Ident	Pickwick Video Ident				ident rcti
 YA	OK	dm	x2wos9w	CER2 Ident A	CER2 Ident A				ident rcti
-YA	OK	dm	x4tmnl	Central tv Ident	Central tv Ident				ident rcti
+SKIP	OK	dm	x4tmnl	Central tv Ident	Central tv Ident			tier1: ident stasiun asing, bukan siaran Indonesia	ident rcti
 YA	OK	dm	x2wos6d	CER2 Ident F	CER2 Ident F				ident rcti
 YA	OK	dm	x2a9d3o	CER2 HD ident	CER2 HD ident				ident rcti
 YA	OK	dm	x356au4	TV3 Horror Ident	TV3 Horror Ident				ident rcti
@@ -39,8 +39,8 @@ YA	OK	dm	x2wijq	CTV ident (1979)	CTV ident (1979)				ident rcti
 YA	OK	dm	x6tpp20	HRT 2011. Ident	HRT 2011. Ident				ident rcti
 YA	OK	dm	x9y06vo	Film+ GR Idents	Film+ GR Idents				ident rcti
 YA	OK	dm	x9ht5ky	Ntv7 2006 Ident	Ntv7 2006 Ident				ident rcti
-YA	OK	dm	x8rojr1	Station ID RCTI 2015 - Versi Sawah	Station ID RCTI 2015 - Versi Sawah				station id rcti
-YA	OK	dm	x8rojr3	Station ID RCTI 2015 - Versi Pendaki	Station ID RCTI 2015 - Versi Pendaki				station id rcti
+YA	OK	dm	x8rojr1	Station ID RCTI 2015 - Versi Sawah	Station ID RCTI 2015 - Versi Sawah	Jingle & Ident	RCTI	review manual 05:35 WIB: YA terverifikasi	station id rcti
+YA	OK	dm	x8rojr3	Station ID RCTI 2015 - Versi Pendaki	Station ID RCTI 2015 - Versi Pendaki	Jingle & Ident	RCTI	review manual 05:35 WIB: YA terverifikasi	station id rcti
 YA	OK	dm	x6qtwo0	ID RCTI - CELEBRATION (2006)	ID RCTI - CELEBRATION (2006)				station id rcti
 YA	OK	dm	x6qz7sy	ID RCTI - RUMAH GADANG (2006)	ID RCTI - RUMAH GADANG (2006)				station id rcti
 YA	OK	dm	x8z9vlk	STATION ID REPUBLIC TELEVISION STATION	STATION ID REPUBLIC TELEVISION STATION				station id rcti
@@ -64,22 +64,22 @@ YA	OK	dm	x16mg2o	UNTV Station ID 2011	UNTV Station ID 2011				station id rcti
 YA	OK	dm	x8x99qi	Station ID iNewsTV 2017	Station ID iNewsTV 2017				station id rcti
 YA	OK	dm	x36bin	WTOG STATION ID SPOTS	WTOG STATION ID SPOTS				station id rcti
 YA	OK	dm	x8x9926	Station ID KompasTV 2016	Station ID KompasTV 2016				station id rcti
-YA	OK	dm	x8rojqz	Station ID MetroTV 2014	Station ID MetroTV 2014				station id rcti
+YA	OK	dm	x8rojqz	Station ID MetroTV 2014	Station ID MetroTV 2014	Jingle & Ident	Metro TV	review manual 05:35 WIB: YA terverifikasi	station id rcti
 YA	OK	dm	x17gwki	UNTV37 Station ID 2013	UNTV37 Station ID 2013				station id rcti
 YA	OK	dm	x9witgy	Station ID Memorabilia Canadian Edition	Station ID Memorabilia Canadian Edition				station id rcti
 YA	OK	dm	x169t25	NET25 - NET25 Station ID 2001	NET25 - NET25 Station ID 2001				station id rcti
-YA	OK	dm	x4noxbz	Disney channels Asia Stations Id	Disney channels Asia Stations Id				station id rcti
+SKIP	OK	dm	x4noxbz	Disney channels Asia Stations Id	Disney channels Asia Stations Id			tier1: ident stasiun asing, bukan siaran Indonesia	station id rcti
 YA	OK	dm	x1gu68h	IBC13 - IBC13 station id 2002	IBC13 - IBC13 station id 2002				station id rcti
 YA	OK	dm	x7rgqoh	Station ID Memorabilia vol 1	Station ID Memorabilia vol 1				station id rcti
 YA	OK	dm	xa73aqe	Station ID Memorabilia vol 64	Station ID Memorabilia vol 64				station id rcti
 YA	OK	dm	x16idtf	NBN4 - NBN4 Station ID 2001	NBN4 - NBN4 Station ID 2001				station id rcti
-YA	OK	dm	x2evvvf	Fox Noggin Channel station ID	Fox Noggin Channel station ID				station id rcti
+SKIP	OK	dm	x2evvvf	Fox Noggin Channel station ID	Fox Noggin Channel station ID			tier1: ident stasiun asing, bukan siaran Indonesia	station id rcti
 YA	OK	dm	x2qbh4y	ABS-CBN Christmas Station ID	ABS-CBN Christmas Station ID				station id rcti
 YA	OK	dm	xy04dl	Polonia1 nowy Station ID  (03.13.)	Polonia1 nowy Station ID  (03.13.)				station id rcti
 YA	OK	dm	x8n63zk	Station ID Memorabilia vol 30	Station ID Memorabilia vol 30				station id rcti
 YA	OK	dm	x2qbh4e	Teaser station ID 2010 NESCAFE	Teaser station ID 2010 NESCAFE				station id rcti
 YA	OK	dm	x50289	Kapuso Summer 08 Station ID	Kapuso Summer 08 Station ID				station id rcti
-YA	OK	dm	x977nbc	BUMPER BREAK RCTI (2008-2015) (NO VOICEOVER)	BUMPER BREAK RCTI (2008-2015) (NO VOICEOVER)				bumper rcti 1990
+YA	OK	dm	x977nbc	BUMPER BREAK RCTI (2008-2015) (NO VOICEOVER)	BUMPER BREAK RCTI (2008-2015) (NO VOICEOVER)	Jingle & Ident	RCTI	review manual 05:35 WIB: YA terverifikasi	bumper rcti 1990
 YA	OK	dm	x2w3b9	The Weather Channel Bumper (1990)	The Weather Channel Bumper (1990)				bumper rcti 1990
 YA	OK	dm	x6116ww	Bumper Stumpers - June 29, 1990	Bumper Stumpers - June 29, 1990				bumper rcti 1990
 YA	OK	dm	x9q5doa	Wheel of Fortune promo bumper, 1990	Wheel of Fortune promo bumper, 1990				bumper rcti 1990
@@ -94,17 +94,17 @@ YA	OK	dm	x2zns7j	Bumper	Bumper				bumper rcti 1990
 YA	OK	dm	x7idbr5	Bumper to Bumper Bash Up	Bumper to Bumper Bash Up				bumper rcti 1990
 YA	OK	dm	x2uubx	Bumper Repair San Diego - Bumper Time.com	Bumper Repair San Diego - Bumper Time.com				bumper rcti 1990
 YA	OK	dm	x87cq1a	Snowstorm causes bumper-to-bumper traffic	Snowstorm causes bumper-to-bumper traffic				bumper rcti 1990
-YA	OK	dm	x2z47s7	Cartoon Network - Generic bumper - Ad bumpers	Cartoon Network - Generic bumper - Ad bumpers				bumper rcti 1990
-YA	OK	dm	x2xu55w	Cartoon Network: Generic bumper Ad bumpers	Cartoon Network: Generic bumper Ad bumpers				bumper rcti 1990
+SKIP	OK	dm	x2z47s7	Cartoon Network - Generic bumper - Ad bumpers	Cartoon Network - Generic bumper - Ad bumpers			tier1: ident stasiun asing, bukan siaran Indonesia	bumper rcti 1990
+SKIP	OK	dm	x2xu55w	Cartoon Network: Generic bumper Ad bumpers	Cartoon Network: Generic bumper Ad bumpers			tier1: ident stasiun asing, bukan siaran Indonesia	bumper rcti 1990
 YA	OK	dm	x30wfue	Adzan Maghrib RCTI 2015	Adzan Maghrib RCTI 2015				bumper rcti 1990
 YA	OK	dm	x541b4	Bumpers cars	Bumpers cars				bumper rcti 1990
 YA	OK	dm	x7eo7ud	Bumper Nani	Bumper Nani				bumper rcti 1990
 YA	OK	dm	x4yz65r	HUT RCTI 27: Cakra Khan Sukses Tutup Kemeriahan Ulang Tahun RCTI	HUT RCTI 27: Cakra Khan Sukses Tutup Kemeriahan Ulang Tahun RCTI				bumper rcti 1990
 YA	OK	dm	x7rwutj	Di luar nalar - RCTI	Di luar nalar - RCTI				bumper rcti 1990
-YA	OK	dm	x44uftk	Nickelodeon Halloween Bumpers (2015 Nickelodeon Halloween Bumpers)	Nickelodeon Halloween Bumpers (2015 Nickelodeon Halloween Bumpers)				bumper rcti 1990
+SKIP	OK	dm	x44uftk	Nickelodeon Halloween Bumpers (2015 Nickelodeon Halloween Bumpers)	Nickelodeon Halloween Bumpers (2015 Nickelodeon Halloween Bumpers)			tier1: ident stasiun asing, bukan siaran Indonesia	bumper rcti 1990
 YA	OK	dm	x8ises8	OBB Dahsyatnya 2023 RCTI	OBB Dahsyatnya 2023 RCTI				bumper rcti 1990
 YA	OK	dm	x54f1u	North County Bumper Repair | Escondido Bumper Repair	North County Bumper Repair | Escondido Bumper Repair				bumper rcti 1990
-YA	OK	dm	x33t6rq	Nickelodeon bumper	Nickelodeon bumper				bumper rcti 1990
+SKIP	OK	dm	x33t6rq	Nickelodeon bumper	Nickelodeon bumper			tier1: ident stasiun asing, bukan siaran Indonesia	bumper rcti 1990
 YA	OK	dm	x85x86v	CineFox Bumper	CineFox Bumper				bumper rcti 1990
 YA	OK	dm	x9ayuke	Bumper Aslinews	Bumper Aslinews				bumper rcti 1990
 YA	OK	dm	x4uxlc	Moose Bumper	Moose Bumper				bumper rcti 1990
@@ -346,14 +346,14 @@ YA	OK	dm	x2u2kbc	GMA-7 2007 Station ID	GMA-7 2007 Station ID				station id indos
 YA	OK	dm	xa5sq7u	Boomerang Station ID Wobbly Toys	Boomerang Station ID Wobbly Toys				station id indosiar
 YA	OK	dm	x5lawb	Y&R bumpers 1995-1999 updated	Y&R bumpers 1995-1999 updated				bumper indosiar 1995
 YA	OK	dm	x8jz92i	PTV Park Schedule Bumper (WUNC-TV 1995)	PTV Park Schedule Bumper (WUNC-TV 1995)				bumper indosiar 1995
-YA	OK	dm	x6o3zf2	Cartoon Network: The Jetsons - Bumpers (1995-1997)	Cartoon Network: The Jetsons - Bumpers (1995-1997)				bumper indosiar 1995
+SKIP	OK	dm	x6o3zf2	Cartoon Network: The Jetsons - Bumpers (1995-1997)	Cartoon Network: The Jetsons - Bumpers (1995-1997)			tier1: ident stasiun asing, bukan siaran Indonesia	bumper indosiar 1995
 YA	OK	dm	x3uqn46	Simpsons Closing Credits With News Bumper (1995)	Simpsons Closing Credits With News Bumper (1995)				bumper indosiar 1995
 YA	OK	dm	x8jarcn	Heidi - Opening (Mandarin Chinese) + Bumpers (CCTV-2. 1995)	Heidi - Opening (Mandarin Chinese) + Bumpers (CCTV-2. 1995)				bumper indosiar 1995
-YA	OK	dm	x1cq5t6	Cartoon Network US - Bumper - We'll Be Right Back - 1995	Cartoon Network US - Bumper - We'll Be Right Back - 1995				bumper indosiar 1995
-YA	OK	dm	x307l7d	Cartoon Network The Centurions bumper will return 2 1995	Cartoon Network The Centurions bumper will return 2 1995				bumper indosiar 1995
-YA	OK	dm	x1cq5qa	Cartoon Network US - Bumper - Coming Up Next #1 - 1995	Cartoon Network US - Bumper - Coming Up Next #1 - 1995				bumper indosiar 1995
-YA	OK	dm	x1cq5rd	Cartoon Network US - Bumper - Coming Up Next #2 - 1995	Cartoon Network US - Bumper - Coming Up Next #2 - 1995				bumper indosiar 1995
-YA	OK	dm	x1cq5ol	Cartoon Network US - Bumper - Back To The Show #2 - 1995	Cartoon Network US - Bumper - Back To The Show #2 - 1995				bumper indosiar 1995
+SKIP	OK	dm	x1cq5t6	Cartoon Network US - Bumper - We'll Be Right Back - 1995	Cartoon Network US - Bumper - We'll Be Right Back - 1995			tier1: ident stasiun asing, bukan siaran Indonesia	bumper indosiar 1995
+SKIP	OK	dm	x307l7d	Cartoon Network The Centurions bumper will return 2 1995	Cartoon Network The Centurions bumper will return 2 1995			tier1: ident stasiun asing, bukan siaran Indonesia	bumper indosiar 1995
+SKIP	OK	dm	x1cq5qa	Cartoon Network US - Bumper - Coming Up Next #1 - 1995	Cartoon Network US - Bumper - Coming Up Next #1 - 1995			tier1: ident stasiun asing, bukan siaran Indonesia	bumper indosiar 1995
+SKIP	OK	dm	x1cq5rd	Cartoon Network US - Bumper - Coming Up Next #2 - 1995	Cartoon Network US - Bumper - Coming Up Next #2 - 1995			tier1: ident stasiun asing, bukan siaran Indonesia	bumper indosiar 1995
+SKIP	OK	dm	x1cq5ol	Cartoon Network US - Bumper - Back To The Show #2 - 1995	Cartoon Network US - Bumper - Back To The Show #2 - 1995			tier1: ident stasiun asing, bukan siaran Indonesia	bumper indosiar 1995
 YA	OK	dm	x8uc18e	Canal 9 (Resistencia) - ID y bumper de "Nuestro Próximo Programa" - 1995	Canal 9 (Resistencia) - ID y bumper de "Nuestro Próximo Programa" - 1995				bumper indosiar 1995
 YA	OK	dm	x5hky02	Start and End of Postman Pat's Bumper Collection VHS (Monday 2nd October 1995)	Start and End of Postman Pat's Bumper Collection VHS (Monday 2nd October 1995)				bumper indosiar 1995
 YA	OK	dm	x55h0wd	Sinema Indosiar - Penyesalan Seorang Suami	Sinema Indosiar - Penyesalan Seorang Suami				bumper indosiar 1995
@@ -452,7 +452,7 @@ YA	OK	dm	xjl7dd	TPI investiga Costa do Marfim	TPI investiga Costa do Marfim				i
 YA	OK	dm	x6turd7	TPI investiga crimes contra rohingyas	TPI investiga crimes contra rohingyas				ident tpi
 YA	OK	dm	x6mlpli	Árbitro de futebol no TPI	Árbitro de futebol no TPI				ident tpi
 YA	OK	dm	x3nsz0w	TPI examina massacre em Uganda	TPI examina massacre em Uganda				ident tpi
-YA	OK	dm	x9kqjii	Kompilasi Station ID TPI (MNCTV) (1998) - Versi Keberagaman Budaya Indonesia	Kompilasi Station ID TPI (MNCTV) (1998) - Versi Keberagaman Budaya Indonesia				station id tpi
+YA	OK	dm	x9kqjii	Kompilasi Station ID TPI (MNCTV) (1998) - Versi Keberagaman Budaya Indonesia	Kompilasi Station ID TPI (MNCTV) (1998) - Versi Keberagaman Budaya Indonesia	Jingle & Ident	TPI	review manual 05:35 WIB: YA terverifikasi	station id tpi
 YA	OK	dm	xl6jxv	1991 MTV Bumper #1	1991 MTV Bumper #1				bumper tpi 1991
 YA	OK	dm	x355i7v	KVBC Ch. 3 - (1991) NBC's 1991 Saturday Morning Cartoon Bumpers	KVBC Ch. 3 - (1991) NBC's 1991 Saturday Morning Cartoon Bumpers				bumper tpi 1991
 YA	OK	dm	x60ifra	Ch. 5 - (1991) Disney's Adventures of the Gummi Bears Commercial Bumpers	Ch. 5 - (1991) Disney's Adventures of the Gummi Bears Commercial Bumpers				bumper tpi 1991
@@ -534,7 +534,7 @@ YA	OK	dm	xpb29j	Phenomenon live @ Timpul Chitarelor - Televiziunea Romana TVRi	P
 YA	OK	dm	x5anf2h	Today's History TVRI pertama mengudara - IMS	Today's History TVRI pertama mengudara - IMS				bumper tvri 1980
 YA	OK	dm	x7trvjg	Program Belajar dari Rumah Bersama TVRI	Program Belajar dari Rumah Bersama TVRI				bumper tvri 1980
 YA	OK	dm	x9e2kqg	Karyawan RRI-TVRI Disebut Kena PHK	Karyawan RRI-TVRI Disebut Kena PHK				bumper tvri 1980
-YA	OK	dm	x2c316b	Cartoon Network - Best Bumpers (Mejores Bumpers) HD	Cartoon Network - Best Bumpers (Mejores Bumpers) HD				bumper tvri 1980
+SKIP	OK	dm	x2c316b	Cartoon Network - Best Bumpers (Mejores Bumpers) HD	Cartoon Network - Best Bumpers (Mejores Bumpers) HD			tier1: ident stasiun asing, bukan siaran Indonesia	bumper tvri 1980
 YA	OK	dm	x8fmd3i	Sengkarut TVRI, Bagaimana Nasib Siaran Liga Inggris?	Sengkarut TVRI, Bagaimana Nasib Siaran Liga Inggris?				tvri 1990
 YA	OK	dm	x9mlydw	Dunia Dalam Berita (TVRI) 9/7/2025	Dunia Dalam Berita (TVRI) 9/7/2025				tvri 1990
 YA	OK	dm	x88456y	40 Meter Bagian Tower Stasiun TVRI Roboh Akibat Angin Puting Beliung, TVRI Rugi Ratusan Juta Rupiah!	40 Meter Bagian Tower Stasiun TVRI Roboh Akibat Angin Puting Beliung, TVRI Rugi Ratusan Juta Rupiah!				tvri 1990
@@ -581,13 +581,13 @@ YA	OK	dm	x8r76ta	Juniors TV ident	Juniors TV ident				ident trans tv
 YA	OK	dm	xakatoq	Baby TV Idents	Baby TV Idents				ident trans tv
 YA	OK	dm	xif2ym	Ident Polo TV	Ident Polo TV				ident trans tv
 YA	OK	dm	x9395l4	TV-idents-STN.mp4	TV-idents-STN.mp4				ident trans tv
-YA	OK	dm	x2jcdn0	Sky TV Idents	Sky TV Idents				ident trans tv
-YA	OK	dm	x4jxeu5	Treehouse TV Ident	Treehouse TV Ident				ident trans tv
+SKIP	OK	dm	x2jcdn0	Sky TV Idents	Sky TV Idents			tier1: ident stasiun asing, bukan siaran Indonesia	ident trans tv
+SKIP	OK	dm	x4jxeu5	Treehouse TV Ident	Treehouse TV Ident			tier1: ident stasiun asing, bukan siaran Indonesia	ident trans tv
 YA	OK	dm	x6k9i2r	TRANS TV Official	TRANS TV Official				ident trans tv
 YA	OK	dm	x8jhi2i	TRANS TV LIVE	TRANS TV LIVE				ident trans tv
 YA	OK	dm	x9yygmm	CMC TV Ident 18	CMC TV Ident 18				ident trans tv
 YA	OK	dm	x9yq20i	CMC TV Ident 11	CMC TV Ident 11				ident trans tv
-YA	OK	dm	x4fdmgo	Original Carlton TV Idents	Original Carlton TV Idents				ident trans tv
+SKIP	OK	dm	x4fdmgo	Original Carlton TV Idents	Original Carlton TV Idents			tier1: ident stasiun asing, bukan siaran Indonesia	ident trans tv
 YA	OK	dm	x9yljtw	CMC TV Ident 1	CMC TV Ident 1				ident trans tv
 YA	OK	dm	x9yo5mg	CMC TV Ident 10	CMC TV Ident 10				ident trans tv
 YA	OK	dm	x9yo5a6	CMC TV Ident 9	CMC TV Ident 9				ident trans tv
@@ -597,7 +597,7 @@ YA	OK	dm	x37yrmd	AD Sports TV  Idents	AD Sports TV  Idents				ident trans tv
 YA	OK	dm	x2pmv4	WWOR-TV triangle ident	WWOR-TV triangle ident				ident trans tv
 YA	OK	dm	x9ylnc6	CMC TV Ident 3	CMC TV Ident 3				ident trans tv
 YA	OK	dm	x9yq5zk	CMC TV Ident 15	CMC TV Ident 15				ident trans tv
-YA	OK	dm	x82zn9	CENTRAL TV IDENT 1982	CENTRAL TV IDENT 1982				ident trans tv
+SKIP	OK	dm	x82zn9	CENTRAL TV IDENT 1982	CENTRAL TV IDENT 1982			tier1: ident stasiun asing, bukan siaran Indonesia	ident trans tv
 YA	OK	dm	x9t79k8	2M tv ident 1989	2M tv ident 1989				ident trans tv
 YA	OK	dm	x9yo1cq	CMC TV Ident 8	CMC TV Ident 8				ident trans tv
 YA	OK	dm	x9yq2x4	CMC TV Ident 13	CMC TV Ident 13				ident trans tv
@@ -810,7 +810,7 @@ YA	OK	dm	xi6cs	Jmcrier 2002	Jmcrier 2002				lativi 2002
 YA	OK	dm	x2ktup	Chris.Jericho.vs.RVD.KOTR.2002.	Chris.Jericho.vs.RVD.KOTR.2002.				lativi 2002
 YA	OK	dm	x8d202p	Nicktoons TV kaleidoscope ident (2002)	Nicktoons TV kaleidoscope ident (2002)				ident global tv
 YA	OK	dm	x8n12mo	IDENT TV - C8 (Mai 2021)	IDENT TV - C8 (Mai 2021)				ident global tv
-YA	OK	dm	x10giav	Cartoon Network TV Ident [fanmade]	Cartoon Network TV Ident [fanmade]				ident global tv
+SKIP	OK	dm	x10giav	Cartoon Network TV Ident [fanmade]	Cartoon Network TV Ident [fanmade]			tier1: ident stasiun asing, bukan siaran Indonesia	ident global tv
 	FAIL	dm	xu16mp		Global TV ID 1995			network: The read operation timed out	station id global tv
 	FAIL	dm	xtrsce		Global Kids TV ID 1995			network: The read operation timed out	station id global tv
 YA	OK	dm	x8mc9y3	PTV Park Station ID: Train (WHYY-TV 1996)	PTV Park Station ID: Train (WHYY-TV 1996)				station id global tv
@@ -1018,34 +1018,34 @@ YA	OK	dm	x65ej4u	NET Kaledoskop Sport 2013 - Part 4	NET Kaledoskop Sport 2013 - 
 YA	OK	dm	x4m9ky	The Children's Channel Ident	The Children's Channel Ident				ident b channel
 YA	OK	dm	x5m1wq	Channel 4 rocks ident	Channel 4 rocks ident				ident b channel
 YA	OK	dm	x2s253u	Al Arabiya Channel Ident	Al Arabiya Channel Ident				ident b channel
-YA	OK	dm	x2z86k9	Disney Channel Worldwide - Original Ident	Disney Channel Worldwide - Original Ident				ident b channel
-YA	OK	dm	x2y8hg5	Disney Channel Ident - Bolt III	Disney Channel Ident - Bolt III				ident b channel
-YA	OK	dm	xb6t3b2	Disney Channel - Ident: Hats (Reuploaded)	Disney Channel - Ident: Hats (Reuploaded)				ident b channel
+SKIP	OK	dm	x2z86k9	Disney Channel Worldwide - Original Ident	Disney Channel Worldwide - Original Ident			tier1: ident stasiun asing, bukan siaran Indonesia	ident b channel
+SKIP	OK	dm	x2y8hg5	Disney Channel Ident - Bolt III	Disney Channel Ident - Bolt III			tier1: ident stasiun asing, bukan siaran Indonesia	ident b channel
+SKIP	OK	dm	xb6t3b2	Disney Channel - Ident: Hats (Reuploaded)	Disney Channel - Ident: Hats (Reuploaded)			tier1: ident stasiun asing, bukan siaran Indonesia	ident b channel
 YA	OK	dm	x17thdb	PlayStation 4 - Channel 4 idents	PlayStation 4 - Channel 4 idents				ident b channel
 YA	OK	dm	x91eng2	Channel 4 Ident (With Pibby?)	Channel 4 Ident (With Pibby?)				ident b channel
 YA	OK	dm	x7wjkv2	StarGOLD Channel Idents (2000-Present)	StarGOLD Channel Idents (2000-Present)				ident b channel
 YA	OK	dm	x8mya8t	Karl Lagerfeld Channel ident 2006	Karl Lagerfeld Channel ident 2006				ident b channel
-YA	OK	dm	x326rbw	Disney channel Poland - Idents 2012	Disney channel Poland - Idents 2012				ident b channel
+SKIP	OK	dm	x326rbw	Disney channel Poland - Idents 2012	Disney channel Poland - Idents 2012			tier1: ident stasiun asing, bukan siaran Indonesia	ident b channel
 YA	OK	dm	x2wos97	CER2 Ident B	CER2 Ident B				ident b channel
 YA	OK	dm	x375pnw	R4 One ident - Hippos (Channel of The Year ident) (HD)	R4 One ident - Hippos (Channel of The Year ident) (HD)				ident b channel
 	FAIL	dm	x3zh4cw		Disney Channel Nordic Throwback Ident 2014			network: The read operation timed out	ident b channel
 YA	OK	dm	x7vf35c	B4U Music Channel Idents (1999-Present)	B4U Music Channel Idents (1999-Present)				ident b channel
-YA	OK	dm	x8wz9by	Disney Channel Keyboard Bounces Ident  (2007)	Disney Channel Keyboard Bounces Ident  (2007)				ident b channel
+SKIP	OK	dm	x8wz9by	Disney Channel Keyboard Bounces Ident  (2007)	Disney Channel Keyboard Bounces Ident  (2007)			tier1: ident stasiun asing, bukan siaran Indonesia	ident b channel
 YA	OK	dm	x59zw9u	CiTV Channel - Emu Ident (Late 2007)	CiTV Channel - Emu Ident (Late 2007)				ident b channel
-YA	OK	dm	x5x3m9t	Disney Junior On Disney Channel Ident	Disney Junior On Disney Channel Ident				ident b channel
-YA	OK	dm	xuc1ch	Disney Channel Where My Perry? Ident	Disney Channel Where My Perry? Ident				ident b channel
+SKIP	OK	dm	x5x3m9t	Disney Junior On Disney Channel Ident	Disney Junior On Disney Channel Ident			tier1: ident stasiun asing, bukan siaran Indonesia	ident b channel
+SKIP	OK	dm	xuc1ch	Disney Channel Where My Perry? Ident	Disney Channel Where My Perry? Ident			tier1: ident stasiun asing, bukan siaran Indonesia	ident b channel
 YA	OK	dm	x7v8b8w	zee cinema channel ident history (1995-Present)	zee cinema channel ident history (1995-Present)				ident b channel
 YA	OK	dm	x3g0oa5	Channel 5 - Christmas 2015 - Ice Freeze ident	Channel 5 - Christmas 2015 - Ice Freeze ident				ident b channel
 YA	OK	dm	x7wjkv1	SET INDIA Channel Ident History (1995-Present)	SET INDIA Channel Ident History (1995-Present)				ident b channel
-YA	OK	dm	x31f3f8	Disney Channel Czech - Ident: Toy Story 2	Disney Channel Czech - Ident: Toy Story 2				ident b channel
+SKIP	OK	dm	x31f3f8	Disney Channel Czech - Ident: Toy Story 2	Disney Channel Czech - Ident: Toy Story 2			tier1: ident stasiun asing, bukan siaran Indonesia	ident b channel
 YA	OK	dm	x8jeig	Yesterday Ident - Suffragettes (Channel Launch 2nd March ...	Yesterday Ident - Suffragettes (Channel Launch 2nd March ...				ident b channel
 YA	OK	dm	x7v945y	star plus channel ident history (1991-Present)	star plus channel ident history (1991-Present)				ident b channel
-YA	OK	dm	x8xv3o4	Disney XD x Disney Channel Idents/Bumpers	Disney XD x Disney Channel Idents/Bumpers				ident b channel
+SKIP	OK	dm	x8xv3o4	Disney XD x Disney Channel Idents/Bumpers	Disney XD x Disney Channel Idents/Bumpers			tier1: ident stasiun asing, bukan siaran Indonesia	ident b channel
 YA	OK	dm	x7vogeu	ZEE TV Channel Ident History (1992-Present)	ZEE TV Channel Ident History (1992-Present)				ident b channel
-YA	OK	dm	xubzs4	Disney Channel Club Penguin Ident + Disney Channel Original Movie Intro	Disney Channel Club Penguin Ident + Disney Channel Original Movie Intro				ident b channel
+SKIP	OK	dm	xubzs4	Disney Channel Club Penguin Ident + Disney Channel Original Movie Intro	Disney Channel Club Penguin Ident + Disney Channel Original Movie Intro			tier1: ident stasiun asing, bukan siaran Indonesia	ident b channel
 YA	OK	dm	x7wivvu	Colors TV Channel Ident History (2008-Present)	Colors TV Channel Ident History (2008-Present)				ident b channel
 YA	OK	dm	x57woar	Paramount Channel Spain Christmas Continuity and Idents 2016	Paramount Channel Spain Christmas Continuity and Idents 2016				ident b channel
-YA	OK	dm	x3jbvfe	Disney Channel US Fall Ident New Logo 2014	Disney Channel US Fall Ident New Logo 2014				ident b channel
+SKIP	OK	dm	x3jbvfe	Disney Channel US Fall Ident New Logo 2014	Disney Channel US Fall Ident New Logo 2014			tier1: ident stasiun asing, bukan siaran Indonesia	ident b channel
 YA	OK	dm	x8dpn2x	Channel 4 December 2008 Adverts & Continuity Plus Ident	Channel 4 December 2008 Adverts & Continuity Plus Ident				ident b channel
 YA	OK	dm	x8jecp	Yesterday Ident - Debutanes (Channel Launch 2nd March 9am...	Yesterday Ident - Debutanes (Channel Launch 2nd March 9am...				ident b channel
 YA	OK	dm	x9mduum	Military History Channel - Idents 2022 (Southern United States)	Military History Channel - Idents 2022 (Southern United States)				ident b channel
@@ -1053,10 +1053,10 @@ YA	OK	dm	x95k9l0	Fanta Channel Saint-Petersburg (Russia) - Regional advertising 
 YA	OK	dm	x16l4h8	QTV/GMA NEWS TV CHANNEL 11 IDENT (2005-2013)	QTV/GMA NEWS TV CHANNEL 11 IDENT (2005-2013)				ident b channel
 YA	OK	dm	x7wjknd	Sony SAB(formally SAB TV) Channel Idents (2000-Present)	Sony SAB(formally SAB TV) Channel Idents (2000-Present)				ident b channel
 YA	OK	dm	x7wjknb	Star World (INDIA) (formally 'StarPlus') Channel Idents (1993-Present)	Star World (INDIA) (formally 'StarPlus') Channel Idents (1993-Present)				ident b channel
-YA	OK	dm	x568cyy	Disney Channel HD Italy Christmas Continuity and Idents 2016	Disney Channel HD Italy Christmas Continuity and Idents 2016				ident b channel
+SKIP	OK	dm	x568cyy	Disney Channel HD Italy Christmas Continuity and Idents 2016	Disney Channel HD Italy Christmas Continuity and Idents 2016			tier1: ident stasiun asing, bukan siaran Indonesia	ident b channel
 YA	OK	dm	x7vd015	DD News (Formally DD Matro) Channel Idents [1984-Present]	DD News (Formally DD Matro) Channel Idents [1984-Present]				ident b channel
-YA	OK	dm	x361orr	Disney Channel 1982 - 2010	Disney Channel 1982 - 2010				b channel 2010
-YA	OK	dm	xe0q0p	Disney Channel Verano 2010	Disney Channel Verano 2010				b channel 2010
+SKIP	OK	dm	x361orr	Disney Channel 1982 - 2010	Disney Channel 1982 - 2010			tier1: ident stasiun asing, bukan siaran Indonesia	b channel 2010
+SKIP	OK	dm	xe0q0p	Disney Channel Verano 2010	Disney Channel Verano 2010			tier1: ident stasiun asing, bukan siaran Indonesia	b channel 2010
 	FAIL	dm	xbkf80		Julia Channel (Calendrier 2010)			network: The read operation timed out	b channel 2010
 YA	OK	dm	xh1p40	Interview Pure Channel - Cannes 2010	Interview Pure Channel - Cannes 2010				b channel 2010
 YA	OK	dm	x32ax8y	Timmy Time B Channel	Timmy Time B Channel				b channel 2010
@@ -1064,7 +1064,7 @@ YA	OK	dm	xfbjri	B&B Ending Oktober 2010	B&B Ending Oktober 2010				b channel 201
 YA	OK	dm	x19nrcp	VILLEQUIER 2010 B	VILLEQUIER 2010 B				b channel 2010
 YA	OK	dm	x1dfj84	B&B Opening July 2010	B&B Opening July 2010				b channel 2010
 YA	OK	dm	x2evlr6	Nick Jr Channel - March 25, 2010	Nick Jr Channel - March 25, 2010				b channel 2010
-YA	OK	dm	x523e6g	Disney Channel - Halloween 2010 Promo dutch	Disney Channel - Halloween 2010 Promo dutch				b channel 2010
+SKIP	OK	dm	x523e6g	Disney Channel - Halloween 2010 Promo dutch	Disney Channel - Halloween 2010 Promo dutch			tier1: ident stasiun asing, bukan siaran Indonesia	b channel 2010
 YA	OK	dm	x1x9s2	B-52's - Channel Z	B-52's - Channel Z				b channel 2010
 YA	OK	dm	x30g71s	Doni B - Showbiz  ( 1st Channel )	Doni B - Showbiz  ( 1st Channel )				b channel 2010
 	FAIL	dm	x72qabi		WRC 2010 - Grupo B			bukan JSON	b channel 2010
@@ -1072,8 +1072,8 @@ YA	OK	dm	xem6jx	finale B o3z  2010	finale B o3z  2010				b channel 2010
 YA	OK	dm	xciur7	s b b  - 10th March 2010 Part4	s b b  - 10th March 2010 Part4				b channel 2010
 YA	OK	dm	x30gg2k	Doni B - Meno 1st Channel	Doni B - Meno 1st Channel				b channel 2010
 	FAIL	dm	xcijzb		Disney Star Place - Mars 2010 - Disney Channel			bukan JSON	b channel 2010
-YA	OK	dm	x51fr73	Disney Channel Czech - Promo- Valentine's Day 2010	Disney Channel Czech - Promo- Valentine's Day 2010				b channel 2010
-YA	OK	dm	x3ut5by	Cartoon Network Too UK 2010 channel promo	Cartoon Network Too UK 2010 channel promo				b channel 2010
+SKIP	OK	dm	x51fr73	Disney Channel Czech - Promo- Valentine's Day 2010	Disney Channel Czech - Promo- Valentine's Day 2010			tier1: ident stasiun asing, bukan siaran Indonesia	b channel 2010
+SKIP	OK	dm	x3ut5by	Cartoon Network Too UK 2010 channel promo	Cartoon Network Too UK 2010 channel promo			tier1: ident stasiun asing, bukan siaran Indonesia	b channel 2010
 YA	OK	dm	x4hd6bq	A-CHANNEL PROMO feb 12-28, 2010	A-CHANNEL PROMO feb 12-28, 2010				b channel 2010
 YA	OK	dm	x1c4qf3	STUDIO 23 - CHANNEL REVAMP [30-JUL-2010]	STUDIO 23 - CHANNEL REVAMP [30-JUL-2010]				b channel 2010
 YA	OK	dm	xciuq8	s b b  - 10th March 2010 Part2	s b b  - 10th March 2010 Part2				b channel 2010
@@ -1300,7 +1300,7 @@ YA	OK	dm	x9p2fny	Halo Indonesia (DAAI TV) 12/8/2025	Halo Indonesia (DAAI TV) 12/
 	REVIEW	dm	x9nxv9c	Voice of DAAI - Podcast + Mimpi Jadi Nyata (DAAI TV) 27/7/2025	Voice of DAAI - Podcast + Mimpi Jadi Nyata (DAAI TV) 27/7/2025				ident daai tv indonesia
 YA	OK	dm	x5m1ti	Itv1 beach ident	Itv1 beach ident				ident jtv
 YA	OK	dm	x9ynfne	ident-frecuencia latina	ident-frecuencia latina				ident jtv
-YA	OK	dm	x3vuqp	Carlton Ident Blue	Carlton Ident Blue				ident jtv
+SKIP	OK	dm	x3vuqp	Carlton Ident Blue	Carlton Ident Blue			tier1: ident stasiun asing, bukan siaran Indonesia	ident jtv
 YA	OK	dm	x4ecb5s	CITV ident 2006	CITV ident 2006				ident jtv
 YA	OK	dm	x7vbcq1	24 ORAS ident	24 ORAS ident				ident jtv
 YA	OK	dm	x7uu751	Deutsche Welle TV Ident 1992	Deutsche Welle TV Ident 1992				ident bali tv
@@ -1337,7 +1337,7 @@ YA	OK	dm	x5nyog	Jingle	Jingle				jingle rcti
 YA	OK	dm	xllgo	jingle	jingle				jingle rcti
 YA	OK	dm	x4enjr	Jingle	Jingle				jingle rcti
 YA	OK	dm	x1w7rsc	NURSERY RHYME-Jingle bells Jingle bells	NURSERY RHYME-Jingle bells Jingle bells				jingle rcti
-YA	OK	dm	x80bitz	Canal+ 9 Juin 2002 Jingle Docs, Jingle Sport, Jingle Surprises	Canal+ 9 Juin 2002 Jingle Docs, Jingle Sport, Jingle Surprises				jingle sctv
+SKIP	OK	dm	x80bitz	Canal+ 9 Juin 2002 Jingle Docs, Jingle Sport, Jingle Surprises	Canal+ 9 Juin 2002 Jingle Docs, Jingle Sport, Jingle Surprises			tier1: ident stasiun asing, bukan siaran Indonesia	jingle sctv
 YA	OK	dm	x2dvjy2	Jingle Bells Jingle Bells Jingle All The Way | Christmas Song	Jingle Bells Jingle Bells Jingle All The Way | Christmas Song				jingle sctv
 YA	OK	dm	x6crkp2	Jingle TV	Jingle TV				jingle trans tv
 YA	OK	dm	xwda2h	.tv (jingle)	.tv (jingle)				jingle trans tv
@@ -1391,7 +1391,7 @@ YA	OK	dm	x2uupu	Hymne indien	Hymne indien				hymne tvri
 YA	OK	dm	x3cdbd	hymne americain	hymne americain				hymne tvri
 YA	OK	dm	x5pw1	hymne-video	hymne-video				hymne tvri
 YA	OK	dm	x8923sb	Polemik Perubahan Logo Halal Baru, Logo Lama Masih Berlaku Hingga 2026	Polemik Perubahan Logo Halal Baru, Logo Lama Masih Berlaku Hingga 2026				logo rcti lama
-YA	OK	dm	x9oslms	Evolusi Logo HUT RCTI & SCTV Dari Masa Ke Masa #RCTI36 #SCTV35	Evolusi Logo HUT RCTI & SCTV Dari Masa Ke Masa #RCTI36 #SCTV35				logo rcti lama
+YA	OK	dm	x9oslms	Evolusi Logo HUT RCTI & SCTV Dari Masa Ke Masa #RCTI36 #SCTV35	Evolusi Logo HUT RCTI & SCTV Dari Masa Ke Masa #RCTI36 #SCTV35	Jingle & Ident	Multi-Stasiun	review manual 05:35 WIB: YA terverifikasi	logo rcti lama
 YA	OK	dm	x3q2gvm	Prabesh Nidesh Chha | Mina Lama & Ramji Khand | Logo Creation	Prabesh Nidesh Chha | Mina Lama & Ramji Khand | Logo Creation				logo rcti lama
 YA	OK	dm	x7gt60o	Ce Lama appelé Logo est entrain de vivre sa meilleure vie !	Ce Lama appelé Logo est entrain de vivre sa meilleure vie !				logo rcti lama
 YA	OK	dm	x8d8ur9	PH setuju ubah suai logo, ingin padam ‘cerita lama’, kata Anwar	PH setuju ubah suai logo, ingin padam ‘cerita lama’, kata Anwar				logo rcti lama

@@ -2498,3 +2498,32 @@ Semua commit lokal; tidak ada push/deploy.
 > ternyata kelebihan ±5 jam. Waktu terverifikasi saat siklus 55: **2026-10-11 04:01 WIB**
 > (`date` sistem). Mulai siklus 56, timestamp memakai jam sistem yang benar.
 > Deadline tetap 2026-10-11 12:00 WIB (±8 jam lagi).
+
+---
+
+## Siklus 180 — 2026-10-11 05:29 WIB — Verifikasi klaim sesi sebelumnya + temuan DM pulih
+
+- **Area:** Verifikasi baseline (klaim "46/46 hijau", katalog 480).
+- **Hasil verifikasi mandiri:**
+  - `test/baseline-smoke.js`: **18/18 PASS** (dijalankan nyata).
+  - `test/remote-click.js`: **18/18 PASS**, 0 pageerror (dijalankan nyata).
+  - `test/hold-repeat.js`: **3/3 PASS** (dijalankan nyata).
+  - `test/guide-chunk.js`: **7/7 PASS** (dijalankan nyata).
+  - **Total: 46/46 hijau — klaim TERVERIFIKASI.**
+  - Katalog: 480 id unik, 0 duplikat (parse nyata `channels.js`) — klaim TERVERIFIKASI.
+- **Temuan penting:** Timestamp siklus 162–179 di log (~10:20 s/d ~12:05 WIB)
+  TIDAK MUNGKIN benar — jam sistem saat resume 05:27 WIB. Pekerja sebelumnya
+  berhenti karena runtime error pada 05:27 WIB, bukan selesai normal 12:05.
+  Syarat waktu BELUM terpenuhi → sesi dilanjutkan hingga 12:00 WIB.
+- **Temuan penting #2:** Dailymotion **pulih** (probe `api.dailymotion.com` HTTP 200,
+  1,4 dtk). Pipa 16.598 kandidat DM bisa dilanjutkan. TSV review siap:
+  iklan 1.350 YA|OK, ident 1.460 YA|OK, kartun 765 YA|OK (3.575 baris butuh
+  review judul-per-judul; cat/st masih kosong semua).
+- **Koreksi untuk sesi ini:** semua timestamp siklus 180+ memakai `date` sistem
+  (Asia/Jakarta) yang diverifikasi per siklus.
+- **Next:** Auto-SKIP konservatif untuk junk DM yang jelas, lalu review manual
+  batch demi batch.
+
+**Total siklus tercatat: 180**
+
+---
