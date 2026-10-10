@@ -65,6 +65,10 @@ const CHANNELS = [
   { id: "QGlF39Cgc4U", title: "Opening As Told by Ginger", cat: "Opening Kartun", st: "Global TV" },
   { id: "WgX2cu9N6_8", title: "Opening Invader Zim", cat: "Opening Kartun", st: "Global TV" },
   { id: "tn9pJUk1i28", title: "Opening Si Unyil", cat: "Opening Kartun", st: "NET." },
+  { id: "my-video-2_202502", title: "Opening Doraemon Bahasa Indonesia HD Full Version", cat: "Opening Kartun", st: "RCTI", src: "ia" },
+  { id: "opening-doraemon-1-bahasa-indonesia-hd", title: "Opening Doraemon Bahasa Indonesia HD", cat: "Opening Kartun", st: "RCTI", src: "ia" },
+  { id: "DoraemonIndonesiaOpening", title: "Doraemon Indonesia Opening", cat: "Opening Kartun", st: "RCTI", src: "ia" },
+  { id: "opening-dragon-ball-4k", title: "OST Anime 90an Bahasa Indonesia HD (Dragon Ball)", cat: "Opening Kartun", st: "Indosiar", src: "ia" },
   // --- Opening Tokusatsu ---
   { id: "FJS13e8ms3I", title: "Opening Ksatria Baja Hitam (Indonesia)", cat: "Opening Tokusatsu", st: "RCTI" },
   { id: "CUfUeOWbVp0", title: "Opening Kamen Rider Kuuga (Indonesia)", cat: "Opening Tokusatsu", st: "RCTI" },
