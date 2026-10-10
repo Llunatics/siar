@@ -482,4 +482,6 @@ const CHANNELS = [
   { id: "w1HIgWNdrJE", title: "Nostalgia Iklan Indosiar 1996-1997 (31 Tahun 31 Menit+)", cat: "Iklan Jadul", st: "Indosiar" },
   { id: "fXeJI2oAhnA", title: "Kompilasi iklan A Mild/A International - Bukan Basa Basi (1998-1999)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "Km_omPsQut4", title: "IKLAN AIR MINUMAN JOY (1983)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "oN-Obg9Ad6A", title: "OPENING RANMA 1/2 BAHASA INDONESIA HD +LIRIK (opening asli RCTI 1997)", cat: "Opening Kartun", st: "RCTI" },
+  { id: "kpPXvG30Biw", title: "Nostalgia Lagu Opening Anime & Tokusatsu Bahasa Indonesia Tahun 90an - 2000an", cat: "Opening Kartun", st: "Multi-Stasiun" },
 ];
