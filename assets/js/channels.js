@@ -493,4 +493,6 @@ const CHANNELS = [
   { id: "_zRaaBuXGcc", title: "Minky Momo Opening Song - Spacetoon Indonesia", cat: "Opening Kartun", st: "Spacetoon" },
   { id: "690lMtFlmy0", title: "Flame of Recca OP1 (Indonesian)", cat: "Opening Kartun", st: "Multi-Stasiun" },
   { id: "VaSU1ATifPM", title: "Let's Go Quintuplets Op Indonesia", cat: "Opening Kartun", st: "TV7" },
+  { id: "r094TI9JfF0", title: "Hunter X Hunter Selamat Pagi (opening Indonesia)", cat: "Opening Kartun", st: "Multi-Stasiun" },
+  { id: "sUgr6jwj-xU", title: "Kumpulan Lagu Anime/Kartun 90an Bahasa Indonesia - Part 2", cat: "Opening Kartun", st: "Multi-Stasiun" },
 ];
