@@ -667,4 +667,5 @@ const CHANNELS = [
   { id: "iiKT2tAUQzk", title: "Station ID Rajawali Televisi (RTV) - Quote 1 (2020)", cat: "Jingle & Ident", st: "RTV" },
   { id: "aJLXXtj7WIY", title: "Station ID RTV 11 Tahun (Mei 2025)", cat: "Jingle & Ident", st: "RTV" },
   { id: "9W7USJBGGI4", title: "Iklan Sabun Lux (1987)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "1hjcFDlqYyc", title: "Iklan Sunsilk Rumput Laut - Kilau Selembut Sutera (1993) @ RCTI, TPI, SCTV, & ANteve", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
