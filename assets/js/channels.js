@@ -419,4 +419,6 @@ const CHANNELS = [
   { id: "cMeQtRlC7KI", title: "Iklan Pop Mie - Kantor feat. Hengky Tornado (1989, Pra Revisi) (shorts)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "DO4rgGH6Rfg", title: "\"Iklan jadul Indomie \"\"Dari Sabang sampai Marauke\"\" (shorts)\"", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "UujBfINGeTo", title: "Sailor Moon indonesia Opening Lyrics", cat: "Opening Kartun", st: "Multi-Stasiun" },
+  { id: "W7z1ApII6jY", title: "Ost. Wedding Peach Versi Indonesia (Opening & Ending)", cat: "Opening Kartun", st: "Multi-Stasiun" },
+  { id: "lPUFM8GTHKI", title: "Wedding Peach Opening Indonesia", cat: "Opening Kartun", st: "Indosiar" },
 ];
