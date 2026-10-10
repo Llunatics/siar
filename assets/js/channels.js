@@ -652,4 +652,7 @@ const CHANNELS = [
   { id: "wMAzJ20Y99E", title: "Station ID TV7 Kids (Sekarang TRANS 7) {2002}", cat: "Jingle & Ident", st: "TV7" },
   { id: "cbxXucqvQWo", title: "Ident INDOSIAR 2000 by Widiajier", cat: "Jingle & Ident", st: "Indosiar" },
   { id: "Bmnc4Ntu18w", title: "STATION ID INDOSIAR 2005", cat: "Jingle & Ident", st: "Indosiar" },
+  { id: "RfZsR1fNtJA", title: "Iklan Yamaha Motor Crypton - Siapapun Akan Terpana 1997 @ SCTV, Indosiar, TVRI, AN-Teve, TPI, & RCTI", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "njOvuynQw7E", title: "Iklan Sasa dan Yamaha F1ZR tahun 1999 2000", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "Fsco6NyRcmE", title: "Inilah Iklan Jadul Honda C70 tahun 1979 #harga hanya 250 ribu !", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
