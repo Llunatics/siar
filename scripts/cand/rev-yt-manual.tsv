@@ -70,8 +70,8 @@ YA	OK	yt	vfQesy3oWdo	Station ID ANTEVE (Sekarang ANTV) Lampung 1993 #28TahunJeja
 YA	OK	yt	-kkcqnR2DLg	Station ID ANteve (Sekarang ANTV) 1993	Station ID ANteve (Sekarang ANTV) 1993	Jingle & Ident	ANTV		web: ident ANTV
 	OK	yt	M9SLsxRUj6o	Station ID ANteve (1994) @ANTV_Official @akamearsip& @museumpenyiaranindo	Station ID ANteve (1994)			SKIP: judul oEmbed kosong	web: ident ANTV
 YA	OK	yt	xr-fqhH2hk8	01 Januari 1993 : Siaran Perdana Antv	01 Januari 1993: Siaran Perdana ANTV	Sinetron & Acara TV	ANTV		web: ident ANTV
-YA	OK	yt	colwIUe-Bi0	[RIP AKIRA TORIYAMA] Lagu Opening Dragon Ball Versi Indonesia (Dragon Ball Childhood Song)	Lagu Opening Dragon Ball Versi Indonesia (Indosiar)	Opening Kartun	Indosiar		web: dragon ball indonesia
-YA	OK	yt	jB42wvldJkk	Ost. Dragon Ball & Dragon Ball Z (Versi Indonesia)	Ost. Dragon Ball & Dragon Ball Z (Versi Indonesia)	Opening Kartun	Indosiar		web: dragon ball indonesia
+YA	OK	yt	colwIUe-Bi0	[RIP AKIRA TORIYAMA] Lagu Opening Dragon Ball Versi Indonesia (Dragon Ball Childhood Song)	Lagu Opening Dragon Ball Versi Indonesia (Indosiar)	Opening Kartun	Indosiar	sudah di katalog (duplikat)	web: dragon ball indonesia
+YA	OK	yt	jB42wvldJkk	Ost. Dragon Ball & Dragon Ball Z (Versi Indonesia)	Ost. Dragon Ball & Dragon Ball Z (Versi Indonesia)	Opening Kartun	Indosiar	sudah di katalog (duplikat)	web: dragon ball indonesia
 YA	OK	yt	KO0F37GrAs8	Sailor Moon First Opening HQ (Indonesian)	Sailor Moon opening sequence Indonesian theme (Desya)	Opening Kartun	Indosiar		web: sailor moon indonesia (kaori)
 	OK	yt	vyDfm86n8i8	Sailor Moon S Opening Bahasa Indonesia (OP 5) HQ	Sailor Moon S Opening Bahasa Indonesia (OP 5) HQ			SKIP: judul oEmbed kosong	web: sailor moon indonesia
 	FAIL	yt	Oo16O4lFUnI		Ninja Hatori Opening Bahasa Indonesia			SKIP: oEmbed gagal	web: ninja hatori
@@ -133,14 +133,17 @@ YA	OK	yt	Yx9-0csiiLk	Kompilasi Station ID RCTI (1994 & 2006)	Kompilasi Station I
 YA	OK	yt	gA-TRhUrbBQ	iklan Jadul Part 6 Tahun (1989-1997) ada ident RCTI 1990	iklan Jadul Part 6 Tahun (1989-1997) ada ident RCTI 1990	Iklan Jadul	RCTI		web: ident rcti 90an
 	OK	yt	QgGO9KR-TuI	Station ID RCTI - Sawah (1994)	Station ID RCTI - Sawah (1994)			sudah di katalog (duplikat)	web: ident rcti 90an
 YA	OK	yt	ciaCVelQYjo	Opening Song Hutchi bahasa Indonesia	Opening Song Hutchi bahasa Indonesia	Opening Kartun	Multi-Stasiun		web: honey bee hutch
-YA	OK	yt	jjchcHxqIgA	Iklan Konidin - Batuk di Jendela (1994)	Iklan Konidin - Batuk di Jendela (1994)	Iklan Jadul	Multi-Stasiun		web: iklan obat 90an
-YA	OK	yt	uOkFGSEHN74	Iklan AnaKonidin - Redakan Batuk Anak Anda (1998)	Iklan AnaKonidin - Redakan Batuk Anak Anda (1998)	Iklan Jadul	Multi-Stasiun		web: iklan obat 90an
-YA	OK	yt	ZV3vdHg5VT0	Iklan Obat Batuk Komix rasa jahe versi Titiek Puspa (1993)	Iklan Obat Batuk Komix rasa jahe versi Titiek Puspa tahun 1993	Iklan Jadul	Multi-Stasiun		web: iklan obat 90an
-YA	OK	yt	Q8x2kiAfowQ	Iklan Protecal - Sakit Itu Mudah (1999)	Iklan Protecal - Sakit Itu Mudah (1999)	Iklan Jadul	Multi-Stasiun		web: iklan obat 90an
-YA	OK	yt	G0QiEVs5ozU	Iklan IPI Vitamin - Suplemen Sampeyan (1998)	Iklan IPI Vitamin - Suplemen Sampeyan (1998)	Iklan Jadul	Multi-Stasiun		web: iklan obat 90an
-YA	OK	yt	ashnNxs_NSc	Iklan HIT obat nyamuk Indosiar (1999)	Iklan HIT obat nyamuk Indosiar tahun 1999	Iklan Jadul	Indosiar		web: iklan obat 90an
-YA	OK	yt	nLtFdM-vbho	Iklan Obat Aladina versi cepot (1998)	Iklan Obat Aladina versi cepot pasti jek nong tahun 1998	Iklan Jadul	Multi-Stasiun		web: iklan obat 90an
-YA	OK	yt	9IvgygAuQmk	Iklan Vitamin Fitkom Indosiar (1997)	Iklan Vitamin Fitkom Indosiar 1997	Iklan Jadul	Indosiar		web: iklan obat 90an
-YA	OK	yt	ousFhm4kKlU	Iklan Obat Neozep (1998)	Iklan Obat Neozep tahun 1998	Iklan Jadul	Multi-Stasiun		web: iklan obat 90an
+YA	OK	yt	jjchcHxqIgA	Iklan Konidin - Batuk di Jendela (1994) @ RCTI, SCTV, ANteve, & TPI	Iklan Konidin - Batuk di Jendela (1994)	Iklan Jadul	Multi-Stasiun		web: iklan obat 90an
+YA	OK	yt	uOkFGSEHN74	Iklan AnaKonidin - Redakan Batuk Anak Anda (1998) @ RCTI, Indosiar, SCTV, TPI, & ANteve	Iklan AnaKonidin - Redakan Batuk Anak Anda (1998)	Iklan Jadul	Multi-Stasiun		web: iklan obat 90an
+YA	OK	yt	ZV3vdHg5VT0	Iklan Obat Batuk Komix rasa jahe versi Titiek Puspa tahun 1993	Iklan Obat Batuk Komix rasa jahe versi Titiek Puspa tahun 1993	Iklan Jadul	Multi-Stasiun		web: iklan obat 90an
+YA	OK	yt	Q8x2kiAfowQ	Iklan Protecal - Sakit Itu Mudah (1999) @ TPI, Indosiar, RCTI, & SCTV	Iklan Protecal - Sakit Itu Mudah (1999)	Iklan Jadul	Multi-Stasiun		web: iklan obat 90an
+YA	OK	yt	G0QiEVs5ozU	Iklan IPI Vitamin - Suplemen Sampeyan (1998) @ Indosiar, SCTV, TPI, ANteve, & RCTI	Iklan IPI Vitamin - Suplemen Sampeyan (1998)	Iklan Jadul	Multi-Stasiun		web: iklan obat 90an
+YA	OK	yt	ashnNxs_NSc	Iklan HIT obat nyamuk Indosiar tahun 1999	Iklan HIT obat nyamuk Indosiar tahun 1999	Iklan Jadul	Indosiar		web: iklan obat 90an
+YA	OK	yt	nLtFdM-vbho	Iklan Obat Aladina versi cepot pasti jek nong tahun 1998	Iklan Obat Aladina versi cepot pasti jek nong tahun 1998	Iklan Jadul	Multi-Stasiun		web: iklan obat 90an
+YA	OK	yt	9IvgygAuQmk	Iklan Vitamin Fitkom  Indosiar 1997	Iklan Vitamin Fitkom Indosiar 1997	Iklan Jadul	Indosiar		web: iklan obat 90an
+YA	OK	yt	ousFhm4kKlU	Iklan Obat Neozep tahun 1998	Iklan Obat Neozep tahun 1998	Iklan Jadul	Multi-Stasiun		web: iklan obat 90an
 	OK	yt	qCydn9K6Em0	Iklan Konidin - Batuk di Jendela (1994) @ RCTI, SCTV, ANteve, & TPI	Konidin Commercial - Coughing at the Window (1994)			SKIP: near-duplikat jjchcHxqIgA (judul oEmbed identik)	web: iklan obat 90an
-YA	OK	yt	jFalktknCd0	Jeda Iklan RCTI November 1992 - So Klin & Kecap ABC (kompilasi)	Jeda Iklan RCTI edisi November 1992 (So Klin & Kecap ABC)	Iklan Jadul	RCTI		web: iklan obat 90an
+YA	OK	yt	jFalktknCd0	Jeda Iklan RCTI edisi November 1992 (feat. iklan So Klin & Kecap ABC)	Jeda Iklan RCTI edisi November 1992 (So Klin & Kecap ABC)	Iklan Jadul	RCTI		web: iklan obat 90an
+YA	OK	yt	u5f1FJ0d37k	Dragon Ball Opening HD (Versi Indonesia)	Dragon Ball Opening HD (Versi Indonesia)	Opening Kartun	Indosiar		web: dragon ball
+YA	OK	yt	colwIUe-Bi0	[RIP AKIRA TORIYAMA] Lagu Opening Dragon Ball Versi Indonesia (Dragon Ball Childhood Song)	Lagu Opening Dragon Ball Versi Indonesia	Opening Kartun	Indosiar	sudah di katalog (duplikat)	web: dragon ball
+YA	OK	yt	jB42wvldJkk	Ost. Dragon Ball & Dragon Ball Z (Versi Indonesia)	Ost. Dragon Ball & Dragon Ball Z (Versi Indonesia)	Opening Kartun	Indosiar	sudah di katalog (duplikat)	web: dragon ball

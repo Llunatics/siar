@@ -398,4 +398,5 @@ const CHANNELS = [
   { id: "9IvgygAuQmk", title: "Iklan Vitamin Fitkom Indosiar (1997)", cat: "Iklan Jadul", st: "Indosiar" },
   { id: "ousFhm4kKlU", title: "Iklan Obat Neozep (1998)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "jFalktknCd0", title: "Jeda Iklan RCTI November 1992 - So Klin & Kecap ABC (kompilasi)", cat: "Iklan Jadul", st: "RCTI" },
+  { id: "u5f1FJ0d37k", title: "Dragon Ball Opening HD (Versi Indonesia)", cat: "Opening Kartun", st: "Indosiar" },
 ];
