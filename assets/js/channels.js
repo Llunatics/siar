@@ -639,4 +639,6 @@ const CHANNELS = [
   { id: "LhuE3_YqNLY", title: "Iklan Chiki Snack - Chiki Lucky (1989)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "_DWToZthRUU", title: "Nostalgia Iklan Televisi tahun 2001 by widiajier", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "oxDUNqIvltY", title: "BERNOSTALGIA IKLAN JADUL TAHUN 2000AN, NGAKAK PARAH!!! BIKIN BETAH NONTONYA🤣", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "jfqeJAKfjdI", title: "Iklan Coolant (2016, Local Rec.)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "gpOqtWjQb9M", title: "Iklan Kursus Bahasa Inggris di Denpasar - EC (2016)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
