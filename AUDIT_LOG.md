@@ -3080,3 +3080,29 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 219**
 
 ---
+
+## Siklus 220 — 2026-10-11 06:18 WIB — Batch YouTube jeda iklan 2015: +4 entri (577→581)
+
+- **Area:** Katalog (jeda iklan 2015, batas era) + bug fix.
+- **Metode:** web search -> 12 kandidat -> oEmbed (4 OK baru, 8 FAIL 401).
+- **Hasil:** 4 YA (Sindo TV 2015 [STASIUN BARU], RCTI 2015, NET. 2015,
+  Trans TV 2015). Bug: Sindo TV tidak di STATION_ORDER — diperbaiki.
+- **Test:** append -> 581 unik; node --check OK; smoke 18/18 PASS (dari 219).
+- **Commit:** lokal (2 commit).
+- **Next:** Lanjut (sudut lain, era 1990-2015 sudah ter-cover).
+
+**Total siklus tercatat: 220**
+
+---
+
+## Siklus 221 — 2026-10-11 06:19 WIB — Regression pass siklus 220–221
+
+- **Area:** Test suite (katalog +4, stasiun baru Sindo TV).
+- **Hasil:** smoke 18/18, remote-click 18/18, hold-repeat 3/3, guide-chunk 7/7.
+  46/46 hijau.
+- **Test:** Semua dijalankan nyata.
+- **Next:** Kategori tipis: tokusatsu.
+
+**Total siklus tercatat: 221**
+
+---

@@ -605,4 +605,5 @@ const CHANNELS = [
   { id: "j6yM40jjILc", title: "Jeda Iklan RCTI (20 Februari 2015)", cat: "Iklan Jadul", st: "RCTI" },
   { id: "jrphbD7LWnA", title: "Jeda Iklan NET. (18 Februari 2015)", cat: "Iklan Jadul", st: "NET." },
   { id: "zlX_FIlOSdw", title: "Jeda Iklan Trans TV (24 April 2015)", cat: "Iklan Jadul", st: "Trans TV" },
+  { id: "yk8Mn7zwT8c", title: "Station ID TVRI Programa 2 (1990) [Potongan]", cat: "Jingle & Ident", st: "TVRI" },
 ];
