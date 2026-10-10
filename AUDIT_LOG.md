@@ -586,3 +586,23 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 - **Next:** Lanjut batch; probe DM berkala.
 
 **Total siklus tercatat: 40**
+
+---
+
+## Siklus 41 — 2026-10-11 07:08 WIB — Responsif: TV terpotong di landscape HP (844×390)
+
+- **Area:** `assets/css/style.css` (`@media max-height: 560px`).
+- **Masalah & bukti:** Screenshot QA `shots/qa/844x390-tv.png` — antena terpotong di atas
+  viewport, panel kontrol terjepit; TV diukur berdasar lebar saja sehingga total
+  (antena+bodi) melebihi 390px.
+- **Severity:** Sedang (dimensi 9; pengguna HP landscape).
+- **Implementasi:** Di media query layar-pendek, `.stage .tv` dibatasi
+  `flex-basis: min(920px, calc((100vh - 120px) * 1.85))` — definit (bukan auto,
+  aman dari regresi v9.1); antena diperpendek; margin/padding dirapatkan.
+- **Test:** Headless Chromium 844×390: ukur `rodTop=9px`, `tvBottom=379px` (viewport 390) —
+  seluruh rakitan muat; screenshot `shots/tmp-land41.png` dikonfirmasi visual;
+  smoke 18/18 PASS.
+- **Before/after:** Dimensi 9: 7.5→8.0.
+- **Next:** Lanjut katalog.
+
+**Total siklus tercatat: 41**

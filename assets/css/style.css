@@ -1233,10 +1233,16 @@ body.clock-off .room-clock { display: none; }
   .glass { animation: none !important; }
 }
 /* Layar pendek (HP landscape, laptop mungil): ringkas elemen non-TV
-   supaya panggung tetap besar & fokus ke TV */
+   supaya panggung tetap besar & fokus ke TV.
+   TV dibatasi lebarnya dari TINGGI viewport agar antena + bodi muat penuh —
+   flex-basis calc() tetap definit (bukan auto) demi regresi v9.1. */
 @media (max-height: 560px) {
-  .room { padding: 14px 16px 24px; }
-  .tv { margin-top: 84px; }
+  .room { padding: 10px 16px 16px; }
+  .stage .tv { flex-basis: min(920px, calc((100vh - 120px) * 1.85)); }
+  .tv { margin-top: 70px; }
+  .antenna .rod-l { height: 52px; }
+  .antenna .rod-r { height: 64px; }
+  .antenna .mount { width: 42px; height: 12px; }
   .legend { display: none; }
 }
 
