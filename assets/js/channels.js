@@ -411,4 +411,5 @@ const CHANNELS = [
   { id: "10wFPWOpirc", title: "Iklan Procold - Sendiri Lagi (2004)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "azjqQaJ33fw", title: "Lagu Pembuka Doraemon versi indonesia", cat: "Opening Kartun", st: "Multi-Stasiun" },
   { id: "-IP2J3MxWQ8", title: "Doraemon versi Bahasa Indonesia - Ost Opening With Lyrics", cat: "Opening Kartun", st: "Multi-Stasiun" },
+  { id: "p2--m4epRwE", title: "Bintang Iklan Sabun Lux Jadul 80-90an (kompilasi shorts)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
