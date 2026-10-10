@@ -480,4 +480,6 @@ const CHANNELS = [
   { id: "QFITky2Jblg", title: "Iklan Layanan Masyarakat tentang Epilepsi tahun 1996", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "uR_7dNjSb00", title: "Iklan Actifed - Apotek (2003)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "w1HIgWNdrJE", title: "Nostalgia Iklan Indosiar 1996-1997 (31 Tahun 31 Menit+)", cat: "Iklan Jadul", st: "Indosiar" },
+  { id: "fXeJI2oAhnA", title: "Kompilasi iklan A Mild/A International - Bukan Basa Basi (1998-1999)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "Km_omPsQut4", title: "IKLAN AIR MINUMAN JOY (1983)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
