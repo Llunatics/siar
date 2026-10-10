@@ -244,3 +244,30 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 - **Next:** Batch YouTube berikutnya (tokusatsu, sinetron, ident stasiun lain); hasil verify DM 4.085.
 
 **Total siklus tercatat: 14**
+
+---
+
+## Siklus 15 — 2026-10-11 05:10 WIB — Kaca CRT saat TV mati
+
+- **Area:** `assets/css/style.css` (`.screen`).
+- **Masalah & bukti:** Layar saat mati = hitam pekat `#000` — CRT asli yang mati memantulkan cahaya ruangan (kaca gelap, bukan lubang hitam).
+- **Severity:** Sedang (dimensi 1).
+- **Implementasi:** Background layar menjadi `radial-gradient` kaca gelap (`#12151b` → `#000`); hanya terlihat saat mati (player menutupinya saat nyala).
+- **Test:** `node test/quickshot.js 1366 768 scr15 off` → `shots/tmp-scr15.png`: kaca gelap reflektif + "TEKAN POWER" + LED merah standby — believable.
+- **Before/after:** Dimensi 1: 7→7.2.
+- **Next:** Batch YouTube berikutnya / cek verify DM.
+
+**Total siklus tercatat: 15**
+
+---
+
+## Siklus 16 — 2026-10-11 05:20 WIB — Batch YouTube tokusatsu + perbaiki merge review.py
+
+- **Area:** Katalog (281 → **282**), `scripts/review.py`.
+- **Metode:** 2 web search (ultraman tiga, kamen rider indonesia) → 3 kandidat → oEmbed.
+- **Hasil:** 1 YA (`ppisgGYfyKw` — Opening Kamen Rider Super One (KASET) Indonesian Version, RCTI); 2 SKIP (judul oEmbed kosong; kemungkinan cover). Filter jujur: 5 cover, 3 episode full, 1 remake AI ditolak di tahap search.
+- **Bug pipeline ditemukan & diperbaiki:** `review.py verify` menimpa ulang TSV sehingga putusan review manusia hilang → kini MERGE berdasarkan id (putusan/cat/st/title manual dipertahankan, status & judul oEmbed di-refresh). Keputusan 16+1 direkonstruksi & terverifikasi; append mende-dupe dengan benar (16 duplikat dilewati, 1 baru masuk).
+- **Test:** append → 282 entri unik; smoke 18/18 PASS.
+- **Next:** Batch sinetron/ident; pantau verify DM 4.085.
+
+**Total siklus tercatat: 16**

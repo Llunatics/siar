@@ -100,6 +100,13 @@ def oembed(src, vid):
 
 def cmd_verify(fin, fout):
     rows = [json.loads(l) for l in open(fin, encoding="utf-8") if l.strip()]
+    # MERGE: pertahankan putusan/cat/st/title manual dari TSV lama (berdasarkan id)
+    prev = {}
+    if os.path.exists(fout):
+        for ln in open(fout, encoding="utf-8").read().splitlines()[1:]:
+            cols = ln.split("\t")
+            if len(cols) >= 8:
+                prev[cols[3]] = cols  # key = id
     stats = {}
     with open(fout, "w", encoding="utf-8") as f:
         f.write("putusan\tstatus\tsrc\tid\ttitle_oembed\ttitle_discovery\t"
@@ -108,18 +115,29 @@ def cmd_verify(fin, fout):
             r = oembed(c["src"], c["id"])
             stats[r["status"]] = stats.get(r["status"], 0) + 1
             auto = "YA" if r["status"] == "OK" else ""
-            cols = [
-                auto,
-                r["status"],
-                c["src"],
-                c["id"],
-                r.get("title", "").replace("\t", " "),
-                c.get("title", "").replace("\t", " ")[:160],
-                "",
-                "",
-                r.get("note", ""),
-                c.get("q", ""),
-            ]
+            old = prev.get(c["id"])
+            if old:
+                # pertahankan review manusia; status & judul oEmbed tetap di-refresh
+                cols = [old[0], r["status"], c["src"], c["id"],
+                        r.get("title", "").replace("\t", " ") or old[4],
+                        c.get("title", "").replace("\t", " ")[:160],
+                        old[6] if len(old) > 6 else "",
+                        old[7] if len(old) > 7 else "",
+                        (old[8] if len(old) > 8 else "") or r.get("note", ""),
+                        c.get("q", "")]
+            else:
+                cols = [
+                    auto,
+                    r["status"],
+                    c["src"],
+                    c["id"],
+                    r.get("title", "").replace("\t", " "),
+                    c.get("title", "").replace("\t", " ")[:160],
+                    "",
+                    "",
+                    r.get("note", ""),
+                    c.get("q", ""),
+                ]
             f.write("\t".join(cols) + "\n")
             if (i + 1) % 50 == 0:
                 print("  ...%d/%d" % (i + 1, len(rows)), flush=True)

@@ -305,4 +305,5 @@ const CHANNELS = [
   { id: "Yx9-0csiiLk", title: "Kompilasi Station ID RCTI (1994 & 2006)", cat: "Jingle & Ident", st: "RCTI" },
   { id: "NoVdxpmNel0", title: "Station ID RCTI 1994 - Sawah (Audio Stereo)", cat: "Jingle & Ident", st: "RCTI" },
   { id: "fFt-WamD71U", title: "Kumpulan Station ID Televisi Swasta Indonesia 2002-2004", cat: "Jingle & Ident", st: "Multi-Stasiun" },
+  { id: "ppisgGYfyKw", title: "Opening Kamen Rider Super One (KASET) Indonesian Version", cat: "Opening Tokusatsu", st: "RCTI" },
 ];
