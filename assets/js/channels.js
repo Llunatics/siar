@@ -498,4 +498,5 @@ const CHANNELS = [
   { id: "Az5dSq22188", title: "\"Opening Song \"\"Ghost At School\"\" Spacetoon Indonesia\"", cat: "Opening Kartun", st: "Spacetoon" },
   { id: "3yyXn--B70A", title: "Dr. Slump - Arale Opening [dub Indonesia]", cat: "Opening Kartun", st: "Multi-Stasiun" },
   { id: "O_AY8OqBdMM", title: "Dr.Slump Opening (Bahasa Indonesia)", cat: "Opening Kartun", st: "Multi-Stasiun" },
+  { id: "oLo9kQrkiO0", title: "Honey Bee Hutch Opening Song (Indonesian Version)", cat: "Opening Kartun", st: "Multi-Stasiun" },
 ];
