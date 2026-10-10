@@ -1,19 +1,19 @@
 # CATALOG_REPORT.md — Laporan Katalog Siar
 
-> Status: **2026-10-11 06:27 WIB** · **604 entri terverifikasi** · target 5.300
-> (sesi lanjutan 05:27–12:00 WIB; 235 siklus tercatat)
+> Status: **2026-10-11 06:29 WIB** · **609 entri terverifikasi** · target 5.300
+> (sesi lanjutan 05:27–12:00 WIB; 240 siklus tercatat)
 
 ## 1. Ringkasan angka
 
 | Metrik | Jumlah |
 |---|---|
 | Baseline awal (terverifikasi siklus 0–12) | 265 |
-| Ditambahkan sesi 2026-10-11 (semua jalur) | 339 |
-| **Total terverifikasi saat ini** | **604** |
+| Ditambahkan sesi 2026-10-11 (semua jalur) | 344 |
+| **Total terverifikasi saat ini** | **609** |
 | Target | 5.300 |
-| Capaian vs target | 11,4% |
+| Capaian vs target | 11,5% |
 | Ditolak sesi lanjutan (SKIP tier1/tier2/review manual) | 210+ |
-| Duplikat discovery (sudah di katalog) | 310+ |
+| Duplikat discovery (sudah di katalog) | 315+ |
 
 ## 2. Komposisi per kategori
 
@@ -21,8 +21,8 @@
 |---|---|
 | Iklan Jadul | 336 |
 | Opening Kartun | 150 |
-| Jingle & Ident | 66 |
-| Sinetron & Acara TV | 37 |
+| Jingle & Ident | 67 |
+| Sinetron & Acara TV | 41 |
 | Opening Tokusatsu | 15 |
 
 ## 3. Komposisi per stasiun
