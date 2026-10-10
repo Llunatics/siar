@@ -1,18 +1,18 @@
 # CATALOG_REPORT.md — Laporan Katalog Siar
 
-> Status: **2026-10-11 11:30 WIB** · **478 entri terverifikasi** · target 5.300
-> (final sesi audit otonom 2026-10-11; 173 siklus tercatat)
+> Status: **2026-10-11 12:05 WIB** · **480 entri terverifikasi** · target 5.300
+> (final sesi audit otonom 2026-10-11; 178 siklus tercatat)
 
 ## 1. Ringkasan angka
 
 | Metrik | Jumlah |
 |---|---|
 | Baseline awal (terverifikasi siklus 0–12) | 265 |
-| Ditambahkan sesi 2026-10-11 (batch manual YouTube + hasil review DM) | 213 |
-| **Total terverifikasi saat ini** | **478** |
+| Ditambahkan sesi 2026-10-11 (batch manual YouTube + hasil review DM) | 215 |
+| **Total terverifikasi saat ini** | **480** |
 | Target | 5.300 |
-| Capaian vs target | 9,0% |
-| Ditolak (SKIP: cover/remix/episode/AI/judul kosong/bukan siaran ID) | 36 |
+| Capaian vs target | 9,1% |
+| Ditolak (SKIP: cover/remix/episode/AI/judul kosong/bukan siaran ID) | 38 |
 | Duplikat discovery (sudah di katalog) | 249 |
 
 ## 2. Komposisi per kategori
@@ -20,7 +20,7 @@
 | Kategori | Entri |
 |---|---|
 | Iklan Jadul | 245 |
-| Opening Kartun | 139 |
+| Opening Kartun | 141 |
 | Jingle & Ident | 50 |
 | Sinetron & Acara TV | 30 |
 | Opening Tokusatsu | 14 |
@@ -44,7 +44,7 @@ MNCTV: 1.
 
 | Sumber | Entri |
 |---|---|
-| YouTube (`yt`) | 469 |
+| YouTube (`yt`) | 471 |
 | Dailymotion (`dm`) | 8 |
 | Vimeo (`vimeo`) | 1 |
 
@@ -84,7 +84,7 @@ MNCTV: 1.
 
 ## 7. Gap tersisa & rekomendasi riset
 
-- **Volume**: 478/5.300 (9,0%). Pipa terbesar (16,5rb kandidat DM) menunggu
+- **Volume**: 480/5.300 (9,1%). Pipa terbesar (16,5rb kandidat DM) menunggu
   jaringan pulih; setelah itu butuh filter judul ketat + spot-review berstrata
   sebelum append.
 - **Kategori tipis**: Opening Tokusatsu (14), Sinetron & Acara TV (30),
