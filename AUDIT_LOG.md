@@ -1400,6 +1400,23 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 
 **Total siklus tercatat: 96**
 
+---
+
+## Siklus 97 — 2026-10-11 09:55 WIB — Batch YouTube jamu: +8 entri
+
+- **Area:** Katalog (437 → **445**).
+- **Metode:** 2 web search (conan → 0 baru; jamu) → 8 kandidat
+  → oEmbed (semua OK) → cek duplikat (semua baru) → review.
+- **Hasil:** **8 YA** (Jamu Idaman 1997, Jamu Siputih 1999, Buyung Upik 1999,
+  Buyung Upik 1998, Jamu Idaman 1996, Jamu Leo 1996, SidoMuncul 2000,
+  SidoMuncul 2002). 1 duplikat.
+  Ditolak: 1 showcase produk (bukan iklan TV), 1 iklan radio (audio),
+  4 cover conan.
+- **Test:** append → 445 entri unik; smoke 18/18 PASS.
+- **Next:** Lanjut.
+
+**Total siklus tercatat: 97**
+
 > **Koreksi waktu (04:01 WIB):** timestamp siklus 33–55 di atas adalah estimasi dan
 > ternyata kelebihan ±5 jam. Waktu terverifikasi saat siklus 55: **2026-10-11 04:01 WIB**
 > (`date` sistem). Mulai siklus 56, timestamp memakai jam sistem yang benar.

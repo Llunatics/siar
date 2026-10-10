@@ -461,4 +461,12 @@ const CHANNELS = [
   { id: "5rBAWqiye8I", title: "Iklan Jadul Episode 7 - 1994 & 1995 RCTI", cat: "Iklan Jadul", st: "RCTI" },
   { id: "t8S7p4qcDBk", title: "iklan Jadul Part 7 (1991) + Undian Dari Lubuk Hati", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "YVxK-Y7E2jY", title: "Iklan Jadul Jilid 16 - 1994/1995 (Indonesia Merdeka 45 Menit)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "3HZFP3OId7Q", title: "Iklan Jamu Idaman - Suami Lagi Rapat (1997)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "AZxUAj7p05k", title: "Iklan Jamu Siputih TPI 1999", cat: "Iklan Jadul", st: "TPI" },
+  { id: "PB7HOEtEYiY", title: "Iklan Jamu Buyung Upik versi cepat tahun 1999", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "9jmmZR04fPM", title: "Iklan Jamu Buyung Upik tahun 1998", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "RxDbhcF7evs", title: "Iklan Jamu Idaman - Ramuan Madura (1996)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "ojTYugyEpSc", title: "Iklan Jamu Leo - Pegal Linu (1996)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "a6aLXJP3ucw", title: "Iklan Jamu Kunyit Asam SidoMuncul 2000", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "P6elQKOAcnA", title: "Iklan Jamu Komplit Sido Muncul tahun 2002", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
