@@ -1064,6 +1064,9 @@ body.immersive .room-scene::after { /* grain tekstur dinding, sangat tipis */
 body.immersive::after { /* lantai kayu gelap: gradasi shading + pantulan samar di dekat dinding */
   content: ""; position: fixed; left: -6%; right: -6%; top: 65%; bottom: -4%; z-index: -1;
   background:
+    /* genangan cahaya TV di lantai: hanya ada saat TV menyala */
+    radial-gradient(ellipse 36% 26% at 50% 26%,
+      rgba(150,166,196, calc(.30 * var(--screen-glow, 0))) 0%, transparent 70%),
     /* list plin: garis temu dinding-lantai */
     linear-gradient(180deg, rgba(216,188,140,.16) 0 5px, rgba(0,0,0,.35) 5px 9px, transparent 9px),
     linear-gradient(180deg, rgba(255,186,120,.05), transparent 34%),

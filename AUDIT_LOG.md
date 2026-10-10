@@ -374,3 +374,27 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 - **Next:** Batch kartun (Doraemon lanjutan?) / pantau verify DM.
 
 **Total siklus tercatat: 24**
+
+---
+
+## Siklus 25 — 2026-10-11 04:25 WIB — Regression pass (rentang siklus 20–24)
+
+- **Area:** Remote hold-repeat, settings accordion, throttle jam, katalog 318 entri, review.py merge.
+- **Test:** smoke 18/18 · guide-chunk 7/7 · remote-click 18/18 · hold-repeat 3/3 — **semua hijau**.
+- **Next:** Siklus produk berikutnya.
+
+**Total siklus tercatat: 25**
+
+---
+
+## Siklus 26 — 2026-10-11 04:35 WIB — Imersif: genangan cahaya TV di lantai + flicker
+
+- **Area:** `assets/js/app.js` (`refreshSignal`, interval noise), `assets/css/style.css` (`body.immersive::after`).
+- **Masalah & bukti:** Ruang imersif gelap tidak menunjukkan cahaya TV saat menyala (hanya glow di dinding). Screenshot `tmp-imm26.png`.
+- **Severity:** Sedang (dimensi 3).
+- **Implementasi:** (1) `--screen-glow` dipindah ke `document.body` (var CSS menurun, bukan naik) agar bisa dibaca lapisan lantai; (2) lapisan `radial-gradient` genangan cahaya dingin di lantai depan lemari, opacity = `.30 × glow` (0 saat TV mati); (3) flicker halus ±7% tiap 140ms saat TV nyala (nonaktif bila reduced-motion).
+- **Test:** `quickshot.js 1366 768 imm26b immersive` → genangan cahaya biru-keabu-an terlihat di lantai; smoke 18/18 PASS; pageerrors nihil.
+- **Before/after:** Dimensi 3: 8→8.4.
+- **Next:** Batch katalog kartun YouTube.
+
+**Total siklus tercatat: 26**

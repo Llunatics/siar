@@ -257,9 +257,11 @@
     els.tv.classList.toggle("sig-bad", powered && signalQ < 45);
     els.tv.classList.toggle("sig-mid", powered && signalQ >= 45 && signalQ < 75);
     // Pantulan cahaya layar ke ruangan (dipakai Mode Imersif): hidup mengikuti
-    // nyala TV, kecerahan knob, dan bersihnya sinyal.
+    // nyala TV, kecerahan knob, dan bersihnya sinyal. Var dipasang di body agar
+    // bisa dibaca ::before TV maupun ::after lantai (var menurun, bukan naik).
     var glow = powered ? Math.min(1, (S.bright / 150) * (0.45 + signalQ / 100 * 0.55)) : 0;
-    els.tv.style.setProperty("--screen-glow", glow.toFixed(2));
+    els._glowBase = glow;
+    document.body.style.setProperty("--screen-glow", glow.toFixed(2));
     applyPicture();
   }
   function signalHint() {
@@ -639,6 +641,9 @@
     els.staticC.style.opacity = (eff / 100 * 0.55).toFixed(2);
     if (RM) { if (!rmDrawn) { drawStatic(); rmDrawn = true; } return; }
     drawStatic();
+    // Cahaya TV "bernapas": pantulan ke ruangan berdenyut halus mengikuti konten.
+    var gb = els._glowBase || 0;
+    document.body.style.setProperty("--screen-glow", (gb * (0.93 + Math.random() * 0.14)).toFixed(2));
   }, 140);
 
   function playNoise(ms) {
