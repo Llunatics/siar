@@ -72,6 +72,7 @@ const CHANNELS = [
   // --- Opening Tokusatsu ---
   { id: "FJS13e8ms3I", title: "Opening Ksatria Baja Hitam (Indonesia)", cat: "Opening Tokusatsu", st: "RCTI" },
   { id: "CUfUeOWbVp0", title: "Opening Kamen Rider Kuuga (Indonesia)", cat: "Opening Tokusatsu", st: "RCTI" },
+  { id: "05wfQfF_H6w", title: "Opening Planet Aksi Spacetoon Indonesia", cat: "Jingle & Ident", st: "Spacetoon" },
   // --- Sinetron & Acara TV ---
   { id: "NpsTQ8p_njI", title: "Opening Si Doel Anak Sekolahan", cat: "Sinetron & Acara TV", st: "RCTI" },
   { id: "A0plMjLC4T4", title: "Opening Jinny Oh Jinny", cat: "Sinetron & Acara TV", st: "RCTI" },
