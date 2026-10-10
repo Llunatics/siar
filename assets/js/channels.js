@@ -403,4 +403,7 @@ const CHANNELS = [
   { id: "gLyrAXagiZE", title: "Iklan Nivea Body Lotion - Feel Good Your Skin (1994)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "gpvDnzA-TlY", title: "Iklan Shampoo Fa (1993)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "DUlFbUe4W4M", title: "Iklan Shampoo Clear - Ah Teori...! (1996)", cat: "Iklan Jadul", st: "RCTI" },
+  { id: "GAjvk1NOcwE", title: "Iklan Inzana - Jingle Inzana (1989-1992)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "nw6GoNODGtI", title: "Iklan Jadul Part 8 (Tahun 1999) - kompilasi", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "xPdWd8po23k", title: "Jeda Iklan RCTI Agustus 1999 (kompilasi rerun)", cat: "Iklan Jadul", st: "RCTI" },
 ];

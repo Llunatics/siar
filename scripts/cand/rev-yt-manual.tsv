@@ -1,7 +1,7 @@
 putusan	status	src	id	title_oembed	title_discovery	cat	st	note	query
 YA	OK	yt	So7rhlimtI0	essenza	Iklan Essenza (keramik) ~1992-2002	Iklan Jadul	Multi-Stasiun		web: iklan jadul 90an
 YA	OK	yt	ujr8tb1HjRA	Iklan Jadul Tahun 1992	Iklan Essenza (Sanggar Cerita)	Iklan Jadul	Multi-Stasiun		web: iklan jadul 90an
-YA	REVIEW	yt	cLSGYNdRGY0	Kumpulan Iklan Jadul Tahun 1995 Indosiar (Episode 9)	Kumpulan Iklan Jadul Tahun 1995 Indosiar (Episode 9)	Iklan Jadul	Indosiar		web: iklan jadul 90an
+YA	REVIEW	yt	cLSGYNdRGY0	Kumpulan Iklan Jadul Tahun 1995 Indosiar (Episode 9)	Kumpulan Iklan Jadul Tahun 1995 Indosiar (Episode 9)	Iklan Jadul	Indosiar	sudah di katalog (duplikat)	web: iklan jadul 90an
 YA	OK	yt	ZpI7PaB0GSo	Aneka/Kumpulan Iklan Iklan Jadul 1990an - Supermarket, Departement Store (Rimo, Matahari, Metro dll)	Kumpulan Iklan Supermarket/Dept Store 1989-2002	Iklan Jadul	Multi-Stasiun		web: iklan jadul 90an
 YA	OK	yt	INQNUTC3VEc	Iklan Jadul Jilid 17 - 1996-1997/98 (Bajuku Dulu Tak Begini) 40 Menit	Iklan Jadul Jilid 17 (1996-1997/98)	Iklan Jadul	Multi-Stasiun		web: iklan jadul 90an
 YA	OK	yt	izF0bkzsox4	Lagu Opening Doraemon versi panjang  RCTI Tahun 1990an	Lagu Opening Doraemon versi panjang RCTI 1990an	Opening Kartun	RCTI		web: opening doraemon
@@ -109,7 +109,7 @@ YA	OK	yt	y8Gzh8Hqpgs	IKLAN JADUL INDOMIE - DARI SABANG SAMPAI MERAUKE	Iklan Jadu
 YA	OK	yt	0Vu62O_pSZw	Iklan Jadul Indonesia   Indomie Pegunungan 1997	Iklan Jadul Indonesia Indomie Pegunungan 1997			sudah di katalog baseline (duplikat)	web: iklan mie 90an
 YA	OK	yt	Pa_doKSlJLs	Iklan Nescafe Classic - Selalu Lebih Oke (1997) @ ANteve, Indosiar, SCTV, TPI, & RCTI	Iklan Nescafe Classic - Selalu Lebih Oke (1997)	Iklan Jadul	Multi-Stasiun		web: iklan minuman 90an
 YA	OK	yt	fB4-rn_WtRI	iklan Minuman Calpico - tahun 1999	iklan Minuman Calpico - tahun 1999	Iklan Jadul	Multi-Stasiun		web: iklan minuman 90an
-YA	OK	yt	rLsAMTbM7Gs	Kompilasi Iklan-iklan Jadul Terpopuler/Terkenal 1990-an, mungkin anda masih ingat iklannya...	Kompilasi Iklan-iklan Jadul Terpopuler 1990-an	Iklan Jadul	Multi-Stasiun		web: iklan minuman 90an
+YA	OK	yt	rLsAMTbM7Gs	Kompilasi Iklan-iklan Jadul Terpopuler/Terkenal 1990-an, mungkin anda masih ingat iklannya...	Kompilasi Iklan-iklan Jadul Terpopuler 1990-an	Iklan Jadul	Multi-Stasiun	sudah di katalog (duplikat)	web: iklan minuman 90an
 YA	OK	yt	Mow8XE_qsxw	Iklan Jadul Teh Sosro (RCTI'93)	Iklan Jadul Teh Sosro (RCTI'93)	Iklan Jadul	RCTI		web: iklan minuman 90an
 YA	OK	yt	QGEFfYIBZC4	Iklan-Iklan Jadul - 8 Iklan Terkenal Jadul yang legendaris	Iklan-Iklan Jadul - 8 Iklan Terkenal Jadul yang legendaris	Iklan Jadul	Multi-Stasiun		web: iklan minuman 90an
 YA	OK	yt	0MqT7yZe9cU	Nippon Cha Cha ~ OST. Opening Kobo Chan (Bahasa Indonesia)	Nippon Cha Cha ~ OST. Opening Kobo Chan (Bahasa Indonesia)	Opening Kartun	RCTI		web: kobo chan
@@ -147,10 +147,15 @@ YA	OK	yt	jFalktknCd0	Jeda Iklan RCTI edisi November 1992 (feat. iklan So Klin & 
 YA	OK	yt	u5f1FJ0d37k	Dragon Ball Opening HD (Versi Indonesia)	Dragon Ball Opening HD (Versi Indonesia)	Opening Kartun	Indosiar		web: dragon ball
 YA	OK	yt	colwIUe-Bi0	[RIP AKIRA TORIYAMA] Lagu Opening Dragon Ball Versi Indonesia (Dragon Ball Childhood Song)	Lagu Opening Dragon Ball Versi Indonesia	Opening Kartun	Indosiar	sudah di katalog (duplikat)	web: dragon ball
 YA	OK	yt	jB42wvldJkk	Ost. Dragon Ball & Dragon Ball Z (Versi Indonesia)	Ost. Dragon Ball & Dragon Ball Z (Versi Indonesia)	Opening Kartun	Indosiar	sudah di katalog (duplikat)	web: dragon ball
-YA	OK	yt	Sh4TEnrxyQw	Iklan Sunsilk Shampoo (1991) - Shanaz Haque	Iklan Sunsilk Shampoo Tahun 1991 Versi shanaz Haque	Iklan Jadul	Multi-Stasiun		web: iklan sampo
-YA	OK	yt	gLyrAXagiZE	Iklan Nivea Body Lotion - Feel Good Your Skin (1994)	Iklan Nivea Body Lotion - Feel Good Your Skin (1994)	Iklan Jadul	Multi-Stasiun		web: iklan sampo
+YA	OK	yt	Sh4TEnrxyQw	Iklan Sunsilk Shampoo Tahun 1991 Versi shanaz Haque	Iklan Sunsilk Shampoo Tahun 1991 Versi shanaz Haque	Iklan Jadul	Multi-Stasiun		web: iklan sampo
+YA	OK	yt	gLyrAXagiZE	Iklan Nivea Body Lotion - Feel Good Your Skin (1994) @ SCTV, RCTI, TPI, & ANteve	Iklan Nivea Body Lotion - Feel Good Your Skin (1994)	Iklan Jadul	Multi-Stasiun		web: iklan sampo
 YA	OK	yt	D-XxISycUAQ	Iklan Shampo Dimension tahun 1995	Iklan Shampo Dimension tahun 1995			sudah di katalog (duplikat)	web: iklan sampo
 YA	OK	yt	Srn07BRnK6w	Iklan Shampo Sunsilk tahun 1998	Iklan Shampo Sunsilk tahun 1998			sudah di katalog (duplikat)	web: iklan sampo
 YA	OK	yt	tfkqBGPf9YQ	Iklan shampo Pantene tahun 1999	Iklan shampo Pantene tahun 1999			sudah di katalog (duplikat)	web: iklan sampo
-YA	OK	yt	gpvDnzA-TlY	Iklan Shampoo Fa (1993)	iklan Shampoo Fa tahun 1993 RCTI INDOSIAR TPI AN teve	Iklan Jadul	Multi-Stasiun		web: iklan sampo
-YA	OK	yt	DUlFbUe4W4M	Iklan Shampoo Clear - Ah Teori...! (1996)	Iklan Shampoo Clear - Ah Teori...! (1996)	Iklan Jadul	RCTI		web: iklan sampo
+YA	OK	yt	gpvDnzA-TlY	iklan Shampoo Fa tahun 1993 RCTI INDOSIAR TPI AN teve	iklan Shampoo Fa tahun 1993 RCTI INDOSIAR TPI AN teve	Iklan Jadul	Multi-Stasiun		web: iklan sampo
+YA	OK	yt	DUlFbUe4W4M	[RCTI 🇮🇩] Iklan Shampoo Clear - Ah Teori...! (1996)	Iklan Shampoo Clear - Ah Teori...! (1996)	Iklan Jadul	RCTI		web: iklan sampo
+YA	OK	yt	rLsAMTbM7Gs	Kompilasi Iklan-iklan Jadul Terpopuler/Terkenal 1990-an, mungkin anda masih ingat iklannya...	Kompilasi Iklan-iklan Jadul Terpopuler 1990-an	Iklan Jadul	Multi-Stasiun	sudah di katalog (duplikat)	web: jingle iklan kompilasi
+YA	REVIEW	yt	cLSGYNdRGY0	Kumpulan Iklan Jadul Tahun 1995 Indosiar (Episode 9)	Kumpulan Iklan Jadul Tahun 1995 Indosiar (Episode 9)	Iklan Jadul	Indosiar	sudah di katalog (duplikat)	web: jingle iklan kompilasi
+YA	OK	yt	GAjvk1NOcwE	Iklan Inzana - Jingle Inzana (1989-1992)	Iklan Inzana - Jingle Inzana (1989-1992)	Iklan Jadul	Multi-Stasiun		web: jingle iklan kompilasi
+YA	OK	yt	nw6GoNODGtI	Iklan Jadul Part 8 (Tahun 1999) - kompilasi	iklan jadul Part 8 (Tahun 1999)	Iklan Jadul	Multi-Stasiun		web: jingle iklan kompilasi
+YA	OK	yt	xPdWd8po23k	Jeda Iklan RCTI Agustus 1999 (kompilasi rerun)	ARSIP IKLAN KOMPILASI RERUN EPS 01 - Jeda iklan RCTI Agustus 1999	Iklan Jadul	RCTI		web: jingle iklan kompilasi
