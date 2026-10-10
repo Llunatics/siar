@@ -1,9 +1,13 @@
 # Resume verifikasi Dailymotion
 
-**Status:** DITUNDA 2026-10-11 ~06:30 WIB — `www.dailymotion.com` & `api.dailymotion.com`
-tidak bisa dijangkau dari VM (curl timeout 25 dtk; YouTube oEmbed normal 0,7 dtk).
+**Status:** DILANJUTKAN 2026-10-11 04:55 WIB — konektivitas pulih (probe 3/3 HTTP 200,
+0,5–0,9 dtk). Tiga job `review.py verify` berjalan di background
+(iklan/ident/kartun → `/tmp/siar-rev-*.log`).
 Terverifikasi parsial tersimpan di `scripts/.cache/verify.json` (1.705 kunci)
 dan TSV output (baris yang sudah ditulis aman).
+
+> Riwayat: DITUNDA 2026-10-11 ~06:30 WIB — `www.dailymotion.com` & `api.dailymotion.com`
+> tidak bisa dijangkau dari VM (curl timeout 25 dtk; YouTube oEmbed normal 0,7 dtk).
 
 **Cek konektivitas dulu:**
 

@@ -399,4 +399,8 @@ const CHANNELS = [
   { id: "ousFhm4kKlU", title: "Iklan Obat Neozep (1998)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "jFalktknCd0", title: "Jeda Iklan RCTI November 1992 - So Klin & Kecap ABC (kompilasi)", cat: "Iklan Jadul", st: "RCTI" },
   { id: "u5f1FJ0d37k", title: "Dragon Ball Opening HD (Versi Indonesia)", cat: "Opening Kartun", st: "Indosiar" },
+  { id: "Sh4TEnrxyQw", title: "Iklan Sunsilk Shampoo (1991) - Shanaz Haque", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "gLyrAXagiZE", title: "Iklan Nivea Body Lotion - Feel Good Your Skin (1994)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "gpvDnzA-TlY", title: "Iklan Shampoo Fa (1993)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "DUlFbUe4W4M", title: "Iklan Shampoo Clear - Ah Teori...! (1996)", cat: "Iklan Jadul", st: "RCTI" },
 ];

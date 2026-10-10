@@ -878,6 +878,21 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 
 **Total siklus tercatat: 60**
 
+---
+
+## Siklus 61 — 2026-10-11 04:55 WIB — DM pulih + batch YT sampo: +4 entri
+
+- **Area:** Katalog (375 → **379**) + infrastruktur verifikasi DM.
+- **DM pulih:** Probe 3/3 HTTP 200 (0,5–0,9 dtk) setelah mati sejak ~06:30 WIB (waktu lama).
+  Tiga job `review.py verify` DILANJUTKAN di background:
+  iklan (4.085) / ident (4.269) / kartun (8.244 kandidat) → `/tmp/siar-rev-*.log`.
+- **Batch YT:** 1 web search → 7 kandidat → **4 YA** (Sunsilk 1991, Nivea 1994,
+  Shampoo Fa 1993, Clear 1996). 3 duplikat.
+- **Test:** append → 379 entri unik; smoke 18/18 PASS.
+- **Next:** Review hasil DM saat job selesai; lanjut YT batch.
+
+**Total siklus tercatat: 61**
+
 > **Koreksi waktu (04:01 WIB):** timestamp siklus 33–55 di atas adalah estimasi dan
 > ternyata kelebihan ±5 jam. Waktu terverifikasi saat siklus 55: **2026-10-11 04:01 WIB**
 > (`date` sistem). Mulai siklus 56, timestamp memakai jam sistem yang benar.
