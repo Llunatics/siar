@@ -434,4 +434,5 @@ const CHANNELS = [
   { id: "pNfJ-je-2TU", title: "Iklan Kopi Kapal Api tahun 1997", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "Lx1iUq6yz-A", title: "Iklan Kopiko Versi Bis Kota (1991)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "a8sIH-3pkjY", title: "Iklan Sabun TROJAN (1989)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "rRvmpWSJ8xg", title: "iklan INDOMIE (2000) 'indomie setiap hari'", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
