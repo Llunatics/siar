@@ -659,4 +659,9 @@ const CHANNELS = [
   { id: "IPOSGAEGIVI", title: "Kompilasi Iklan Toyota Kijang Dari Masa Ke Masa - (1977-2022) [UPDATE]", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "MIOtnqPx5Qs", title: "Iklan Minyak Angin Cap Lang - Hijaunya Daun (1992) @ RCTI, SCTV, & TPI", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "AFJnUKR5DHE", title: "Iklan Sanaflu - Flu di Saat Kerja (1999) @ RCTI, Indosiar, SCTV, TPI, & ANteve", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "IUsY4xZqmIo", title: "Station ID-Lativi (Stasiun TV Almarhum)-2004", cat: "Jingle & Ident", st: "Lativi" },
+  { id: "RkqW8pra9j0", title: "Kompilasi Station ID tvOne (Lativi) 2003 - 2020", cat: "Jingle & Ident", st: "tvOne" },
+  { id: "diT0YJbHGHc", title: "Station ID : Lativi - Blue And White Version (2007-08)", cat: "Jingle & Ident", st: "Lativi" },
+  { id: "pohzz95PJLg", title: "Station ID tvOne (2012-20) [15sec]", cat: "Jingle & Ident", st: "tvOne" },
+  { id: "MHZkxdT_axg", title: "Station ID TPI (Sekarang MNCTV) 2007", cat: "Jingle & Ident", st: "TPI" },
 ];
