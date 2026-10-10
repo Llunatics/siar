@@ -641,4 +641,6 @@ const CHANNELS = [
   { id: "oxDUNqIvltY", title: "BERNOSTALGIA IKLAN JADUL TAHUN 2000AN, NGAKAK PARAH!!! BIKIN BETAH NONTONYA🤣", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "jfqeJAKfjdI", title: "Iklan Coolant (2016, Local Rec.)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "gpOqtWjQb9M", title: "Iklan Kursus Bahasa Inggris di Denpasar - EC (2016)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "yrwgyZoVm6w", title: "Iklan  Shampoo Clear feat. Ferry Irawan & Iqbal Pakula (1998)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "B9rlqeUr07g", title: "Iklan Sunsilk Intensive Conditioning - Sehat Lembut Indah Berkilau (1994) @ RCTI, TPI, & SCTV", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
