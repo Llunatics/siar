@@ -4101,3 +4101,22 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 298**
 
 ---
+
+## Siklus 299 — 2026-10-10 23:58 WIB — Grounding TV mode normal: bayangan kontak + lantai
+
+- **Area:** Realisme TV / material.
+- **Masalah:** TV mengambang di void gelap tanpa permukaan; bayangan
+  bawah stand lemah (26px, alpha .55).
+- **Perubahan:** `assets/css/style.css` —
+  (1) `.tv::after` dua lapis: kontak rapat (alpha .80, 44%) + ambient
+  lebar (alpha .40, 80%); (2) `.stage::before` permukaan lantai samar:
+  cahaya hangat saat TV menyala (`body:has(.tv.on)`, alpha .30), redup
+  saat mati — grounding objek fisik tanpa mengubah komposisi.
+- **Test:** `node test/w3shot.js 1920 1080 floor normal` — 0 pageerror.
+  Screenshot `shots/qa/w3-floor-normal-1920x1080.png`: bayangan kontak
+  jelas, glow hangat samar di bawah TV; masih restrained.
+- **Next:** Tombol fisik TV: down-state mekanis + recessed well.
+
+**Total siklus tercatat: 299**
+
+---

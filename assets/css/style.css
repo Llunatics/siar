@@ -375,9 +375,25 @@ body {
 .finish-kayu .tv-stand .foot { background: linear-gradient(180deg, #4b3419, #241605); }
 .finish-silver .tv-stand .foot, .finish-ivory .tv-stand .foot, .finish-krem .tv-stand .foot { background: linear-gradient(180deg, #9ea3ad, #565b64); }
 .finish-grafit .tv-stand .foot { background: linear-gradient(180deg, #79818c, #2c3138); }
-.tv::after { /* bayangan lantai di bawah stand */
-  content: ""; display: block; height: 26px; margin-top: 2px;
-  background: radial-gradient(ellipse 62% 100% at 50% 0%, rgba(0,0,0,.55), transparent 70%);
+.tv::after { /* bayangan lantai berlapis: kontak rapat + ambient lebar */
+  content: ""; display: block; height: 44px; margin-top: 0;
+  background:
+    radial-gradient(ellipse 44% 52% at 50% 6%, rgba(0,0,0,.80), transparent 70%),
+    radial-gradient(ellipse 80% 100% at 50% 22%, rgba(0,0,0,.40), transparent 72%);
+}
+/* Permukaan lantai samar di bawah TV (mode normal): cahaya hangat
+   saat TV menyala, redup saat mati — grounding objek fisik. */
+.stage { position: relative; }
+.stage::before {
+  content: ""; position: absolute; left: 50%; transform: translateX(-50%);
+  bottom: -46px; width: min(1100px, 94vw); height: 210px;
+  background: radial-gradient(ellipse 50% 40% at 50% 26%,
+    rgba(150,116,74,.10), rgba(150,116,74,.04) 45%, transparent 70%);
+  pointer-events: none; transition: opacity .6s;
+}
+body:has(.tv.on) .stage::before {
+  background: radial-gradient(ellipse 50% 40% at 50% 26%,
+    rgba(150,116,74,.30), rgba(150,116,74,.10) 48%, transparent 72%);
 }
 /* Cahaya layar memantul halus ke "ruangan" saat TV menyala */
 .tv.on .tv-body {
