@@ -608,4 +608,9 @@ const CHANNELS = [
   { id: "yk8Mn7zwT8c", title: "Station ID TVRI Programa 2 (1990) [Potongan]", cat: "Jingle & Ident", st: "TVRI" },
   { id: "yK9m88G2LAw", title: "Opening Tuyul dan Mbak Yul", cat: "Sinetron & Acara TV", st: "RCTI" },
   { id: "YUEGSpI8qVs", title: "Opening Tuyul dan Mbak Yul Versi 3", cat: "Sinetron & Acara TV", st: "RCTI" },
+  { id: "quIOWo6GoQU", title: "Iklan Kratingdaeng - Jingle 30 (2002) @ Indosiar, TPI, TV7, RCTI, SCTV, Trans TV, ANteve, & Metro TV", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "o8KATCVZYYE", title: "Iklan Kratingdaeng - New Jingle (2002) @ Indosiar, TPI, TV7, RCTI, SCTV, Trans TV, & ANteve", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "Qp-h4r9ID8Q", title: "PERGANTIAN ACARA SELANJUTNYA (SEPTEMBER 1995) DI SCTV", cat: "Jingle & Ident", st: "SCTV" },
+  { id: "XZgN3THGHsc", title: "opening Jelita Indosiar 1998", cat: "Sinetron & Acara TV", st: "Indosiar" },
+  { id: "_Rs3a7PTj_M", title: "Jeda Iklan Indosiar edisi 12 Januari 1995 (feat. Iklan Kapal Api tahun 1994)", cat: "Iklan Jadul", st: "Indosiar" },
 ];
