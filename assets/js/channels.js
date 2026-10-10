@@ -356,4 +356,12 @@ const CHANNELS = [
   { id: "-I-OrJFYbY4", title: "Iklan Sabun Giv - Sophia Latjuba, Kain Alami (2001)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "yQn_noPdF90", title: "Iklan Purbasari Sabun Sirih - Bikin Nyaman Pede (2009)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "7nQD0G5RcGM", title: "9 Iklan Shampo Tahun 90an (kompilasi)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "T8Ec7j5cR00", title: "Iklan Jadul Rokok 234 Dji Sam Soe Filter Menembus Batas", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "DGDfDBfDhRU", title: "Iklan Rokok Gudang Garam Sriwedari - Sri (1993-94)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "WVAMrx-UG-A", title: "Iklan Dunhill - Gaya, Mutu, Keunggulan (1986 Versi 1)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "AANk9SNo8xw", title: "Iklan Rokok Djarum 76 tahun 1999-2005 (kumpulan)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "2Y-afiVtAiE", title: "Kompilasi Iklan Rokok Minak Djinggo (1994-2017)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "_1SKNFjpw3Y", title: "Kompilasi Iklan Rokok Djarum Super (1990-2023)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "UwzeVpqWbPg", title: "Kompilasi Iklan Rokok Jadul (Part. 3)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "m7rL-zvoiXU", title: "Lagu Ninja Ranger Opening Versi Indonesia HD", cat: "Opening Tokusatsu", st: "Multi-Stasiun" },
 ];

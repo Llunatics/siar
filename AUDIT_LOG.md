@@ -512,3 +512,28 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 - **Next:** Cek verify DM; batch berikutnya.
 
 **Total siklus tercatat: 35**
+
+---
+
+## Siklus 36 — 2026-10-11 06:05 WIB — Operasional: 3 job verifikasi macet di-restart
+
+- **Area:** `scripts/review.py` (job background).
+- **Masalah & bukti:** 3 proses verify (iklan/ident/kartun) hidup tapi log tak bergerak 2,5 jam; `fd` tunjukkan socket gantung meski `timeout=20` (proksi egress kadang menahan koneksi).
+- **Implementasi:** Kill -9 ketiga proses; restart verify — cache oEmbed (`scripts/.cache/verify.json`, 1.696 kunci) membuat entri terverifikasi dilewati tanpa sleep, lanjut dari posisi terakhir.
+- **Test:** 3 job berjalan kembali (`proc_e03655fb59b3`, `proc_aade1ab57986`, `proc_420d4ce0e265`).
+- **Follow-up:** Pantau; bila macet lagi di video yang sama, selidiki ID spesifik / tambahkan watchdog.
+- **Next:** Lanjut siklus produk/katalog.
+
+**Total siklus tercatat: 36**
+
+---
+
+## Siklus 37 — 2026-10-11 06:18 WIB — Batch YouTube iklan rokok + Ninja Ranger: +8 entri
+
+- **Area:** Katalog (332 → **340**).
+- **Metode:** 2 web search → 9 kandidat → oEmbed → review.
+- **Hasil:** **8 YA** (7 iklan rokok: Dji Sam Soe 234, Gudang Garam Sriwedari 1993/94, Dunhill 1986, 3 kompilasi Djarum 76/Minak Djinggo/Djarum Super, kompilasi iklan rokok jadul part 3; + Ninja Ranger opening versi Indonesia HD). **1 SKIP** (oEmbed FAIL).
+- **Test:** append → 340 entri unik; smoke 18/18 PASS.
+- **Next:** Cek verify DM; batch berikutnya.
+
+**Total siklus tercatat: 37**
