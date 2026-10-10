@@ -4120,3 +4120,25 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 299**
 
 ---
+
+## Siklus 300 — 2026-10-10 23:59 WIB — Tombol fisik TV: recessed well + struck mekanis
+
+- **Area:** Realisme TV / tombol fisik.
+- **Masalah:** Tombol power menempel langsung di strip tanpa lubang
+  cekung; feedback tekan hanya `:active` (tak terlihat saat aktivasi
+  keyboard); percobaan pertama memicu struck pada `click` (tombol
+  tenggelam setelah dilepas — salah timing).
+- **Perubahan:** `index.html` — power dibungkus `.btn-well`;
+  `style.css` — well inset + class `.btn.struck` (tekan 4–5px, inner
+  shadow dalam); `app.js` — helper `strike(btn)` dipicu pada
+  `pointerdown`/`keydown` (Enter/Space), durasi 160ms,
+  diekspos `window.__siarStrike` untuk test.
+- **Test:** `node test/w3btn.js` + skrip pointerdown: struck=true saat
+  tekan, transform ~3.5px, hilang setelah lepas, power toggle tetap
+  benar (on→off→on), 0 pageerror. Screenshot
+  `shots/qa/w3-btnwell.png`: well terlihat sebagai panel inset gelap.
+- **Next:** Immersive: komposisi ruang tamu (dinding terlalu gelap).
+
+**Total siklus tercatat: 300**
+
+---

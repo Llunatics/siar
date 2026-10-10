@@ -1159,6 +1159,22 @@
   }
 
   /* ================= Event: kontrol TV ================= */
+  // Umpan balik mekanis tombol fisik: tekan dalam sesaat (terlihat juga
+  // saat aktivasi keyboard, di mana :active tidak selalu tampil).
+  function strike(btn) {
+    if (!btn) return;
+    btn.classList.remove("struck");
+    void btn.offsetWidth; /* reflow: pastikan animasi ulang */
+    btn.classList.add("struck");
+    setTimeout(function () { btn.classList.remove("struck"); }, 160);
+  }
+  window.__siarStrike = strike; /* diekspos untuk test otomatis */
+  // Strike saat tekan dimulai (pointerdown/keydown), bukan saat click —
+  // tombol tenggelam saat jari masih menekan, bukan setelah dilepas.
+  els.powerBtn.addEventListener("pointerdown", function () { strike(els.powerBtn); });
+  els.powerBtn.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" || e.key === " ") strike(els.powerBtn);
+  });
   els.powerBtn.addEventListener("click", function () { powered ? powerOff() : powerOn(); });
   els.screen.addEventListener("dblclick", toggleFs);
   // Klik di layar: putar / jeda lewat API pemutar aktif (dobel-klik tetap layar penuh)
