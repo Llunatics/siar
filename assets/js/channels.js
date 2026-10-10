@@ -606,4 +606,6 @@ const CHANNELS = [
   { id: "jrphbD7LWnA", title: "Jeda Iklan NET. (18 Februari 2015)", cat: "Iklan Jadul", st: "NET." },
   { id: "zlX_FIlOSdw", title: "Jeda Iklan Trans TV (24 April 2015)", cat: "Iklan Jadul", st: "Trans TV" },
   { id: "yk8Mn7zwT8c", title: "Station ID TVRI Programa 2 (1990) [Potongan]", cat: "Jingle & Ident", st: "TVRI" },
+  { id: "yK9m88G2LAw", title: "Opening Tuyul dan Mbak Yul", cat: "Sinetron & Acara TV", st: "RCTI" },
+  { id: "YUEGSpI8qVs", title: "Opening Tuyul dan Mbak Yul Versi 3", cat: "Sinetron & Acara TV", st: "RCTI" },
 ];
