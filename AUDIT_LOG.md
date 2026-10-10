@@ -2774,3 +2774,17 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 196**
 
 ---
+
+## Siklus 197 — 2026-10-11 05:58 WIB — Batch YouTube iklan sabun 90an: +2 entri (528→530)
+
+- **Area:** Katalog (pepsodent/lifebuoy/rinso).
+- **Metode:** web search -> 8 kandidat -> oEmbed (5 OK, 3 DUP).
+- **Hasil:** 2 YA (Rinso Interview 1992 RCTI, Lifebuoy Body Wash 1998).
+  Ditolak: 3 duplikat.
+- **Test:** append -> 530 unik; smoke 18/18 PASS (dari 194).
+- **Commit:** lokal.
+- **Next:** Lanjut.
+
+**Total siklus tercatat: 197**
+
+---

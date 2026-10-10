@@ -554,4 +554,5 @@ const CHANNELS = [
   { id: "x86opk0", title: "Iklan lawas stasiun tv RCTI", cat: "Iklan Jadul", st: "RCTI", src: "dm" },
   { id: "VU-D4pg5OtE", title: "Iklan Rinso - Interview (1992-1993) @ RCTI Bandung", cat: "Iklan Jadul", st: "RCTI" },
   { id: "aJ3eiI5x6ug", title: "Iklan Lifebuoy Body Wash - Perlindungan Nonstop (15s) (1998-1999)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "LnZlWK5a6v4", title: "Opening Sinetron Jadul Tersanjung (1998-2005) @ Indosiar", cat: "Sinetron & Acara TV", st: "Indosiar" },
 ];
