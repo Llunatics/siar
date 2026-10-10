@@ -633,4 +633,5 @@ const CHANNELS = [
   { id: "D1yEd-YhwC4", title: "Opening Sinetron Kedua Tuyul Millenium Season 1 (2004) - SCTV NgeTop!", cat: "Sinetron & Acara TV", st: "SCTV" },
   { id: "u-Ols9_m7f4", title: "Opening Jin dan Jun", cat: "Sinetron & Acara TV", st: "RCTI" },
   { id: "hEo-NwPklBg", title: "Opening Samson Betawi", cat: "Sinetron & Acara TV", st: "Multi-Stasiun" },
+  { id: "yahPqJbD7xw", title: "STATION ID TPI / Televisi Keluarga Indonesia \"Makin Asyik Aja\" 1996 Short Version", cat: "Jingle & Ident", st: "TPI" },
 ];
