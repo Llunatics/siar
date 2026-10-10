@@ -486,4 +486,7 @@ const CHANNELS = [
   { id: "kpPXvG30Biw", title: "Nostalgia Lagu Opening Anime & Tokusatsu Bahasa Indonesia Tahun 90an - 2000an", cat: "Opening Kartun", st: "Multi-Stasiun" },
   { id: "s_p1wK8J9Sw", title: "Medley Lagu Opening Kartun 90an!", cat: "Opening Kartun", st: "Multi-Stasiun" },
   { id: "djmqoAO82rY", title: "P Man Opening Bahasa Indonesia", cat: "Opening Kartun", st: "RCTI" },
+  { id: "5i8212yZZ_Y", title: "Honey Bee Hutch versi Bahasa Indonesia | Ost Opening With Lyrics", cat: "Opening Kartun", st: "Multi-Stasiun" },
+  { id: "ErOjBKL5JI4", title: "OST Opening Honey Bee Hutch | Lagu Pembuka Kartun", cat: "Opening Kartun", st: "Multi-Stasiun" },
+  { id: "FzhgZoCdXH0", title: "Opening Honey Bee Hutch versi Indonesia", cat: "Opening Kartun", st: "Multi-Stasiun" },
 ];
