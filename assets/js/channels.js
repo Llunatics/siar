@@ -471,4 +471,5 @@ const CHANNELS = [
   { id: "P6elQKOAcnA", title: "Iklan Jamu Komplit Sido Muncul tahun 2002", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "1HPy-BeV6lY", title: "Nostalgia Model Iklan Motor Honda Jadul (shorts)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "MjUI7FzNJMo", title: "nostalgia iklan motor yamaha jadul (shorts)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "v4874Cdu11s", title: "Iklan Jadul Permen Relaxa 1998 (shorts)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
