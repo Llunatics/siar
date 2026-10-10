@@ -1117,6 +1117,20 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 
 **Total siklus tercatat: 77**
 
+---
+
+## Siklus 78 — 2026-10-11 07:00 WIB — Batch YouTube ident: +1 entri (katalog 400)
+
+- **Area:** Katalog (399 → **400**).
+- **Metode:** 2 web search (permen → 0 baru; ident) → 10 kandidat → oEmbed → cek duplikat.
+- **Hasil:** **1 YA** (Station ID TVRI Programa 2 Surabaya 1990-1999 — regional, unik).
+  7 duplikat. Ditolak: 2 near-duplikat ANteve 1993 (sudah 3 varian), 1 kompilasi AI,
+  2 non-iklan (tutorial/gulali).
+- **Test:** append → 400 entri unik; smoke 18/18 PASS.
+- **Next:** Lanjut.
+
+**Total siklus tercatat: 78**
+
 > **Koreksi waktu (04:01 WIB):** timestamp siklus 33–55 di atas adalah estimasi dan
 > ternyata kelebihan ±5 jam. Waktu terverifikasi saat siklus 55: **2026-10-11 04:01 WIB**
 > (`date` sistem). Mulai siklus 56, timestamp memakai jam sistem yang benar.
