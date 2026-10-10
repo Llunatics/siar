@@ -430,4 +430,7 @@ const CHANNELS = [
   { id: "iV_ELRZJeRU", title: "Iklan Colgate 1994", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "tpM_-TX9vlM", title: "Iklan Oralit tahun 1995", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "tbWqw-wWNdw", title: "Captain Tsubasa Opening Bahasa Indonesia - Full Lirik", cat: "Opening Kartun", st: "Multi-Stasiun" },
+  { id: "sXf75DGaj-M", title: "Iklan Kopi Singa - Tradisi Turun Temurun (1999) (shorts)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "pNfJ-je-2TU", title: "Iklan Kopi Kapal Api tahun 1997", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "Lx1iUq6yz-A", title: "Iklan Kopiko Versi Bis Kota (1991)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
