@@ -448,4 +448,11 @@ const CHANNELS = [
   { id: "Zm6xAMMIis8", title: "Iklan Obat Nyamuk Raid TVRI tahun 1981", cat: "Iklan Jadul", st: "TVRI" },
   { id: "C0Br9YHTjPc", title: "Iklan Biskuit Khong Guan - Jingle (1993) (shorts)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "lI4_sQZfALM", title: "Iklan Biskuit Kelapa Roma (Sekitar 1997) (shorts)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "I38oZhN8RL0", title: "Iklan Hemaviton - Hidup Sehat, Hidup Bahagia (1997)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "4LslxlxPZ_0", title: "Iklan IPL vitamin versi sariawan 20 Agustus 1998 Indosiar", cat: "Iklan Jadul", st: "Indosiar" },
+  { id: "vHfBQ6e7eJw", title: "Iklan Supertin - Multivitamin Plus untuk Stamina (2001)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "vFfHovmbNh0", title: "Iklan Lipovitan - Kejutan Lipovitan Baru (1998)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "3VPbIuCNF0g", title: "Iklan YouC1000 - Vitamin Soda (2004)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "WC2rwxNTJw4", title: "Iklan YouC1000 - Vitamin Soda (2007)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "Gguii1lV6x4", title: "Iklan Nutrima 3 (Sekitar 1999/2000)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
