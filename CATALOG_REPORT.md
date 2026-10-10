@@ -1,26 +1,27 @@
 # CATALOG_REPORT.md — Laporan Katalog Siar
 
-> Status: **2026-10-11 ~09:00 WIB** · 363 entri terverifikasi · target 5.300
+> Status: **2026-10-11 11:30 WIB** · **478 entri terverifikasi** · target 5.300
+> (final sesi audit otonom 2026-10-11; 173 siklus tercatat)
 
 ## 1. Ringkasan angka
 
 | Metrik | Jumlah |
 |---|---|
 | Baseline awal (terverifikasi siklus 0–12) | 265 |
-| Ditambahkan sesi 2026-10-11 (batch manual YouTube) | 98 |
-| **Total terverifikasi saat ini** | **363** |
+| Ditambahkan sesi 2026-10-11 (batch manual YouTube + hasil review DM) | 213 |
+| **Total terverifikasi saat ini** | **478** |
 | Target | 5.300 |
-| Capaian vs target | 6,8% |
-| Ditolak (SKIP: cover/remix/episode/AI/judul kosong) | 22 |
-| Duplikat discovery (sudah di katalog) | 18 |
+| Capaian vs target | 9,0% |
+| Ditolak (SKIP: cover/remix/episode/AI/judul kosong/bukan siaran ID) | 36 |
+| Duplikat discovery (sudah di katalog) | 249 |
 
 ## 2. Komposisi per kategori
 
 | Kategori | Entri |
 |---|---|
-| Iklan Jadul | 165 |
-| Opening Kartun | 105 |
-| Jingle & Ident | 49 |
+| Iklan Jadul | 245 |
+| Opening Kartun | 139 |
+| Jingle & Ident | 50 |
 | Sinetron & Acara TV | 30 |
 | Opening Tokusatsu | 14 |
 
@@ -28,19 +29,22 @@
 
 | Stasiun | Entri | Stasiun | Entri |
 |---|---|---|---|
-| Multi-Stasiun | 195 | ANTV | 9 |
-| RCTI | 54 | MNCTV/TPI | 8 |
-| Indosiar | 41 | TVRI | 7 |
-| SCTV | 17 | Trans7 | 4 |
-| Global TV | 16 | NET. | 3 |
+| Multi-Stasiun | 286 | Trans7 | 4 |
+| RCTI | 62 | TPI | 4 |
+| Indosiar | 47 | NET. | 3 |
+| SCTV | 18 | RTV | 3 |
+| Global TV | 16 | Trans TV | 2 |
+| MNCTV/TPI | 9 | B Channel | 2 |
+| ANTV | 9 | Spacetoon | 2 |
+| TVRI | 9 | TV7 | 1 |
 
-Sisanya (RTV, B Channel, Trans TV, TPI): ≤3 entri per stasiun.
+MNCTV: 1.
 
 ## 4. Komposisi per sumber
 
 | Sumber | Entri |
 |---|---|
-| YouTube (`yt`) | 354 |
+| YouTube (`yt`) | 469 |
 | Dailymotion (`dm`) | 8 |
 | Vimeo (`vimeo`) | 1 |
 
@@ -55,7 +59,8 @@ Sisanya (RTV, B Channel, Trans TV, TPI): ≤3 entri per stasiun.
    oEmbed → **review manusia judul-per-judul** → `review.py append`
    (dedupe `src:id`). Aturan tolak: cover/remix/karaoke, episode full,
    remake AI, demo reel, MV modern, near-duplikat, bukan siaran Indonesia,
-   judul oEmbed kosong.
+   judul oEmbed kosong. 213 entri baru ditambahkan lewat jalur ini (beserta
+   hasil review DM yang ter-append sebelum gangguan jaringan).
 4. **Cache** — `scripts/.cache/verify.json` (1.700+ kunci) agar re-run tidak
    mengulang request.
 
@@ -63,22 +68,35 @@ Sisanya (RTV, B Channel, Trans TV, TPI): ≤3 entri per stasiun.
 
 - **Dailymotion terblokir** sejak 2026-10-11 pagi (egress VM me-timeout ke
   `*.dailymotion.com`; YouTube oEmbed normal). 16.598 kandidat DM **tertunda** —
-  perintah resume di `scripts/cand/RESUME_DM.md`.
+  perintah resume di `scripts/cand/RESUME_DM.md`. Hasil parsial review DM
+  tersimpan di `scripts/cand/rev-iklan-dm.tsv` (1.519 baris),
+  `rev-ident-dm.tsv` (1.555), `rev-kartun-dm.tsv` (840) — belum di-review
+  judul-per-judul secara penuh.
 - oEmbed hanya memvalidasi **keberadaan + judul**; isi video dinilai dari
   judul/deskripsi hasil search (risiko salah label kecil, dimitigasi review manusia).
 - `review.py` pernah salah baca cache `verify.py` (`oembed_title` vs `title`) —
   sudah diperbaiki (siklus 40).
 - Mapping indeks hasil search pernah bergeser (2 ID salah label) — tertangkap
   karena judul oEmbed dijadikan acuan, bukan judul discovery (siklus 35).
+- Timestamp siklus 33–55 dan 99–109 di `AUDIT_LOG.md` sempat salah ±5–6,5 jam
+  (kegagalan konteks jam sistem); semua sudah dikoreksi dan ditandai.
+  Siklus 110+ memakai jam terverifikasi.
 
 ## 7. Gap tersisa & rekomendasi riset
 
-- **Volume**: 363/5.300. Pipa terbesar (16,5rb kandidat DM) menunggu jaringan pulih;
-  setelah itu butuh filter judul ketat + spot-review berstrata sebelum append.
-- **Kategori tipis**: Opening Tokusatsu (14), Sinetron & Acara TV (30).
-- **Stasiun tipis**: TVRI, Trans TV, NET., RTV, B Channel.
+- **Volume**: 478/5.300 (9,0%). Pipa terbesar (16,5rb kandidat DM) menunggu
+  jaringan pulih; setelah itu butuh filter judul ketat + spot-review berstrata
+  sebelum append.
+- **Kategori tipis**: Opening Tokusatsu (14), Sinetron & Acara TV (30),
+  Jingle & Ident (50).
+- **Stasiun tipis**: Trans TV, B Channel, Spacetoon, RTV, NET., TV7, MNCTV
+  (masing-masing ≤3 entri).
 - **Sumber**: Vimeo & archive.org belum dieksplorasi sistematis
   (`discover.py --source ia` tersedia).
-- Query lanjutan yang belum dijalankan: sinetron/PSA, tokusatsu lain
-  (Daimos, Voltes V versi Indonesia), kartun (Perman, Let's & Go — hasil
-  search sejauh ini hanya cover).
+- Kueri yang 100% jenuh (tidak menghasilkan entri baru): pasta gigi,
+  sabun/sampo, dragon ball, sailor moon, doraemon, tsubasa, atashinchi,
+  mojacko, maruko, shinchan, ranma, yugioh, conan, shaman king, kr black,
+  akazukin chacha, little women, makibao, wedding peach.
+- Rekomendasi riset lanjutan: sinetron/PSA, tokusatsu lain (Daimos,
+  Voltes V versi Indonesia), iklan rokok era 90-an, ident stasiun daerah
+  (TV lokal), bumper sponsor program.
