@@ -503,4 +503,5 @@ const CHANNELS = [
   { id: "-HcGV-e8-vk", title: "Upin & Ipin - Gembira Bermain [Sing-Along][HD]", cat: "Opening Kartun", st: "MNCTV" },
   { id: "09ZgB8a9iEA", title: "Kumpulan Lagu Pembukaan Kartun Berbahasa Indonesia (hamtaro, ninja hatori dll)", cat: "Opening Kartun", st: "Multi-Stasiun" },
   { id: "tsPoz8LbkRc", title: "Opening Tamiya Let's Go (Indonesian Version)", cat: "Opening Kartun", st: "Multi-Stasiun" },
+  { id: "80Y-jf8M8Ic", title: "Saint Seiya Ending (ED 1)", cat: "Opening Kartun", st: "Multi-Stasiun" },
 ];
