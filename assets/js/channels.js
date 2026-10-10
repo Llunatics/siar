@@ -634,4 +634,6 @@ const CHANNELS = [
   { id: "u-Ols9_m7f4", title: "Opening Jin dan Jun", cat: "Sinetron & Acara TV", st: "RCTI" },
   { id: "hEo-NwPklBg", title: "Opening Samson Betawi", cat: "Sinetron & Acara TV", st: "Multi-Stasiun" },
   { id: "yahPqJbD7xw", title: "STATION ID TPI / Televisi Keluarga Indonesia \"Makin Asyik Aja\" 1996 Short Version", cat: "Jingle & Ident", st: "TPI" },
+  { id: "54RGK2fJ5JQ", title: "Iklan Ciptadent - Tutup Pop Off (1995) @ Indosiar, SCTV, ANteve, RCTI, & TPI", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "oRBuwTrjJbo", title: "iklan Pepsodent Jadul Tahun 1979", cat: "Iklan Jadul", st: "TVRI" },
 ];
