@@ -367,4 +367,9 @@ const CHANNELS = [
   { id: "0zFjqpA6t3Y", title: "Iklan Michiyo - Mii Mii Mii Terus Yang Lain Dong (1994)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "D-rsKVcAt5w", title: "Iklan Indomie - Nuansa Pegunungan (1997)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "td2C8vmMDnI", title: "Kompilasi Iklan Pop Mie dari Indofood", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "Pa_doKSlJLs", title: "Iklan Nescafe Classic - Selalu Lebih Oke (1997)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "fB4-rn_WtRI", title: "Iklan Minuman Calpico - tahun 1999", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "rLsAMTbM7Gs", title: "Kompilasi Iklan-iklan Jadul Terpopuler 1990-an", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "Mow8XE_qsxw", title: "Iklan Jadul Teh Sosro (RCTI'93)", cat: "Iklan Jadul", st: "RCTI" },
+  { id: "QGEFfYIBZC4", title: "8 Iklan Terkenal Jadul yang legendaris (kompilasi)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
