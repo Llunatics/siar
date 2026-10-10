@@ -38,6 +38,7 @@ var PNStore = (function () {
     autoPower: false,    // TV langsung nyala saat halaman dibuka
     rememberCh: true,    // ingat channel terakhir ditonton
     autoNext: true,      // otomatis pindah saat video habis
+    setCollapsed: [],    // nama grup pengaturan yang dilipat (accordion)
     lastCh: "",          // kunci channel terakhir ("sumber:id")
     volume: 70,
     muted: false,

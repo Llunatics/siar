@@ -171,6 +171,31 @@
     fitStage(); // bentuk/warna/rasio mengubah tinggi panggung — samakan skala
   }
 
+  /* Accordion grup pengaturan: klik judul grup melipat/membuka, status tersimpan. */
+  (function () {
+    var sheet = $("settingsSheet");
+    if (!sheet) return;
+    function groupName(g) {
+      var h = g.firstElementChild;
+      return h ? h.textContent.trim() : "";
+    }
+    Array.prototype.forEach.call(sheet.querySelectorAll(".set-group"), function (g) {
+      if ((S.setCollapsed || []).indexOf(groupName(g)) >= 0) g.classList.add("closed");
+    });
+    sheet.addEventListener("click", function (e) {
+      var h = e.target.closest ? e.target.closest("h3") : null;
+      if (!h || h.classList.contains("sub") || h.parentElement.className.indexOf("set-group") < 0) return;
+      if (h !== h.parentElement.firstElementChild) return;
+      var g = h.parentElement;
+      g.classList.toggle("closed");
+      var name = groupName(g), arr = S.setCollapsed || (S.setCollapsed = []);
+      var i = arr.indexOf(name);
+      if (g.classList.contains("closed")) { if (i < 0) arr.push(name); }
+      else if (i >= 0) arr.splice(i, 1);
+      PNStore.saveSettings();
+    });
+  })();
+
   /* Panggung satu layar: halaman terkunci (tidak bisa scroll/zoom), jadi
      bila konten alami lebih tinggi dari viewport, panggung diskalakan
      proporsional sampai pas — fokus selalu di TV, di semua ukuran layar

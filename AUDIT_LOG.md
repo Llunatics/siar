@@ -322,3 +322,17 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 - **Next:** Batch katalog berikutnya.
 
 **Total siklus tercatat: 20**
+
+---
+
+## Siklus 21 — 2026-10-11 03:35 WIB — Settings: accordion grup (lipat/buka tersimpan)
+
+- **Area:** `index.html` (7 grup), `assets/css/style.css`, `assets/js/app.js`, `assets/js/settings.js` (`setCollapsed: []`).
+- **Masalah:** Panel pengaturan panjang (7 grup) — di layar kecil harus scroll jauh; tidak ada cara meringkas.
+- **Severity:** Rendah-Sedang (dimensi 5).
+- **Implementasi:** Judul grup (h3, bukan .sub) bisa diklik → lipat/buka dengan chevron ▾/▸; status tersimpan di `pn-settings-v2` dan diterapkan saat init. Aksesibel via `:focus-visible`.
+- **Test:** Klik sungguhan jsdom: lipat PASS, buka PASS, persistensi PASS (`setCollapsed`).
+- **Before/after:** Dimensi 5: 7.5→7.8.
+- **Next:** Batch katalog / cek verify ident DM.
+
+**Total siklus tercatat: 21**
