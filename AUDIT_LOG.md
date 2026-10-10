@@ -660,3 +660,19 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 - **Next:** Lanjut katalog + produk.
 
 **Total siklus tercatat: 45**
+
+---
+
+## Siklus 46 — 2026-10-11 08:02 WIB — QA: pencarian panduan bekerja (klik & ketik sungguhan)
+
+- **Area:** Panduan siaran (`#guideSearch`, filter chunked).
+- **Metode:** Headless Chromium: tekan `g` (buka panduan) → ketik "doraemon" di kolom cari →
+  hitung item terlihat.
+- **Hasil:** 259 item ter-render awal → setelah cari: **8 terlihat, 100% mengandung "doraemon"**
+  (contoh: "Opening Doraemon (Bahasa Indonesia) — RCTI"); 0 pageerror.
+- **Catatan:** Test awal sempat gagal karena selector salah (`.g-item` tidak ada —
+  item adalah `li[data-idx]`); diperbaiki, bukan bug produk.
+- **Test:** Dijalankan nyata, bukan statis.
+- **Next:** Lanjut katalog.
+
+**Total siklus tercatat: 46**
