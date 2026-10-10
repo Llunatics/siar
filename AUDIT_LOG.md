@@ -336,3 +336,15 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 - **Next:** Batch katalog / cek verify ident DM.
 
 **Total siklus tercatat: 21**
+
+---
+
+## Siklus 22 — 2026-10-11 03:50 WIB — Batch YouTube ident SCTV/TPI: +11 entri
+
+- **Area:** Katalog (296 → **307**).
+- **Metode:** 2 web search → 12 kandidat → oEmbed → review manusia.
+- **Hasil:** **11 YA** (9 station ID SCTV 1994-1997: Krustasea ×2, Pottery, Airport, Basket, Petani, Papper Cut, TV Analog, 1 kompilasi SCTV 1990-sekarang; 2 TPI: tune ID + kompilasi 1991-2015), **1 SKIP** (judul oEmbed kosong — aturan konsisten).
+- **Test:** append → 307 entri unik; smoke 18/18 PASS.
+- **Next:** Batch Indosiar/ANTV; pantau verify DM ident (berjalan).
+
+**Total siklus tercatat: 22**
