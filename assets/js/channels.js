@@ -636,4 +636,7 @@ const CHANNELS = [
   { id: "yahPqJbD7xw", title: "STATION ID TPI / Televisi Keluarga Indonesia \"Makin Asyik Aja\" 1996 Short Version", cat: "Jingle & Ident", st: "TPI" },
   { id: "54RGK2fJ5JQ", title: "Iklan Ciptadent - Tutup Pop Off (1995) @ Indosiar, SCTV, ANteve, RCTI, & TPI", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "oRBuwTrjJbo", title: "iklan Pepsodent Jadul Tahun 1979", cat: "Iklan Jadul", st: "TVRI" },
+  { id: "LhuE3_YqNLY", title: "Iklan Chiki Snack - Chiki Lucky (1989)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "_DWToZthRUU", title: "Nostalgia Iklan Televisi tahun 2001 by widiajier", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "oxDUNqIvltY", title: "BERNOSTALGIA IKLAN JADUL TAHUN 2000AN, NGAKAK PARAH!!! BIKIN BETAH NONTONYA🤣", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
