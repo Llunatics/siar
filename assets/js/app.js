@@ -1021,11 +1021,23 @@
   }
 
   /* ================= Panel / overlay ================= */
+  // Panduan dibuka: lompat ke siaran yang sedang diputar (render chunk
+  // secukupnya dulu; kalau kefilter/tidak ada, biarkan di posisi awal).
+  function scrollGuideToCurrent() {
+    if (!powered || !list.length) return;
+    var sel = 'li[data-idx="' + current + '"]';
+    var guard = 0, li = null;
+    while (!(li = els.guide.querySelector(sel)) && guard++ < 60) {
+      var mb = $("guideMore"); if (mb) mb.remove();
+      if (!renderMoreGroups()) break;
+    }
+    if (li) li.scrollIntoView({ block: "center" });
+  }
   function openSheet(which) {
     closeRemote();
     closeSheets();
     els.backdrop.hidden = false;
-    if (which === "guide") { els.guideSheet.hidden = false; els.guideSheet.classList.add("open"); els.guideSearch.focus(); }
+    if (which === "guide") { els.guideSheet.hidden = false; els.guideSheet.classList.add("open"); els.guideSearch.focus(); scrollGuideToCurrent(); }
     if (which === "settings") { els.settingsSheet.hidden = false; els.settingsSheet.classList.add("open"); }
     if (which === "help") { els.helpModal.hidden = false; }
   }

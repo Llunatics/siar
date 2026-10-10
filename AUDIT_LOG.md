@@ -410,3 +410,17 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 - **Next:** Batch kartun berikutnya / pantau verify DM.
 
 **Total siklus tercatat: 27**
+
+---
+
+## Siklus 28 — 2026-10-11 04:55 WIB — Panduan lompat ke channel aktif
+
+- **Area:** `assets/js/app.js` (`openSheet`, `scrollGuideToCurrent` baru).
+- **Masalah:** Panduan selalu terbuka di posisi atas; user harus scroll manual mencari siaran yang sedang diputar (makin parah dengan 321+ entri).
+- **Severity:** Sedang (dimensi 5).
+- **Implementasi:** Saat panduan dibuka & TV menyala: render chunk secukupnya sampai `li[data-idx=current]` ada di DOM (tombol "MUAT N" sementara disingkirkan agar tak menumpuk), lalu `scrollIntoView({block:"center"})`. Aman bila kefilter/tidak ketemu (tetap di awal).
+- **Test:** Klik sungguhan jsdom (250× CH+, buka via `g`): panduan terbuka PASS, li aktif (ch 251) ter-render PASS, scrollIntoView terpanggil PASS.
+- **Before/after:** Dimensi 5: 7.8→8.
+- **Next:** Batch katalog berikutnya.
+
+**Total siklus tercatat: 28**
