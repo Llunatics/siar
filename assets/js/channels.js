@@ -649,4 +649,7 @@ const CHANNELS = [
   { id: "qhKLlpKtC8U", title: "Kompilasi Iklan Teh Botol dan Teh Celup Sosro P1 (Remake)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "CY1SUXGGoUw", title: "Iklan Kapal Api (Sekitar 1998) Versi Piano", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "gDjToiPqGBg", title: "Kecap ABC - Untuk Semua {1997-1998 16:9 HD}", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "wMAzJ20Y99E", title: "Station ID TV7 Kids (Sekarang TRANS 7) {2002}", cat: "Jingle & Ident", st: "TV7" },
+  { id: "cbxXucqvQWo", title: "Ident INDOSIAR 2000 by Widiajier", cat: "Jingle & Ident", st: "Indosiar" },
+  { id: "Bmnc4Ntu18w", title: "STATION ID INDOSIAR 2005", cat: "Jingle & Ident", st: "Indosiar" },
 ];
