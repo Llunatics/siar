@@ -500,4 +500,5 @@ const CHANNELS = [
   { id: "O_AY8OqBdMM", title: "Dr.Slump Opening (Bahasa Indonesia)", cat: "Opening Kartun", st: "Multi-Stasiun" },
   { id: "oLo9kQrkiO0", title: "Honey Bee Hutch Opening Song (Indonesian Version)", cat: "Opening Kartun", st: "Multi-Stasiun" },
   { id: "3mo4cLxaXWs", title: "Shaun the Sheep Opening Bahasa Indonesia", cat: "Opening Kartun", st: "Multi-Stasiun" },
+  { id: "-HcGV-e8-vk", title: "Upin & Ipin - Gembira Bermain [Sing-Along][HD]", cat: "Opening Kartun", st: "MNCTV" },
 ];
