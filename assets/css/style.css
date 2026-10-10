@@ -504,26 +504,50 @@ body {
   transform: translateY(2px);
   box-shadow: 0 1px 0 #050506, 0 2px 4px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.10);
 }
+/* Tombol karet: matte, oval, lebih empuk dipandang — untuk numpad & fungsi.
+   Beda material dari shell plastik remote. */
+.rbtn.rubber {
+  background: radial-gradient(ellipse at 50% 28%, #38383f 0%, #232329 55%, #17171c 100%);
+  border-color: #2c2c34;
+  box-shadow: 0 3px 0 #060607, 0 4px 7px rgba(0,0,0,.55),
+    inset 0 1px 0 rgba(255,255,255,.10), inset 0 -3px 6px rgba(0,0,0,.6);
+}
+.rbtn.rubber:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #060607, 0 2px 4px rgba(0,0,0,.55), inset 0 2px 6px rgba(0,0,0,.55);
+}
 .rbtn.rpower {
   color: #ff6b57; font-size: 17px; width: 42px; height: 42px; padding: 0; border-radius: 50%;
   background: radial-gradient(circle at 50% 30%, #3a3a44 0%, #1d1d23 62%, #121216 100%);
 }
 .rbtn.rpower.on { color: var(--osd); text-shadow: 0 0 8px rgba(141,255,158,.8); }
-.numpad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
-.numpad .rbtn { font-size: 15px; font-weight: 700; padding: 10px 4px; }
-.numpad .rwide { font-size: 10px; letter-spacing: .12em; }
+.numpad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px 7px; }
+.numpad .rbtn {
+  font-size: 15px; font-weight: 700; padding: 9px 4px;
+  border-radius: 999px; /* oval karet ala remote asli */
+}
+.numpad .rwide { font-size: 10px; letter-spacing: .12em; border-radius: 999px; }
 .rockers { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
 .rocker {
-  display: flex; flex-direction: column; overflow: hidden; border-radius: 14px;
+  display: flex; flex-direction: column; overflow: hidden; border-radius: 16px;
   border: 1px solid #3a3a45; background: #101014;
   box-shadow: 0 3px 0 #050506, inset 0 1px 0 rgba(255,255,255,.08);
 }
-.rocker .rbtn { border: 0; border-radius: 0; box-shadow: none; padding: 10px 4px; font-size: 12px; font-weight: 700; }
+.rocker .rbtn { border: 0; box-shadow: none; padding: 11px 4px; font-size: 12px; font-weight: 700; }
+/* Rocker jungkat-jungkit: atas cembung ke atas, bawah cembung ke bawah,
+   garis poros di tengah */
+.rocker .rbtn:first-child { border-radius: 15px 15px 5px 5px; background: linear-gradient(180deg, #34343e, #1e1e26 70%, #141419); }
+.rocker .rbtn:last-child { border-radius: 5px 5px 15px 15px; background: linear-gradient(0deg, #34343e, #1e1e26 70%, #141419); }
 .rocker .rbtn:active { transform: none; background: #26262f; }
 .rocker-label {
   text-align: center; font-size: 8px; letter-spacing: .3em; color: var(--dim);
   padding: 4px 0; border-top: 1px solid #23232b; border-bottom: 1px solid #23232b; background: #0b0b0e;
 }
+/* Kunci fungsi: pil karet kecil berkode warna */
+.remote-row .rbtn.rubber { border-radius: 999px; font-size: 10px; letter-spacing: .1em; padding: 10px 2px; }
+#muteBtn.rubber { color: #ff9a86; }
+#remBlock.rubber { color: var(--accent); }
+.rbtn.rjam { border-radius: 999px; }
 .remote-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 12px; }
 .remote-row .rbtn { font-size: 10px; letter-spacing: .1em; padding: 10px 2px; }
 .remote-hint { margin: 14px 2px 0; font-size: 10px; line-height: 1.6; color: #55555f; }

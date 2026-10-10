@@ -84,3 +84,31 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 - **Next:** Siklus 4 — remote: variasi bentuk tombol per fungsi.
 
 **Total siklus tercatat: 3**
+
+---
+
+## Siklus 4 — 2026-10-11 03:28 WIB — Remote: material & bentuk tombol per fungsi
+
+- **Area:** `assets/css/style.css`, `index.html` (remote control).
+- **Masalah & bukti:** Screenshot `shots/base/1920x1080-remote.png`: semua tombol = tile persegi seragam — melanggar direktif ("Avoid making every button a flat rectangular tile").
+- **Severity:** Sedang-tinggi (dimensi 4).
+- **Implementasi:**
+  - Material baru `.rbtn.rubber`: matte oval, shadow empuk — untuk 10 digit numpad, FAV, PANDUAN, MUTE, ACAK, BLOK, BLOK JAM (16 tombol di HTML).
+  - Rocker CH/VOL jadi jungkat-jungkit: tombol atas cembung ke atas, bawah cembung ke bawah, garis poros di tengah.
+  - Kode warna fungsi: MUTE merah lembut, BLOK aksen; BLOK JAM pil penuh.
+- **Test:** `node test/remote-click.js` (Chromium headless, klik SUNGGUHAN tiap tombol) → **18/18 PASS**, tanpa pageerror. Screenshot `shots/tmp-remote2.png`: numpad oval karet, rocker melengkung, pil fungsi berkode warna — terbaca sebagai hardware.
+- **Before/after:** Dimensi 4: 6→7.5.
+- **Next:** Regression pass 5-siklus.
+
+## Siklus 5 — 2026-10-11 03:31 WIB — Regression pass (siklus 1–4)
+
+- **Area:** Seluruh fungsi tersentuh siklus 1–4.
+- **Test yang dijalankan:**
+  - `node test/baseline-smoke.js` → 18/18 PASS (jsdom).
+  - `node test/remote-click.js` → 18/18 PASS (Chromium headless).
+  - `node test/shoot.js` → 20 screenshot/4 viewport tanpa pageerror.
+  - `git status` bersih setelah commit; tidak ada file tak terlacak selain `shots/`, `test/`, `scripts/` (disengaja).
+- **Hasil:** Tidak ada regresi. Satu temuan visual kecil (bingkai dinding tertutup TV) sudah diperbaiki di Siklus 3.
+- **Next:** Pipeline discovery katalog (Dailymotion API + archive.org + web search → verify → tambah).
+
+**Total siklus tercatat: 5**
