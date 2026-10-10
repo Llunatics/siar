@@ -499,4 +499,5 @@ const CHANNELS = [
   { id: "3yyXn--B70A", title: "Dr. Slump - Arale Opening [dub Indonesia]", cat: "Opening Kartun", st: "Multi-Stasiun" },
   { id: "O_AY8OqBdMM", title: "Dr.Slump Opening (Bahasa Indonesia)", cat: "Opening Kartun", st: "Multi-Stasiun" },
   { id: "oLo9kQrkiO0", title: "Honey Bee Hutch Opening Song (Indonesian Version)", cat: "Opening Kartun", st: "Multi-Stasiun" },
+  { id: "3mo4cLxaXWs", title: "Shaun the Sheep Opening Bahasa Indonesia", cat: "Opening Kartun", st: "Multi-Stasiun" },
 ];
