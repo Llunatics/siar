@@ -664,4 +664,6 @@ const CHANNELS = [
   { id: "diT0YJbHGHc", title: "Station ID : Lativi - Blue And White Version (2007-08)", cat: "Jingle & Ident", st: "Lativi" },
   { id: "pohzz95PJLg", title: "Station ID tvOne (2012-20) [15sec]", cat: "Jingle & Ident", st: "tvOne" },
   { id: "MHZkxdT_axg", title: "Station ID TPI (Sekarang MNCTV) 2007", cat: "Jingle & Ident", st: "TPI" },
+  { id: "iiKT2tAUQzk", title: "Station ID Rajawali Televisi (RTV) - Quote 1 (2020)", cat: "Jingle & Ident", st: "RTV" },
+  { id: "aJLXXtj7WIY", title: "Station ID RTV 11 Tahun (Mei 2025)", cat: "Jingle & Ident", st: "RTV" },
 ];
