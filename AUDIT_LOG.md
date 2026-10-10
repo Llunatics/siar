@@ -1433,7 +1433,7 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 
 ---
 
-## Siklus 99 — 2026-10-11 10:12 WIB — Audit aksesibilitas nyata + progres DM
+## Siklus 99 — 2026-10-11 ~03:50 WIB (estimasi terkoreksi) — Audit aksesibilitas nyata + progres DM
 
 - **Area:** Responsif/a11y (dimensi 8.0) + verifikasi DM.
 - **Hasil audit** (Playwright headless, nyata):
@@ -1451,7 +1451,7 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 
 ---
 
-## Siklus 100 — 2026-10-11 10:22 WIB — Batch YouTube permen karet: +1 entri
+## Siklus 100 — 2026-10-11 ~04:00 WIB (estimasi terkoreksi) — Batch YouTube permen karet: +1 entri
 
 - **Area:** Katalog (447 → **448**).
 - **Metode:** 1 web search → 1 kandidat → oEmbed OK → cek duplikat (baru) → review.
@@ -1464,7 +1464,7 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 
 ---
 
-## Siklus 101 — 2026-10-11 10:32 WIB — Regression pass siklus 96–101
+## Siklus 101 — 2026-10-11 ~04:07 WIB (estimasi terkoreksi) — Regression pass siklus 96–101
 
 - **Area:** Test suite (fungsi tersentuh: katalog +11).
 - **Hasil:** smoke 18/18 · remote-click 18/18 (0 pageerror) · hold-repeat 3/3 ·
@@ -1476,7 +1476,7 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 
 ---
 
-## Siklus 102 — 2026-10-11 10:42 WIB — Batch YouTube SKM/kompilasi susu: +2 entri
+## Siklus 102 — 2026-10-11 ~04:13 WIB (estimasi terkoreksi) — Batch YouTube SKM/kompilasi susu: +2 entri
 
 - **Area:** Katalog (448 → **450**).
 - **Metode:** 1 web search → 3 kandidat → oEmbed (semua OK) → cek duplikat → review.
@@ -1489,7 +1489,7 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 
 ---
 
-## Siklus 103 — 2026-10-11 10:52 WIB — Batch YouTube obat: +5 entri
+## Siklus 103 — 2026-10-11 ~04:20 WIB (estimasi terkoreksi) — Batch YouTube obat: +5 entri
 
 - **Area:** Katalog (450 → **455**).
 - **Metode:** 2 web search (saint seiya → 0 valid; obat sakit kepala) → 6 kandidat
@@ -1505,7 +1505,7 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 
 ---
 
-## Siklus 104 — 2026-10-11 11:02 WIB — Batch YouTube elektronik/kompilasi: +1 entri
+## Siklus 104 — 2026-10-11 ~04:26 WIB (estimasi terkoreksi) — Batch YouTube elektronik/kompilasi: +1 entri
 
 - **Area:** Katalog (455 → **456**).
 - **Metode:** 1 web search → 2 kandidat → oEmbed (keduanya OK) → cek duplikat → review.
@@ -1518,7 +1518,7 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 
 ---
 
-## Siklus 105 — 2026-10-11 11:12 WIB — Regression pass siklus 101–105
+## Siklus 105 — 2026-10-11 ~04:32 WIB (estimasi terkoreksi) — Regression pass siklus 101–105
 
 - **Area:** Test suite (fungsi tersentuh: katalog +8).
 - **Hasil:** smoke 18/18 · remote-click 18/18 (0 pageerror) · hold-repeat 3/3 ·
@@ -1530,7 +1530,7 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 
 ---
 
-## Siklus 106 — 2026-10-11 11:22 WIB — Batch YouTube minuman: +2 entri
+## Siklus 106 — 2026-10-11 ~04:38 WIB (estimasi terkoreksi) — Batch YouTube minuman: +2 entri
 
 - **Area:** Katalog (456 → **458**).
 - **Metode:** 1 web search → 4 kandidat → oEmbed (semua OK) → cek duplikat → review.
@@ -1542,7 +1542,7 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 
 ---
 
-## Siklus 107 — 2026-10-11 11:32 WIB — Batch YouTube Ranma 1/2: +2 entri
+## Siklus 107 — 2026-10-11 ~04:43 WIB (estimasi terkoreksi) — Batch YouTube Ranma 1/2: +2 entri
 
 - **Area:** Katalog (458 → **460**).
 - **Metode:** 1 web search → 3 kandidat → oEmbed (1 REVIEW karena regex "lirik",
@@ -1556,7 +1556,7 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 
 ---
 
-## Siklus 108 — 2026-10-11 11:42 WIB — Batch YouTube Captain Tsubasa: +0 entri
+## Siklus 108 — 2026-10-11 ~04:46 WIB (estimasi terkoreksi) — Batch YouTube Captain Tsubasa: +0 entri
 
 - **Area:** Katalog (460, tetap).
 - **Metode:** 1 web search → 1 kandidat opening asli → oEmbed OK → duplikat.
