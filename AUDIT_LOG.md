@@ -816,6 +816,23 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 
 **Total siklus tercatat: 56**
 
+---
+
+## Siklus 57 — 2026-10-11 04:28 WIB — Imersif: bingkai foto dipertegas + scoring dimensi
+
+- **Area:** `assets/css/style.css` (`.wall-frame span`).
+- **Masalah:** Bingkai foto di ruang imersif hanya blur gelap — tak terbaca sebagai foto.
+- **Implementasi:** Siluet dua kepala + bahu (radial-gradient px, kontras dinaikkan) +
+  pantulan kaca diagonal tipis; tetap gelap/realistis, bukan kartunis.
+- **Test:** Screenshot imersif (`shots/tmp-imm57b.png`) — bingkai terbaca sebagai foto
+  keluarga samar; smoke 18/18 PASS.
+- **Scoring 10 dimensi (berbasis bukti):** realisme TV 8.5 · material 8.5 · imersif 8.2 ·
+  remote 8.2 · settings 8.5 · hierarki/tipografi 8.0 · kohesi 8.5 · feedback 8.0 ·
+  responsif/a11y 8.0 · performa 9.0 → **rata-rata 8.34** (target 8.5; tak ada <8).
+- **Next:** Lanjut katalog.
+
+**Total siklus tercatat: 57**
+
 > **Koreksi waktu (04:01 WIB):** timestamp siklus 33–55 di atas adalah estimasi dan
 > ternyata kelebihan ±5 jam. Waktu terverifikasi saat siklus 55: **2026-10-11 04:01 WIB**
 > (`date` sistem). Mulai siklus 56, timestamp memakai jam sistem yang benar.

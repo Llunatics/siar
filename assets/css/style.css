@@ -1172,9 +1172,14 @@ body.immersive .tv::after { /* bayangan kontak tepat di bawah lemari */
   display: block; width: 120px; height: 92px;
   border: 7px solid #3a2a18; border-radius: 3px;
   background:
-    radial-gradient(ellipse 34% 44% at 38% 40%, rgba(216,188,150,.5), transparent 70%),
-    radial-gradient(ellipse 26% 36% at 64% 46%, rgba(190,160,125,.4), transparent 70%),
-    linear-gradient(180deg, #241a10, #171008);
+    /* pantulan kaca tipis */
+    linear-gradient(115deg, transparent 42%, rgba(255,255,255,.07) 47%, transparent 54%),
+    /* siluet foto: dua kepala + bahu */
+    radial-gradient(circle 15px at 37% 34%, rgba(228,200,160,.78), transparent 72%),
+    radial-gradient(ellipse 26px 20px at 37% 64%, rgba(130,100,76,.66), transparent 72%),
+    radial-gradient(circle 12px at 63% 38%, rgba(210,180,142,.72), transparent 72%),
+    radial-gradient(ellipse 22px 17px at 63% 66%, rgba(110,86,66,.6), transparent 72%),
+    linear-gradient(180deg, #2b2114, #161006);
   box-shadow: 0 10px 24px rgba(0,0,0,.6), inset 0 0 0 1px rgba(0,0,0,.6);
   transform: rotate(-2deg);
 }
