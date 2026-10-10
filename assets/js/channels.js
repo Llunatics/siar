@@ -474,4 +474,9 @@ const CHANNELS = [
   { id: "v4874Cdu11s", title: "Iklan Jadul Permen Relaxa 1998 (shorts)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "0NKS0WRUyaI", title: "Iklan Kental Manis Frisian Flag - Sunda 'Ini Teh Susu...' (2004)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "ntgeDCx17xg", title: "kompilasi iklan susu jadul | nostalgia 80an 90an", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "GtFLAjzT02Q", title: "Iklan Paramex - Ramai Sakit Kepala (1992)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "C9LHZAVO_Ts", title: "Iklan Lemon Tea Cap Kepala Djenggot feat. Diana Pungky (1996)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "3mbK2hKh3mg", title: "Iklan OKB Sakit Kepala dan OKB Flu Tahun 2004", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "QFITky2Jblg", title: "Iklan Layanan Masyarakat tentang Epilepsi tahun 1996", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "uR_7dNjSb00", title: "Iklan Actifed - Apotek (2003)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
