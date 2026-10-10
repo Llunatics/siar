@@ -27,7 +27,7 @@ const driver = `
   }
   check("katalog: CHANNELS terdefinisi & 265 entri", function () {
     assert(typeof CHANNELS !== "undefined", "CHANNELS undefined");
-    assert(CHANNELS.length === 265, "jumlah=" + CHANNELS.length);
+    assert(CHANNELS.length >= 265, "jumlah=" + CHANNELS.length + " (< baseline 265!)");
   });
   check("katalog: tidak ada id duplikat", function () {
     var keys = CHANNELS.map(function (c) { return (c.src || "yt") + ":" + c.id; });
@@ -114,7 +114,7 @@ const driver = `
     sh.scrollTop = sh.scrollHeight;
     sh.dispatchEvent(new Event("scroll", { bubbles: true }));
     var n1 = doc.querySelectorAll("#guideList li").length;
-    assert(n1 >= 265, "total item=" + n1);
+    assert(n1 >= CHANNELS.length, "total item=" + n1 + " vs katalog " + CHANNELS.length);
   });
   check("Guide: search menyaring", function () {
     var s = doc.querySelector("#guideSearch");

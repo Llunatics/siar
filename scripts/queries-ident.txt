@@ -1,0 +1,187 @@
+# Query discovery: Jingle, ident & bumper stasiun TV Indonesia (sumber: dm / ia)
+ident rcti
+station id rcti
+bumper rcti 1990
+rcti oke
+rcti 1994 sawah
+rcti 1989
+rcti 2000
+ident sctv
+station id sctv
+sctv satu untuk semua
+bumper sctv 1990
+sctv 1993
+sctv 2005
+ident indosiar
+station id indosiar
+bumper indosiar 1995
+indosiar 1995
+indosiar 2000
+ident antv
+station id antv
+bumper antv 1993
+antv 1993
+antv 2005
+ident tpi
+station id tpi
+bumper tpi 1991
+tpi 1999
+tpi 2002
+ident mnctv
+station id mnctv
+mnctv 2010
+ident tvri
+station id tvri
+bumper tvri 1980
+tvri 1990
+tvri 2000
+tune tvri
+ident trans tv
+station id trans tv
+trans tv 2001
+ident trans7
+station id trans7
+trans7 2006
+ident tv7
+tv7 2001
+ident lativi
+lativi 2002
+ident global tv
+station id global tv
+global tv 2002
+global tv 2008
+ident spacetoon
+spacetoon indonesia 2005
+ident rtv
+rtv indonesia 2014
+ident net tv
+net tv 2013
+ident b channel
+b channel 2010
+ident tv one
+tv one 2008
+ident metro tv
+metro tv 2000
+ident kompas tv
+kompas tv 2011
+ident inews
+inews 2015
+ident mnc tv
+ident gtv
+ident o channel
+ident elshinta tv
+ident daai tv indonesia
+ident jtv
+ident bali tv
+ident jogja tv
+ident bandung tv
+jingle rcti
+jingle sctv
+jingle indosiar
+jingle antv
+jingle tpi
+jingle tvri
+jingle trans tv
+jingle trans7
+mars rcti
+hymne tvri
+logo rcti lama
+logo sctv lama
+logo indosiar lama
+logo antv lama
+logo tpi lama
+logo tvri lama
+pembuka siaran rcti
+penutup siaran tvri
+penutup siaran tpi
+tune penutup sctv
+selamat pagi indonesia tvri
+dunia dalam berita tvri
+seputar indonesia rcti
+liputan 6 sctv
+fokus indosiar
+kabar pagi tvri
+buletin malam rcti
+patroli indosiar
+kabar pasar tvri
+opening tersanjung
+opening si doel anak sekolahan
+opening jin dan jun
+opening tuyul dan mbak yul
+opening gerhana
+opening warkop dki
+opening extravaganza
+opening lenong rumpi
+opening srimulat
+opening sinetron indonesia 90an
+opening sinetron indosiar
+opening sinetron rcti
+opening sinetron sctv
+opening heart series
+opening cinta fitri
+opening putri yang ditukar
+opening anak jalanan
+opening tukang bubur naik haji
+opening preman pensiun
+opening dunia terbalik
+opening ikatan cinta
+opening sinetron 2000an
+kuis indonesia 90an
+opening kuis siapa berani
+opening kuis tak tik boom
+opening lenong
+opening ketoprak humor
+opening srimulat
+opening opera van java
+opening inbox
+opening dahsyat
+opening inbox sctv
+opening karnaval sctv
+opening ultah indosiar
+opening ultah rcti
+opening ultah sctv
+hut rcti
+hut sctv
+hut indosiar
+hut antv
+hut trans tv
+hut trans7
+hut mnctv
+hut global tv
+hut tvri
+hut net tv
+panorama rcti
+serasi tvri
+siaran langsung tvri
+upacara bendera tvri
+iklan layanan masyarakat tvri
+psa indonesia 90an
+pemilu 1997
+pemilu 1999
+iklan kb 90an
+posyandu 90an
+wajib belajar 90an
+hemat energi 90an
+jaga kebersihan 90an
+stop narkoba 90an
+anti korupsi 2000an
+cinta rupiah
+ayo membayar pajak
+sensus penduduk 2000
+imunisasi 90an
+puskesmas 90an
+kb mandiri
+dua anak cukup
+norplant 90an
+aids 90an indonesia
+demam berdarah 90an
+makanan sehat 90an
+gizi seimbang 90an
+rajin menabung 90an
+cinta tanah air 90an
+bela negara 90an
+wawasan nusantara
+pancasila 90an
+garuda pancasila tvri
+indonesia raya tvri
+mengheningkan cipta tvri

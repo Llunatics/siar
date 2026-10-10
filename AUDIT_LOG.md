@@ -220,3 +220,27 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 - **Next:** Cek hasil verifikasi kandidat; discovery batch kartun.
 
 **Total siklus tercatat: 12**
+
+---
+
+## Siklus 13 — 2026-10-11 04:47 WIB — Query matrix kartun & ident + discovery batch DM
+
+- **Area:** `scripts/queries-kartun.txt` (200 query), `scripts/queries-ident.txt` (150 query).
+- **Masalah:** Discovery iklan selesai (4.085 kandidat); kategori lain belum tersentuh.
+- **Implementasi:** Query matrix untuk opening kartun/tokusatsu (dengan tahun & "bahasa indonesia"/"RCTI" qualifier) dan ident/stasiun/sinetron/PSA. Dua batch `discover.py --source dm` dijalankan background (kartun, ident).
+- **Hasil:** Batch kartun & ident berjalan (`/tmp/siar-disc-kartun.log`, `/tmp/siar-disc-ident.log`).
+- **Eksperimen gagal (tercatat jujur):** Ekstraksi playlist YouTube via HTML curl gagal (bot-detection: tidak ada `playlistVideoRenderer`); via youtubei browse API hanya mengembalikan sidebar (daftar video butuh continuation chain) — dihentikan agar tidak jadi rabbit hole; discovery YouTube dialihkan ke web search yang terbukti jalan.
+- **Next:** Review hasil batch DM.
+
+---
+
+## Siklus 14 — 2026-10-11 05:02 WIB — Discovery YouTube manual batch 1: +16 entri terverifikasi
+
+- **Area:** Katalog (`assets/js/channels.js`, 265 → **281**).
+- **Metode:** `browser.search` (3 query: iklan jadul 90an, opening Doraemon RCTI, ident RCTI sawah) → 19 kandidat ID YouTube → `review.py verify` (oEmbed) → review manusia judul-per-judul → append.
+- **Hasil:** 18 OK + 1 REVIEW (oEmbed) → review manusia: **16 YA**, 3 SKIP (2 judul oEmbed kosong — konten tak bisa dipastikan; 1 kemungkinan cover lagu). Disaring jujur: versi DeBeers Hongkong ditolak (bukan versi Indonesia), remake AI 2025 ditolak, "rekreasi" ident ditolak, episode full ditolak.
+- **Test:** `review.py append` → 16 entri, 0 duplikat; `baseline-smoke.js` 18/18 PASS (test dibuat dinamis terhadap jumlah katalog).
+- **Katalog:** 281 entri unik terverifikasi.
+- **Next:** Batch YouTube berikutnya (tokusatsu, sinetron, ident stasiun lain); hasil verify DM 4.085.
+
+**Total siklus tercatat: 14**
