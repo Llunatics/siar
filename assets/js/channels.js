@@ -446,4 +446,6 @@ const CHANNELS = [
   { id: "OpXaQ_AXZZo", title: "Iklan Vape Aerosol - Sahabat Musuh Nyamuk (2007)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "I0-koy_qHc4", title: "Iklan Obat Nyamuk Bakar Bigtox (1998)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "Zm6xAMMIis8", title: "Iklan Obat Nyamuk Raid TVRI tahun 1981", cat: "Iklan Jadul", st: "TVRI" },
+  { id: "C0Br9YHTjPc", title: "Iklan Biskuit Khong Guan - Jingle (1993) (shorts)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "lI4_sQZfALM", title: "Iklan Biskuit Kelapa Roma (Sekitar 1997) (shorts)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];

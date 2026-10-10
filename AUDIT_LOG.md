@@ -1279,6 +1279,22 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 
 **Total siklus tercatat: 88**
 
+---
+
+## Siklus 89 — 2026-10-11 08:38 WIB — Batch YouTube rokok+biskuit: +2 entri
+
+- **Area:** Katalog (422 → **424**).
+- **Metode:** 2 web search → 10 kandidat → oEmbed → cek duplikat → review.
+- **Hasil:** **2 YA** (Khong Guan Jingle 1993 shorts, Roma Kelapa 1997 shorts).
+  8 duplikat. Ditolak: 1 kompilasi Minak Djinggo 1994–2017 (modern),
+  1 kompilasi Djarum Super 1990–2023 (modern), 1 Dunhill 1986 Malaysia
+  (bukan siaran ID), 1 Djarum 76 2010 (terlalu modern),
+  1 kompilasi Roma remastered 2020 (modern), 1 video singkatan rokok (bukan iklan).
+- **Test:** append → 424 entri unik; smoke 18/18 PASS.
+- **Next:** Lanjut.
+
+**Total siklus tercatat: 89**
+
 > **Koreksi waktu (04:01 WIB):** timestamp siklus 33–55 di atas adalah estimasi dan
 > ternyata kelebihan ±5 jam. Waktu terverifikasi saat siklus 55: **2026-10-11 04:01 WIB**
 > (`date` sistem). Mulai siklus 56, timestamp memakai jam sistem yang benar.
