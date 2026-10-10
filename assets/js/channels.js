@@ -409,4 +409,6 @@ const CHANNELS = [
   { id: "PGObzrmPsX4", title: "Iklan B29 Detergent (1998)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "sObYrf33I9k", title: "Iklan Dimension 2in1 Ultra Mild - Keramas Lagi (1994-1995)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "10wFPWOpirc", title: "Iklan Procold - Sendiri Lagi (2004)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "azjqQaJ33fw", title: "Lagu Pembuka Doraemon versi indonesia", cat: "Opening Kartun", st: "Multi-Stasiun" },
+  { id: "-IP2J3MxWQ8", title: "Doraemon versi Bahasa Indonesia - Ost Opening With Lyrics", cat: "Opening Kartun", st: "Multi-Stasiun" },
 ];

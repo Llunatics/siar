@@ -966,6 +966,23 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 
 **Total siklus tercatat: 66**
 
+---
+
+## Siklus 67 — 2026-10-11 05:48 WIB — Batch YouTube Doraemon: +2 entri
+
+- **Area:** Katalog (385 → **387**).
+- **Metode:** 1 web search → 4 kandidat → oEmbed → cek duplikat → review.
+- **Hasil:** **2 YA** (Lagu Pembuka Doraemon versi indonesia; Ost Opening With Lyrics).
+  2 duplikat. Ditolak: 2 cover (akustik, pop-punk AI), 1 backward-masking,
+  3 embed tanpa URL penuh (aturan URL).
+- **Catatan review:** Flag REVIEW otomatis karena kata "Lyrics" di judul — dinilai
+  manusia: ini opening asli + teks lirik, bukan cover → YA.
+- **Progres DM:** 3 job masih jalan (iklan ~700/4085).
+- **Test:** append → 387 entri unik; smoke 18/18 PASS.
+- **Next:** Lanjut.
+
+**Total siklus tercatat: 67**
+
 > **Koreksi waktu (04:01 WIB):** timestamp siklus 33–55 di atas adalah estimasi dan
 > ternyata kelebihan ±5 jam. Waktu terverifikasi saat siklus 55: **2026-10-11 04:01 WIB**
 > (`date` sistem). Mulai siklus 56, timestamp memakai jam sistem yang benar.
