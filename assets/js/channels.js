@@ -672,4 +672,5 @@ const CHANNELS = [
   { id: "4fSG4oHAcIY", title: "Ada Kelezatan Ajaib.. | Iklan Gaga Sarden (1994 - awal 2000an)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "JdumJbkj9LU", title: "Iklan Gaga Corned Beef - Kelezatan Kornet Sapi (1994) @ RCTI, TPI, SCTV, & ANteve", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "9CogQVpYelE", title: "Iklan Sarden ABC - Berkemah Alam (2000) @ RCTI, Indosiar, TPI, SCTV, & ANteve", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "ruB8LRMhhjo", title: "Iklan Jadul Jilid 21 : 1996 & 1997 (30 Tahun yang Lalu)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
