@@ -379,4 +379,9 @@ const CHANNELS = [
   { id: "0G-0sCcGSGk", title: "Iklan Permen susu Milkita tahun 1997", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "qUyAR58lmj8", title: "Iklan Permen Jadul Mr Sarmento (RCTI'92)", cat: "Iklan Jadul", st: "RCTI" },
   { id: "ddtIgYD9M2w", title: "Iklan Permen Kis (Sekitar 1997)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "p1xyyIWNjuI", title: "Iklan Calpico Susu Fermentasi (Sekitar 1995)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "hvTJYWzHxq0", title: "Iklan Susu Enaak Tahun 1995 YANG PENTING ENAK", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "01KWUq6QjYA", title: "Iklan Susu Cap Nona Madu Bubuk (1997-1998)", cat: "Iklan Jadul", st: "SCTV" },
+  { id: "PDjdfVdmGBA", title: "Iklan Sustagen HP - Susu Tradisi Keluargaku (1989)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "wVJUhXFkARY", title: "Iklan Susu Cap Nona (1992)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];

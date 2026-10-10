@@ -703,3 +703,16 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 - **Next:** Regression pass di siklus 50.
 
 **Total siklus tercatat: 48**
+
+---
+
+## Siklus 49 — 2026-10-11 08:30 WIB — Batch YouTube iklan susu: +5 entri
+
+- **Area:** Katalog (355 → **360**).
+- **Metode:** 2 web search (Saint Seiya: 0 layak — semua cover/AI) → 6 kandidat susu → oEmbed → cek duplikat → review.
+- **Hasil:** **5 YA** (Calpico 1995, Susu Enaak 1995, Cap Nona Madu 1997/98, Sustagen 1989, Cap Nona 1992).
+  1 duplikat (Ultra Milk 1995). 1 iklan Malaysia di-skip (bukan siaran Indonesia). Probe DM: masih 000.
+- **Test:** append → 360 entri unik; smoke 18/18 PASS.
+- **Next:** Regression pass di siklus 50.
+
+**Total siklus tercatat: 49**
