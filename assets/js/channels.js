@@ -563,4 +563,5 @@ const CHANNELS = [
   { id: "j_oyQmNhiCA", title: "Iklan Super Pell - Belum Lima Menit (Revisi 1997)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "D-f8yn7O2uw", title: "Iklan Kompas dan Indosiar - Tampil Berbeda dengan Membaca (1997)", cat: "Iklan Jadul", st: "Indosiar" },
   { id: "8ynsGbXyuyQ", title: "Break Iklan 1 (RCTI)-Seputar Indonesia (1997)", cat: "Iklan Jadul", st: "RCTI" },
+  { id: "xqrktaIyiAA", title: "Iklan Inzana - Si Kecil lagi Panas Demam, Iklan Minati Atmanegara (15s) (1999)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];

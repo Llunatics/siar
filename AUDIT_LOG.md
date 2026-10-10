@@ -2852,3 +2852,17 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 202**
 
 ---
+
+## Siklus 203 — 2026-10-11 06:09 WIB — Batch YouTube iklan 1997-1998: +4 entri (535→539)
+
+- **Area:** Katalog (tahun spesifik 1997/1998).
+- **Metode:** web search -> 9 kandidat -> oEmbed (4 OK baru, 5 DUP).
+- **Hasil:** 4 YA (Loggo 1997, Super Pell 1997, Kompas-Indosiar 1997,
+  Break Iklan RCTI 1997).
+- **Test:** append -> 539 unik; smoke 18/18 PASS (dari 199).
+- **Commit:** lokal.
+- **Next:** Lanjut.
+
+**Total siklus tercatat: 203**
+
+---
