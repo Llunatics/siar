@@ -552,4 +552,6 @@ const CHANNELS = [
   { id: "indonesia-christmas-archives-part-1", title: "Indonesian Christmas Archives Part 1", cat: "Jingle & Ident", st: "Multi-Stasiun", src: "ia" },
   { id: "Yp1k8xWWcmM", title: "IKLAN LAWAS SPESIAL RAMADHAN TAHUN 1995 - 2012 SEBELUM ADA PANDEMI COVID19", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "x86opk0", title: "Iklan lawas stasiun tv RCTI", cat: "Iklan Jadul", st: "RCTI", src: "dm" },
+  { id: "VU-D4pg5OtE", title: "Iklan Rinso - Interview (1992-1993) @ RCTI Bandung", cat: "Iklan Jadul", st: "RCTI" },
+  { id: "aJ3eiI5x6ug", title: "Iklan Lifebuoy Body Wash - Perlindungan Nonstop (15s) (1998-1999)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
