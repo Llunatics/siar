@@ -2643,3 +2643,31 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 187**
 
 ---
+
+## Siklus 188 — 2026-10-11 05:46 WIB — Batch YouTube iklan rokok 90an: +5 entri (518→523)
+
+- **Area:** Katalog (rekomendasi riset CATALOG_REPORT: iklan rokok era 90-an).
+- **Metode:** web search -> 12 kandidat -> oEmbed YT (8 OK, 4 DUP) + metadata IA.
+  5 YA: Gudang Garam Merah Terjun Payung 1992 (RCTI), GG International Hunter
+  1994 (RCTI), GG International Shooting 1989, GG International Survive 2006,
+  arsip IA "Kumpulan Iklan TV Rokok jadul era 90an" (76 file).
+  Ditolak: 4 duplikat, 1 kompilasi 1990-2023 (modern), 1 tesis (bukan video).
+- **Test:** append -> 523 unik, 0 duplikat; smoke 18/18 PASS.
+- **Commit:** lokal.
+- **Next:** Regression tiap 5 siklus.
+
+**Total siklus tercatat: 188**
+
+---
+
+## Siklus 189 — 2026-10-11 05:46 WIB — Regression pass siklus 185–189
+
+- **Area:** Test suite (fungsi tersentuh: katalog +5, STATION_ORDER).
+- **Hasil:** smoke 18/18, remote-click 18/18 (0 pageerror), hold-repeat 3/3,
+  guide-chunk 7/7. 46/46 hijau.
+- **Test:** Semua dijalankan nyata.
+- **Next:** Lanjut.
+
+**Total siklus tercatat: 189**
+
+---

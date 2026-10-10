@@ -547,4 +547,5 @@ const CHANNELS = [
   { id: "MqxrXsy8_qI", title: "Iklan Gudang Garam International - Shooting (1989?)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "pGqVZxERXQ4", title: "Iklan Gudang Garam International - Survive (2006) @ RCTI, TPI, Indosiar, Trans TV, & SCTV", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "iklan-rokok-jadul-era-90an", title: "Kumpulan Iklan TV Rokok jadul era 90an", cat: "Iklan Jadul", st: "Multi-Stasiun", src: "ia" },
+  { id: "x2v0isx", title: "Opening Sinetron HIKMAH 1", cat: "Sinetron & Acara TV", st: "Multi-Stasiun", src: "dm" },
 ];
