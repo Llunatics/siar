@@ -829,7 +829,7 @@ kbd {
 /* ---------- Bentuk TV (chassis) ---------- */
 .side-l { display: none; }
 .shape-polytron .side-l { display: flex; }
-.shape-polytron .tv-side { flex-basis: 118px; } /* grille ganda tetap ramping, layar dominan */
+/* (lebar kolom speaker polytron disetel di blok siluet: gahar & lebar) */
 /* Speaker di bawah layar */
 .shape-philips .tv-main, .shape-sharp .tv-main, .shape-jvc .tv-main,
 .shape-panasonic .tv-main, .shape-akari .tv-main { flex-direction: column; }
@@ -844,9 +844,26 @@ kbd {
 .shape-philips .screen { border-radius: 26px / 30px; }
 .shape-sharp .tv-body { border-radius: 12px; }
 .shape-sharp .screen { border-radius: 8px / 10px; }
-.shape-trinitron .screen { border-radius: 26px / 14px; } /* silinder: tepi samping melengkung */
-.shape-toshiba .tv-body { border-radius: 30px; padding: 26px; }
-.shape-toshiba .screen { border-radius: 30px / 24px; } /* tabung membulat semua sisi */
+/* Trinitron: silinder tegas — layar melengkung vertikal kuat, kolom speaker ramping,
+   ventilasi bilah vertikal, kaki jangkung */
+.shape-trinitron .tv-body { border-radius: 22px; }
+.shape-trinitron .screen { border-radius: 44px / 14px; }
+.shape-trinitron .tv-side { flex-basis: 148px; }
+.shape-trinitron .tv-side::before {
+  background: repeating-linear-gradient(90deg, rgba(0,0,0,.55) 0 3px, transparent 3px 8px);
+}
+.shape-trinitron .tv-stand .foot { height: 28px; }
+/* Toshiba: gelembung lembut — bodi & layar membulat semua sisi, speaker lebar
+   berpori kasar, kaki pil pendek */
+.shape-toshiba .tv-body { border-radius: 34px; padding: 28px; }
+.shape-toshiba .screen { border-radius: 36px / 30px; }
+.shape-toshiba .tv-side { flex-basis: 196px; }
+.shape-toshiba .speaker { background-size: 9px 9px; }
+.shape-toshiba .tv-stand .foot { height: 15px; border-radius: 0 0 12px 12px; }
+/* Polytron: gahar 2003 — speaker ganda LEBAR berpori besar, bodi tebal */
+.shape-polytron .tv-side { flex-basis: 150px; }
+.shape-polytron .speaker { background-size: 9px 9px; }
+.shape-polytron .tv-body { padding: 24px; }
 .shape-jvc .tv-body { border-radius: 16px; }
 .shape-jvc .screen { border-radius: 12px / 14px; }
 .shape-jvc .speaker { /* grille bilah vertikal */
@@ -1195,7 +1212,11 @@ body.clock-off .room-clock { display: none; }
   .screen-wrap { flex: none; width: 100%; }
   .tv-side { display: none; }
   .statusbar { flex-wrap: wrap; gap: 10px; margin-top: 12px; padding-top: 12px; }
-  .statusbar .sig-meter { flex: 1 1 150px; }
+  /* HP: power + CH + favorit sebaris; meteran sinyal full-width di bawahnya */
+  .statusbar .btn.power { flex: 0 0 auto; }
+  .statusbar .ch-display { flex: 0 0 auto; }
+  .statusbar .fav-mini { flex: 0 0 auto; margin-left: auto; }
+  .statusbar .sig-meter { flex: 1 1 100%; order: 4; }
   .statusbar .sleep-left { flex: 1 1 100%; margin-left: 0; }
   .tv-stand { padding: 0 34px; }
   .tv-stand .foot { height: 18px; }

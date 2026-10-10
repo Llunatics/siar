@@ -141,3 +141,62 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 - **Next:** Verifikasi batch discovery iklan (Dailymotion) → review → append.
 
 **Total siklus tercatat: 7**
+
+---
+
+## Siklus 8 — 2026-10-11 03:58 WIB — Bug: tombol G mengetik "g" ke kolom cari panduan
+
+- **Area:** `assets/js/app.js` (keyboard handler).
+- **Masalah & bukti:** Screenshot `shots/base/390x844-guide.png`: kolom cari panduan terisi "g" — keydown `g` membuka panduan + memfokus input, lalu karakter "g" dari keypress ikut terketik. Setiap buka panduan via keyboard selalu diawali filter "g". Ditemukan saat review mobile.
+- **Severity:** Tinggi (bug perilaku nyata, bukan kosmetik).
+- **Implementasi:** `e.preventDefault()` untuk semua shortcut keyboard yang tertangani (m/r/j/p/f/g/s/h + digit) — mencegah karakter bocor ke input yang baru difokuskan.
+- **Test:** Chromium headless: tekan G → `guideSearch.value === ""` → **OK (tidak bocor)**. Smoke jsdom 18/18 PASS.
+- **Before/after:** Bug nyata terperbaiki; tidak ada regresi shortcut.
+- **Catatan uji:** Thumbnail panduan 0/12 di screenshot headless — BUKAN bug aplikasi: Chromium sandbox gagal `ERR_TUNNEL_CONNECTION_FAILED` ke host eksternal; curl dari shell 200 OK. `test/shoot.js` kini meneruskan proxy egress via env agar screenshot jujur.
+- **Next:** Verifikasi hasil discovery iklan DM.
+
+**Total siklus tercatat: 8**
+
+---
+
+## Siklus 9 — 2026-10-11 04:05 WIB — Statusbar mobile: tombol favorit tidak lagi terlempar
+
+- **Area:** `assets/css/style.css` (media query ≤720px).
+- **Masalah & bukti:** Screenshot `shots/base/390x844-tv.png`: tombol favorit (☆) wrap sendirian ke baris 2 di bawah tombol power — terlihat yatim.
+- **Severity:** Sedang (dimensi 9).
+- **Implementasi:** Di ≤720px: power + CH display + fav-mini sebaris (fav `margin-left:auto`), meteran sinyal `flex:1 1 100%` full-width di baris bawah.
+- **Test:** `node test/quickshot.js 390 844 mob9 tv` → screenshot `shots/tmp-mob9.png`: power+CH+fav sebaris kanan, meter sinyal penuh di bawah — rapi. Tanpa pageerror.
+- **Before/after:** Dimensi 9: 5→5.5.
+- **Catatan:** Uji screenshot via proxy terlalu lambat di sandbox (2 job di-kill); QA visual memakai jalur tanpa-proxy (localhost saja) + verifikasi jaringan eksternal via curl/oEmbed terpisah.
+- **Next:** Review batch discovery iklan DM.
+
+**Total siklus tercatat: 9**
+
+---
+
+## Siklus 10 — 2026-10-11 04:12 WIB — Verifikasi 4.085 kandidat iklan (oEmbed)
+
+- **Area:** `scripts/review.py verify` (pipeline review kandidat).
+- **Masalah:** 4.085 kandidat DM butuh verifikasi eksistensi resmi sebelum direview manusia.
+- **Severity:** Tinggi (langkah wajib menuju target 5.300).
+- **Implementasi:** `review.py verify` membaca JSONL kandidat → oEmbed DM per id (cache, 0.5s delay) → TSV review dengan kolom putusan/status/judul. Dijalankan background (`/tmp/siar-rev-iklan.log`).
+- **Test:** Sampel 16 kandidat dibaca manual — kualitas campuran (banyak kompilasi "iklan jadul", sebagian sampah: review HP, film, parodi) → keputusan: filter judul ketat + spot-review berstrata, bukan bulk-accept buta.
+- **Before/after:** 0 → 4.085 kandidat masuk antrean verifikasi resmi.
+- **Next:** Hasil verify → filter + review → append.
+
+---
+
+## Siklus 11 — 2026-10-11 04:22 WIB — Distinctiveness chassis: Trinitron vs Toshiba vs Polytron
+
+- **Area:** `assets/css/style.css` (siluet per bentuk).
+- **Masalah & bukti:** Screenshot per-bentuk: Trinitron vs Toshiba nyaris identik (bedanya cuma radius) — melanggar "differences must involve more than changing border-radius".
+- **Severity:** Tinggi (dimensi 1; direktif 5.2).
+- **Implementasi:**
+  - Trinitron: layar silinder tegas (44px/14px), kolom speaker ramping 148px, ventilasi bilah VERTIKAL, kaki jangkung 28px.
+  - Toshiba: bodi & layar gelembung (34px/36px·30px, padding 28px), speaker lebar 196px berpori kasar (9px), kaki pil pendek.
+  - Polytron: speaker ganda LEBAR 150px berpori besar, bodi tebal (padding 24px) — beda jelas dari Flatron yang ramping silver.
+- **Test:** `node test/shapes.js` → 10 screenshot, tanpa pageerror; smoke 18/18 PASS. Review visual: keempatnya kini bersiluet beda.
+- **Before/after:** Dimensi 1: 6→7.
+- **Next:** Cek progres verifikasi kandidat iklan.
+
+**Total siklus tercatat: 11**

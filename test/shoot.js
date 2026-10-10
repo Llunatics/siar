@@ -9,6 +9,17 @@ const fs = require("fs");
 
 const EXE = path.join(process.env.HOME, ".cache/ms-playwright/chromium-1243/chrome-linux64/chrome");
 const URL = "http://localhost:8777/index.html";
+// Chromium headless di sandbox ini butuh proxy egress eksplisit (env) agar
+// bisa memuat thumbnail/embed eksternal — tanpa ini screenshot menyesatkan.
+function netOpts() {
+  const p = process.env.HTTPS_PROXY || process.env.https_proxy;
+  if (!p) return {};
+  try {
+    const u = new URL(p);
+    return { proxy: { server: u.protocol + "//" + u.host,
+      username: decodeURIComponent(u.username), password: decodeURIComponent(u.password) } };
+  } catch (e) { return {}; }
+}
 const VIEWPORTS = [
   ["1920x1080", 1920, 1080],
   ["1366x768", 1366, 768],
@@ -23,7 +34,7 @@ const VIEWPORTS = [
   const browser = await chromium.launch({ executablePath: EXE, args: ["--no-sandbox"] });
   const errors = [];
   for (const [name, w, h] of VIEWPORTS) {
-    const page = await browser.newPage({ viewport: { width: w, height: h } });
+    const page = await browser.newPage({ viewport: { width: w, height: h }, ...netOpts() });
     page.on("pageerror", e => errors.push(name + ": " + e.message));
     await page.goto(URL, { waitUntil: "load", timeout: 30000 });
     await page.waitForTimeout(800);

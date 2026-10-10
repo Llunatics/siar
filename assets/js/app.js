@@ -1216,6 +1216,9 @@
     var typing = (tag === "INPUT" && e.target.type !== "range") || tag === "TEXTAREA" || tag === "SELECT";
     if (e.key === "Escape") { closeSheets(); closeRemote(); return; }
     if (typing) return;
+    // preventDefault untuk shortcut yang menangani tombol: tanpanya, karakter
+    // tombol ikut terketik ke input yang baru difokuskan (mis. "g" membuka
+    // panduan + memfokus kolom cari, lalu "g" terketik di kolom itu).
     switch (e.key) {
       case " ":
         // Spasi = putar/jeda; jangan rebut bila fokus lagi di tombol/kontrol.
@@ -1226,16 +1229,16 @@
       case "ArrowDown": if (powered) { prevChannel(); e.preventDefault(); } break;
       case "ArrowRight": bumpVolume(5); break;
       case "ArrowLeft": bumpVolume(-5); break;
-      case "m": case "M": els.muteBtn.click(); break;
-      case "r": case "R": if (powered) randomChannel(); break;
-      case "j": case "J": toggleHourBlock(); break;
-      case "p": case "P": powered ? powerOff() : powerOn(); break;
-      case "f": case "F": els.favBtn.click(); break;
-      case "g": case "G": anyOpen() ? closeSheets() : openSheet("guide"); break;
-      case "s": case "S": anyOpen() ? closeSheets() : openSheet("settings"); break;
-      case "h": case "H": anyOpen() ? closeSheets() : openSheet("help"); break;
+      case "m": case "M": els.muteBtn.click(); e.preventDefault(); break;
+      case "r": case "R": if (powered) randomChannel(); e.preventDefault(); break;
+      case "j": case "J": toggleHourBlock(); e.preventDefault(); break;
+      case "p": case "P": powered ? powerOff() : powerOn(); e.preventDefault(); break;
+      case "f": case "F": els.favBtn.click(); e.preventDefault(); break;
+      case "g": case "G": anyOpen() ? closeSheets() : openSheet("guide"); e.preventDefault(); break;
+      case "s": case "S": anyOpen() ? closeSheets() : openSheet("settings"); e.preventDefault(); break;
+      case "h": case "H": anyOpen() ? closeSheets() : openSheet("help"); e.preventDefault(); break;
       default:
-        if (/^[0-9]$/.test(e.key)) pushDigit(e.key);
+        if (/^[0-9]$/.test(e.key)) { pushDigit(e.key); e.preventDefault(); }
     }
   });
 
