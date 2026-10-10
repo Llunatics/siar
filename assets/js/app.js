@@ -1201,6 +1201,7 @@
   bindCards("rmode", "remoteMode");
   bindCards("sig", "signalMode");
   $("resetBtn").addEventListener("click", function () {
+    if (!window.confirm("Reset SEMUA pengaturan, favorit, riwayat & channel kustom ke bawaan? Tindakan ini tidak bisa dibatalkan.")) return;
     PNStore.resetAll();
     S = PNStore.settings;
     blockStation = null;

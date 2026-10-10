@@ -133,6 +133,7 @@ const dom = new JSDOM(html, {
   beforeParse(window) {
     window.AudioContext = undefined;
     window.navigator.vibrate = () => true;
+    window.confirm = () => true; // reset butuh konfirmasi; di test selalu setuju
     window.matchMedia = () => ({ matches: false, addListener() {}, removeListener() {} });
     window.HTMLCanvasElement.prototype.getContext = function () {
       return {

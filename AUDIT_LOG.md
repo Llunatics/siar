@@ -112,3 +112,32 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 - **Next:** Pipeline discovery katalog (Dailymotion API + archive.org + web search → verify → tambah).
 
 **Total siklus tercatat: 5**
+
+---
+
+## Siklus 6 — 2026-10-11 03:36 WIB — Pipeline discovery kandidat (API publik tanpa key)
+
+- **Area:** `scripts/discover.py` + `scripts/queries-iklan.txt` (baru; dev-only).
+- **Masalah:** Tidak ada cara reproducible menambah ratusan kandidat terverifikasi; target 5.300 butuh mesin discovery.
+- **Severity:** Tinggi (fondasi target katalog).
+- **Implementasi:** `scripts/discover.py` — sumber Dailymotion API publik & archive.org advancedsearch (keduanya tanpa API key), dedupe terhadap katalog existing + antar-kandidat, keluaran JSONL per batch. Query file iklan: 129 query fokus TVC Indonesia 90–2000an (disaring dari 600+ draf awal yang terlalu melebar).
+- **Test:** Dijalankan background `--source dm --limit 60` → `/tmp/siar-disc-iklan.log`; uji logika dedupe via dry-run query kecil OK.
+- **Before/after:** 0 → mesin discovery batch tersedia.
+- **Next:** Verifikasi kandidat → review → append ke channels.js.
+
+---
+
+## Siklus 7 — 2026-10-11 03:42 WIB — Panel pengaturan: konfirmasi reset & sticky header
+
+- **Area:** `assets/js/app.js`, `assets/css/style.css` (settings UX).
+- **Masalah & bukti:** Review `shots/base/1920x1080-settings.png`: (1) RESET SEMUA PENGATURAN langsung menghapus tanpa konfirmasi — direktif mewajibkan konfirmasi untuk aksi destruktif; (2) header sheet (judul + CLOSE) ikut ter-scroll hilang di panel panjang.
+- **Severity:** Sedang (dimensi 5).
+- **Implementasi:**
+  - `resetBtn` → `window.confirm(...)` dengan pesan jelas sebelum `PNStore.resetAll()`.
+  - `.sheet > .sheet-head` menjadi sticky (scope khusus sheet; modal bantuan tidak ikut).
+  - Harness jsdom: stub `window.confirm = () => true` agar uji reset tetap jalan.
+- **Test:** `node test/baseline-smoke.js` → **18/18 PASS** (termasuk reset).
+- **Before/after:** Dimensi 5: 6→6.5 (panel sudah solid; ini polish).
+- **Next:** Verifikasi batch discovery iklan (Dailymotion) → review → append.
+
+**Total siklus tercatat: 7**
