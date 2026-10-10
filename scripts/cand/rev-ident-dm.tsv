@@ -997,3 +997,78 @@ YA	OK	dm	x59ujn	Promo NET TV 2007	Promo NET TV 2007				net tv 2013
 YA	OK	dm	x7lxxwc	Wishnutama - Pendiri NET TV	Wishnutama - Pendiri NET TV				net tv 2013
 YA	OK	dm	x74nmb0	NET TV EN VIVO	NET TV EN VIVO				net tv 2013
 YA	OK	dm	xs9dnl	Videorama Philips Net TV	Videorama Philips Net TV				net tv 2013
+	FAIL	dm	x8iregh		NET TV Live Stream			network: The read operation timed out	net tv 2013
+YA	OK	dm	x11b3or	l'instant@net de juin 2013	l'instant@net de juin 2013				net tv 2013
+YA	OK	dm	x15zotu	ZapTELEdu net 15 octobre 2013	ZapTELEdu net 15 octobre 2013				net tv 2013
+YA	OK	dm	x5vneyt	Debat Capres On NET TV	Debat Capres On NET TV				net tv 2013
+YA	OK	dm	x4pzeo	Cortinilla Net TV Mar 2008	Cortinilla Net TV Mar 2008				net tv 2013
+YA	OK	dm	xd0tvj	N'aber - Asım Gültekin (Tv Net)	N'aber - Asım Gültekin (Tv Net)				net tv 2013
+	FAIL	dm	x9fv4ze		Tomás Dente -'Entrometidos' - Net TV			bukan JSON	net tv 2013
+YA	OK	dm	x3c2ew6	The Remix Net-TV Baru	The Remix Net-TV Baru				net tv 2013
+YA	OK	dm	x5ncx0z	ANDRE SULE LUCU BANGET DI NET 4.0 NET TV	ANDRE SULE LUCU BANGET DI NET 4.0 NET TV				net tv 2013
+YA	OK	dm	x16bze7	ZapTELE du net 21 octobre 2013	ZapTELE du net 21 octobre 2013				net tv 2013
+YA	OK	dm	x65isqu	NET Baru Mengudara Tahun 2013 - NET16	NET Baru Mengudara Tahun 2013 - NET16				net tv 2013
+YA	OK	dm	x65ekbw	NET Kaledoskop Sport 2013 - Part 2	NET Kaledoskop Sport 2013 - Part 2				net tv 2013
+YA	OK	dm	xyl2mc	Zapping du net 29 mars 2013	Zapping du net 29 mars 2013				net tv 2013
+YA	OK	dm	x17d8sb	ZapTELEdu net du 18 novembre 2013	ZapTELEdu net du 18 novembre 2013				net tv 2013
+	FAIL	dm	x7xz527		Net Raja Rani (2013) Part 3			bukan JSON	net tv 2013
+YA	OK	dm	x65eirj	NET Kaledoskop Sport 2013 - Part 3	NET Kaledoskop Sport 2013 - Part 3				net tv 2013
+YA	OK	dm	xy0r5d	Zapping du net 8 mars 2013	Zapping du net 8 mars 2013				net tv 2013
+YA	OK	dm	x65ej4u	NET Kaledoskop Sport 2013 - Part 4	NET Kaledoskop Sport 2013 - Part 4				net tv 2013
+YA	OK	dm	x4m9ky	The Children's Channel Ident	The Children's Channel Ident				ident b channel
+YA	OK	dm	x5m1wq	Channel 4 rocks ident	Channel 4 rocks ident				ident b channel
+YA	OK	dm	x2s253u	Al Arabiya Channel Ident	Al Arabiya Channel Ident				ident b channel
+YA	OK	dm	x2z86k9	Disney Channel Worldwide - Original Ident	Disney Channel Worldwide - Original Ident				ident b channel
+YA	OK	dm	x2y8hg5	Disney Channel Ident - Bolt III	Disney Channel Ident - Bolt III				ident b channel
+YA	OK	dm	xb6t3b2	Disney Channel - Ident: Hats (Reuploaded)	Disney Channel - Ident: Hats (Reuploaded)				ident b channel
+YA	OK	dm	x17thdb	PlayStation 4 - Channel 4 idents	PlayStation 4 - Channel 4 idents				ident b channel
+YA	OK	dm	x91eng2	Channel 4 Ident (With Pibby?)	Channel 4 Ident (With Pibby?)				ident b channel
+YA	OK	dm	x7wjkv2	StarGOLD Channel Idents (2000-Present)	StarGOLD Channel Idents (2000-Present)				ident b channel
+YA	OK	dm	x8mya8t	Karl Lagerfeld Channel ident 2006	Karl Lagerfeld Channel ident 2006				ident b channel
+YA	OK	dm	x326rbw	Disney channel Poland - Idents 2012	Disney channel Poland - Idents 2012				ident b channel
+YA	OK	dm	x2wos97	CER2 Ident B	CER2 Ident B				ident b channel
+YA	OK	dm	x375pnw	R4 One ident - Hippos (Channel of The Year ident) (HD)	R4 One ident - Hippos (Channel of The Year ident) (HD)				ident b channel
+	FAIL	dm	x3zh4cw		Disney Channel Nordic Throwback Ident 2014			network: The read operation timed out	ident b channel
+YA	OK	dm	x7vf35c	B4U Music Channel Idents (1999-Present)	B4U Music Channel Idents (1999-Present)				ident b channel
+YA	OK	dm	x8wz9by	Disney Channel Keyboard Bounces Ident  (2007)	Disney Channel Keyboard Bounces Ident  (2007)				ident b channel
+YA	OK	dm	x59zw9u	CiTV Channel - Emu Ident (Late 2007)	CiTV Channel - Emu Ident (Late 2007)				ident b channel
+YA	OK	dm	x5x3m9t	Disney Junior On Disney Channel Ident	Disney Junior On Disney Channel Ident				ident b channel
+YA	OK	dm	xuc1ch	Disney Channel Where My Perry? Ident	Disney Channel Where My Perry? Ident				ident b channel
+YA	OK	dm	x7v8b8w	zee cinema channel ident history (1995-Present)	zee cinema channel ident history (1995-Present)				ident b channel
+YA	OK	dm	x3g0oa5	Channel 5 - Christmas 2015 - Ice Freeze ident	Channel 5 - Christmas 2015 - Ice Freeze ident				ident b channel
+YA	OK	dm	x7wjkv1	SET INDIA Channel Ident History (1995-Present)	SET INDIA Channel Ident History (1995-Present)				ident b channel
+YA	OK	dm	x31f3f8	Disney Channel Czech - Ident: Toy Story 2	Disney Channel Czech - Ident: Toy Story 2				ident b channel
+YA	OK	dm	x8jeig	Yesterday Ident - Suffragettes (Channel Launch 2nd March ...	Yesterday Ident - Suffragettes (Channel Launch 2nd March ...				ident b channel
+YA	OK	dm	x7v945y	star plus channel ident history (1991-Present)	star plus channel ident history (1991-Present)				ident b channel
+YA	OK	dm	x8xv3o4	Disney XD x Disney Channel Idents/Bumpers	Disney XD x Disney Channel Idents/Bumpers				ident b channel
+YA	OK	dm	x7vogeu	ZEE TV Channel Ident History (1992-Present)	ZEE TV Channel Ident History (1992-Present)				ident b channel
+YA	OK	dm	xubzs4	Disney Channel Club Penguin Ident + Disney Channel Original Movie Intro	Disney Channel Club Penguin Ident + Disney Channel Original Movie Intro				ident b channel
+YA	OK	dm	x7wivvu	Colors TV Channel Ident History (2008-Present)	Colors TV Channel Ident History (2008-Present)				ident b channel
+YA	OK	dm	x57woar	Paramount Channel Spain Christmas Continuity and Idents 2016	Paramount Channel Spain Christmas Continuity and Idents 2016				ident b channel
+YA	OK	dm	x3jbvfe	Disney Channel US Fall Ident New Logo 2014	Disney Channel US Fall Ident New Logo 2014				ident b channel
+YA	OK	dm	x8dpn2x	Channel 4 December 2008 Adverts & Continuity Plus Ident	Channel 4 December 2008 Adverts & Continuity Plus Ident				ident b channel
+YA	OK	dm	x8jecp	Yesterday Ident - Debutanes (Channel Launch 2nd March 9am...	Yesterday Ident - Debutanes (Channel Launch 2nd March 9am...				ident b channel
+YA	OK	dm	x9mduum	Military History Channel - Idents 2022 (Southern United States)	Military History Channel - Idents 2022 (Southern United States)				ident b channel
+YA	OK	dm	x95k9l0	Fanta Channel Saint-Petersburg (Russia) - Regional advertising ident (13.09.2024)	Fanta Channel Saint-Petersburg (Russia) - Regional advertising ident (13.09.2024)				ident b channel
+YA	OK	dm	x16l4h8	QTV/GMA NEWS TV CHANNEL 11 IDENT (2005-2013)	QTV/GMA NEWS TV CHANNEL 11 IDENT (2005-2013)				ident b channel
+YA	OK	dm	x7wjknd	Sony SAB(formally SAB TV) Channel Idents (2000-Present)	Sony SAB(formally SAB TV) Channel Idents (2000-Present)				ident b channel
+YA	OK	dm	x7wjknb	Star World (INDIA) (formally 'StarPlus') Channel Idents (1993-Present)	Star World (INDIA) (formally 'StarPlus') Channel Idents (1993-Present)				ident b channel
+YA	OK	dm	x568cyy	Disney Channel HD Italy Christmas Continuity and Idents 2016	Disney Channel HD Italy Christmas Continuity and Idents 2016				ident b channel
+YA	OK	dm	x7vd015	DD News (Formally DD Matro) Channel Idents [1984-Present]	DD News (Formally DD Matro) Channel Idents [1984-Present]				ident b channel
+YA	OK	dm	x361orr	Disney Channel 1982 - 2010	Disney Channel 1982 - 2010				b channel 2010
+YA	OK	dm	xe0q0p	Disney Channel Verano 2010	Disney Channel Verano 2010				b channel 2010
+	FAIL	dm	xbkf80		Julia Channel (Calendrier 2010)			network: The read operation timed out	b channel 2010
+YA	OK	dm	xh1p40	Interview Pure Channel - Cannes 2010	Interview Pure Channel - Cannes 2010				b channel 2010
+YA	OK	dm	x32ax8y	Timmy Time B Channel	Timmy Time B Channel				b channel 2010
+YA	OK	dm	xfbjri	B&B Ending Oktober 2010	B&B Ending Oktober 2010				b channel 2010
+YA	OK	dm	x19nrcp	VILLEQUIER 2010 B	VILLEQUIER 2010 B				b channel 2010
+YA	OK	dm	x1dfj84	B&B Opening July 2010	B&B Opening July 2010				b channel 2010
+YA	OK	dm	x2evlr6	Nick Jr Channel - March 25, 2010	Nick Jr Channel - March 25, 2010				b channel 2010
+YA	OK	dm	x523e6g	Disney Channel - Halloween 2010 Promo dutch	Disney Channel - Halloween 2010 Promo dutch				b channel 2010
+YA	OK	dm	x1x9s2	B-52's - Channel Z	B-52's - Channel Z				b channel 2010
+YA	OK	dm	x30g71s	Doni B - Showbiz  ( 1st Channel )	Doni B - Showbiz  ( 1st Channel )				b channel 2010
+	FAIL	dm	x72qabi		WRC 2010 - Grupo B			bukan JSON	b channel 2010
+YA	OK	dm	xem6jx	finale B o3z  2010	finale B o3z  2010				b channel 2010
+YA	OK	dm	xciur7	s b b  - 10th March 2010 Part4	s b b  - 10th March 2010 Part4				b channel 2010
+YA	OK	dm	x30gg2k	Doni B - Meno 1st Channel	Doni B - Meno 1st Channel				b channel 2010
+	FAIL	dm	xcijzb		Disney Star Place - Mars 2010 - Disney Channel			bukan JSON	b channel 2010

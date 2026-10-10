@@ -432,7 +432,7 @@
     var seen = PNStore.isWatched(ch.key);
     var th = thumbOf(ch);
     return '<li data-idx="' + i + '"' + (seen ? ' class="watched"' : "") + ">" +
-      (th ? '<img class="th" src="' + th + '" alt="" loading="lazy">' : '<span class="th th-none" aria-hidden="true"></span>') +
+      (th ? '<img class="th" src="' + th + '" alt="" loading="lazy" onerror="this.onerror=null;this.outerHTML=\'<span class=&quot;th th-none&quot; aria-hidden=&quot;true&quot;></span>\'">' : '<span class="th th-none" aria-hidden="true"></span>') +
       '<span class="num">' + pad(i + 1) + "</span>" +
       '<span class="ttl">' + esc(ch.title) +
       '<span class="stn">' + esc(ch.station) + "</span></span>" +

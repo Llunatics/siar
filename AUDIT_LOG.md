@@ -1200,6 +1200,29 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 
 **Total siklus tercatat: 83**
 
+---
+
+## Siklus 84 — 2026-10-11 07:45 WIB — Fix thumbnail guide broken (bug nyata)
+
+- **Area:** Guide/panduan siaran (dimensi: hierarki visual, feedback).
+- **Masalah + bukti:** Screenshot `shots/qa/1366x768-guide.png` menunjukkan thumbnail
+  guide sebagai kotak hitam + ikon gambar rusak. Penyebab: `<img>` di `rowHtml()`
+  (app.js:433) tidak punya `onerror`; saat thumbnail eksternal gagal dimuat
+  (jaringan diblokir/video dihapus), browser menampilkan ikon broken-image.
+- **Severity:** Sedang (visual; mengganggu kerapian guide).
+- **Implementasi:** Tambah `onerror` yang mengganti `<img>` gagal dengan
+  `<span class="th th-none">` (placeholder bersih). Iterasi 1
+  (`removeAttribute('src')`) tidak cukup — ikon rusak tetap muncul; iterasi 2
+  (`outerHTML` → span) terverifikasi bersih via screenshot.
+- **Test (nyata):** Playwright headless + route-block gambar eksternal:
+  160 thumb, 19 gagal → 19/19 degrade ke placeholder, 0 ikon rusak, 0 pageerror.
+  Regression: smoke 18/18, remote-click 18/18, guide-chunk 7/7 — semua hijau.
+- **Before/after:** `/tmp/thumb-fix.png` (iterasi 1: ikon rusak masih ada;
+  iterasi 2: placeholder gelap bersih).
+- **Next:** Lanjut katalog.
+
+**Total siklus tercatat: 84**
+
 > **Koreksi waktu (04:01 WIB):** timestamp siklus 33–55 di atas adalah estimasi dan
 > ternyata kelebihan ±5 jam. Waktu terverifikasi saat siklus 55: **2026-10-11 04:01 WIB**
 > (`date` sistem). Mulai siklus 56, timestamp memakai jam sistem yang benar.
