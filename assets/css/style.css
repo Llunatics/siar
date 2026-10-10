@@ -753,6 +753,7 @@ body {
 .del { font-size: 13px; }
 .del:hover { color: #ff6b57; }
 .empty { color: var(--dim); font-size: 13px; padding: 14px 4px; }
+.more-btn { margin: 14px 0 8px; letter-spacing: .12em; }
 
 .addbox { margin-top: 22px; border-top: 1px solid var(--line); padding-top: 14px; }
 .addbox summary { cursor: pointer; font-size: 12px; letter-spacing: .18em; color: var(--accent); }

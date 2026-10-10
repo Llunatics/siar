@@ -200,3 +200,23 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 - **Next:** Cek progres verifikasi kandidat iklan.
 
 **Total siklus tercatat: 11**
+
+---
+
+## Siklus 12 — 2026-10-11 04:38 WIB — Panduan chunked + delegasi event (siap ribuan entri)
+
+- **Area:** `assets/js/app.js`, `assets/css/style.css` (panduan siaran).
+- **Masalah & bukti:** `buildGuide()` me-render SEMUA baris sekaligus + bind 3×N listener — di 5.300 entri akan berat (N binding, N gambar). Belum ada virtualisasi.
+- **Severity:** Tinggi (prasyarat target katalog; dimensi 10).
+- **Implementasi:**
+  - Render per-grup, maksimal ~160–320 baris per paint; grup raksasa dipecah dengan header "(lanjutan)".
+  - Event didelegasikan SEKALI di `#guideList` (init) — klik baris, bintang favorit, hapus kustom; tanpa bind ulang per chunk.
+  - Auto-muat saat scroll mendekati bawah + tombol "MUAT N SIARAN LAGI" (aksesibilitas).
+- **Test:**
+  - `node test/guide-chunk.js` (baru) → **7/7 PASS**: chunk awal ≤320, <500ms, scroll memuat sisa, klik baris/favorit via delegasi jalan.
+  - `baseline-smoke.js` sempat 17/18 (ekspektasi usang "render sekaligus") → test diperbarui → **18/18 PASS**.
+  - `remote-click.js` 18/18 PASS.
+- **Before/after:** Dimensi 10: 6→7. Panduan kini siap untuk 5.300 entri.
+- **Next:** Cek hasil verifikasi kandidat; discovery batch kartun.
+
+**Total siklus tercatat: 12**

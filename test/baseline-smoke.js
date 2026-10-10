@@ -104,10 +104,17 @@ const driver = `
     key("m");
     assert(PNStore.settings.muted === true, "mute tidak aktif");
   });
-  check("Guide: panel buka & item lengkap", function () {
+  check("Guide: panel buka & chunk awal tampil", function () {
     key("g");
     assert(!doc.querySelector("#guideSheet").hidden, "guide tidak terbuka");
-    assert(doc.querySelectorAll("#guideList li").length >= 265, "item=" + doc.querySelectorAll("#guideList li").length);
+    var n0 = doc.querySelectorAll("#guideList li").length;
+    assert(n0 > 0 && n0 <= 320, "chunk awal=" + n0);
+    // scroll -> sisa termuat
+    var sh = doc.querySelector("#guideSheet");
+    sh.scrollTop = sh.scrollHeight;
+    sh.dispatchEvent(new Event("scroll", { bubbles: true }));
+    var n1 = doc.querySelectorAll("#guideList li").length;
+    assert(n1 >= 265, "total item=" + n1);
   });
   check("Guide: search menyaring", function () {
     var s = doc.querySelector("#guideSearch");

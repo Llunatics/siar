@@ -390,7 +390,51 @@
     });
   }
 
-  /* ================= Panduan siaran ================= */
+  /* ================= Panduan siaran (render bertahap) ================= */
+  // Katalog bisa tumbuh ribuan entri: panduan dirender per grup (chunk) saat
+  // dibuka & saat di-scroll, bukan sekaligus. Event didelegasikan SEKALI di
+  // #guideList (init) sehingga chunk tambahan tak perlu bind ulang.
+  var guideGroups = [];      // [{g, rows:[{ch, i}]}]
+  var guideGI = 0;           // grup yang sudah dirender
+  var GUIDE_CHUNK = 160;     // batas baris per render awal
+
+  function rowHtml(r) {
+    var ch = r.ch, i = r.i;
+    var fav = PNStore.isFavorite(ch.key);
+    var seen = PNStore.isWatched(ch.key);
+    var th = thumbOf(ch);
+    return '<li data-idx="' + i + '"' + (seen ? ' class="watched"' : "") + ">" +
+      (th ? '<img class="th" src="' + th + '" alt="" loading="lazy">' : '<span class="th th-none" aria-hidden="true"></span>') +
+      '<span class="num">' + pad(i + 1) + "</span>" +
+      '<span class="ttl">' + esc(ch.title) +
+      '<span class="stn">' + esc(ch.station) + "</span></span>" +
+      (seen ? '<span class="seen" title="Sudah ditonton">✓</span>' : "") +
+      '<button class="star' + (fav ? " on" : "") + '" data-fav="' + i + '" title="Favorit (F)">' + (fav ? "★" : "☆") + "</button>" +
+      (ch.custom ? '<button class="del" data-del="' + i + '" title="Hapus channel">✕</button>' : "") +
+      "</li>";
+  }
+  function renderMoreGroups() {
+    if (guideGI >= guideGroups.length) return false;
+    var html = "", count = 0;
+    while (guideGI < guideGroups.length && count < GUIDE_CHUNK) {
+      var gr = guideGroups[guideGI++];
+      html += '<div class="cat">' + esc(gr.g) + (gr.cont ? " (lanjutan)" : "") + "</div><ul>";
+      for (var k = 0; k < gr.rows.length; k++) html += rowHtml(gr.rows[k]);
+      html += "</ul>";
+      count += gr.rows.length;
+    }
+    // Sisa antrean: tombol muat manual (aksesibilitas; auto-load saat scroll juga ada)
+    var rest = 0;
+    for (var q = guideGI; q < guideGroups.length; q++) rest += guideGroups[q].rows.length;
+    if (rest > 0) {
+      html += '<button class="btn wide more-btn" id="guideMore">▼ MUAT ' + rest + " SIARAN LAGI</button>";
+    }
+    els.guide.insertAdjacentHTML("beforeend", html);
+    var mb = $("guideMore");
+    if (mb) mb.addEventListener("click", function () { mb.remove(); renderMoreGroups(); });
+    markActive();
+    return true;
+  }
   function groupOf(ch) {
     if (guideStation === "SEMUA" && PNStore.isFavorite(ch.key)) return "★ Favorit";
     return ch.cat;
@@ -428,57 +472,60 @@
       return;
     }
 
-    var html = "";
+    guideGroups = [];
     groups.forEach(function (g) {
-      html += '<div class="cat">' + esc(g) + "</div><ul>";
+      var rows = [];
       list.forEach(function (ch, i) {
         if (groupOf(ch) !== g) return;
         if (!matchGuide(ch)) return;
-        var fav = PNStore.isFavorite(ch.key);
-        var seen = PNStore.isWatched(ch.key);
-        var th = thumbOf(ch);
-        html += '<li data-idx="' + i + '"' + (seen ? ' class="watched"' : "") + '>' +
-          (th ? '<img class="th" src="' + th + '" alt="" loading="lazy">' : '<span class="th th-none" aria-hidden="true"></span>') +
-          '<span class="num">' + pad(i + 1) + "</span>" +
-          '<span class="ttl">' + esc(ch.title) +
-          '<span class="stn">' + esc(ch.station) + "</span></span>" +
-          (seen ? '<span class="seen" title="Sudah ditonton">✓</span>' : "") +
-          '<button class="star' + (fav ? " on" : "") + '" data-fav="' + i + '" title="Favorit (F)">' + (fav ? "★" : "☆") + "</button>" +
-          (ch.custom ? '<button class="del" data-del="' + i + '" title="Hapus channel">✕</button>' : "") +
-          "</li>";
+        rows.push({ ch: ch, i: i });
       });
-      html += "</ul>";
+      // Grup raksasa dipecah per 160 baris supaya paint awal tetap ringan;
+      // header diulang dengan penanda "(lanjutan)".
+      for (var s = 0; s < rows.length; s += GUIDE_CHUNK) {
+        guideGroups.push({ g: g, rows: rows.slice(s, s + GUIDE_CHUNK), cont: s > 0 });
+      }
     });
-    els.guide.innerHTML = html;
+    guideGI = 0;
+    els.guide.innerHTML = "";
+    renderMoreGroups();
+  }
 
-    Array.prototype.forEach.call(els.guide.querySelectorAll("li"), function (li) {
-      li.addEventListener("click", function (e) {
-        if (e.target.closest("button")) return;
-        var idx = parseInt(li.getAttribute("data-idx"), 10);
-        if (!powered) powerOn();
-        tuneTo(idx);
-        closeSheets();
-      });
-    });
-    Array.prototype.forEach.call(els.guide.querySelectorAll("[data-fav]"), function (b) {
-      b.addEventListener("click", function () {
-        var idx = parseInt(b.getAttribute("data-fav"), 10);
-        PNStore.toggleFavorite(list[idx].key);
+  // Delegasi klik panduan (dipasang SEKALI di init): baris, bintang favorit, hapus.
+  function bindGuideEvents() {
+    els.guide.addEventListener("click", function (e) {
+      var fav = e.target.closest("[data-fav]");
+      if (fav) {
+        var fi = parseInt(fav.getAttribute("data-fav"), 10);
+        PNStore.toggleFavorite(list[fi].key);
         buildGuide(); markActive(); syncFavBtn();
-      });
-    });
-    Array.prototype.forEach.call(els.guide.querySelectorAll("[data-del]"), function (b) {
-      b.addEventListener("click", function () {
-        var idx = parseInt(b.getAttribute("data-del"), 10);
-        var goneId = list[idx].id;
+        return;
+      }
+      var del = e.target.closest("[data-del]");
+      if (del) {
+        var di = parseInt(del.getAttribute("data-del"), 10);
+        var goneId = list[di].id;
         PNStore.removeCustom(goneId);
         if (blockStation && !countOf(blockStation)) blockStation = null;
         refreshList();
         if (powered && list.length) tuneTo(Math.min(current, list.length - 1));
         buildGuide(); markActive(); syncNow();
-      });
+        return;
+      }
+      if (e.target.closest("#guideMore")) return; // ditangani tombolnya sendiri
+      var li = e.target.closest("li[data-idx]");
+      if (li) {
+        var idx = parseInt(li.getAttribute("data-idx"), 10);
+        if (!powered) powerOn();
+        tuneTo(idx);
+        closeSheets();
+      }
     });
-    markActive();
+    // Auto-muat chunk berikutnya saat scroll mendekati bawah
+    els.guideSheet.addEventListener("scroll", function () {
+      var sh = els.guideSheet;
+      if (sh.scrollTop + sh.clientHeight > sh.scrollHeight - 700) renderMoreGroups();
+    });
   }
 
   function markActive() {
@@ -1258,6 +1305,7 @@
   try { els.remote.inert = true; } catch (e) { /* abaikan */ }
   bindRod(els.rodL, "antL");
   bindRod(els.rodR, "antR");
+  bindGuideEvents(); // delegasi klik panduan: sekali saja
   els.vol.value = S.volume;
   // Ingat channel terakhir: mulai dari siaran terakhir yang ditonton.
   if (S.rememberCh && S.lastCh) {
