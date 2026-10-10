@@ -412,4 +412,5 @@ const CHANNELS = [
   { id: "azjqQaJ33fw", title: "Lagu Pembuka Doraemon versi indonesia", cat: "Opening Kartun", st: "Multi-Stasiun" },
   { id: "-IP2J3MxWQ8", title: "Doraemon versi Bahasa Indonesia - Ost Opening With Lyrics", cat: "Opening Kartun", st: "Multi-Stasiun" },
   { id: "p2--m4epRwE", title: "Bintang Iklan Sabun Lux Jadul 80-90an (kompilasi shorts)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "r8vL42zBSfo", title: "Hamtaro ED (Indonesian/Bahasa Indonesia)", cat: "Opening Kartun", st: "Multi-Stasiun" },
 ];
