@@ -398,3 +398,15 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 - **Next:** Batch katalog kartun YouTube.
 
 **Total siklus tercatat: 26**
+
+---
+
+## Siklus 27 — 2026-10-11 04:48 WIB — Batch YouTube Dragon Ball/Sailor Moon: +3 entri
+
+- **Area:** Katalog (318 → **321**).
+- **Metode:** 2 web search → 4 kandidat → oEmbed → review.
+- **Hasil:** **3 YA** (Opening Dragon Ball versi Indonesia/Indosiar; OST DB & DBZ versi Indonesia; Sailor Moon First Opening HQ Indonesian — versi Desya yang tayang di Indosiar), **1 SKIP** (judul oEmbed kosong). Ditolak di search: karaoke, 2 cover, AMV, remix dangdut, fan-edit, musikal 2026.
+- **Test:** append → 321 entri unik; smoke 18/18 PASS.
+- **Next:** Batch kartun berikutnya / pantau verify DM.
+
+**Total siklus tercatat: 27**

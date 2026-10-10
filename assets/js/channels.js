@@ -342,4 +342,7 @@ const CHANNELS = [
   { id: "vfQesy3oWdo", title: "Station ID ANTEVE Lampung 1993 (Full)", cat: "Jingle & Ident", st: "ANTV" },
   { id: "-kkcqnR2DLg", title: "Station ID ANteve (Sekarang ANTV) 1993", cat: "Jingle & Ident", st: "ANTV" },
   { id: "xr-fqhH2hk8", title: "01 Januari 1993: Siaran Perdana ANTV", cat: "Sinetron & Acara TV", st: "ANTV" },
+  { id: "colwIUe-Bi0", title: "Lagu Opening Dragon Ball Versi Indonesia (Indosiar)", cat: "Opening Kartun", st: "Indosiar" },
+  { id: "jB42wvldJkk", title: "Ost. Dragon Ball & Dragon Ball Z (Versi Indonesia)", cat: "Opening Kartun", st: "Indosiar" },
+  { id: "KO0F37GrAs8", title: "Sailor Moon First Opening HQ (Indonesian)", cat: "Opening Kartun", st: "Indosiar" },
 ];

@@ -50,23 +50,27 @@ YA	OK	yt	z_puqpbxXbA	Station ID Surya Citra Televisi (SCTV - 1997) 'SCTV Ngetop!
 YA	OK	yt	Q6SDzwKRf6Y	TPI tune ID	TPI tune ID	Jingle & Ident	TPI		web: ident TPI
 YA	OK	yt	pPiL6GX_x_Q	Kompilasi Station ID TPI/MNCTV 1991 - 2015 Bonus Station ID MNCTV Edisi #KilauRayaMNCTV29	Kompilasi Station ID TPI/MNCTV 1991-2015	Jingle & Ident	TPI		web: ident TPI
 	FAIL	yt	VsZPtrApuWo		Kompilasi Station ID Indosiar 1995-2016			SKIP: oEmbed gagal	web: station ID Indosiar
-YA	OK	yt	-FvVnP7fjMU	Indosiar ID (1998) - Ikan Terbang	Indosiar ID 1998-1999 (ikan terbang)	Jingle & Ident	Indosiar		web: station ID Indosiar (avid)
+YA	OK	yt	-FvVnP7fjMU	Indosiar Id  (1998)	Indosiar ID 1998-1999 (ikan terbang)	Jingle & Ident	Indosiar		web: station ID Indosiar (avid)
 	OK	yt	JCSV5uNGVso	Novocom 20 Years demo reel (2004?)	Indosiar ident (Novocom demo reel)			SKIP: demo reel, bukan ident	web: station ID Indosiar (avid)
-YA	OK	yt	pqbW4g_Ji0k	Semarak Indosiar 1995 - Warkop DKI (Bagian 1 dari 2)	Semarak Indosiar 1995 - Warkop DKI (Part 1)	Sinetron & Acara TV	Indosiar		web: station ID Indosiar
-YA	OK	yt	ISPCE8cUqdo	Siaran Perdana Indosiar 11 Januari 1995	Siaran Perdana Indosiar 11 Januari 1995	Sinetron & Acara TV	Indosiar		web: station ID Indosiar
+YA	OK	yt	pqbW4g_Ji0k	Semarak Indosiar 1995-Warkop DKI (Bagian 1 dari 2)	Semarak Indosiar 1995 - Warkop DKI (Part 1)	Sinetron & Acara TV	Indosiar		web: station ID Indosiar
+YA	OK	yt	ISPCE8cUqdo	Siaran Perdana Indosiar   11 Januari 1995	Siaran Perdana Indosiar 11 Januari 1995	Sinetron & Acara TV	Indosiar		web: station ID Indosiar
 	OK	yt	6YqKj14JeYg	Semarak Indosiar 1995-Warkop DKI &Tarian Bagong Kusudiarjo (Part 1)	Indosiar 3 dekade (embed 1)			SKIP: near-duplikat Semarak Indosiar	web: indosiar 3 dekade blog
-YA	OK	yt	q_Lx59hb5qw	Indosiar ID yang Pertama Kali 11 Januari 1995	Indosiar 3 dekade (embed 2)	Jingle & Ident	Indosiar		web: indosiar 3 dekade blog
+YA	OK	yt	q_Lx59hb5qw	Indosiar id  yang Pertama Kali 11 Januari 1995	Indosiar 3 dekade (embed 2)	Jingle & Ident	Indosiar		web: indosiar 3 dekade blog
 	OK	yt	_vGUK0STMh4	𝗥𝗘𝗧𝗨𝗥𝗡 𝗢𝗙 𝗧𝗛𝗘 𝗖𝗢𝗡𝗗𝗢𝗥 𝗛𝗘𝗥𝗢𝗘𝗦 - 𝗬𝘂𝗻𝗶 𝗦𝗵𝗮𝗿𝗮 [𝗢𝗳𝗳𝗶𝗰𝗶𝗮𝗹 𝗠𝘂𝘀𝗶𝗰 𝗩𝗶𝗱𝗲𝗼 𝗛𝗗]	Indosiar 3 dekade (embed 3)			SKIP: MV modern, bukan siaran era	web: indosiar 3 dekade blog
-YA	OK	yt	nauzo-GtVx8	Iklan Pondok Pak Djon (Indosiar)	Indosiar 3 dekade (embed 4)	Iklan Jadul	Indosiar		web: indosiar 3 dekade blog
-YA	OK	yt	9uURFvK4v2Y	"Promo Program Hiburan Indosiar: ""PESTA"" (Pentas Sejuta Aksi)"	Indosiar 3 dekade (embed 5)	Sinetron & Acara TV	Indosiar		web: indosiar 3 dekade blog
+YA	OK	yt	nauzo-GtVx8	iklan Pondok Pak Djon	Indosiar 3 dekade (embed 4)	Iklan Jadul	Indosiar		web: indosiar 3 dekade blog
+YA	OK	yt	9uURFvK4v2Y	"Promo Program Hiburan Indosiar: ""PESTA"" (Pentas Sejuta Aksi) (Minggu, 23 April 1995)"	Indosiar 3 dekade (embed 5)	Sinetron & Acara TV	Indosiar		web: indosiar 3 dekade blog
 	OK	yt	Phikq42-KKc	Warkop DKI (Sinetron) - Tidak Takut	Indosiar 3 dekade (embed 6)			SKIP: episode sinetron	web: indosiar 3 dekade blog
-YA	OK	yt	A-5VYS_nKV4	[closing] Kuis Persembahanku - Tantowi Yahya	Indosiar 3 dekade (embed 7)	Sinetron & Acara TV	Indosiar		web: indosiar 3 dekade blog
+YA	OK	yt	A-5VYS_nKV4	[closing] Kuis Persembahanku |Tantowi Yahya |AB Three |Mus Mujiono	Indosiar 3 dekade (embed 7)	Sinetron & Acara TV	Indosiar		web: indosiar 3 dekade blog
 	OK	yt	ibC4RTeprqc	World Cup 1998 | All Goals [English Commentary]	Indosiar 3 dekade (embed 8)			SKIP: bukan siaran Indonesia	web: indosiar 3 dekade blog
 	OK	yt	DTSDU18D5z0		Station ID ANteve (1993-1994)			SKIP: judul oEmbed kosong	web: ident ANTV
-YA	OK	yt	aWZ0tqL8YLg	Station ID ANteve Januari/Februari 1993 (Peluncuran)	Station ID ANteve Januari/Februari 1993 (langka)	Jingle & Ident	ANTV		web: ident ANTV
+YA	OK	yt	aWZ0tqL8YLg	Sangat Rare & Langka - STation ID ANteve Januari/Februari 1993	Station ID ANteve Januari/Februari 1993 (langka)	Jingle & Ident	ANTV		web: ident ANTV
 	OK	yt	ofJGLLmfezs	Station ID ANteve (1993)	Station ID ANteve (1993)			SKIP: near-duplikat ident ANteve 1993	web: ident ANTV
 	OK	yt	ZIosLrbq5qc	Station ID ANteve (1993)	Station ID ANteve (1993) alt			SKIP: near-duplikat ident ANteve 1993	web: ident ANTV
-YA	OK	yt	vfQesy3oWdo	Station ID ANTEVE Lampung 1993 (Full)	Station ID ANTEVE Lampung 1993 (full)	Jingle & Ident	ANTV		web: ident ANTV
+YA	OK	yt	vfQesy3oWdo	Station ID ANTEVE (Sekarang ANTV) Lampung 1993 #28TahunJejakWaktuANTV	Station ID ANTEVE Lampung 1993 (full)	Jingle & Ident	ANTV		web: ident ANTV
 YA	OK	yt	-kkcqnR2DLg	Station ID ANteve (Sekarang ANTV) 1993	Station ID ANteve (Sekarang ANTV) 1993	Jingle & Ident	ANTV		web: ident ANTV
 	OK	yt	M9SLsxRUj6o		Station ID ANteve (1994)			SKIP: judul oEmbed kosong	web: ident ANTV
-YA	OK	yt	xr-fqhH2hk8	01 Januari 1993: Siaran Perdana ANTV	01 Januari 1993: Siaran Perdana ANTV	Sinetron & Acara TV	ANTV		web: ident ANTV
+YA	OK	yt	xr-fqhH2hk8	01 Januari 1993 : Siaran Perdana Antv	01 Januari 1993: Siaran Perdana ANTV	Sinetron & Acara TV	ANTV		web: ident ANTV
+YA	OK	yt	colwIUe-Bi0	Lagu Opening Dragon Ball Versi Indonesia (Indosiar)	Lagu Opening Dragon Ball Versi Indonesia (Indosiar)	Opening Kartun	Indosiar		web: dragon ball indonesia
+YA	OK	yt	jB42wvldJkk	Ost. Dragon Ball & Dragon Ball Z (Versi Indonesia)	Ost. Dragon Ball & Dragon Ball Z (Versi Indonesia)	Opening Kartun	Indosiar		web: dragon ball indonesia
+YA	OK	yt	KO0F37GrAs8	Sailor Moon First Opening HQ (Indonesian)	Sailor Moon opening sequence Indonesian theme (Desya)	Opening Kartun	Indosiar		web: sailor moon indonesia (kaori)
+	OK	yt	vyDfm86n8i8		Sailor Moon S Opening Bahasa Indonesia (OP 5) HQ			SKIP: judul oEmbed kosong	web: sailor moon indonesia
