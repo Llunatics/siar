@@ -1158,6 +1158,21 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 
 **Total siklus tercatat: 80**
 
+---
+
+## Siklus 81 — 2026-10-11 07:18 WIB — Review panel settings + progres DM
+
+- **Area:** Settings (dimensi 5) + verifikasi DM.
+- **Hasil review** (`shots/qa/1366x768-settings.png`): grid 10 model TV dengan preview,
+  section warna/finishing — bersih, konsisten, tidak ada temuan.
+- **Progres DM:** 2.004 baris terverifikasi (iklan 874, ident 921, kartun 209);
+  3 job masih jalan. Kecepatan ~800/jam — verifikasi penuh 16.598 tidak akan selesai
+  sebelum 12:00; hasil parsial tetap berguna untuk review batch berikutnya.
+- **Test:** Review visual nyata; tidak ada perubahan kode.
+- **Next:** Katalog.
+
+**Total siklus tercatat: 81**
+
 > **Koreksi waktu (04:01 WIB):** timestamp siklus 33–55 di atas adalah estimasi dan
 > ternyata kelebihan ±5 jam. Waktu terverifikasi saat siklus 55: **2026-10-11 04:01 WIB**
 > (`date` sistem). Mulai siklus 56, timestamp memakai jam sistem yang benar.
