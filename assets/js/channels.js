@@ -469,4 +469,6 @@ const CHANNELS = [
   { id: "ojTYugyEpSc", title: "Iklan Jamu Leo - Pegal Linu (1996)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "a6aLXJP3ucw", title: "Iklan Jamu Kunyit Asam SidoMuncul 2000", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "P6elQKOAcnA", title: "Iklan Jamu Komplit Sido Muncul tahun 2002", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "1HPy-BeV6lY", title: "Nostalgia Model Iklan Motor Honda Jadul (shorts)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "MjUI7FzNJMo", title: "nostalgia iklan motor yamaha jadul (shorts)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
