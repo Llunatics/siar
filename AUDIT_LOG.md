@@ -3000,3 +3000,29 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 213**
 
 ---
+
+## Siklus 214 — 2026-10-11 06:15 WIB — Batch YouTube jeda iklan 2009-2010: +4 entri (564→568)
+
+- **Area:** Katalog (jeda iklan 2009/2010).
+- **Metode:** web search -> 10 kandidat -> oEmbed (4 OK baru, 6 FAIL 401).
+- **Hasil:** 4 YA (Trans7 2010, TPI 2010, Trans TV 2009, TVRI 2009).
+  Catatan: 6 video (termasuk TVOne) terblokir oEmbed 401.
+- **Test:** append -> 568 unik; smoke 18/18 PASS (dari 211).
+- **Commit:** lokal.
+- **Next:** Regression (5 siklus).
+
+**Total siklus tercatat: 214**
+
+---
+
+## Siklus 215 — 2026-10-11 06:15 WIB — Regression pass siklus 212–215
+
+- **Area:** Test suite (katalog +12).
+- **Hasil:** smoke 18/18, remote-click 18/18, hold-repeat 3/3, guide-chunk 7/7.
+  46/46 hijau.
+- **Test:** Semua dijalankan nyata.
+- **Next:** Update docs dari data aktual.
+
+**Total siklus tercatat: 215**
+
+---
