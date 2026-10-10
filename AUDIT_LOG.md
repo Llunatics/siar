@@ -3724,3 +3724,28 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 269**
 
 ---
+
+## Siklus 270 — 2026-10-11 06:42 WIB — Batch YouTube shampo: +1 (643→644)
+
+- **Area:** Katalog (iklan shampo).
+- **Metode:** web search -> 5 kandidat -> oEmbed (1 OK baru, 4 DUP).
+- **Hasil:** 1 YA (Sunsilk 1993).
+- **Test:** append -> 644 unik; smoke 18/18 PASS (dari 259).
+- **Commit:** lokal.
+- **Next:** Regression (5 siklus).
+
+**Total siklus tercatat: 270**
+
+---
+
+## Siklus 271 — 2026-10-11 06:43 WIB — Regression pass siklus 267–271
+
+- **Area:** Test suite (katalog +9).
+- **Hasil:** smoke 18/18, remote-click 18/18, hold-repeat 3/3, guide-chunk 7/7.
+  46/46 hijau.
+- **Test:** Semua dijalankan nyata.
+- **Next:** Update docs.
+
+**Total siklus tercatat: 271**
+
+---
