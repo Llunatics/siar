@@ -479,4 +479,5 @@ const CHANNELS = [
   { id: "3mbK2hKh3mg", title: "Iklan OKB Sakit Kepala dan OKB Flu Tahun 2004", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "QFITky2Jblg", title: "Iklan Layanan Masyarakat tentang Epilepsi tahun 1996", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "uR_7dNjSb00", title: "Iklan Actifed - Apotek (2003)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "w1HIgWNdrJE", title: "Nostalgia Iklan Indosiar 1996-1997 (31 Tahun 31 Menit+)", cat: "Iklan Jadul", st: "Indosiar" },
 ];
