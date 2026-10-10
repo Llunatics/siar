@@ -1263,6 +1263,22 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 
 **Total siklus tercatat: 87**
 
+---
+
+## Siklus 88 — 2026-10-11 08:25 WIB — Batch YouTube obat nyamuk: +11 entri
+
+- **Area:** Katalog (411 → **422**).
+- **Metode:** 2 web search (deterjen → 0 baru; obat nyamuk) → 11 kandidat
+  → oEmbed (semua OK) → cek duplikat (semua baru) → review.
+- **Hasil:** **11 YA** (Shelltox 1995, Tiga Roda 1997, Hit 1999, Nomos 2007,
+  Kingkong 1993-94, Sari Puspa 1999, Garuda Bajuri 2005, Baygon nostalgia,
+  Vape 2007, Bigtox 1998, Raid TVRI 1981). 4 duplikat.
+  Ditolak: 1 kompilasi Baygon 1991–2012 (mencakup iklan modern).
+- **Test:** append → 422 entri unik; smoke 18/18 PASS.
+- **Next:** Lanjut.
+
+**Total siklus tercatat: 88**
+
 > **Koreksi waktu (04:01 WIB):** timestamp siklus 33–55 di atas adalah estimasi dan
 > ternyata kelebihan ±5 jam. Waktu terverifikasi saat siklus 55: **2026-10-11 04:01 WIB**
 > (`date` sistem). Mulai siklus 56, timestamp memakai jam sistem yang benar.
