@@ -1089,6 +1089,20 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 
 **Total siklus tercatat: 75**
 
+---
+
+## Siklus 76 — 2026-10-11 06:45 WIB — Review panduan siaran (tidak ada temuan)
+
+- **Area:** Panduan siaran (dimensi 6).
+- **Hasil review** (`shots/qa/1366x768-guide.png`): chip filter stasiun + jumlah,
+  tombol PUTAR BLOK, header kategori, baris channel (thumb, nomor, judul, stasiun,
+  bintang favorit) — hierarki bersih dan konsisten. Thumbnail rusak di screenshot
+  hanya efek sandbox (host eksternal diblokir), bukan bug.
+- **Test:** Review visual nyata; tidak ada perubahan kode.
+- **Next:** Katalog.
+
+**Total siklus tercatat: 76**
+
 > **Koreksi waktu (04:01 WIB):** timestamp siklus 33–55 di atas adalah estimasi dan
 > ternyata kelebihan ±5 jam. Waktu terverifikasi saat siklus 55: **2026-10-11 04:01 WIB**
 > (`date` sistem). Mulai siklus 56, timestamp memakai jam sistem yang benar.
