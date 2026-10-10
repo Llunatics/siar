@@ -1,0 +1,67 @@
+// Screenshot QA via headless Chromium (playwright-core).
+// Penggunaan: node test/shoot.js [tag]
+// Menghasilkan shots/<tag>/<viewport>-<state>.png
+// Viewport: 1920x1080, 1366x768, 390x844, 844x390
+// State: tv (power nyala), immersive, settings, remote, guide
+const { chromium } = require("playwright-core");
+const path = require("path");
+const fs = require("fs");
+
+const EXE = path.join(process.env.HOME, ".cache/ms-playwright/chromium-1243/chrome-linux64/chrome");
+const URL = "http://localhost:8777/index.html";
+const VIEWPORTS = [
+  ["1920x1080", 1920, 1080],
+  ["1366x768", 1366, 768],
+  ["390x844", 390, 844],
+  ["844x390", 844, 390],
+];
+
+(async () => {
+  const tag = process.argv[2] || "qa";
+  const outdir = path.join(__dirname, "..", "shots", tag);
+  fs.mkdirSync(outdir, { recursive: true });
+  const browser = await chromium.launch({ executablePath: EXE, args: ["--no-sandbox"] });
+  const errors = [];
+  for (const [name, w, h] of VIEWPORTS) {
+    const page = await browser.newPage({ viewport: { width: w, height: h } });
+    page.on("pageerror", e => errors.push(name + ": " + e.message));
+    await page.goto(URL, { waitUntil: "load", timeout: 30000 });
+    await page.waitForTimeout(800);
+    // 1) TV menyala
+    await page.click("#powerBtn");
+    await page.waitForTimeout(1200);
+    await page.screenshot({ path: path.join(outdir, name + "-tv.png") });
+    // 2) remote terbuka
+    await page.click("#remoteFab");
+    await page.waitForTimeout(800);
+    await page.screenshot({ path: path.join(outdir, name + "-remote.png") });
+    await page.keyboard.press("Escape");
+    // 3) settings
+    await page.keyboard.press("s");
+    await page.waitForTimeout(600);
+    await page.screenshot({ path: path.join(outdir, name + "-settings.png") });
+    await page.keyboard.press("Escape");
+    // 4) guide
+    await page.keyboard.press("g");
+    await page.waitForTimeout(600);
+    await page.screenshot({ path: path.join(outdir, name + "-guide.png") });
+    await page.keyboard.press("Escape");
+    // 5) immersive — checkbox disembunyikan CSS (toggle custom), set via JS + change
+    await page.keyboard.press("s");
+    await page.waitForTimeout(400);
+    await page.evaluate(() => {
+      const c = document.querySelector("#setImmersive");
+      c.checked = true;
+      c.dispatchEvent(new Event("change", { bubbles: true }));
+    });
+    await page.waitForTimeout(300);
+    await page.keyboard.press("Escape");
+    await page.waitForTimeout(800);
+    await page.screenshot({ path: path.join(outdir, name + "-immersive.png") });
+    await page.close();
+    console.log("OK " + name);
+  }
+  await browser.close();
+  console.log("pageerrors:", errors.length ? errors : "tidak ada");
+  console.log("shots -> " + outdir);
+})().catch(e => { console.error("FATAL", e.message); process.exit(1); });

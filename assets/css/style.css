@@ -77,11 +77,27 @@ body {
 .finish-marun { --f-a: #72262f; --f-b: #3f131a; --f-line: #2a0b10; --ring1: #1a0508; --ring2: #5e2129; --plate: #d3a5a5; }
 .finish-dongker { --f-a: #263a5e; --f-b: #101c31; --f-line: #0a1424; --ring1: #050a15; --ring2: #354f7c; --plate: #a8bdd9; }
 .tv-body {
+  position: relative;
   background:
-    repeating-linear-gradient(0deg, rgba(255,255,255,.014) 0 2px, transparent 2px 4px),
-    repeating-linear-gradient(90deg, rgba(255,255,255,.010) 0 2px, transparent 2px 4px),
     linear-gradient(160deg, var(--f-a), var(--f-b) 72%);
   border-color: var(--f-line);
+}
+/* Grain plastik molded: noise halus (bukan grid garis 2px). */
+.tv-body::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  pointer-events: none; opacity: .055; mix-blend-mode: overlay;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* Skrup panel depan di 4 sudut + garis seam tipis di tepi dalam bodi. */
+.tv-body::after {
+  content: ""; position: absolute; inset: 9px; border-radius: 18px;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.35);
+  background:
+    radial-gradient(circle at 14px 14px, #3c3c44 0 2.6px, #101014 3.4px, transparent 4.4px),
+    radial-gradient(circle at calc(100% - 14px) 14px, #3c3c44 0 2.6px, #101014 3.4px, transparent 4.4px),
+    radial-gradient(circle at 14px calc(100% - 14px), #3c3c44 0 2.6px, #101014 3.4px, transparent 4.4px),
+    radial-gradient(circle at calc(100% - 14px) calc(100% - 14px), #3c3c44 0 2.6px, #101014 3.4px, transparent 4.4px);
 }
 .finish-kayu .tv-body {
   background:
@@ -140,6 +156,7 @@ body {
     inset 0 0 18px rgba(0,0,0,.85),
     0 0 0 7px var(--ring1),
     0 0 0 9px var(--ring2),
+    0 0 0 10px rgba(0,0,0,.55), /* seam gasket antara bezel dalam & shell luar */
     0 10px 28px rgba(0,0,0,.55),
     0 0 44px rgba(120,140,255,.07);
 }
@@ -272,6 +289,16 @@ body {
   flex: 0 0 172px; min-width: 0;
   display: flex; flex-direction: column; gap: 12px;
 }
+/* Ventilasi atas kolom samping: slot horizontal cetakan bodi.
+   Hanya untuk bentuk berspeaker samping (trinitron/toshiba/polytron/flatron);
+   bentuk speaker-bawah tidak punya kolom samping. */
+.tv-side::before { content: ""; display: none; }
+.shape-trinitron .tv-side::before, .shape-toshiba .tv-side::before,
+.shape-polytron .tv-side::before, .shape-flatron .tv-side::before {
+  display: block; flex: 0 0 auto; height: 46px; border-radius: 7px;
+  background: repeating-linear-gradient(0deg, rgba(0,0,0,.55) 0 3px, transparent 3px 8px);
+  box-shadow: inset 0 2px 5px rgba(0,0,0,.55), inset 0 -1px 0 rgba(255,255,255,.06);
+}
 .ir-zone {
   display: flex; align-items: center; gap: 8px; justify-content: center;
   padding: 8px 6px; border-radius: 8px;
@@ -289,13 +316,32 @@ body {
   100% { background: radial-gradient(circle at 38% 32%, #4a4a55, #17171c 70%); box-shadow: inset 0 1px 2px rgba(255,255,255,.25); }
 }
 .ir-label { font-size: 8px; letter-spacing: .3em; color: var(--dim); }
+/* LED indikator power: merah standby, hijau menyala (mengikuti .tv.on) */
+.pwr-led {
+  width: 9px; height: 9px; border-radius: 50%; flex: 0 0 auto;
+  background: radial-gradient(circle at 38% 32%, #ff8a7a, #b02318 62%, #5d0f0a);
+  box-shadow: 0 0 7px 1px rgba(255,80,60,.55), inset 0 1px 1px rgba(255,255,255,.35);
+  transition: background .25s, box-shadow .25s;
+}
+.tv.on .pwr-led {
+  background: radial-gradient(circle at 38% 32%, #c8ffb8, #3fae52 62%, #14501f);
+  box-shadow: 0 0 8px 2px rgba(90,255,130,.55), inset 0 1px 1px rgba(255,255,255,.35);
+}
 
+/* Dek kontrol: panel cekung tempat tombol-tombol fisik menempel,
+   bukan sekadar strip dengan garis atas */
 .statusbar {
   display: flex; align-items: center; gap: 14px;
-  margin-top: 16px; padding-top: 14px;
-  border-top: 1px solid var(--line);
+  margin-top: 16px; padding: 12px 14px;
+  background: linear-gradient(180deg, rgba(0,0,0,.30), rgba(0,0,0,.14));
+  border: 1px solid rgba(0,0,0,.40); border-radius: 14px;
+  box-shadow:
+    inset 0 3px 9px rgba(0,0,0,.55),
+    inset 0 -1px 0 rgba(255,255,255,.07);
 }
-.finish-silver .statusbar, .finish-ivory .statusbar, .finish-krem .statusbar { border-top-color: rgba(0,0,0,.25); }
+.finish-silver .statusbar, .finish-ivory .statusbar, .finish-krem .statusbar {
+  background: linear-gradient(180deg, rgba(0,0,0,.20), rgba(255,255,255,.06));
+}
 .statusbar .sig-meter { flex: 0 1 190px; }
 .statusbar .sleep-left { margin-left: auto; }
 .statusbar .btn.power { padding: 10px 16px 8px; border-radius: 12px; }
@@ -962,8 +1008,10 @@ body.immersive .room-scene::after { /* grain tekstur dinding, sangat tipis */
 body.immersive::after { /* lantai kayu gelap: gradasi shading + pantulan samar di dekat dinding */
   content: ""; position: fixed; left: -6%; right: -6%; top: 65%; bottom: -4%; z-index: -1;
   background:
+    /* list plin: garis temu dinding-lantai */
+    linear-gradient(180deg, rgba(216,188,140,.16) 0 5px, rgba(0,0,0,.35) 5px 9px, transparent 9px),
     linear-gradient(180deg, rgba(255,186,120,.05), transparent 34%),
-    repeating-linear-gradient(90deg, rgba(0,0,0,.38) 0 2px, transparent 2px 132px),
+    repeating-linear-gradient(90deg, rgba(0,0,0,.30) 0 2px, transparent 2px 132px),
     linear-gradient(180deg, #2b1e11 0%, #170f07 55%, #0b0704 100%);
   transform: perspective(340px) rotateX(22deg);
   transform-origin: 50% 0;
@@ -990,14 +1038,25 @@ body.immersive .tv-stand { /* papan atas 18px digambar sebagai lapisan latar */
   box-shadow: inset 0 1px 0 rgba(255,255,255,.10);
 }
 body.immersive .tv-stand .foot { display: none; }
-body.immersive .tv-stand::after { /* badan lemari dua pintu, menapak lantai */
-  content: ""; display: block; height: 64px; margin: 18px 1.5% 0;
+body.immersive .tv-stand::after { /* badan lemari dua pintu + kaki, menapak lantai */
+  content: ""; display: block; height: 92px; margin: 18px 1.5% 0;
   background:
-    linear-gradient(90deg, transparent 49.4%, rgba(0,0,0,.5) 49.4%, rgba(0,0,0,.5) 50.6%, transparent 50.6%),
-    linear-gradient(180deg, #3a2a16, #1c1108);
+    /* gagang pintu: dua tarikan kuningan dekat belahan tengah */
+    linear-gradient(180deg, #d8bc85, #7a5c34) left 46.2% top 24px / 5px 24px no-repeat,
+    linear-gradient(180deg, #d8bc85, #7a5c34) left 53.8% top 24px / 5px 24px no-repeat,
+    /* belahan dua pintu */
+    linear-gradient(90deg, transparent 49.4%, rgba(0,0,0,.5) 49.4%, rgba(0,0,0,.5) 50.6%, transparent 50.6%) top / 100% 68px no-repeat,
+    /* serat kayu horizontal samar di badan lemari */
+    repeating-linear-gradient(0deg, rgba(0,0,0,.16) 0 2px, transparent 2px 9px) top / 100% 68px no-repeat,
+    /* badan lemari */
+    linear-gradient(180deg, #3a2a16, #1c1108) top / 100% 68px no-repeat,
+    /* dua kaki pendek di bawah badan */
+    linear-gradient(90deg, transparent 7%, #201307 7% 11%, transparent 11% 89%, #201307 89% 93%, transparent 93%) bottom / 100% 24px no-repeat,
+    /* bayangan kontak di lantai bawah kaki */
+    radial-gradient(ellipse 46% 90% at 50% 100%, rgba(0,0,0,.65), transparent 70%) bottom / 100% 24px no-repeat;
   border-radius: 0 0 7px 7px;
   box-shadow: inset 0 0 0 3px rgba(0,0,0,.35), inset 0 2px 0 rgba(255,255,255,.05),
-    inset 0 -12px 16px rgba(0,0,0,.55), 0 24px 30px rgba(0,0,0,.55);
+    inset 0 -12px 16px rgba(0,0,0,.55);
 }
 body.immersive .tv::after { /* bayangan kontak tepat di bawah lemari */
   height: 34px;
@@ -1026,6 +1085,25 @@ body.immersive .tv::after { /* bayangan kontak tepat di bawah lemari */
   position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
   width: 56px; height: 10px; border-radius: 50%;
   background: radial-gradient(ellipse at 50% 35%, #4a3a26, #171008);
+}
+/* Bayangan kontak kaki lampu supaya menapak, tidak melayang */
+.lamp::after {
+  content: ""; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%);
+  width: 120px; height: 20px;
+  background: radial-gradient(ellipse, rgba(0,0,0,.6), transparent 70%);
+  pointer-events: none;
+}
+/* Bingkai foto di dinding: satu saja, redup, khas ruang tamu */
+.wall-frame { position: absolute; top: 17%; left: 1.2%; z-index: 0; pointer-events: none; opacity: .8; }
+.wall-frame span {
+  display: block; width: 120px; height: 92px;
+  border: 7px solid #3a2a18; border-radius: 3px;
+  background:
+    radial-gradient(ellipse 34% 44% at 38% 40%, rgba(216,188,150,.5), transparent 70%),
+    radial-gradient(ellipse 26% 36% at 64% 46%, rgba(190,160,125,.4), transparent 70%),
+    linear-gradient(180deg, #241a10, #171008);
+  box-shadow: 0 10px 24px rgba(0,0,0,.6), inset 0 0 0 1px rgba(0,0,0,.6);
+  transform: rotate(-2deg);
 }
 /* Jam dinding analog + digital */
 .room-clock { position: absolute; top: 4px; left: 8px; z-index: 0; text-align: center; pointer-events: none; }
