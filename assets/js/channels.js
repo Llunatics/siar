@@ -673,4 +673,5 @@ const CHANNELS = [
   { id: "JdumJbkj9LU", title: "Iklan Gaga Corned Beef - Kelezatan Kornet Sapi (1994) @ RCTI, TPI, SCTV, & ANteve", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "9CogQVpYelE", title: "Iklan Sarden ABC - Berkemah Alam (2000) @ RCTI, Indosiar, TPI, SCTV, & ANteve", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "ruB8LRMhhjo", title: "Iklan Jadul Jilid 21 : 1996 & 1997 (30 Tahun yang Lalu)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "KMhJvMTa5Go", title: "Kompilasi Iklan Baygon (Indonesia) Tahun 1991~2012", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
