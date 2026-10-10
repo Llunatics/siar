@@ -1,27 +1,27 @@
 # CATALOG_REPORT.md — Laporan Katalog Siar
 
-> Status: **2026-10-11 06:15 WIB** · **568 entri terverifikasi** · target 5.300
-> (sesi lanjutan 05:27–12:00 WIB; 215 siklus tercatat)
+> Status: **2026-10-11 06:19 WIB** · **582 entri terverifikasi** · target 5.300
+> (sesi lanjutan 05:27–12:00 WIB; 222 siklus tercatat)
 
 ## 1. Ringkasan angka
 
 | Metrik | Jumlah |
 |---|---|
 | Baseline awal (terverifikasi siklus 0–12) | 265 |
-| Ditambahkan sesi 2026-10-11 (semua jalur) | 303 |
-| **Total terverifikasi saat ini** | **568** |
+| Ditambahkan sesi 2026-10-11 (semua jalur) | 317 |
+| **Total terverifikasi saat ini** | **582** |
 | Target | 5.300 |
-| Capaian vs target | 10,7% |
+| Capaian vs target | 11,0% |
 | Ditolak sesi lanjutan (SKIP tier1/tier2/review manual) | 210+ |
-| Duplikat discovery (sudah di katalog) | 280+ |
+| Duplikat discovery (sudah di katalog) | 290+ |
 
 ## 2. Komposisi per kategori
 
 | Kategori | Entri |
 |---|---|
-| Iklan Jadul | 318 |
+| Iklan Jadul | 331 |
 | Opening Kartun | 143 |
-| Jingle & Ident | 59 |
+| Jingle & Ident | 60 |
 | Sinetron & Acara TV | 33 |
 | Opening Tokusatsu | 15 |
 
@@ -30,21 +30,22 @@
 | Stasiun | Entri | Stasiun | Entri |
 |---|---|---|---|
 | Multi-Stasiun | 335 | TPI | 6 |
-| RCTI | 76 | NET. | 3 |
-| Indosiar | 53 | RTV | 3 |
-| SCTV | 23 | Metro TV | 3 |
-| Global TV | 17 | B Channel | 2 |
-| TVRI | 11 | Spacetoon | 2 |
-| MNCTV/TPI | 9 | TV7 | 1 |
-| ANTV | 9 | MNCTV | 1 |
-| Trans7 | 7 | Lativi | 1 |
-| Trans TV | 6 | | |
+| RCTI | 77 | NET. | 4 |
+| Indosiar | 54 | RTV | 3 |
+| SCTV | 24 | B Channel | 3 |
+| Global TV | 17 | Metro TV | 3 |
+| Trans7 | 12 | Spacetoon | 2 |
+| TVRI | 12 | TV7 | 1 |
+| MNCTV/TPI | 9 | MNCTV | 1 |
+| ANTV | 9 | Lativi | 1 |
+| Trans TV | 7 | tvOne | 1 |
+| | | Sindo TV | 1 |
 
 ## 4. Komposisi per sumber
 
 | Sumber | Entri |
 |---|---|
-| YouTube (`yt`) | 516 |
+| YouTube (`yt`) | 530 |
 | Dailymotion (`dm`) | 26 |
 | Internet Archive (`ia`) | 25 |
 | Vimeo (`vimeo`) | 1 |
