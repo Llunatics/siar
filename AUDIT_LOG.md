@@ -2928,3 +2928,18 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 208**
 
 ---
+
+## Siklus 209 — 2026-10-11 06:12 WIB — Batch YouTube iklan 2001-2002: +7 entri (540→547)
+
+- **Area:** Katalog (tahun spesifik 2001/2002).
+- **Metode:** web search -> 7 kandidat -> oEmbed (7 OK baru).
+- **Hasil:** 7 YA (Jeda Metro TV 2002, Wah Cantiknya SCTV 2001,
+  WWF Smackdown 2001, Jeda Indosiar 2002, Kompilasi 2002,
+  Ardath 2001, Jeda RCTI 2001).
+- **Test:** append -> 547 unik; smoke 18/18 PASS (dari 205).
+- **Commit:** lokal.
+- **Next:** Lanjut.
+
+**Total siklus tercatat: 209**
+
+---

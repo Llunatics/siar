@@ -571,4 +571,11 @@ const CHANNELS = [
   { id: "PnPAABuiW18", title: "Nostalgia Iklan Televisi Swasta tahun 2002 by widiajier", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "rbdnz-_KczQ", title: "Iklan Ardath kenikmatan sukses   Tahun 2001", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "K7i2xqaDgoY", title: "Jeda Iklan RCTI (15 Mei 2001)", cat: "Iklan Jadul", st: "RCTI" },
+  { id: "zmz1ES6QU-0", title: "Iklan Kimia Farma - Relaunching (Sekitar Tahun 2003)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "hPx8VbF4Ho4", title: "Iklan Anakonidin - Ulang Tahun (2003-04) @ JTV, Fajar TV, Lativi, Bali TV, TVRI, & Metro TV,", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "GS3FU7SPzXw", title: "Break Iklan (Highlights) Trans TV(2004)", cat: "Iklan Jadul", st: "Trans TV" },
+  { id: "tc1kesSS0lE", title: "DEWA19 - Selalu Terdepan 2003 | YAMAHA | Iklan TV Klasik 2000-an", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "7-g4f4GH_KE", title: "Break Iklan RCTI Highlights (2004) (Bagian 3)", cat: "Iklan Jadul", st: "RCTI" },
+  { id: "AsePtHnXmIs", title: "Jeda Iklan MetroTV (08/04/2004)", cat: "Iklan Jadul", st: "Metro TV" },
+  { id: "thGiDOqDJcU", title: "Break Iklan (Highlights) Trans TV (2004) Bag.5 (Akhir)", cat: "Iklan Jadul", st: "Trans TV" },
 ];
