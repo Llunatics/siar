@@ -601,13 +601,17 @@
     }, ms);
   }
 
-  // Noise latar pelan saat TV nyala: pengaturan user + bonus dari sinyal buruk
+  // Noise latar pelan saat TV nyala: pengaturan user + bonus dari sinyal buruk.
+  // Hormati prefers-reduced-motion: gambar sekali saja, tanpa redraw tiap 140ms.
+  var RM = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var rmDrawn = false;
   setInterval(function () {
     if (!powered || document.hidden) return;
     if (els.staticC.classList.contains("burst")) return;
     var eff = Math.min(100, S.noise + (100 - signalQ) * 0.5);
     if (eff <= 0) { els.staticC.style.opacity = "0"; return; }
     els.staticC.style.opacity = (eff / 100 * 0.55).toFixed(2);
+    if (RM) { if (!rmDrawn) { drawStatic(); rmDrawn = true; } return; }
     drawStatic();
   }, 140);
 

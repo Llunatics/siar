@@ -1192,7 +1192,22 @@ body.clock-off .room-clock { display: none; }
   .lamp { display: none; }
 }
 
-/* ---------- Mobile ---------- */
+/* ---------- Aksesibilitas ---------- */
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.rbtn:focus-visible, .btn:focus-visible, .chip:focus-visible, .star:focus-visible {
+  outline: 2px solid var(--osd); outline-offset: 2px;
+}
+/* Gerakan dikurangi: matikan animasi dekoratif, hormati preferensi OS */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  .vhs-on .screen-inner, .vhs-band, .vhs-lines { animation: none !important; }
+  #powerHint, .remote-fab:not(.seen) { animation: none !important; }
+  .glass { animation: none !important; }
+}
 /* Layar pendek (HP landscape, laptop mungil): ringkas elemen non-TV
    supaya panggung tetap besar & fokus ke TV */
 @media (max-height: 560px) {

@@ -271,3 +271,29 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 - **Next:** Batch sinetron/ident; pantau verify DM 4.085.
 
 **Total siklus tercatat: 16**
+
+---
+
+## Siklus 17 — 2026-10-11 05:28 WIB — Reduced-motion + focus-visible (a11y)
+
+- **Area:** `assets/css/style.css`, `assets/js/app.js`.
+- **Masalah:** Tidak ada dukungan `prefers-reduced-motion` (noise redraw 140ms, jitter VHS, pulse FAB, flicker powerHint tetap jalan); indikator fokus keyboard minim.
+- **Severity:** Sedang (dimensi 9).
+- **Implementasi:** Media query `prefers-reduced-motion: reduce` mematikan animasi dekoratif (noise/VHS/band/glass/pulse/flicker); JS: noise statis digambar sekali saja bila RM aktif; `:focus-visible` outline untuk tombol remote/panel/chip.
+- **Test:** smoke 18/18 PASS, guide-chunk 7/7 PASS; `node --check` implisit via smoke (app.js dieval).
+- **Before/after:** Dimensi 9: 6→6.8.
+- **Next:** Batch YouTube sinetron; regression pass di siklus 20.
+
+**Total siklus tercatat: 17**
+
+---
+
+## Siklus 18 — 2026-10-11 05:40 WIB — Batch YouTube sinetron + iklan 2000an: +14 entri
+
+- **Area:** Katalog (282 → **296**).
+- **Metode:** 2 web search → 16 kandidat → oEmbed → review manusia.
+- **Hasil:** **14 YA** (7 opening sinetron RCTI 1998-2004: Jin & Jun 3, Cinta, Doaku Harapanku, Mandragade, Amelia, Kepala Keluarga, Melodi Cinta; 6 iklan: Star Mild 1998, kompilasi iklan seram, 2× arsip SCTV 2004, Yamaha Komeng, break RCTI 2004; 1 jadwal acara RCTI 2002), **2 SKIP** (oEmbed gagal; 1 ternyata episode full — judul discovery menipu, tertangkap di review).
+- **Test:** append → 296 entri unik; smoke 18/18 PASS.
+- **Next:** Batch ident stasiun lain (SCTV/TPI/Indosiar/ANTV); pantau verify DM.
+
+**Total siklus tercatat: 18**
