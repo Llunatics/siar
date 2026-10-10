@@ -676,3 +676,16 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 - **Next:** Lanjut katalog.
 
 **Total siklus tercatat: 46**
+
+---
+
+## Siklus 47 — 2026-10-11 08:12 WIB — Batch YouTube iklan permen: +5 entri
+
+- **Area:** Katalog (350 → **355**).
+- **Metode:** 1 web search → 6 kandidat → oEmbed → cek duplikat → review.
+- **Hasil:** **5 YA** (Permen Chester 1992, Vitamin C Chup 1995, Milkita 1997, Mr Sarmento RCTI'92, Permen Kis 1997).
+  1 duplikat (Mentos 1994 sudah di katalog — ditolak append). Probe DM: masih 000.
+- **Test:** append → 355 entri unik; smoke 18/18 PASS.
+- **Next:** Lanjut batch.
+
+**Total siklus tercatat: 47**

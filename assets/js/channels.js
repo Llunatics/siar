@@ -374,4 +374,9 @@ const CHANNELS = [
   { id: "QGEFfYIBZC4", title: "8 Iklan Terkenal Jadul yang legendaris (kompilasi)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "0MqT7yZe9cU", title: "Nippon Cha Cha - Opening Kobo Chan (Bahasa Indonesia)", cat: "Opening Kartun", st: "RCTI" },
   { id: "M3XkdR8Me4A", title: "Cyborg Kurochan Opening Song Indonesian Version", cat: "Opening Kartun", st: "Multi-Stasiun" },
+  { id: "xVMVrEUd-zY", title: "Iklan Permen Chester (1992) - bersama Elma Theana", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "uJPUz4vZVMg", title: "Iklan Permen Vitamin C Chup dari Unican (1995)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "0G-0sCcGSGk", title: "Iklan Permen susu Milkita tahun 1997", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "qUyAR58lmj8", title: "Iklan Permen Jadul Mr Sarmento (RCTI'92)", cat: "Iklan Jadul", st: "RCTI" },
+  { id: "ddtIgYD9M2w", title: "Iklan Permen Kis (Sekitar 1997)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
