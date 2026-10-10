@@ -580,4 +580,12 @@ const CHANNELS = [
   { id: "thGiDOqDJcU", title: "Break Iklan (Highlights) Trans TV (2004) Bag.5 (Akhir)", cat: "Iklan Jadul", st: "Trans TV" },
   { id: "7yc0asXlku4", title: "Iklan Jadul VII - \"Wanita Jangan Takut Ketinggalan\" - 14 Mei 2005", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "Gq3J5RciTk0", title: "Iklan X Mild - Duel(2005-2006)@RCTI,SCTV,TPI,ANTV,Indosiar,MetroTV,TransTV,TV7,GlobalTV,Lativi", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "-Nq1j0Z4eQ0", title: "Iklan Bank Mandiri - Mandiri Fiesta '07 (2007) @ Indosiar, RCTI, TPI, Metro TV, SCTV, & ANTV", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "u4gMiSizPzg", title: "Iklan PSA Layanan Masyarakat Kemenkes RI - Sekolah (2007) @ RCTI, Indosiar, TPI, Global TV, & SCTV,", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "UDsTBQMfUck", title: "Jeda Iklan Indosiar (15 Agustus 2008)", cat: "Iklan Jadul", st: "Indosiar" },
+  { id: "aYzUybUW0Po", title: "Jeda Iklan Global TV (Oktober 2008)", cat: "Iklan Jadul", st: "Global TV" },
+  { id: "640ZRPk6-KU", title: "Jeda Iklan Trans TV (28 Januari 2007)", cat: "Iklan Jadul", st: "Trans TV" },
+  { id: "_uARvt8IRGs", title: "Jeda Iklan Lativi (September 2007)", cat: "Iklan Jadul", st: "Lativi" },
+  { id: "0PaMULQO5hI", title: "Jeda Iklan Trans 7 (Maret 2007)", cat: "Iklan Jadul", st: "Trans7" },
+  { id: "RUtcTIv5b0M", title: "Jeda Iklan Trans7 pada saat \"Fenomena\" (Maret 2007)", cat: "Iklan Jadul", st: "Trans7" },
 ];
