@@ -674,4 +674,6 @@ const CHANNELS = [
   { id: "9CogQVpYelE", title: "Iklan Sarden ABC - Berkemah Alam (2000) @ RCTI, Indosiar, TPI, SCTV, & ANteve", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "ruB8LRMhhjo", title: "Iklan Jadul Jilid 21 : 1996 & 1997 (30 Tahun yang Lalu)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "KMhJvMTa5Go", title: "Kompilasi Iklan Baygon (Indonesia) Tahun 1991~2012", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "TyMz9Kbktsg", title: "Iklan Walls Paddle Pop - Pirates (1993) #shorts #beranda #fyp", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "xKsC25qAfNg", title: "Iklan Es Krim Walls Dimpi tahun 1997", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
