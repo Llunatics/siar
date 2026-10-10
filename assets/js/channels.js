@@ -406,4 +406,7 @@ const CHANNELS = [
   { id: "GAjvk1NOcwE", title: "Iklan Inzana - Jingle Inzana (1989-1992)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "nw6GoNODGtI", title: "Iklan Jadul Part 8 (Tahun 1999) - kompilasi", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "xPdWd8po23k", title: "Jeda Iklan RCTI Agustus 1999 (kompilasi rerun)", cat: "Iklan Jadul", st: "RCTI" },
+  { id: "PGObzrmPsX4", title: "Iklan B29 Detergent (1998)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "sObYrf33I9k", title: "Iklan Dimension 2in1 Ultra Mild - Keramas Lagi (1994-1995)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "10wFPWOpirc", title: "Iklan Procold - Sendiri Lagi (2004)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
