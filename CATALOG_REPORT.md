@@ -1,6 +1,6 @@
 # CATALOG_REPORT.md — Laporan Katalog Siar
 
-> Status: **2026-10-11 06:43 WIB** · **644 entri terverifikasi** · target 5.300
+> Status: **2026-10-11 06:46 WIB** · **649 entri terverifikasi** · target 5.300
 > (sesi lanjutan 05:27–12:00 WIB; 265 siklus tercatat
 
 ## 1. Ringkasan angka
@@ -8,8 +8,8 @@
 | Metrik | Jumlah |
 |---|---|
 | Baseline awal (terverifikasi siklus 0–12) | 265 |
-| Ditambahkan sesi 2026-10-11 (semua jalur) | 379 |
-| **Total terverifikasi saat ini** | **644** |
+| Ditambahkan sesi 2026-10-11 (semua jalur) | 384 |
+| **Total terverifikasi saat ini** | **649** |
 | Target | 5.300 |
 | Capaian vs target | 12,2% |
 | Ditolak sesi lanjutan (SKIP tier1/tier2/review manual) | 220+ |
