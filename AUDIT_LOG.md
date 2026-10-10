@@ -3210,3 +3210,29 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 229**
 
 ---
+
+## Siklus 230 — 2026-10-11 06:24 WIB — Discovery IA batch 8 (kartun): +4 entri (591→595)
+
+- **Area:** Katalog (Internet Archive, opening kartun).
+- **Metode:** discover.py --source ia (48 kandidat) -> verify (41 OK)
+  -> filter manual + cek mediatype.
+- **Hasil:** 4 YA (Doraemon HD x3, Dragon Ball OST 90an). 1 audio SKIP.
+- **Test:** append manual -> 595 unik; node --check OK.
+- **Commit:** lokal.
+- **Next:** Regression (5 siklus).
+
+**Total siklus tercatat: 230**
+
+---
+
+## Siklus 231 — 2026-10-11 06:25 WIB — Regression pass siklus 227–231
+
+- **Area:** Test suite (katalog +6).
+- **Hasil:** smoke 18/18, remote-click 18/18, hold-repeat 3/3, guide-chunk 7/7.
+  46/46 hijau.
+- **Test:** Semua dijalankan nyata.
+- **Next:** Update docs.
+
+**Total siklus tercatat: 231**
+
+---

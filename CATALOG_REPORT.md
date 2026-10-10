@@ -1,28 +1,28 @@
 # CATALOG_REPORT.md — Laporan Katalog Siar
 
-> Status: **2026-10-11 06:19 WIB** · **582 entri terverifikasi** · target 5.300
-> (sesi lanjutan 05:27–12:00 WIB; 222 siklus tercatat)
+> Status: **2026-10-11 06:25 WIB** · **595 entri terverifikasi** · target 5.300
+> (sesi lanjutan 05:27–12:00 WIB; 231 siklus tercatat)
 
 ## 1. Ringkasan angka
 
 | Metrik | Jumlah |
 |---|---|
 | Baseline awal (terverifikasi siklus 0–12) | 265 |
-| Ditambahkan sesi 2026-10-11 (semua jalur) | 317 |
-| **Total terverifikasi saat ini** | **582** |
+| Ditambahkan sesi 2026-10-11 (semua jalur) | 330 |
+| **Total terverifikasi saat ini** | **595** |
 | Target | 5.300 |
-| Capaian vs target | 11,0% |
+| Capaian vs target | 11,2% |
 | Ditolak sesi lanjutan (SKIP tier1/tier2/review manual) | 210+ |
-| Duplikat discovery (sudah di katalog) | 290+ |
+| Duplikat discovery (sudah di katalog) | 300+ |
 
 ## 2. Komposisi per kategori
 
 | Kategori | Entri |
 |---|---|
-| Iklan Jadul | 331 |
-| Opening Kartun | 143 |
-| Jingle & Ident | 60 |
-| Sinetron & Acara TV | 33 |
+| Iklan Jadul | 335 |
+| Opening Kartun | 147 |
+| Jingle & Ident | 61 |
+| Sinetron & Acara TV | 37 |
 | Opening Tokusatsu | 15 |
 
 ## 3. Komposisi per stasiun
@@ -45,9 +45,9 @@
 
 | Sumber | Entri |
 |---|---|
-| YouTube (`yt`) | 530 |
-| Dailymotion (`dm`) | 26 |
-| Internet Archive (`ia`) | 25 |
+| YouTube (`yt`) | 538 |
+| Dailymotion (`dm`) | 27 |
+| Internet Archive (`ia`) | 29 |
 | Vimeo (`vimeo`) | 1 |
 
 ## 5. Metode verifikasi
