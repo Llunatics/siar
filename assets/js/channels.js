@@ -657,4 +657,6 @@ const CHANNELS = [
   { id: "Fsco6NyRcmE", title: "Inilah Iklan Jadul Honda C70 tahun 1979 #harga hanya 250 ribu !", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "9pKDj9N7628", title: "Iklan Mobil Timor (1996) [50fps]", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "IPOSGAEGIVI", title: "Kompilasi Iklan Toyota Kijang Dari Masa Ke Masa - (1977-2022) [UPDATE]", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "MIOtnqPx5Qs", title: "Iklan Minyak Angin Cap Lang - Hijaunya Daun (1992) @ RCTI, SCTV, & TPI", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "AFJnUKR5DHE", title: "Iklan Sanaflu - Flu di Saat Kerja (1999) @ RCTI, Indosiar, SCTV, TPI, & ANteve", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
