@@ -90,7 +90,7 @@ Total **364 channel**:
 
 Sorotan katalog: Shaun the Sheep, Upin & Ipin, Marsupilami, Curious George, The Jungle Book (Shōnen Mowgli), Dragon Quest, Digimon Adventure/Tamers/Frontier, Ultraman Mebius/Tiga/Dyna/Gaia/Cosmos, Ninja Ranger, Kobo-chan, Cyborg Kurochan, Captain Tsubasa, Detektif Conan, iklan Kumon, Djarum 76, Gudang Garam, Teh Sosro, kompilasi iklan rokok & sabun & mie 90-an, dan puluhan ident stasiun (TVRI, RCTI Sawah 1994, SCTV Satu Untuk Semua, TPI 1999).
 
-**Verifikasi:** seluruh 628 id dicek satu per satu ke endpoint resmi (YouTube/Dailymotion/Vimeo oEmbed, metadata Internet Archive, HTTP 200, judul = klip iklan/opening/bumper asli — bukan video lirik, episode, atau cover) dan disapu ulang penuh pada audit terakhir. Arsip verifikasi disimpan di luar repo bersama state program. Tidak ada berkas video yang disimpan atau diunggah ulang di repositori ini.
+**Verifikasi:** seluruh 635 id dicek satu per satu ke endpoint resmi (YouTube/Dailymotion/Vimeo oEmbed, metadata Internet Archive, HTTP 200, judul = klip iklan/opening/bumper asli — bukan video lirik, episode, atau cover) dan disapu ulang penuh pada audit terakhir. Arsip verifikasi disimpan di luar repo bersama state program. Tidak ada berkas video yang disimpan atau diunggah ulang di repositori ini.
 
 ## Pengaturan
 

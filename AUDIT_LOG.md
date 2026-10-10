@@ -3646,3 +3646,28 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 263**
 
 ---
+
+## Siklus 264 — 2026-10-11 06:39 WIB — Batch YouTube obat: +2 entri (633→635)
+
+- **Area:** Katalog (iklan obat).
+- **Metode:** web search -> 6 kandidat -> oEmbed (2 OK baru, 4 DUP).
+- **Hasil:** 2 YA (Cap Lang 1992, Sanaflu 1999).
+- **Test:** append -> 635 unik; smoke 18/18 PASS (dari 259).
+- **Commit:** lokal.
+- **Next:** Regression (5 siklus).
+
+**Total siklus tercatat: 264**
+
+---
+
+## Siklus 265 — 2026-10-11 06:40 WIB — Regression pass siklus 262–265
+
+- **Area:** Test suite (katalog +7).
+- **Hasil:** smoke 18/18, remote-click 18/18, hold-repeat 3/3, guide-chunk 7/7.
+  46/46 hijau.
+- **Test:** Semua dijalankan nyata.
+- **Next:** Update docs.
+
+**Total siklus tercatat: 265**
+
+---
