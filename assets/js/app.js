@@ -1031,7 +1031,7 @@
       var mb = $("guideMore"); if (mb) mb.remove();
       if (!renderMoreGroups()) break;
     }
-    if (li) li.scrollIntoView({ block: "center" });
+    if (li && li.scrollIntoView) li.scrollIntoView({ block: "center" });
   }
   function openSheet(which) {
     closeRemote();

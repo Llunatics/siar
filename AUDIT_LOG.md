@@ -436,3 +436,14 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 - **Next:** Cek verify DM ident (segera selesai); batch berikutnya.
 
 **Total siklus tercatat: 29**
+
+---
+
+## Siklus 30 — 2026-10-11 05:12 WIB — Regression pass + bug guard scrollIntoView
+
+- **Area:** Rentang siklus 25–29 (imersif glow, panduan scroll, katalog 323).
+- **Bug ditemukan saat regression:** `guide-chunk.js` gagal — `li.scrollIntoView is not a function` di jsdom non-visual (Siklus 28 tidak meng-guard). **Diperbaiki:** guard `if (li && li.scrollIntoView)`.
+- **Test:** smoke 18/18 · guide-chunk 7/7 · remote-click 18/18 · hold-repeat 3/3 — hijau.
+- **Next:** Lanjut siklus produk/katalog.
+
+**Total siklus tercatat: 30**
