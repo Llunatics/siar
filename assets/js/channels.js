@@ -421,4 +421,6 @@ const CHANNELS = [
   { id: "UujBfINGeTo", title: "Sailor Moon indonesia Opening Lyrics", cat: "Opening Kartun", st: "Multi-Stasiun" },
   { id: "W7z1ApII6jY", title: "Ost. Wedding Peach Versi Indonesia (Opening & Ending)", cat: "Opening Kartun", st: "Multi-Stasiun" },
   { id: "lPUFM8GTHKI", title: "Wedding Peach Opening Indonesia", cat: "Opening Kartun", st: "Indosiar" },
+  { id: "UeMjLnY8HcE", title: "Cardcaptor Sakura OP2 - Tobira wo Akete (Buka Pintu) versi Indonesia HD", cat: "Opening Kartun", st: "MNCTV/TPI" },
+  { id: "H9SPcyMSy04", title: "Kumpulan Ost. Cardcaptor Sakura (Versi Indonesia) - Opening & Ending", cat: "Opening Kartun", st: "Multi-Stasiun" },
 ];
