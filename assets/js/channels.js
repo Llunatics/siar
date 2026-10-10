@@ -655,4 +655,6 @@ const CHANNELS = [
   { id: "RfZsR1fNtJA", title: "Iklan Yamaha Motor Crypton - Siapapun Akan Terpana 1997 @ SCTV, Indosiar, TVRI, AN-Teve, TPI, & RCTI", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "njOvuynQw7E", title: "Iklan Sasa dan Yamaha F1ZR tahun 1999 2000", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "Fsco6NyRcmE", title: "Inilah Iklan Jadul Honda C70 tahun 1979 #harga hanya 250 ribu !", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "9pKDj9N7628", title: "Iklan Mobil Timor (1996) [50fps]", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "IPOSGAEGIVI", title: "Kompilasi Iklan Toyota Kijang Dari Masa Ke Masa - (1977-2022) [UPDATE]", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
