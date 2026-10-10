@@ -2608,3 +2608,23 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 185**
 
 ---
+
+## Siklus 186 — 2026-10-11 05:43 WIB — Bug: 10 entri tak bisa difilter stasiun → perbaiki STATION_ORDER
+
+- **Area:** Panduan siaran (filter stasiun).
+- **Masalah:** STATION_ORDER di app.js tidak mencakup semua nilai st di
+  katalog. 10 entri (TPI x5, Spacetoon x2, TV7 x1, MNCTV x1, Metro TV x1)
+  terhitung tapi tak pernah dapat chip filter — tak bisa dijelajah per
+  stasiun. Ditemukan saat QA visual panduan (chip Metro TV & TPI hilang
+  dari screenshot).
+- **Implementasi:** Tambah "TPI", "MNCTV", "Spacetoon", "TV7", "Metro TV"
+  ke STATION_ORDER (assets/js/app.js).
+- **Test:** node --check OK; guide-chunk 7/7 PASS; screenshot panduan baru
+  memverifikasi chip MNCTV (1), TPI (5), Spacetoon (2), TV7 (1),
+  Metro TV (1) tampil.
+- **Commit:** 41a461b (lokal).
+- **Next:** Lanjut katalog / polish.
+
+**Total siklus tercatat: 186**
+
+---
