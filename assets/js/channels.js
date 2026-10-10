@@ -472,4 +472,6 @@ const CHANNELS = [
   { id: "1HPy-BeV6lY", title: "Nostalgia Model Iklan Motor Honda Jadul (shorts)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "MjUI7FzNJMo", title: "nostalgia iklan motor yamaha jadul (shorts)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "v4874Cdu11s", title: "Iklan Jadul Permen Relaxa 1998 (shorts)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "0NKS0WRUyaI", title: "Iklan Kental Manis Frisian Flag - Sunda 'Ini Teh Susu...' (2004)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "ntgeDCx17xg", title: "kompilasi iklan susu jadul | nostalgia 80an 90an", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
