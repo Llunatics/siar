@@ -26,6 +26,7 @@ const CHANNELS = [
   { id: "SXQi3Vq9bFw", title: "Iklan Susu Bendera Frisian Flag", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "YzMe-7utHik", title: "Iklan Teh Botol Sosro — Rantai Makanan", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "1-pglprBNIM", title: "Iklan Teh Botol Sosro (1993)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "x8cho6a", title: "Iklan Sampoerna Hijau Teman Yang Asik", cat: "Iklan Jadul", st: "Multi-Stasiun", src: "dm", th: "https://s1.dmcdn.net/v/U5K2Y1em-ZoTzVlX8/x480" },
   // --- Opening Kartun ---
   { id: "AfZJNl5Co00", title: "Opening Doraemon (Bahasa Indonesia)", cat: "Opening Kartun", st: "RCTI" },
   { id: "PECah26yMmQ", title: "Opening Captain Tsubasa (Indonesia)", cat: "Opening Kartun", st: "Trans7" },
