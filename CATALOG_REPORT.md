@@ -1,38 +1,38 @@
 # CATALOG_REPORT.md — Laporan Katalog Siar
 
-> Status: **2026-10-11 05:52 WIB** · **524 entri terverifikasi** · target 5.300
-> (sesi lanjutan 05:27–12:00 WIB; 190 siklus tercatat)
+> Status: **2026-10-11 06:11 WIB** · **540 entri terverifikasi** · target 5.300
+> (sesi lanjutan 05:27–12:00 WIB; 205 siklus tercatat)
 
 ## 1. Ringkasan angka
 
 | Metrik | Jumlah |
 |---|---|
 | Baseline awal (terverifikasi siklus 0–12) | 265 |
-| Ditambahkan sesi 2026-10-11 (semua jalur) | 259 |
-| **Total terverifikasi saat ini** | **524** |
+| Ditambahkan sesi 2026-10-11 (semua jalur) | 275 |
+| **Total terverifikasi saat ini** | **540** |
 | Target | 5.300 |
-| Capaian vs target | 9,9% |
+| Capaian vs target | 10,2% |
 | Ditolak sesi lanjutan (SKIP tier1/tier2/review manual) | 210+ |
-| Duplikat discovery (sudah di katalog) | 253+ |
+| Duplikat discovery (sudah di katalog) | 270+ |
 
 ## 2. Komposisi per kategori
 
 | Kategori | Entri |
 |---|---|
-| Iklan Jadul | 276 |
+| Iklan Jadul | 290 |
 | Opening Kartun | 143 |
-| Jingle & Ident | 58 |
-| Sinetron & Acara TV | 32 |
+| Jingle & Ident | 59 |
+| Sinetron & Acara TV | 33 |
 | Opening Tokusatsu | 15 |
 
 ## 3. Komposisi per stasiun
 
 | Stasiun | Entri | Stasiun | Entri |
 |---|---|---|---|
-| Multi-Stasiun | 316 | TPI | 5 |
-| RCTI | 71 | Trans7 | 4 |
-| Indosiar | 48 | NET. | 3 |
-| SCTV | 21 | RTV | 3 |
+| Multi-Stasiun | 325 | TPI | 5 |
+| RCTI | 74 | Trans7 | 4 |
+| Indosiar | 51 | NET. | 3 |
+| SCTV | 22 | RTV | 3 |
 | Global TV | 16 | Trans TV | 2 |
 | TVRI | 10 | B Channel | 2 |
 | MNCTV/TPI | 9 | Spacetoon | 2 |
@@ -44,9 +44,9 @@
 
 | Sumber | Entri |
 |---|---|
-| YouTube (`yt`) | 475 |
-| Dailymotion (`dm`) | 25 |
-| Internet Archive (`ia`) | 23 |
+| YouTube (`yt`) | 488 |
+| Dailymotion (`dm`) | 26 |
+| Internet Archive (`ia`) | 25 |
 | Vimeo (`vimeo`) | 1 |
 
 ## 5. Metode verifikasi
