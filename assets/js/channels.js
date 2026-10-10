@@ -629,4 +629,8 @@ const CHANNELS = [
   { id: "US0fy6ye0VI", title: "Spacetoon Indonesia - Opening Planet Sport (New Version)", cat: "Jingle & Ident", st: "Spacetoon" },
   { id: "9REG34SFGaw", title: "opening web diver dubbing indonesia spacetoon", cat: "Opening Kartun", st: "Spacetoon" },
   { id: "ZIosLrbq5qc", title: "Station ID ANteve (1993)", cat: "Jingle & Ident", st: "ANTV" },
+  { id: "2Ngxlk4pEG0", title: "Jin dan Jun - Opening Song", cat: "Sinetron & Acara TV", st: "RCTI" },
+  { id: "D1yEd-YhwC4", title: "Opening Sinetron Kedua Tuyul Millenium Season 1 (2004) - SCTV NgeTop!", cat: "Sinetron & Acara TV", st: "SCTV" },
+  { id: "u-Ols9_m7f4", title: "Opening Jin dan Jun", cat: "Sinetron & Acara TV", st: "RCTI" },
+  { id: "hEo-NwPklBg", title: "Opening Samson Betawi", cat: "Sinetron & Acara TV", st: "Multi-Stasiun" },
 ];
