@@ -384,4 +384,7 @@ const CHANNELS = [
   { id: "01KWUq6QjYA", title: "Iklan Susu Cap Nona Madu Bubuk (1997-1998)", cat: "Iklan Jadul", st: "SCTV" },
   { id: "PDjdfVdmGBA", title: "Iklan Sustagen HP - Susu Tradisi Keluargaku (1989)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "wVJUhXFkARY", title: "Iklan Susu Cap Nona (1992)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "626sgjmaXDw", title: "Logo Animasi Bumper RCTI (1993-2000)", cat: "Jingle & Ident", st: "RCTI" },
+  { id: "rByqxWPh4iA", title: "RCTI Idents 1993-2011 (kompilasi)", cat: "Jingle & Ident", st: "RCTI" },
+  { id: "gA-TRhUrbBQ", title: "Iklan Jadul Part 6 (1989-1997) + ident RCTI 1990 (kompilasi)", cat: "Iklan Jadul", st: "RCTI" },
 ];

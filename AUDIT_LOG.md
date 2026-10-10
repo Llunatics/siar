@@ -730,3 +730,16 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 - **Next:** Lanjut siklus 51+ (katalog + produk bergantian).
 
 **Total siklus tercatat: 50**
+
+---
+
+## Siklus 51 — 2026-10-11 08:48 WIB — Batch YouTube ident RCTI: +3 entri
+
+- **Area:** Katalog (360 → **363**).
+- **Metode:** 1 web search → 6 kandidat → oEmbed → cek duplikat → review.
+- **Hasil:** **3 YA** (bumper RCTI 1993-2000, kompilasi idents 1993-2011, kompilasi iklan+ident 1989-1997).
+  3 duplikat. Ditolak: 2 remake AI/animasi, backsound saja, dokumenter, parodi. Probe DM: masih 000.
+- **Test:** append → 363 entri unik; smoke 18/18 PASS.
+- **Next:** Lanjut produk.
+
+**Total siklus tercatat: 51**
