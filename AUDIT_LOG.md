@@ -461,3 +461,28 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 - **Next:** Batch katalog berikutnya.
 
 **Total siklus tercatat: 31**
+
+---
+
+## Siklus 32 — 2026-10-11 05:30 WIB — Modal bantuan: tambah H + tahan-tombol
+
+- **Area:** `index.html` (help modal).
+- **Masalah:** Modal "SHORTCUT KEYBOARD" tidak mencantumkan `H` itu sendiri dan tidak mendokumentasikan fitur tahan CH±/VOL± (Siklus 20).
+- **Severity:** Rendah (dimensi 5/6).
+- **Implementasi:** Dua baris baru di tabel: `H` → Bantuan; `Tahan CH±/VOL±` → pindai beruntun.
+- **Test:** smoke 18/18 PASS.
+- **Next:** Batch katalog.
+
+**Total siklus tercatat: 32**
+
+---
+
+## Siklus 33 — 2026-10-11 05:42 WIB — Batch YouTube Tsubasa/Conan: +3 entri
+
+- **Area:** Katalog (323 → **326**).
+- **Metode:** 2 web search → 4 kandidat → oEmbed → review.
+- **Hasil:** **3 YA** (2 opening Captain Tsubasa versi Indonesia; Opening Detective Conan Indonesia HQ), **1 SKIP** (judul oEmbed kosong). Ditolak di search: 5 cover, karaoke, episode, AMV, AI cover.
+- **Test:** append → 326 entri unik; smoke 18/18 PASS.
+- **Next:** Cek verify DM (ident ~selesai); batch berikutnya.
+
+**Total siklus tercatat: 33**

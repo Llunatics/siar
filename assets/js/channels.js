@@ -347,4 +347,7 @@ const CHANNELS = [
   { id: "KO0F37GrAs8", title: "Sailor Moon First Opening HQ (Indonesian)", cat: "Opening Kartun", st: "Indosiar" },
   { id: "hxiHcrjguqs", title: "Opening NINJA HATTORI RETURNS (2012) Dub Indo RCTI", cat: "Opening Kartun", st: "RCTI" },
   { id: "ZJDzcFexjC4", title: "Opening Ninja Hattori RCTI HD", cat: "Opening Kartun", st: "RCTI" },
+  { id: "82W757o3WNU", title: "Captain Tsubasa Opening Song Indonesia", cat: "Opening Kartun", st: "Multi-Stasiun" },
+  { id: "q2K27Xe_0ag", title: "Captain Tsubasa Road to 2002 - Opening Song Indonesia", cat: "Opening Kartun", st: "Multi-Stasiun" },
+  { id: "EduzdyF08qc", title: "Opening Detective Conan Indonesia (Sound High Quality)", cat: "Opening Kartun", st: "Multi-Stasiun" },
 ];
