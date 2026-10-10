@@ -668,4 +668,5 @@ const CHANNELS = [
   { id: "aJLXXtj7WIY", title: "Station ID RTV 11 Tahun (Mei 2025)", cat: "Jingle & Ident", st: "RTV" },
   { id: "9W7USJBGGI4", title: "Iklan Sabun Lux (1987)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "1hjcFDlqYyc", title: "Iklan Sunsilk Rumput Laut - Kilau Selembut Sutera (1993) @ RCTI, TPI, SCTV, & ANteve", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "igXUnuiqF4s", title: "Kompilasi Iklan Produk ABC Heinz Indonesia Remastered (Ikan Sarden, Sirup, Jus & Terasi Udang)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
