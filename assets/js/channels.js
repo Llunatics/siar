@@ -619,4 +619,5 @@ const CHANNELS = [
   { id: "XZgN3THGHsc", title: "opening Jelita Indosiar 1998", cat: "Sinetron & Acara TV", st: "Indosiar" },
   { id: "_Rs3a7PTj_M", title: "Jeda Iklan Indosiar edisi 12 Januari 1995 (feat. Iklan Kapal Api tahun 1994)", cat: "Iklan Jadul", st: "Indosiar" },
   { id: "Xw7YMSC9EY0", title: "Opening Extravaganza Trans TV (2006)", cat: "Sinetron & Acara TV", st: "Trans TV" },
+  { id: "glCa9gv8WnA", title: "Arsip Iklan Kompilasi Eps.05 - Iklan Tahun 1996-1998", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
