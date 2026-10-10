@@ -93,7 +93,7 @@ Sorotan katalog: Shaun the Sheep, Upin & Ipin, Marsupilami, Curious George, The 
 
 | Kelompok | Isi |
 | --- | --- |
-| Bentuk TV | 9 chassis (dengan preview bentuk), 8 finishing, rasio 4:3 / 16:9 |
+| Bentuk TV | 10 chassis (dengan preview bentuk), 8 finishing, rasio 4:3 / 16:9 |
 | Remote | Mode Mengarah ke TV / Datar, bunyi klik, getar |
 | Efek Layar | VHS, scanline + intensitas, noise, kelengkungan kaca, flicker, kecerahan/kontras/warna |
 | Sinyal | Antena interaktif / Selalu bersih / Acak per channel |

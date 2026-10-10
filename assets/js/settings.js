@@ -83,7 +83,11 @@ var PNStore = (function () {
   function saveWatched() { saveJSON(WKEY, watched); }
 
   function resetAll() {
-    settings = Object.assign({}, DEFAULTS);
+    // Reset WAJIB in-place: objek yang diekspor (PNStore.settings) dirujuk
+    // oleh app.js; mengganti variabel lokal membuat ekspornya basi dan
+    // reset tidak berlaku sampai halaman dimuat ulang.
+    Object.keys(settings).forEach(function (k) { delete settings[k]; });
+    Object.assign(settings, DEFAULTS);
     favorites = [];
     customs = [];
     watched = [];

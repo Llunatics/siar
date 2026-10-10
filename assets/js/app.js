@@ -674,6 +674,11 @@
     });
   }
 
+  function vpFallbackDm(ch) {
+    els.playerBox.innerHTML = '<iframe src="https://www.dailymotion.com/embed/video/' +
+      encodeURIComponent(ch.id) + '?autoplay=1" allow="autoplay; fullscreen" allowfullscreen title=""></iframe>';
+    vpPlaying = true;
+  }
   function vpLoadDm(ch) {
     vpMode = "dm"; vpSetBox();
     vpTeardown("dm");
@@ -682,8 +687,9 @@
       apiLoading.dm = true;
       vpInject("https://api.dmcdn.net/all.js", function (ok) {
         if (ok && vpMode === "dm" && list.length) buildDm(cur());
+        else if (!ok) { apiLoading.dm = false; if (vpMode === "dm" && list.length) vpFallbackDm(cur()); }
       });
-    }
+    } else if (!window.DM) { vpFallbackDm(ch); }
   }
   function buildDm(ch) {
     els.playerBox.innerHTML = "";
@@ -725,6 +731,19 @@
       apiLoading.vm = true;
       vpInject("https://player.vimeo.com/api/player.js", function (ok) {
         if (ok && vpMode === "vimeo" && list.length) buildVm(cur());
+        else if (!ok) {
+          apiLoading.vm = false;
+          if (vpMode === "vimeo" && list.length) {
+            var f = document.createElement("iframe");
+            f.src = "https://player.vimeo.com/video/" + encodeURIComponent(cur().id) + "?autoplay=1";
+            f.setAttribute("allow", "autoplay; fullscreen");
+            f.setAttribute("allowfullscreen", "");
+            f.title = cur().title;
+            els.playerBox.innerHTML = "";
+            els.playerBox.appendChild(f);
+            vpPlaying = true;
+          }
+        }
       });
     }
   }
