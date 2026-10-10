@@ -601,4 +601,8 @@ const CHANNELS = [
   { id: "x0NNmSoEyxk", title: "Jeda Iklan Ke 124 Trans7 2013", cat: "Iklan Jadul", st: "Trans7" },
   { id: "5ufdRiP3qN4", title: "Jeda iklan B channel (13 maret 2014)", cat: "Iklan Jadul", st: "B Channel" },
   { id: "1nvY_kJVF7Y", title: "Jeda Iklan Trans 7 (3 Mei 2013)", cat: "Iklan Jadul", st: "Trans7" },
+  { id: "xfHOWcSQFUk", title: "Jeda Iklan Ke 129 Sindo TV 2015", cat: "Iklan Jadul", st: "Sindo TV" },
+  { id: "j6yM40jjILc", title: "Jeda Iklan RCTI (20 Februari 2015)", cat: "Iklan Jadul", st: "RCTI" },
+  { id: "jrphbD7LWnA", title: "Jeda Iklan NET. (18 Februari 2015)", cat: "Iklan Jadul", st: "NET." },
+  { id: "zlX_FIlOSdw", title: "Jeda Iklan Trans TV (24 April 2015)", cat: "Iklan Jadul", st: "Trans TV" },
 ];
