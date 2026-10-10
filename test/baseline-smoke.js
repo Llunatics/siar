@@ -109,11 +109,19 @@ const driver = `
     assert(!doc.querySelector("#guideSheet").hidden, "guide tidak terbuka");
     var n0 = doc.querySelectorAll("#guideList li").length;
     assert(n0 > 0 && n0 <= 320, "chunk awal=" + n0);
-    // scroll -> sisa termuat
+    // Muat SEMUA chunk (klik tombol MUAT + scroll) sampai tidak bertambah —
+    // satu scroll event hanya memuat satu chunk berikutnya.
     var sh = doc.querySelector("#guideSheet");
-    sh.scrollTop = sh.scrollHeight;
-    sh.dispatchEvent(new Event("scroll", { bubbles: true }));
-    var n1 = doc.querySelectorAll("#guideList li").length;
+    var guard = 0, prev = -1, n1 = n0;
+    while (guard++ < 20) {
+      var mb = doc.querySelector("#guideMore");
+      if (mb) mb.click();
+      sh.scrollTop = sh.scrollHeight;
+      sh.dispatchEvent(new Event("scroll", { bubbles: true }));
+      n1 = doc.querySelectorAll("#guideList li").length;
+      if (n1 === prev) break;
+      prev = n1;
+    }
     assert(n1 >= CHANNELS.length, "total item=" + n1 + " vs katalog " + CHANNELS.length);
   });
   check("Guide: search menyaring", function () {

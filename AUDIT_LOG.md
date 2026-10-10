@@ -797,3 +797,26 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 - **Next:** Lanjut katalog/produk sampai 12:00 WIB.
 
 **Total siklus tercatat: 55**
+
+---
+
+## Siklus 56 — 2026-10-11 04:12 WIB — Batch YouTube iklan obat: +10 entri + perbaiki test guide
+
+- **Area:** Katalog (364 → **374**) + `test/baseline-smoke.js` (test harness).
+- **Katalog:** 2 web search → 11 kandidat → oEmbed → cek duplikat → review.
+  **10 YA** (Konidin 1994, AnaKonidin 1998, Komix-Titiek Puspa 1993, Protecal 1999,
+  IPI Vitamin 1998, HIT 1999, Aladina 1998, Fitkom 1997, Neozep 1998, jeda iklan RCTI 1992).
+  1 SKIP (near-duplikat: judul oEmbed identik). 1 iklan radio di-skip (bukan TV).
+- **Bug test ditemukan:** smoke 17/18 — test guide mengasumsikan SATU scroll event
+  memuat seluruh katalog; dengan 374 entri, satu event hanya tambah 1 chunk (160).
+  **Bukan bug produk** (infinite scroll nyata bekerja — guide-chunk 7/7).
+  **Fix:** test kini klik `#guideMore` + scroll berulang sampai item tak bertambah.
+- **Test:** smoke 18/18 PASS (setelah fix); append → 374 entri unik.
+- **Next:** Lanjut.
+
+**Total siklus tercatat: 56**
+
+> **Koreksi waktu (04:01 WIB):** timestamp siklus 33–55 di atas adalah estimasi dan
+> ternyata kelebihan ±5 jam. Waktu terverifikasi saat siklus 55: **2026-10-11 04:01 WIB**
+> (`date` sistem). Mulai siklus 56, timestamp memakai jam sistem yang benar.
+> Deadline tetap 2026-10-11 12:00 WIB (±8 jam lagi).
