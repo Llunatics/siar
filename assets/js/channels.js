@@ -485,4 +485,5 @@ const CHANNELS = [
   { id: "oN-Obg9Ad6A", title: "OPENING RANMA 1/2 BAHASA INDONESIA HD +LIRIK (opening asli RCTI 1997)", cat: "Opening Kartun", st: "RCTI" },
   { id: "kpPXvG30Biw", title: "Nostalgia Lagu Opening Anime & Tokusatsu Bahasa Indonesia Tahun 90an - 2000an", cat: "Opening Kartun", st: "Multi-Stasiun" },
   { id: "s_p1wK8J9Sw", title: "Medley Lagu Opening Kartun 90an!", cat: "Opening Kartun", st: "Multi-Stasiun" },
+  { id: "djmqoAO82rY", title: "P Man Opening Bahasa Indonesia", cat: "Opening Kartun", st: "RCTI" },
 ];

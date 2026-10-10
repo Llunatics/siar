@@ -1714,6 +1714,20 @@ memakai jam terverifikasi. Stop condition deadline 12:00 WIB → tersisa ±7 jam
 
 **Total siklus tercatat: 119**
 
+---
+
+## Siklus 120 — 2026-10-11 ~06:02 WIB — Batch YouTube P-Man: +1 entri
+
+- **Area:** Katalog (461 → **462**).
+- **Metode:** 1 web search + 1 URL dari situs download → 4 kandidat → oEmbed
+  (1 REVIEW regex "lirik", disetujui manual: opening asli + lirik overlay).
+- **Hasil:** **1 YA** (P Man Opening Bahasa Indonesia). 4 duplikat.
+  Ditolak: 1 parodi, 1 karaoke cover.
+- **Test:** append → 462 entri unik; smoke 18/18 PASS.
+- **Next:** Lanjut.
+
+**Total siklus tercatat: 120**
+
 > **Koreksi waktu (04:01 WIB):** timestamp siklus 33–55 di atas adalah estimasi dan
 > ternyata kelebihan ±5 jam. Waktu terverifikasi saat siklus 55: **2026-10-11 04:01 WIB**
 > (`date` sistem). Mulai siklus 56, timestamp memakai jam sistem yang benar.
