@@ -1150,10 +1150,28 @@
   Array.prototype.forEach.call(document.querySelectorAll("[data-digit]"), function (b) {
     b.addEventListener("click", function () { pushDigit(b.getAttribute("data-digit")); });
   });
-  $("remChUp").addEventListener("click", function () { if (powered) nextChannel(); });
-  $("remChDn").addEventListener("click", function () { if (powered) prevChannel(); });
-  $("remVolUp").addEventListener("click", function () { bumpVolume(5); });
-  $("remVolDn").addEventListener("click", function () { bumpVolume(-5); });
+  // Tahan tombol = mengulang (seperti remote asli): tekan-sekali jalan normal,
+  // pointerdown menandai agar klik berikutnya tidak menggandakan aksi.
+  function holdRepeat(id, fn, delay, rate) {
+    var el = $(id), t1 = null, t2 = null;
+    el.addEventListener("click", function () {
+      if (el._suppress) { el._suppress = false; return; }
+      fn();
+    });
+    el.addEventListener("pointerdown", function () {
+      el._suppress = true;
+      fn();
+      t1 = setTimeout(function () { t2 = setInterval(fn, rate); }, delay);
+    });
+    function stop() { clearTimeout(t1); clearInterval(t2); t1 = t2 = null; }
+    el.addEventListener("pointerup", stop);
+    el.addEventListener("pointercancel", stop);
+    el.addEventListener("pointerleave", stop);
+  }
+  holdRepeat("remChUp", function () { if (powered) nextChannel(); }, 450, 350);
+  holdRepeat("remChDn", function () { if (powered) prevChannel(); }, 450, 350);
+  holdRepeat("remVolUp", function () { bumpVolume(5); }, 450, 130);
+  holdRepeat("remVolDn", function () { bumpVolume(-5); }, 450, 130);
   $("remRandom").addEventListener("click", function () { if (powered) randomChannel(); });
   $("remFav").addEventListener("click", function () { els.favBtn.click(); });
   $("remGuide").addEventListener("click", function () { openSheet("guide"); });

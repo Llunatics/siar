@@ -297,3 +297,28 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 - **Next:** Batch ident stasiun lain (SCTV/TPI/Indosiar/ANTV); pantau verify DM.
 
 **Total siklus tercatat: 18**
+
+---
+
+## Siklus 19 — 2026-10-11 05:50 WIB — Regression pass (rentang siklus 6–18)
+
+- **Area:** Seluruh fungsi tersentuh: settings.js (konfirmasi reset), app.js (shortcut guard, guide chunked, reduced-motion), style.css (CRT glass, a11y), channels.js (296 entri), scripts/review.py (merge).
+- **Test:** `baseline-smoke.js` 18/18 PASS · `guide-chunk.js` 7/7 PASS · `remote-click.js` 18/18 PASS (klik sungguhan, headless Chromium).
+- **Hasil:** Semua hijau. Tidak ada regresi.
+- **Next:** Siklus produk berikutnya / batch katalog.
+
+**Total siklus tercatat: 19**
+
+---
+
+## Siklus 20 — 2026-10-11 06:05 WIB — Remote: tahan CH±/VOL± mengulang (hold-repeat)
+
+- **Area:** `assets/js/app.js` (remote), `test/hold-repeat.js` (baru).
+- **Masalah:** Tahan tombol CH±/VOL± tidak mengulang — remote asli memindai channel & volume saat ditahan.
+- **Severity:** Sedang (dimensi 8).
+- **Implementasi:** Helper `holdRepeat(id, fn, delay, rate)`: pointerdown → aksi sekali + timer (450ms delay; CH 350ms, VOL 130ms — CH lebih longgar karena `tuneTo` berat/iframe swap); klik keyboard/tunggal tetap 1 aksi via flag `_suppress` (tanpa pointerdown = tanpa supresi).
+- **Test:** `test/hold-repeat.js` (klik sungguhan jsdom + PointerEvent): 4/4 PASS — TV nyala, klik tunggal 1 langkah, tahan CH+ mengulang, tahan VOL+ +20. `remote-click.js` 18/18 PASS (tidak regresi).
+- **Before/after:** Dimensi 8: 7.5→8.
+- **Next:** Batch katalog berikutnya.
+
+**Total siklus tercatat: 20**
