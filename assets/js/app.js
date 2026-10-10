@@ -592,7 +592,7 @@
   function osdRender(main, sub, sub2) {
     els.osd.innerHTML = esc(main) +
       (sub ? "<small>" + esc(sub) + "</small>" : "") +
-      (sub2 ? "<small>" + esc(sub2) + "</small>" : "");
+      (sub2 ? '<small class="dim">' + esc(sub2) + "</small>" : "");
     els.osd.classList.add("show");
     clearTimeout(osdTimer);
     osdTimer = setTimeout(function () { els.osd.classList.remove("show"); }, 2400);

@@ -269,7 +269,8 @@ body {
   opacity: 0; transition: opacity .25s;
 }
 #osd.show { opacity: 1; }
-#osd small { display: block; font-size: .55em; letter-spacing: .08em; margin-top: 4px; }
+#osd small { display: block; font-size: .62em; letter-spacing: .08em; margin-top: 4px; }
+#osd small.dim { font-size: .45em; opacity: .72; }
 
 .scanlines {
   position: absolute; inset: 0; z-index: 6; pointer-events: none;

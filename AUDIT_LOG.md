@@ -486,3 +486,29 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 - **Next:** Cek verify DM (ident ~selesai); batch berikutnya.
 
 **Total siklus tercatat: 33**
+
+---
+
+## Siklus 34 — 2026-10-11 05:48 WIB — Hierarki tipografi OSD (judul vs info tersier)
+
+- **Area:** `assets/js/app.js` (`osdRender`), `assets/css/style.css` (`#osd`).
+- **Masalah:** Dua baris `<small>` OSD (judul siaran & info sinyal) berukuran sama — tidak ada diferensiasi visual.
+- **Severity:** Rendah (dimensi 6).
+- **Implementasi:** Baris ketiga jadi `<small class="dim">` (`.45em`, opacity `.72`); judul naik ke `.62em`.
+- **Test:** smoke 18/18 PASS.
+- **Before/after:** Dimensi 6: 7.5→7.7.
+- **Next:** Batch katalog.
+
+**Total siklus tercatat: 34**
+
+---
+
+## Siklus 35 — 2026-10-11 05:58 WIB — Batch YouTube iklan sabun 90an: +6 entri
+
+- **Area:** Katalog (326 → **332**).
+- **Metode:** 1 web search → 6 kandidat → oEmbed → review.
+- **Hasil:** **6 YA** (Lifebuoy 1995, Cussons 1997, Lux-Tamara 1997/98, Giv-Sophia Latjuba 2001, Purbasari 2009, kompilasi 9 iklan shampo 90an). **Pelajaran:** 2 ID sempat salah label dari hasil search (mapping indeks bergeser) — tertangkap karena judul oEmbed dijadikan acuan, bukan judul discovery.
+- **Test:** append → 332 entri unik; smoke 18/18 PASS.
+- **Next:** Cek verify DM; batch berikutnya.
+
+**Total siklus tercatat: 35**

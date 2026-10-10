@@ -350,4 +350,10 @@ const CHANNELS = [
   { id: "82W757o3WNU", title: "Captain Tsubasa Opening Song Indonesia", cat: "Opening Kartun", st: "Multi-Stasiun" },
   { id: "q2K27Xe_0ag", title: "Captain Tsubasa Road to 2002 - Opening Song Indonesia", cat: "Opening Kartun", st: "Multi-Stasiun" },
   { id: "EduzdyF08qc", title: "Opening Detective Conan Indonesia (Sound High Quality)", cat: "Opening Kartun", st: "Multi-Stasiun" },
+  { id: "Y2h1NOGZ860", title: "Iklan Sabun Lifebuoy tahun 1995", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "Ho5qHZMxGOI", title: "Iklan Sabun Cussons tahun 1997", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "amsPW15qfDI", title: "Iklan Lux Beauty Soap - Seleras Tamara (1997-98)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "-I-OrJFYbY4", title: "Iklan Sabun Giv - Sophia Latjuba, Kain Alami (2001)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "yQn_noPdF90", title: "Iklan Purbasari Sabun Sirih - Bikin Nyaman Pede (2009)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "7nQD0G5RcGM", title: "9 Iklan Shampo Tahun 90an (kompilasi)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
