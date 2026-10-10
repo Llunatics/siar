@@ -348,3 +348,29 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 - **Next:** Batch Indosiar/ANTV; pantau verify DM ident (berjalan).
 
 **Total siklus tercatat: 22**
+
+---
+
+## Siklus 23 — 2026-10-11 04:02 WIB — Performa: throttle timer jam dinding
+
+- **Area:** `assets/js/app.js` (`updateClock`, `applySettings`).
+- **Masalah:** `updateClock` menulis DOM tiap 1 detik SELALU — bahkan saat tab hidden (buang siklus) dan saat jam tak terlihat (di luar Mode Imersif).
+- **Severity:** Rendah (dimensi 10; backlog: "matikan timer saat idle").
+- **Implementasi:** Return awal bila `document.hidden`; di luar imersif update maksimal tiap 30 detik; `els._clkStamp` di-reset saat mode imersif berubah agar jam langsung akurat.
+- **Test:** smoke 18/18 PASS; `node --check` OK.
+- **Before/after:** Dimensi 10: 7.5→7.8.
+- **Next:** Batch Indosiar/ANTV; pantau verify DM.
+
+**Total siklus tercatat: 23**
+
+---
+
+## Siklus 24 — 2026-10-11 04:15 WIB — Batch YouTube Indosiar/ANTV: +11 entri
+
+- **Area:** Katalog (307 → **318**).
+- **Metode:** 2 web search → 21 kandidat → oEmbed → review manusia ketat.
+- **Hasil:** **11 YA** (Indosiar: ID 1998 ikan terbang, ID pertama 11 Jan 1995, Semarak 1995 Warkop DKI, Siaran Perdana, iklan Pondok Pak Djon, promo PESTA, closing Kuis Persembahanku; ANTV: 3 station ID ANteve 1993 + dokumenter siaran perdana), **10 SKIP** (oEmbed gagal, demo reel, MV modern, episode, bukan siaran Indonesia, 3 near-duplikat, 2 judul kosong).
+- **Test:** append → 318 entri unik; smoke 18/18 PASS.
+- **Next:** Batch kartun (Doraemon lanjutan?) / pantau verify DM.
+
+**Total siklus tercatat: 24**

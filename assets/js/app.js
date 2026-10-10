@@ -161,6 +161,7 @@
     setChk("setClock", S.roomClock);
     setChk("setBug", S.stationBug);
     document.body.classList.toggle("immersive", !!S.immersive);
+    els._clkStamp = 0; // paksa refresh jam saat mode berubah
     document.body.classList.toggle("clock-off", !S.roomClock);
     refreshBug();
 
@@ -1339,8 +1340,15 @@
   /* ================= Jam dinding ruangan (WIB) ================= */
   function updateClock() {
     if (!els.clockDigital) return;
+    if (document.hidden) return; // tab tidak terlihat: jangan buang siklus
     var now = wibNow();
     var hh = now.getHours(), mm = now.getMinutes(), ss = now.getSeconds();
+    var stamp = hh * 3600 + mm * 60 + ss;
+    // Di luar Mode Imersif jam tidak terlihat: cukup update tiap 30 detik
+    // agar tidak stale saat user masuk imersif.
+    var vis = document.body.classList.contains("immersive");
+    if (!vis && els._clkStamp && stamp - els._clkStamp < 30) return;
+    els._clkStamp = stamp;
     els.clockDigital.textContent = pad(hh) + ":" + pad(mm) + " WIB";
     if (els.clockH) els.clockH.style.transform = "translateX(-50%) rotate(" + ((hh % 12) * 30 + mm * 0.5) + "deg)";
     if (els.clockM) els.clockM.style.transform = "translateX(-50%) rotate(" + (mm * 6 + ss * 0.1) + "deg)";
