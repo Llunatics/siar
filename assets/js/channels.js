@@ -592,4 +592,8 @@ const CHANNELS = [
   { id: "AqdV_s68OcI", title: "Jeda Iklan TPI (April 2010)", cat: "Iklan Jadul", st: "TPI" },
   { id: "y9GLuaIB3mo", title: "Jeda Iklan Trans TV (April 2009) | Part 1", cat: "Iklan Jadul", st: "Trans TV" },
   { id: "lVX-9C-vb6k", title: "Jeda Iklan TVRI (11 Desember 2009)", cat: "Iklan Jadul", st: "TVRI" },
+  { id: "6QOee8EAKc0", title: "Jeda Iklan Ke 122 Indosiar 2012", cat: "Iklan Jadul", st: "Indosiar" },
+  { id: "OHaVoSmyHUw", title: "Jeda Iklan Trans 7 (17 Agustus 2012)", cat: "Iklan Jadul", st: "Trans7" },
+  { id: "4-t6fkJ5JGM", title: "Jeda Iklan SCTV (07/07/2011) | Partially", cat: "Iklan Jadul", st: "SCTV" },
+  { id: "z1E6GaDFtJM", title: "Jeda Iklan Trans7 - (Juni 2011)", cat: "Iklan Jadul", st: "Trans7" },
 ];
