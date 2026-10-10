@@ -643,4 +643,7 @@ const CHANNELS = [
   { id: "gpOqtWjQb9M", title: "Iklan Kursus Bahasa Inggris di Denpasar - EC (2016)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "yrwgyZoVm6w", title: "Iklan  Shampoo Clear feat. Ferry Irawan & Iqbal Pakula (1998)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "B9rlqeUr07g", title: "Iklan Sunsilk Intensive Conditioning - Sehat Lembut Indah Berkilau (1994) @ RCTI, TPI, & SCTV", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "m4ScTvVrRW0", title: "Garuda Indonesia TVC", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "wIsriymFSPo", title: "Iklan Garuda Indonesia  - Kesibukan 30s  (2002) @ Indosiar & Metro TV", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "eQWbOTWIqno", title: "Garuda Indonesia Ad - 1992", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];

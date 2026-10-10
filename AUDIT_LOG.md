@@ -3468,3 +3468,16 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 249**
 
 ---
+
+## Siklus 250 — 2026-10-11 06:33 WIB — Batch YouTube shampoo: +2 entri (617→619)
+
+- **Area:** Katalog (iklan shampoo).
+- **Metode:** web search -> 8 kandidat -> oEmbed (2 OK baru, 6 DUP).
+- **Hasil:** 2 YA (Clear 1998, Sunsilk 1994).
+- **Test:** append -> 619 unik; smoke 18/18 PASS (dari 248).
+- **Commit:** lokal.
+- **Next:** Lanjut.
+
+**Total siklus tercatat: 250**
+
+---
