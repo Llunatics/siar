@@ -619,3 +619,20 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 - **Next:** Batch berikutnya.
 
 **Total siklus tercatat: 42**
+
+---
+
+## Siklus 43 — 2026-10-11 07:32 WIB — Remote terpotong 30px di bawah viewport
+
+- **Area:** `assets/css/style.css` (`.remote.point.open`).
+- **Masalah & bukti:** Screenshot QA tunjukkan bawah remote (slider volume) terpotong.
+  Ukur headless 1366×768: `panelBottom=798 > vh=768`; penyebab: `translate(-50%, 5%)`
+  (= +30px) pada rule `.remote.point.open` yang meng-override `.remote.open`.
+- **Severity:** Sedang (dimensi 4; kontrol volume tak terlihat penuh).
+- **Implementasi:** `translate(-50%, 5%)` → `translate(-50%, 0)`; estetika tilt perspektif dipertahankan.
+- **Test:** Ukur ulang: `panelBottom=768` (pas); screenshot `shots/tmp-remote43c.png`
+  konfirmasi visual; `remote-click.js` 18/18 PASS, 0 pageerror.
+- **Before/after:** Dimensi 4: 8.0→8.2.
+- **Next:** Lanjut katalog.
+
+**Total siklus tercatat: 43**

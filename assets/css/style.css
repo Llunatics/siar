@@ -937,7 +937,7 @@ kbd {
 /* ---------- Remote: mode mengarah ke TV ---------- */
 .remote.point { transform: translate(-50%, 112%) perspective(950px) rotateX(30deg); }
 .remote.point.open {
-  transform: translate(-50%, 5%) perspective(950px) rotateX(34deg) scale(.97);
+  transform: translate(-50%, 0) perspective(950px) rotateX(34deg) scale(.97);
   transform-origin: 50% 100%;
 }
 .remote-led-wrap { position: relative; }
