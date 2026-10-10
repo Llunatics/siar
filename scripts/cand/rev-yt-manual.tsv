@@ -65,7 +65,7 @@ YA	OK	yt	A-5VYS_nKV4	[closing] Kuis Persembahanku |Tantowi Yahya |AB Three |Mus 
 	OK	yt	DTSDU18D5z0	Station ID ANteve (1993 - 1994)	Station ID ANteve (1993-1994)			sudah di katalog (duplikat)	web: ident ANTV
 YA	OK	yt	aWZ0tqL8YLg	Sangat Rare & Langka - STation ID ANteve Januari/Februari 1993	Station ID ANteve Januari/Februari 1993 (langka)	Jingle & Ident	ANTV		web: ident ANTV
 	OK	yt	ofJGLLmfezs	Station ID ANteve (1993)	Station ID ANteve (1993)			SKIP: near-duplikat Station ID ANteve 1993 (sudah 3 varian di katalog)	web: ident ANTV
-	OK	yt	ZIosLrbq5qc	Station ID ANteve (1993)	Station ID ANteve (1993) alt			SKIP: near-duplikat Station ID ANteve 1993 (sudah 3 varian di katalog)	web: ident ANTV
+YA	OK	yt	ZIosLrbq5qc	Station ID ANteve (1993)	Station ID ANteve (1993) alt	Jingle & Ident	ANTV	review manual: ANteve 1993 terverifikasi	web: ident ANTV
 YA	OK	yt	vfQesy3oWdo	Station ID ANTEVE (Sekarang ANTV) Lampung 1993 #28TahunJejakWaktuANTV	Station ID ANTEVE Lampung 1993 (full)	Jingle & Ident	ANTV	sudah di katalog (duplikat)	web: ident ANTV
 YA	OK	yt	-kkcqnR2DLg	Station ID ANteve (Sekarang ANTV) 1993	Station ID ANteve (Sekarang ANTV) 1993	Jingle & Ident	ANTV	sudah di katalog (duplikat)	web: ident ANTV
 	OK	yt	M9SLsxRUj6o	Station ID ANteve (1994) @ANTV_Official @akamearsip& @museumpenyiaranindo	Station ID ANteve (1994)			sudah di katalog (duplikat)	web: ident ANTV
@@ -220,7 +220,7 @@ YA	OK	yt	ddtIgYD9M2w	Iklan Permen Kis (Sekitar 1997)	Iklan Permen Kis (Sekitar 1
 	OK	yt	DTSDU18D5z0	Station ID ANteve (1993 - 1994)	Station ID ANteve (1993 - 1994)			sudah di katalog (duplikat)	web: ident
 	OK	yt	M9SLsxRUj6o	Station ID ANteve (1994) @ANTV_Official @akamearsip& @museumpenyiaranindo	Station ID ANteve (1994)			sudah di katalog (duplikat)	web: ident
 YA	OK	yt	626sgjmaXDw	Logo Animasi Bumper RCTI (1993-2000)	Logo Animasi Bumper RCTI (1993-2000)	Jingle & Ident	RCTI	sudah di katalog (duplikat)	web: ident
-	OK	yt	ZIosLrbq5qc	Station ID ANteve (1993)	Station ID ANteve (1993)			SKIP: near-duplikat Station ID ANteve 1993 (sudah 3 varian di katalog)	web: ident
+YA	OK	yt	ZIosLrbq5qc	Station ID ANteve (1993)	Station ID ANteve (1993)	Jingle & Ident	ANTV	review manual: ANteve 1993 terverifikasi	web: ident
 	OK	yt	8nIC7LzTFhE	Station ID TPI (1992)	Station ID TPI (1992)			sudah di katalog (duplikat)	web: ident
 	OK	yt	ofJGLLmfezs	Station ID ANteve (1993)	Station ID ANteve (1993)			SKIP: near-duplikat Station ID ANteve 1993 (sudah 3 varian di katalog)	web: ident
 YA	OK	yt	cOIRv-JOxYQ	Station ID TVRI Programa 2 Surabaya (1990 - 1999)	Station ID TVRI Programa 2 Surabaya (1990-1999)	Jingle & Ident	TVRI		web: ident
@@ -533,3 +533,4 @@ YA	OK	yt	wxZNtiIECgA	Spacetoon Indonesia - Opening Planet Adventure (new version
 YA	OK	yt	idfCFkHhqxM	Ocha-Ken (Anjing Teh) Intro & Ending - Filler Iklan Kartun SpaceToon Indonesia	Ocha-Ken Intro & Ending - Spacetoon Indonesia	Opening Kartun	Spacetoon	review manual: spacetoon terverifikasi	spacetoon opening
 YA	OK	yt	US0fy6ye0VI	Spacetoon Indonesia - Opening Planet Sport (New Version)	Spacetoon Indonesia - Opening Planet Sport	Jingle & Ident	Spacetoon	review manual: spacetoon terverifikasi	spacetoon opening
 YA	OK	yt	9REG34SFGaw	opening web diver dubbing indonesia spacetoon	opening web diver dubbing indonesia spacetoon	Opening Kartun	Spacetoon	review manual: spacetoon terverifikasi	spacetoon opening
+YA	OK	yt	ZIosLrbq5qc	Station ID ANteve (1993)	Station ID ANteve (1993)	Jingle & Ident	ANTV	review manual: ANteve 1993 terverifikasi	station ident anteve

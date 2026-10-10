@@ -628,4 +628,5 @@ const CHANNELS = [
   { id: "idfCFkHhqxM", title: "Ocha-Ken (Anjing Teh) Intro & Ending - Filler Iklan Kartun SpaceToon Indonesia", cat: "Opening Kartun", st: "Spacetoon" },
   { id: "US0fy6ye0VI", title: "Spacetoon Indonesia - Opening Planet Sport (New Version)", cat: "Jingle & Ident", st: "Spacetoon" },
   { id: "9REG34SFGaw", title: "opening web diver dubbing indonesia spacetoon", cat: "Opening Kartun", st: "Spacetoon" },
+  { id: "ZIosLrbq5qc", title: "Station ID ANteve (1993)", cat: "Jingle & Ident", st: "ANTV" },
 ];
