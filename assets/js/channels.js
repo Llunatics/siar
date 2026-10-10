@@ -669,4 +669,7 @@ const CHANNELS = [
   { id: "9W7USJBGGI4", title: "Iklan Sabun Lux (1987)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "1hjcFDlqYyc", title: "Iklan Sunsilk Rumput Laut - Kilau Selembut Sutera (1993) @ RCTI, TPI, SCTV, & ANteve", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "igXUnuiqF4s", title: "Kompilasi Iklan Produk ABC Heinz Indonesia Remastered (Ikan Sarden, Sirup, Jus & Terasi Udang)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "4fSG4oHAcIY", title: "Ada Kelezatan Ajaib.. | Iklan Gaga Sarden (1994 - awal 2000an)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "JdumJbkj9LU", title: "Iklan Gaga Corned Beef - Kelezatan Kornet Sapi (1994) @ RCTI, TPI, SCTV, & ANteve", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "9CogQVpYelE", title: "Iklan Sarden ABC - Berkemah Alam (2000) @ RCTI, Indosiar, TPI, SCTV, & ANteve", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
