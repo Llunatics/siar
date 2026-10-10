@@ -2593,3 +2593,18 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 184**
 
 ---
+
+## Siklus 185 — 2026-10-11 05:39 WIB — Discovery IA batch 2 (kategori tipis): +0 entri
+
+- **Area:** Katalog (tokusatsu/sinetron/ident via 8 kueri IA baru).
+- **Metode:** `discover.py --source ia` (12 kandidat) → `review.py verify`
+  (9 OK, 3 REVIEW) → review manusia judul-per-judul + metadata IA.
+- **Hasil:** 0 baru. Ditolak: unboxing, film 1977, DBZ cassette (duplikat konten),
+  seri Bima full (bukan opening), partial dub, arsip .7z, album audio,
+  siaran 2026, blog, ceramah. Trailer Masked Rider 555 metadata gagal → SKIP.
+- **Test:** Tidak ada append → tidak perlu smoke.
+- **Next:** Batch IA ke-3 / YT manual untuk tokusatsu.
+
+**Total siklus tercatat: 185**
+
+---
