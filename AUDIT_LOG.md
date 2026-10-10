@@ -3506,3 +3506,28 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 252**
 
 ---
+
+## Siklus 253 — 2026-10-11 06:34 WIB — Batch YouTube minuman: +1 entri (622→623)
+
+- **Area:** Katalog (iklan minuman).
+- **Metode:** web search -> 2 kandidat -> oEmbed (1 OK baru, 1 DUP).
+- **Hasil:** 1 YA (Kompilasi Teh Botol Sosro).
+- **Test:** append -> 623 unik; smoke 18/18 PASS (dari 248).
+- **Commit:** lokal.
+- **Next:** Regression (5 siklus).
+
+**Total siklus tercatat: 253**
+
+---
+
+## Siklus 254 — 2026-10-11 06:35 WIB — Regression pass siklus 251–254
+
+- **Area:** Test suite (katalog +4).
+- **Hasil:** smoke 18/18, remote-click 18/18, hold-repeat 3/3, guide-chunk 7/7.
+  46/46 hijau.
+- **Test:** Semua dijalankan nyata.
+- **Next:** Update docs.
+
+**Total siklus tercatat: 254**
+
+---
