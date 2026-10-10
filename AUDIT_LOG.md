@@ -2718,3 +2718,30 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 192**
 
 ---
+
+## Siklus 193 — 2026-10-11 05:54 WIB — Discovery IA batch 5 (ident stasiun): +1 entri (525→526)
+
+- **Area:** Katalog (5 kueri IA ident).
+- **Metode:** discover.py --source ia (11 kandidat) -> review.py verify (11 OK)
+  -> cek metadata.
+- **Hasil:** 1 YA (Indonesian Christmas Archives Part 1, IA — memuat promo
+  RCTI 1991). Ditolak: radio amatir, berita asing.
+- **Test:** append -> 526 unik; smoke 18/18 PASS (dari siklus 192).
+- **Commit:** lokal.
+- **Next:** Regression (5 siklus).
+
+**Total siklus tercatat: 193**
+
+---
+
+## Siklus 194 — 2026-10-11 05:55 WIB — Regression pass siklus 190–194
+
+- **Area:** Test suite (katalog +3, docs).
+- **Hasil:** smoke 18/18, remote-click 18/18, hold-repeat 3/3, guide-chunk 7/7.
+  46/46 hijau.
+- **Test:** Semua dijalankan nyata.
+- **Next:** Lanjut.
+
+**Total siklus tercatat: 194**
+
+---
