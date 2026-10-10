@@ -501,4 +501,5 @@ const CHANNELS = [
   { id: "oLo9kQrkiO0", title: "Honey Bee Hutch Opening Song (Indonesian Version)", cat: "Opening Kartun", st: "Multi-Stasiun" },
   { id: "3mo4cLxaXWs", title: "Shaun the Sheep Opening Bahasa Indonesia", cat: "Opening Kartun", st: "Multi-Stasiun" },
   { id: "-HcGV-e8-vk", title: "Upin & Ipin - Gembira Bermain [Sing-Along][HD]", cat: "Opening Kartun", st: "MNCTV" },
+  { id: "09ZgB8a9iEA", title: "Kumpulan Lagu Pembukaan Kartun Berbahasa Indonesia (hamtaro, ninja hatori dll)", cat: "Opening Kartun", st: "Multi-Stasiun" },
 ];
