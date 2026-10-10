@@ -491,4 +491,5 @@ const CHANNELS = [
   { id: "FzhgZoCdXH0", title: "Opening Honey Bee Hutch versi Indonesia", cat: "Opening Kartun", st: "Multi-Stasiun" },
   { id: "s-3SPMMj3CU", title: "Mojacko ending klip lagu versi Indonesia", cat: "Opening Kartun", st: "Multi-Stasiun" },
   { id: "_zRaaBuXGcc", title: "Minky Momo Opening Song - Spacetoon Indonesia", cat: "Opening Kartun", st: "Spacetoon" },
+  { id: "690lMtFlmy0", title: "Flame of Recca OP1 (Indonesian)", cat: "Opening Kartun", st: "Multi-Stasiun" },
 ];
