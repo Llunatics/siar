@@ -2561,3 +2561,23 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 182**
 
 ---
+
+## Siklus 183 — 2026-10-11 05:37 WIB — Discovery Internet Archive (sumber baru) +22 entri (496→518)
+
+- **Area:** Katalog — sumber IA belum pernah dieksplorasi sistematis.
+- **Implementasi:** `scripts/queries-ia.txt` (8 kueri) → `discover.py --source ia` →
+  63 kandidat → `review.py verify` (61 OK, 2 REVIEW via metadata IA resmi).
+  Review manusia judul-per-judul: **22 YA**, 41 SKIP (radio/podcast, DW Jerman,
+  NBC Amerika, episode full, audio-only, judul tak jelas, uploader-code).
+- **Hasil:** 19 Iklan Jadul (Stikko 2005, Nutrilon 2004, Fres 2002, Salute Bali,
+  kompilasi Indosiar 1999/RCTI 1997/SCTV 1997&2001, Pariwara 1981, Marina 2008,
+  Kymco, BPD Simpeda, arsip kompilasi, VHS 2003, Adsvolution 2008, Solo 90an),
+  1 Jingle & Ident (Sejarah OBB TVRI Berita, st=TVRI), 1 Sinetron & Acara TV
+  (koleksi intro RCTI 90an), 1 Opening Tokusatsu (Ohranger versi Indonesia).
+- **Test:** append → 518 unik, 0 duplikat; `node --check` OK; smoke 18/18 PASS.
+- **Commit:** `3af23d2` (lokal).
+- **Next:** Regression tiap 5 siklus; lanjut batch IA/YT.
+
+**Total siklus tercatat: 183**
+
+---
