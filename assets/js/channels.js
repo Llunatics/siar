@@ -676,4 +676,6 @@ const CHANNELS = [
   { id: "KMhJvMTa5Go", title: "Kompilasi Iklan Baygon (Indonesia) Tahun 1991~2012", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "TyMz9Kbktsg", title: "Iklan Walls Paddle Pop - Pirates (1993) #shorts #beranda #fyp", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "xKsC25qAfNg", title: "Iklan Es Krim Walls Dimpi tahun 1997", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "5Nnw5TQg6qM", title: "Station Ident TransTV (awal siaran 2001-2002, Rare)", cat: "Jingle & Ident", st: "Trans TV" },
+  { id: "2BfgFj8EZ1k", title: "Ident Prima Entertainment (2000-2001)", cat: "Jingle & Ident", st: "Multi-Stasiun" },
 ];
