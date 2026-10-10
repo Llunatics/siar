@@ -433,4 +433,5 @@ const CHANNELS = [
   { id: "sXf75DGaj-M", title: "Iklan Kopi Singa - Tradisi Turun Temurun (1999) (shorts)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "pNfJ-je-2TU", title: "Iklan Kopi Kapal Api tahun 1997", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "Lx1iUq6yz-A", title: "Iklan Kopiko Versi Bis Kota (1991)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "a8sIH-3pkjY", title: "Iklan Sabun TROJAN (1989)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
