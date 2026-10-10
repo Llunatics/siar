@@ -537,3 +537,34 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 - **Next:** Cek verify DM; batch berikutnya.
 
 **Total siklus tercatat: 37**
+
+---
+
+## Siklus 38 — 2026-10-11 06:32 WIB — Operasional: verifikasi DM ditunda (egress memblokir dailymotion.com)
+
+- **Area:** `scripts/review.py` + `scripts/cand/RESUME_DM.md` (baru).
+- **Masalah & bukti:** 3 job verify DM macet lagi setelah restart — tiap fetch gantung ±60 dtk.
+  `curl` bukti: `www.dailymotion.com/services/oembed` → timeout 25 dtk (000),
+  `api.dailymotion.com` → timeout 25 dtk; kontrol YouTube oEmbed → 200 dalam 0,7 dtk.
+  Kesimpulan: seluruh domain dailymotion.com tak terjangkau proksi egress saat ini
+  (pagi ini masih bisa — kondisi jaringan berubah).
+- **Severity:** Sedang (pipa katalog, bukan bug produk).
+- **Implementasi:** Hentikan 3 job; tulis `scripts/cand/RESUME_DM.md` (cek konektivitas +
+  perintah resume persis; cache 1.705 kunci + TSV parsial aman, resume otomatis lanjut).
+- **Test:** `curl` probe ×2 (gagal sesuai dugaan), YouTube oEmbed OK; job mati terkonfirmasi (0 proses).
+- **Follow-up:** Probe ulang tiap beberapa siklus; resume saat 200 OK. Sementara katalog lanjut via YouTube oEmbed.
+- **Next:** Siklus produk berikutnya.
+
+**Total siklus tercatat: 38**
+
+---
+
+## Siklus 39 — 2026-10-11 06:40 WIB — Regression pass siklus 35–39
+
+- **Area:** Test suite (fungsi tersentuh: OSD, katalog, job ops).
+- **Hasil:** `baseline-smoke.js` 18/18 PASS · `remote-click.js` 18/18 PASS (0 pageerror)
+  · `hold-repeat.js` 3/3 PASS · `guide-chunk.js` 7/7 PASS. **46/46 hijau.**
+- **Test:** Semua dijalankan nyata (jsdom + headless Chromium), bukan cek statis.
+- **Next:** Lanjut katalog via YouTube.
+
+**Total siklus tercatat: 39**
