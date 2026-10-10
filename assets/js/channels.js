@@ -489,4 +489,5 @@ const CHANNELS = [
   { id: "5i8212yZZ_Y", title: "Honey Bee Hutch versi Bahasa Indonesia | Ost Opening With Lyrics", cat: "Opening Kartun", st: "Multi-Stasiun" },
   { id: "ErOjBKL5JI4", title: "OST Opening Honey Bee Hutch | Lagu Pembuka Kartun", cat: "Opening Kartun", st: "Multi-Stasiun" },
   { id: "FzhgZoCdXH0", title: "Opening Honey Bee Hutch versi Indonesia", cat: "Opening Kartun", st: "Multi-Stasiun" },
+  { id: "s-3SPMMj3CU", title: "Mojacko ending klip lagu versi Indonesia", cat: "Opening Kartun", st: "Multi-Stasiun" },
 ];
