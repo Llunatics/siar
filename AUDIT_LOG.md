@@ -1173,6 +1173,20 @@ Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`
 
 **Total siklus tercatat: 81**
 
+---
+
+## Siklus 82 — 2026-10-11 07:25 WIB — Batch YouTube Captain Tsubasa: +1 entri
+
+- **Area:** Katalog (405 → **406**).
+- **Metode:** 1 web search → 2 kandidat → oEmbed → cek duplikat → review.
+- **Hasil:** **1 YA** (Captain Tsubasa Opening Indonesia - Full Lirik; flag REVIEW
+  "lirik" dinilai manusia: opening asli + teks, bukan cover → YA). 1 duplikat.
+  Ditolak: 1 reimagined cover, 1 cover, 1 karaoke, 2 full episode.
+- **Test:** append → 406 entri unik; smoke 18/18 PASS.
+- **Next:** Lanjut.
+
+**Total siklus tercatat: 82**
+
 > **Koreksi waktu (04:01 WIB):** timestamp siklus 33–55 di atas adalah estimasi dan
 > ternyata kelebihan ±5 jam. Waktu terverifikasi saat siklus 55: **2026-10-11 04:01 WIB**
 > (`date` sistem). Mulai siklus 56, timestamp memakai jam sistem yang benar.

@@ -429,4 +429,5 @@ const CHANNELS = [
   { id: "KSm24ZKCe-E", title: "Iklan A Mild / International - Waktunya Unjuk Gigi (1998)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "iV_ELRZJeRU", title: "Iklan Colgate 1994", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "tpM_-TX9vlM", title: "Iklan Oralit tahun 1995", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "tbWqw-wWNdw", title: "Captain Tsubasa Opening Bahasa Indonesia - Full Lirik", cat: "Opening Kartun", st: "Multi-Stasiun" },
 ];
