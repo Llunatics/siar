@@ -578,4 +578,6 @@ const CHANNELS = [
   { id: "7-g4f4GH_KE", title: "Break Iklan RCTI Highlights (2004) (Bagian 3)", cat: "Iklan Jadul", st: "RCTI" },
   { id: "AsePtHnXmIs", title: "Jeda Iklan MetroTV (08/04/2004)", cat: "Iklan Jadul", st: "Metro TV" },
   { id: "thGiDOqDJcU", title: "Break Iklan (Highlights) Trans TV (2004) Bag.5 (Akhir)", cat: "Iklan Jadul", st: "Trans TV" },
+  { id: "7yc0asXlku4", title: "Iklan Jadul VII - \"Wanita Jangan Takut Ketinggalan\" - 14 Mei 2005", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "Gq3J5RciTk0", title: "Iklan X Mild - Duel(2005-2006)@RCTI,SCTV,TPI,ANTV,Indosiar,MetroTV,TransTV,TV7,GlobalTV,Lativi", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];

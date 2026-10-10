@@ -2943,3 +2943,30 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 209**
 
 ---
+
+## Siklus 210 — 2026-10-11 06:13 WIB — Batch YouTube iklan 2003-2004: +7 entri (547→554)
+
+- **Area:** Katalog (tahun spesifik 2003/2004).
+- **Metode:** web search -> 9 kandidat -> oEmbed (7 OK baru, 2 DUP).
+- **Hasil:** 7 YA (Kimia Farma 2003, Anakonidin 2003, Break Trans TV 2004,
+  Yamaha Dewa19 2003, Break RCTI 2004, Jeda Metro TV 2004,
+  Break Trans TV 2004 Bag.5).
+- **Test:** append -> 554 unik; smoke 18/18 PASS (dari 205).
+- **Commit:** lokal.
+- **Next:** Regression (5 siklus).
+
+**Total siklus tercatat: 210**
+
+---
+
+## Siklus 211 — 2026-10-11 06:13 WIB — Regression pass siklus 206–211
+
+- **Area:** Test suite (katalog +14).
+- **Hasil:** smoke 18/18, remote-click 18/18, hold-repeat 3/3, guide-chunk 7/7.
+  46/46 hijau.
+- **Test:** Semua dijalankan nyata.
+- **Next:** Lanjut (2005-2006).
+
+**Total siklus tercatat: 211**
+
+---
