@@ -415,4 +415,7 @@ const CHANNELS = [
   { id: "r8vL42zBSfo", title: "Hamtaro ED (Indonesian/Bahasa Indonesia)", cat: "Opening Kartun", st: "Multi-Stasiun" },
   { id: "0i6h95ITZ4w", title: "Iklan Rokok Minak Djinggo - Ari Wibowo (shorts)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
   { id: "OFO9S600e-Q", title: "Nostalgia Iklan Rokok Commodore (shorts)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "SqYDHM4INQo", title: "Iklan Salam Mie - Abadi Nan Jaya (1999/2000) (shorts)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "cMeQtRlC7KI", title: "Iklan Pop Mie - Kantor feat. Hengky Tornado (1989, Pra Revisi) (shorts)", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "DO4rgGH6Rfg", title: "\"Iklan jadul Indomie \"\"Dari Sabang sampai Marauke\"\" (shorts)\"", cat: "Iklan Jadul", st: "Multi-Stasiun" },
 ];
