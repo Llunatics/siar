@@ -620,4 +620,11 @@ const CHANNELS = [
   { id: "_Rs3a7PTj_M", title: "Jeda Iklan Indosiar edisi 12 Januari 1995 (feat. Iklan Kapal Api tahun 1994)", cat: "Iklan Jadul", st: "Indosiar" },
   { id: "Xw7YMSC9EY0", title: "Opening Extravaganza Trans TV (2006)", cat: "Sinetron & Acara TV", st: "Trans TV" },
   { id: "glCa9gv8WnA", title: "Arsip Iklan Kompilasi Eps.05 - Iklan Tahun 1996-1998", cat: "Iklan Jadul", st: "Multi-Stasiun" },
+  { id: "pBnPMfnlUHU", title: "Konchuu Monogatari Minashigo Hutch Opening & Ending Song Anime Spacetoon", cat: "Opening Kartun", st: "Spacetoon" },
+  { id: "96RFH2MYXso", title: "Spacetoon Indonesia- Opening Planet Zomoroda (new version)", cat: "Jingle & Ident", st: "Spacetoon" },
+  { id: "2pcbW9TiI0c", title: "Spacetoon Indonesia - Opening Planet Action (new version)", cat: "Jingle & Ident", st: "Spacetoon" },
+  { id: "wxZNtiIECgA", title: "Spacetoon Indonesia - Opening Planet Adventure (new version)", cat: "Jingle & Ident", st: "Spacetoon" },
+  { id: "idfCFkHhqxM", title: "Ocha-Ken (Anjing Teh) Intro & Ending - Filler Iklan Kartun SpaceToon Indonesia", cat: "Opening Kartun", st: "Spacetoon" },
+  { id: "US0fy6ye0VI", title: "Spacetoon Indonesia - Opening Planet Sport (New Version)", cat: "Jingle & Ident", st: "Spacetoon" },
+  { id: "9REG34SFGaw", title: "opening web diver dubbing indonesia spacetoon", cat: "Opening Kartun", st: "Spacetoon" },
 ];
