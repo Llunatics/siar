@@ -3040,3 +3040,17 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 216**
 
 ---
+
+## Siklus 217 — 2026-10-11 06:16 WIB — Batch YouTube jeda iklan 2011-2012: +4 entri (568→572)
+
+- **Area:** Katalog (jeda iklan 2011/2012).
+- **Metode:** web search -> 10 kandidat -> oEmbed (4 OK baru, 5 FAIL 401,
+  1 playlist SKIP).
+- **Hasil:** 4 YA (Indosiar 2012, Trans7 2012, SCTV 2011, Trans7 2011).
+- **Test:** append -> 572 unik; smoke 18/18 PASS (dari 215).
+- **Commit:** lokal.
+- **Next:** Lanjut.
+
+**Total siklus tercatat: 217**
+
+---

@@ -596,4 +596,9 @@ const CHANNELS = [
   { id: "OHaVoSmyHUw", title: "Jeda Iklan Trans 7 (17 Agustus 2012)", cat: "Iklan Jadul", st: "Trans7" },
   { id: "4-t6fkJ5JGM", title: "Jeda Iklan SCTV (07/07/2011) | Partially", cat: "Iklan Jadul", st: "SCTV" },
   { id: "z1E6GaDFtJM", title: "Jeda Iklan Trans7 - (Juni 2011)", cat: "Iklan Jadul", st: "Trans7" },
+  { id: "r4t9MZ2o_l4", title: "Jeda Iklan tvOne (9 Juni 2014)", cat: "Iklan Jadul", st: "tvOne" },
+  { id: "l4RJGcxuZrA", title: "Jeda Iklan TRANS 7 (2 April 2013)", cat: "Iklan Jadul", st: "Trans7" },
+  { id: "x0NNmSoEyxk", title: "Jeda Iklan Ke 124 Trans7 2013", cat: "Iklan Jadul", st: "Trans7" },
+  { id: "5ufdRiP3qN4", title: "Jeda iklan B channel (13 maret 2014)", cat: "Iklan Jadul", st: "B Channel" },
+  { id: "1nvY_kJVF7Y", title: "Jeda Iklan Trans 7 (3 Mei 2013)", cat: "Iklan Jadul", st: "Trans7" },
 ];
