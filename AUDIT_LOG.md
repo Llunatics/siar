@@ -3893,3 +3893,28 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 282**
 
 ---
+
+## Siklus 283 — 2026-10-11 06:49 WIB — Batch YouTube ident: +2 (652→654)
+
+- **Area:** Katalog (ident TransTV, Prima).
+- **Metode:** web search -> 5 kandidat -> oEmbed (2 OK baru, 3 DUP).
+- **Hasil:** 2 YA (TransTV 2001, Prima 2000).
+- **Test:** append -> 654 unik; smoke 18/18 PASS (dari 259).
+- **Commit:** lokal.
+- **Next:** Regression (5 siklus).
+
+**Total siklus tercatat: 283**
+
+---
+
+## Siklus 284 — 2026-10-11 06:49 WIB — Regression pass siklus 280–284
+
+- **Area:** Test suite (katalog +6).
+- **Hasil:** smoke 18/18, remote-click 18/18, hold-repeat 3/3, guide-chunk 7/7.
+  46/46 hijau.
+- **Test:** Semua dijalankan nyata.
+- **Next:** Update docs.
+
+**Total siklus tercatat: 284**
+
+---
