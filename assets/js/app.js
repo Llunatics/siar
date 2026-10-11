@@ -38,7 +38,7 @@
     backdrop: $("backdrop"), guideSheet: $("guideSheet"),
     settingsSheet: $("settingsSheet"), helpModal: $("helpModal"),
     rodL: $("rodL"), rodR: $("rodR"), antenna: $("antenna"),
-    sigVal: $("sigVal"), sigBar: $("sigBar"),
+    sigLed: $("sigLed"),
     stationChips: $("stationChips"), blockBar: $("blockBar"),
     blockLabel: $("blockLabel"), blockPlayBtn: $("blockPlayBtn"),
     blockExitBtn: $("blockExitBtn"), blockBadge: $("blockBadge"),
@@ -139,6 +139,9 @@
     });
     markCards("rmode", S.remoteMode);
     markCards("sig", S.signalMode);
+    markCards("tex", S.texture);
+    // Gaya tekstur: realistis (default, grain halus) vs clean (mulus minimal)
+    document.body.classList.toggle("tex-clean", S.texture === "clean");
 
     setChk("setRatio", S.ratio169);
     setChk("setClick", S.remoteClick);
@@ -255,8 +258,12 @@
   }
   function refreshSignal() {
     computeSignal();
-    els.sigVal.textContent = powered ? signalQ + "%" : "--%";
-    els.sigBar.style.width = (powered ? signalQ : 0) + "%";
+    // Indikator sinyal analog: titik LED kecil di panel. Makin buruk sinyal
+    // makin redup/merah — TANPA angka persen (TV tabung asli tidak punya
+    // meter %; sinyal buruk divisualkan lewat static/snow di layar).
+    var q = powered ? signalQ : 0;
+    els.sigLed.style.opacity = (powered ? 0.3 + q / 100 * 0.7 : 0.12).toFixed(2);
+    els.sigLed.classList.toggle("bad", powered && signalQ < 45);
     els.tv.classList.toggle("sig-bad", powered && signalQ < 45);
     els.tv.classList.toggle("sig-mid", powered && signalQ >= 45 && signalQ < 75);
     // Pantulan cahaya layar ke ruangan (dipakai Mode Imersif): hidup mengikuti
@@ -267,17 +274,12 @@
     document.body.style.setProperty("--screen-glow", glow.toFixed(2));
     applyPicture();
   }
-  function signalHint() {
-    return "SINYAL " + signalQ + "%" + (signalQ < 45 ? " — GESER ANTENA" : "");
-  }
-
   function bindRod(rod, key) {
     rod.addEventListener("pointerdown", function (e) {
       e.preventDefault();
       try { rod.setPointerCapture(e.pointerId); } catch (err) { /* abaikan */ }
       var pivot = els.antenna.getBoundingClientRect();
       var px = pivot.left, py = pivot.top;
-      var lastOsdSig = -1;
       function move(ev) {
         var dx = ev.clientX - px, dy = py - ev.clientY;
         if (dy < 8) dy = 8;
@@ -287,9 +289,8 @@
           S[key] = deg;
           applyAntenna();
           refreshSignal();
-          // Umpan balik live: OSD sinyal diperbarui saat digeser, bukan
-          // hanya setelah dilepas.
-          if (powered && signalQ !== lastOsdSig) { lastOsdSig = signalQ; showOsd(signalHint()); }
+          // Umpan balik live: static di layar berubah saat digeser — itu
+          // feedback-nya (tanpa OSD angka persen, ala TV analog).
           if (powered && signalQ < 60 && Math.random() < 0.25) playNoise(50);
         }
       }
@@ -298,7 +299,6 @@
         rod.removeEventListener("pointerup", up);
         rod.removeEventListener("pointercancel", up);
         PNStore.saveSettings();
-        if (powered) showOsd(signalHint());
       }
       rod.addEventListener("pointermove", move);
       rod.addEventListener("pointerup", up);
@@ -614,12 +614,14 @@
     osdTimer = setTimeout(function () {
       els.osd.classList.remove("show");
       if (els.stationBug) els.stationBug.style.visibility = "";
-    }, 2400);
+    }, 4000);
   }
-  function showOsd(extra) {
+  function showOsd() {
     if (!list.length) return;
-    // OSD ala TV asli: nomor + stasiun di baris utama, judul di bawahnya.
-    osdRender("CH " + pad(current + 1) + " · " + cur().station, cur().title, extra || null);
+    // OSD ala TV tabung asli: angka kecil di pojok kanan atas, muncul
+    // sebentar saat ganti channel lalu hilang otomatis (±4 detik).
+    // Tanpa teks raksasa permanen, tanpa judul, tanpa persen sinyal.
+    osdRender("CH " + pad(current + 1), cur().station);
   }
   function showOsdText(main, sub) { osdRender(main, sub, null); }
 
@@ -931,7 +933,7 @@
     refreshSignal();
     flashEye();
     staticFx(signalQ < 45 ? 800 : 450);
-    showOsd(signalHint());
+    showOsd();
     markActive();
     syncNow();
     vpLoad(cur());
@@ -1002,7 +1004,7 @@
     refreshSignal();
     staticFx(650);
     vpLoad(cur());
-    showOsd(signalHint());
+    showOsd();
     markActive();
     syncNow();
   }
@@ -1396,6 +1398,7 @@
   bindCards("finish", "finish");
   bindCards("rmode", "remoteMode");
   bindCards("sig", "signalMode");
+  bindCards("tex", "texture");
   $("resetBtn").addEventListener("click", function () {
     if (!window.confirm("Reset SEMUA pengaturan, favorit, riwayat & channel kustom ke bawaan? Tindakan ini tidak bisa dibatalkan.")) return;
     PNStore.resetAll();

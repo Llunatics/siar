@@ -122,11 +122,7 @@
             <span class="ch-label">CH</span>
             <span id="chNum">--</span>
           </div>
-          <div class="sig-meter" title="Kekuatan sinyal channel ini — seret batang antena di atas TV untuk memperbaikinya">
-            <span class="sig-label">SINYAL</span>
-            <span id="sigVal">--%</span>
-            <span class="sig-bar"><i id="sigBar"></i></span>
-          </div>
+          <span class="sig-led" id="sigLed" title="Indikator sinyal — seret batang antena di atas TV untuk memperbaikinya"></span>
           <button id="favBtn" class="btn small fav fav-mini" title="Tandai favorit (F)" aria-label="Favorit"><svg class="ic fill" aria-hidden="true"><use href="#i-star"/></svg></button>
           <span class="front-ctrls" role="group" aria-label="Kontrol depan TV">
             <button class="btn mini" id="tvChDn" title="Channel turun (↓)">CH−</button>
@@ -321,6 +317,12 @@
           <span class="card-name">Kayu 80-an</span><span class="card-sub">kabinet tebal · 1984</span>
         </button>
       </div>
+      <h3 class="sub">Gaya Tekstur</h3>
+      <div class="model-row" id="texRow">
+        <button class="model-card" data-tex="realistis" aria-pressed="false"><span class="swp tex-real"></span>Realistis</button>
+        <button class="model-card" data-tex="clean" aria-pressed="false"><span class="swp tex-clean"></span>Clean</button>
+      </div>
+      <p class="set-note">Realistis: grain halus & bevel dalam seperti plastik molded. Clean: permukaan mulus minimal.</p>
       <h3 class="sub">Warna / Finishing</h3>
       <div class="model-grid finishes" id="finishRow">
         <button class="model-card fin" data-finish="hitam" aria-pressed="false"><span class="sw hitam"></span><span class="card-name">Hitam</span></button>

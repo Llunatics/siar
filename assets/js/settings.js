@@ -14,6 +14,7 @@ var PNStore = (function () {
     shape: "trinitron",  // trinitron|toshiba|akari|philips|sharp|polytron|flatron|jvc|panasonic|wood
     finish: "hitam",     // hitam|silver|grafit|ivory|krem|kayu|marun|dongker
     ratio169: false,     // false = 4:3, true = 16:9
+    texture: "realistis", // realistis = grain halus ala plastik molded | clean = permukaan mulus minimal
     // Remote
     remoteMode: "point", // point = mengarah ke TV | flat = datar
     remoteClick: true,   // bunyi klik mekanis remote
