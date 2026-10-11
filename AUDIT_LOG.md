@@ -4561,3 +4561,16 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 322**
 
 ---
+
+## Siklus 323 — 2026-10-11 00:22 WIB — Blok stasiun: uji alur penuh
+
+- **Area:** Fitur / blok stasiun.
+- **Perubahan:** Tidak ada (siklus verifikasi).
+- **Test:** Chip RCTI → PUTAR BLOK: badge "BLOK RCTI" tampil,
+  label "BLOK AKTIF: RCTI • 84 siaran"; 5× CH+ semua tetap RCTI;
+  keluar blok → badge hidden. 0 pageerror.
+- **Next:** Custom channel: tambah/hapus via panduan.
+
+**Total siklus tercatat: 323**
+
+---
