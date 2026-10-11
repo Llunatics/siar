@@ -4919,3 +4919,16 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 346**
 
 ---
+
+## Siklus 347 — 2026-10-11 00:37 WIB — Regression suite penuh (siklus 345–346)
+
+- **Area:** Regression.
+- **Hasil:** baseline-smoke 0 fail, remote-click 0 fail,
+  hold-repeat 3/3 PASS, guide-chunk 0 fail, w3kbd semua true.
+  Semua nyata via node.
+- **Test:** 5 file test.
+- **Next:** Hero screenshot final + rangkuman sesi.
+
+**Total siklus tercatat: 347**
+
+---
