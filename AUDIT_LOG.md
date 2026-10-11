@@ -4763,3 +4763,16 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 335**
 
 ---
+
+## Siklus 336 — 2026-10-11 00:31 WIB — Regression suite penuh (siklus 333–335)
+
+- **Area:** Regression.
+- **Hasil:** baseline-smoke 0 fail, remote-click 0 fail,
+  hold-repeat 3/3 PASS, guide-chunk 0 fail, w3set 6/6,
+  w3persist 3/3. Semua nyata via node.
+- **Test:** 6 file test.
+- **Next:** Watch history: uji penanda sudah-ditonton.
+
+**Total siklus tercatat: 336**
+
+---
