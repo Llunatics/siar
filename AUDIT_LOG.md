@@ -4467,3 +4467,20 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 316**
 
 ---
+
+## Siklus 317 — 2026-10-11 00:19 WIB — Immersive: bingkai foto dinding
+
+- **Area:** Mode imersif / dekorasi.
+- **Masalah:** Bingkai foto tampak seperti noda blur, tanpa bingkai
+  yang meyakinkan.
+- **Perubahan:** `style.css` — bingkai 132×100, lis emas dalam
+  (inset shadow), highlight bevel; foto sepia: matahari + dua sosok
+  kepala-bahu + horizon; opacity .88.
+- **Test:** `node test/w3shot.js 1920 1080 wframe immersive` —
+  crop `shots/qa/w3-wframe-crop.png`: bingkai kayu + lis emas
+  terlihat, foto terbaca sebagai potret keluarga sepia. 0 pageerror.
+- **Next:** Regression suite (siklus 310–317).
+
+**Total siklus tercatat: 317**
+
+---

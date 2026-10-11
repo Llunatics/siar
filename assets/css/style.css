@@ -1315,20 +1315,26 @@ body.immersive .tv::after { /* bayangan kontak tepat di bawah lemari */
   pointer-events: none;
 }
 /* Bingkai foto di dinding: satu saja, redup, khas ruang tamu */
-.wall-frame { position: absolute; top: 17%; left: 1.2%; z-index: 0; pointer-events: none; opacity: .8; }
+.wall-frame { position: absolute; top: 16%; left: 1.2%; z-index: 0; pointer-events: none; opacity: .88; }
 .wall-frame span {
-  display: block; width: 120px; height: 92px;
-  border: 7px solid #3a2a18; border-radius: 3px;
+  display: block; width: 132px; height: 100px;
+  border: 8px solid #3a2a18; border-radius: 3px;
   background:
     /* pantulan kaca tipis */
-    linear-gradient(115deg, transparent 42%, rgba(255,255,255,.07) 47%, transparent 54%),
-    /* siluet foto: dua kepala + bahu */
-    radial-gradient(circle 15px at 37% 34%, rgba(228,200,160,.78), transparent 72%),
-    radial-gradient(ellipse 26px 20px at 37% 64%, rgba(130,100,76,.66), transparent 72%),
-    radial-gradient(circle 12px at 63% 38%, rgba(210,180,142,.72), transparent 72%),
-    radial-gradient(ellipse 22px 17px at 63% 66%, rgba(110,86,66,.6), transparent 72%),
-    linear-gradient(180deg, #2b2114, #161006);
-  box-shadow: 0 10px 24px rgba(0,0,0,.6), inset 0 0 0 1px rgba(0,0,0,.6);
+    linear-gradient(115deg, transparent 42%, rgba(255,255,255,.08) 47%, transparent 54%),
+    /* foto keluarga sepia: matahari + dua sosok */
+    radial-gradient(circle 9px at 68% 26%, rgba(240,214,170,.85), transparent 70%),
+    radial-gradient(ellipse 30px 14px at 30% 88%, rgba(96,72,50,.55), transparent 72%),
+    radial-gradient(ellipse 24px 12px at 66% 90%, rgba(88,66,46,.5), transparent 72%),
+    radial-gradient(circle 13px at 30% 52%, rgba(226,198,158,.8), transparent 72%),
+    radial-gradient(circle 11px at 66% 55%, rgba(208,178,140,.75), transparent 72%),
+    radial-gradient(ellipse 60px 26px at 48% 30%, rgba(64,48,32,.55), transparent 72%),
+    linear-gradient(180deg, #4a3a26 0%, #33261a 55%, #20180f 100%);
+  box-shadow:
+    0 12px 26px rgba(0,0,0,.65),
+    inset 0 0 0 2px rgba(216,188,140,.35), /* lis emas dalam */
+    inset 0 0 0 3px rgba(0,0,0,.55),
+    inset 0 2px 0 rgba(255,255,255,.08);
   transform: rotate(-2deg);
 }
 /* Jam dinding analog + digital */
