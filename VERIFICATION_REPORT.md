@@ -1,6 +1,7 @@
 # LAPORAN VERIFIKASI POST-MARATON — Siar
 
-Tanggal: 2026-10-11 ~15:00 WIB. Verifikator: Muse (independen, tidak mengandalkan AUDIT_LOG.md).
+Tanggal: 2026-10-11 ~15:00 WIB; revisi 2026-10-11 ~16:00 WIB (sinkron kondisi Git terkini).
+Verifikator: Muse (independen, tidak mengandalkan AUDIT_LOG.md).
 Metode: git forensik, eval langsung `assets/js/channels.js`, baca + jalankan ulang seluruh test suite,
 oEmbed/metadata resmi untuk 41 sampel acak (seed 20261011), 28 screenshot aktual (4 viewport × 5 state),
 review visual manual.
@@ -8,7 +9,7 @@ review visual manual.
 ## 1. TERVERIFIKASI
 
 ### Git & integritas kerja
-- `git status` bersih sebelum dan sesudah verifikasi. 374 commit total (350 sejak baseline maraton `c138542`).
+- `git status` bersih sebelum dan sesudah verifikasi. 375 commit total (351 sejak baseline maraton `c138542`).
 - Tidak ada perubahan pengguna yang tertimpa: status bersih saat maraton dimulai; seluruh commit baru adalah kerja agen.
 - Tidak ada push/deploy/reset/squash/rewrite history. Semua perbaikan via commit baru.
 - Diff substantif sejak baseline (tanpa node_modules): `assets/css/style.css` (+486 baris), `assets/js/app.js` (+339),
@@ -62,8 +63,12 @@ sungguhan (jsdom `dispatchEvent`, Playwright `page.click`), bukan cek statis.
 ### Klaim 384 siklus — audit sampel 40 entri
 - ~80% substantif (perubahan kode/data + test: batch katalog, regression pass, perbaikan UI).
 - ~20% administratif/operasional (restart job, evaluasi strategi, batch +0 hasil — riset tetap jalan, kandidat ditolak).
-- Koreksi timestamp siklus 372–383 sudah dicatat jujur di laporan akhir (00:51–01:01 → aktual ±11:20–12:00 WIB).
-  Format timestamp di log tidak konsisten antar-siklus — masalah kualitas dokumentasi, bukan validitas kerja.
+- Koreksi timestamp siklus 298–383 sudah diperbaiki berbasis bukti (revisi 16:00 WIB): header adalah waktu UTC
+  yang salah dilabeli WIB (selisih tepat 420 menit vs waktu commit) → diperbaiki programatis +7 jam.
+  Waktu aktual siklus 372–383: **07:50–08:01 WIB**, bukan ±11:20–12:00 WIB seperti koreksi wave-3 sebelumnya
+  (koreksi lama ikut terbukti keliru via `git log --format=%ci`). Siklus 13–~98: timestamp meleset maju progresif
+  (s.d. ±5,4 jam) → ditandai sebagai perkiraan di catatan keterpercayaan timestamp di kepala AUDIT_LOG.md.
+  Tidak ada timestamp yang dikarang.
 
 ### Defect yang DIPERBAIKI saat verifikasi
 1. `test/node_modules` ter-commit (1.966 file sampah): di-`git rm --cached` + `node_modules/` masuk `.gitignore`
@@ -86,6 +91,16 @@ sungguhan (jsdom `dispatchEvent`, Playwright `page.click`), bukan cek statis.
    hanya didukung oEmbed/metadata, bukan pemutaran nyata.
 2. **3 sampel Dailymotion**: oEmbed timeout dari sandbox — status video tidak dapat dipastikan (bukan vonis mati).
 3. **Fullscreen & haptics mobile**: tidak dapat diuji bermakna di headless.
+
+## 5. Tambahan kesiapan rilis (revisi 16:00 WIB)
+
+- `PLAYBACK_TEST_LIST.md`: 31 video uji manual (10 YouTube, 10 Dailymotion, 10 Internet Archive, 1 Vimeo —
+  Vimeo hanya punya 1 entri di katalog) lengkap dengan judul katalog + URL sumber, untuk pengujian playback
+  dari jaringan normal. Tidak ada klaim pemutaran berdasarkan oEmbed.
+- README: ditambah seksi "Panduan pengujian" (cara uji fullscreen, remote, settings, immersive mode,
+  sinyal/antena, favorit & riwayat, fallback saat video diblokir).
+- Tidak ada perubahan fitur/kode aplikasi dalam review ini — hanya dokumentasi dan koreksi log.
+  Tidak diperlukan regresi ulang (tidak ada kode yang disentuh).
 
 ## 4. REKOMENDASI
 

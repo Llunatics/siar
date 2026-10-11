@@ -1,5 +1,14 @@
 # AUDIT_LOG — Siar Autonomous Deep Refactor
 
+> **Catatan keterpercayaan timestamp (ditambahkan saat verifikasi independen, 2026-10-11 ~15:00 WIB).**
+> Audit silang header siklus vs waktu commit git (`git log --format=%ci`) menemukan tiga tier:
+> - **Siklus 0–12 & ~99–297:** header konsisten dengan waktu commit (selisih <90 mnt) → dapat dipercaya.
+> - **Siklus 13–~98:** timestamp header meleset maju progresif dari waktu commit (hingga ±5,4 jam) → **anggap perkiraan**;
+>   waktu commit git (UTC) adalah jangkar bukti yang tersedia.
+> - **Siklus 298–383:** header adalah waktu UTC yang salah dilabeli WIB (selisih tepat 420 mnt) → **sudah diperbaiki
+>   programatis +7 jam** berdasarkan bukti commit; waktu aktual 06:57–08:01 WIB tanggal 2026-10-11.
+> Tidak ada timestamp yang dikarang dalam perbaikan ini — hanya koreksi berbasis bukti commit.
+
 Sesi dimulai: 2026-10-11 02:46 WIB. Stop condition: ≥50 siklus DAN ≥ 11 Okt 2026 12:00 WIB.
 Repo lokal: `~/workspace/repos/siar` (tidak push tanpa izin eksplisit).
 Baseline katalog: **265 entri unik** (terverifikasi dari `assets/js/channels.js`) → target **5.300**.
@@ -4082,7 +4091,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 298 — 2026-10-10 23:57 WIB — Grille speaker perforasi 3D
+## Siklus 298 — 2026-10-11 06:57 WIB — Grille speaker perforasi 3D
 
 - **Area:** Realisme TV / material.
 - **Masalah:** Lubang grille hanya lingkaran hitam datar (pegboard) di
@@ -4102,7 +4111,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 299 — 2026-10-10 23:58 WIB — Grounding TV mode normal: bayangan kontak + lantai
+## Siklus 299 — 2026-10-11 06:58 WIB — Grounding TV mode normal: bayangan kontak + lantai
 
 - **Area:** Realisme TV / material.
 - **Masalah:** TV mengambang di void gelap tanpa permukaan; bayangan
@@ -4121,7 +4130,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 300 — 2026-10-10 23:59 WIB — Tombol fisik TV: recessed well + struck mekanis
+## Siklus 300 — 2026-10-11 06:59 WIB — Tombol fisik TV: recessed well + struck mekanis
 
 - **Area:** Realisme TV / tombol fisik.
 - **Masalah:** Tombol power menempel langsung di strip tanpa lubang
@@ -4143,7 +4152,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 301 — 2026-10-11 00:00 WIB — Immersive: dinding hangat + belang plester
+## Siklus 301 — 2026-10-11 07:00 WIB — Immersive: dinding hangat + belang plester
 
 - **Area:** Mode imersif / atmosfer.
 - **Masalah:** Dinding nyaris hitam pekat tanpa tekstur (void), tanpa
@@ -4162,7 +4171,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 302 — 2026-10-11 00:01 WIB — Immersive dynamic lighting: ruangan meredup saat TV mati
+## Siklus 302 — 2026-10-11 07:01 WIB — Immersive dynamic lighting: ruangan meredup saat TV mati
 
 - **Area:** Mode imersif / dynamic lighting.
 - **Masalah:** Ruangan tidak merespons power state — dinding/lantai
@@ -4184,7 +4193,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 303 — 2026-10-11 00:02 WIB — Remote: kubah karet + bidang keypad cekung
+## Siklus 303 — 2026-10-11 07:02 WIB — Remote: kubah karet + bidang keypad cekung
 
 - **Area:** Remote / material.
 - **Masalah:** Tombol rubber vs shell plastik kurang terbedakan;
@@ -4203,7 +4212,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 304 — 2026-10-11 00:04 WIB — Settings: verifikasi live preview + hierarki header
+## Siklus 304 — 2026-10-11 07:04 WIB — Settings: verifikasi live preview + hierarki header
 
 - **Area:** Settings / UX.
 - **Masalah:** (a) Belum terbukti preview kartu bentuk mengikuti finish
@@ -4224,7 +4233,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 305 — 2026-10-11 00:04 WIB — Persistensi localStorage + migrasi + reset
+## Siklus 305 — 2026-10-11 07:04 WIB — Persistensi localStorage + migrasi + reset
 
 - **Area:** Settings / data.
 - **Masalah:** Alur simpan-muat-migrasi-reset belum pernah diuji nyata
@@ -4242,7 +4251,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 306 — 2026-10-11 00:06 WIB — Responsif: matriks 4 viewport × 2 mode
+## Siklus 306 — 2026-10-11 07:06 WIB — Responsif: matriks 4 viewport × 2 mode
 
 - **Area:** Responsif.
 - **Masalah:** (a) Di 844×390, OSD channel berpotensi bertabrakan
@@ -4262,7 +4271,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 307 — 2026-10-11 00:07 WIB — Aksesibilitas: focus management + verifikasi
+## Siklus 307 — 2026-10-11 07:07 WIB — Aksesibilitas: focus management + verifikasi
 
 - **Area:** Aksesibilitas.
 - **Masalah:** Fokus tidak masuk ke remote/panel saat dibuka via
@@ -4282,7 +4291,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 308 — 2026-10-11 00:09 WIB — Performa: will-change, flicker pause + bug sintaks
+## Siklus 308 — 2026-10-11 07:09 WIB — Performa: will-change, flicker pause + bug sintaks
 
 - **Area:** Performa & stabilitas.
 - **Audit:** Timer: staticFx/sleep/140ms-static/updateClock semua aman
@@ -4304,7 +4313,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 309 — 2026-10-11 00:10 WIB — Regression suite penuh (siklus 304–308)
+## Siklus 309 — 2026-10-11 07:10 WIB — Regression suite penuh (siklus 304–308)
 
 - **Area:** Regression.
 - **Hasil:** baseline-smoke 18 PASS + ringkasan (0 fail),
@@ -4319,7 +4328,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 310 — 2026-10-11 00:11 WIB — Immersive: exit discoverable + Escape
+## Siklus 310 — 2026-10-11 07:11 WIB — Immersive: exit discoverable + Escape
 
 - **Area:** Mode imersif / interaksi.
 - **Masalah:** Tak ada jalan keluar imersif yang discoverable (harus
@@ -4340,7 +4349,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 311 — 2026-10-11 00:12 WIB — Retest menyeluruh fungsi remote pasca-redesign
+## Siklus 311 — 2026-10-11 07:12 WIB — Retest menyeluruh fungsi remote pasca-redesign
 
 - **Area:** Remote / regression fungsional.
 - **Perubahan:** Tidak ada (siklus verifikasi).
@@ -4355,7 +4364,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 312 — 2026-10-11 00:12 WIB — Kaki TV per-model distinct
+## Siklus 312 — 2026-10-11 07:12 WIB — Kaki TV per-model distinct
 
 - **Area:** Realisme TV / material.
 - **Masalah:** Kaki hanya beda tinggi/radius — nyaris identik antar
@@ -4374,7 +4383,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 313 — 2026-10-11 00:14 WIB — Guide: chips sebaris + placeholder thumbnail
+## Siklus 313 — 2026-10-11 07:14 WIB — Guide: chips sebaris + placeholder thumbnail
 
 - **Area:** Panduan / kepadatan.
 - **Masalah:** (a) Chips stasiun wrap 7 baris, daftar baru mulai di
@@ -4393,7 +4402,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 314 — 2026-10-11 00:17 WIB — Remote mobile: muat penuh tanpa scroll
+## Siklus 314 — 2026-10-11 07:17 WIB — Remote mobile: muat penuh tanpa scroll
 
 - **Area:** Responsif / remote.
 - **Masalah:** Di 390×844, remote overflow 103px (scrollH 760 vs
@@ -4413,7 +4422,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 315 — 2026-10-11 00:18 WIB — Evaluasi 10 dimensi (tengah jalan, bukti)
+## Siklus 315 — 2026-10-11 07:18 WIB — Evaluasi 10 dimensi (tengah jalan, bukti)
 
 - **Area:** Evaluasi kualitas.
 - **Skor (1–10) dengan bukti:**
@@ -4450,7 +4459,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 316 — 2026-10-11 00:18 WIB — Tombol fisik CH/VOL di panel depan TV
+## Siklus 316 — 2026-10-11 07:18 WIB — Tombol fisik CH/VOL di panel depan TV
 
 - **Area:** Realisme TV / kontrol.
 - **Masalah:** Strip status TV punya area kosong lebar di kanan —
@@ -4468,7 +4477,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 317 — 2026-10-11 00:19 WIB — Immersive: bingkai foto dinding
+## Siklus 317 — 2026-10-11 07:19 WIB — Immersive: bingkai foto dinding
 
 - **Area:** Mode imersif / dekorasi.
 - **Masalah:** Bingkai foto tampak seperti noda blur, tanpa bingkai
@@ -4485,7 +4494,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 318 — 2026-10-11 00:19 WIB — Regression suite penuh (siklus 310–317)
+## Siklus 318 — 2026-10-11 07:19 WIB — Regression suite penuh (siklus 310–317)
 
 - **Area:** Regression.
 - **Hasil:** baseline-smoke 0 fail, remote-click 0 fail,
@@ -4498,7 +4507,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 319 — 2026-10-11 00:20 WIB — OSD: stasiun di baris utama + bug menghindar
+## Siklus 319 — 2026-10-11 07:20 WIB — OSD: stasiun di baris utama + bug menghindar
 
 - **Area:** OSD / hierarki info.
 - **Masalah:** OSD hanya "CH 01" tanpa stasiun; setelah ditambah
@@ -4515,7 +4524,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 320 — 2026-10-11 00:21 WIB — Antena: drag teruji + OSD sinyal live
+## Siklus 320 — 2026-10-11 07:21 WIB — Antena: drag teruji + OSD sinyal live
 
 - **Area:** Interaksi antena.
 - **Masalah:** Drag antena belum pernah diuji nyata; OSD sinyal hanya
@@ -4532,7 +4541,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 321 — 2026-10-11 00:22 WIB — Fullscreen: TV utuh pillarbox
+## Siklus 321 — 2026-10-11 07:22 WIB — Fullscreen: TV utuh pillarbox
 
 - **Area:** Fullscreen.
 - **Masalah:** Fullscreen hanya menampilkan layar yang diregang;
@@ -4549,7 +4558,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 322 — 2026-10-11 00:22 WIB — Sleep timer: countdown & deadline nyata
+## Siklus 322 — 2026-10-11 07:22 WIB — Sleep timer: countdown & deadline nyata
 
 - **Area:** Fitur / sleep timer.
 - **Perubahan:** Tidak ada (siklus verifikasi).
@@ -4562,7 +4571,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 323 — 2026-10-11 00:22 WIB — Blok stasiun: uji alur penuh
+## Siklus 323 — 2026-10-11 07:22 WIB — Blok stasiun: uji alur penuh
 
 - **Area:** Fitur / blok stasiun.
 - **Perubahan:** Tidak ada (siklus verifikasi).
@@ -4575,7 +4584,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 324 — 2026-10-11 00:23 WIB — Custom channel: tambah, putar, hapus
+## Siklus 324 — 2026-10-11 07:23 WIB — Custom channel: tambah, putar, hapus
 
 - **Area:** Fitur / channel kustom.
 - **Perubahan:** Tidak ada (siklus verifikasi).
@@ -4589,7 +4598,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 325 — 2026-10-11 00:23 WIB — Regression suite penuh (siklus 319–324)
+## Siklus 325 — 2026-10-11 07:23 WIB — Regression suite penuh (siklus 319–324)
 
 - **Area:** Regression.
 - **Hasil:** baseline-smoke 0 fail, remote-click 0 fail,
@@ -4601,7 +4610,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 326 — 2026-10-11 00:24 WIB — Dynamic lighting: lampu merespons power
+## Siklus 326 — 2026-10-11 07:24 WIB — Dynamic lighting: lampu merespons power
 
 - **Area:** Mode imersif / dynamic lighting.
 - **Perubahan:** `style.css` — `.lamp-glow` transisi opacity 1.1s;
@@ -4614,7 +4623,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 327 — 2026-10-11 00:24 WIB — Refleksi kaca mengikuti finishing
+## Siklus 327 — 2026-10-11 07:24 WIB — Refleksi kaca mengikuti finishing
 
 - **Area:** Realisme TV / material.
 - **Perubahan:** `style.css` — `.glass` memakai `--glare`;
@@ -4628,7 +4637,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 328 — 2026-10-11 00:24 WIB — Evaluasi akhir 10 dimensi
+## Siklus 328 — 2026-10-11 07:24 WIB — Evaluasi akhir 10 dimensi
 
 - **Area:** Evaluasi kualitas.
 - **Skor akhir (bukti per siklus):**
@@ -4660,7 +4669,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 329 — 2026-10-11 00:25 WIB — README disinkronkan
+## Siklus 329 — 2026-10-11 07:25 WIB — README disinkronkan
 
 - **Area:** Dokumentasi.
 - **Masalah:** README menyebut 364 channel (kini 656), fitur baru
@@ -4677,7 +4686,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 330 — 2026-10-11 00:26 WIB — QA visual 10 model + perbaiki skrip shapes.js
+## Siklus 330 — 2026-10-11 07:26 WIB — QA visual 10 model + perbaiki skrip shapes.js
 
 - **Area:** QA visual / tooling.
 - **Temuan:** Screenshot sharp/jvc/panasonic/akari/wood tampak silver —
@@ -4696,7 +4705,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 331 — 2026-10-11 00:28 WIB — Tombol depan di semua finishing
+## Siklus 331 — 2026-10-11 07:28 WIB — Tombol depan di semua finishing
 
 - **Area:** Realisme TV / finishing.
 - **Perubahan:** Tidak ada (siklus verifikasi).
@@ -4710,7 +4719,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 332 — 2026-10-11 00:28 WIB — Imersif landscape HP pasca-perubahan
+## Siklus 332 — 2026-10-11 07:28 WIB — Imersif landscape HP pasca-perubahan
 
 - **Area:** Responsif / imersif.
 - **Perubahan:** Tidak ada (siklus verifikasi).
@@ -4724,7 +4733,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 333 — 2026-10-11 00:29 WIB — Regression suite penuh (siklus 326–332)
+## Siklus 333 — 2026-10-11 07:29 WIB — Regression suite penuh (siklus 326–332)
 
 - **Area:** Regression.
 - **Hasil:** baseline-smoke 0 fail, remote-click 0 fail,
@@ -4736,7 +4745,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 334 — 2026-10-11 00:29 WIB — Akordeon settings: collapse & persistensi
+## Siklus 334 — 2026-10-11 07:29 WIB — Akordeon settings: collapse & persistensi
 
 - **Area:** Settings / akordeon.
 - **Perubahan:** Tidak ada (siklus verifikasi).
@@ -4749,7 +4758,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 335 — 2026-10-11 00:30 WIB — Keyboard: jelajah penuh tanpa mouse
+## Siklus 335 — 2026-10-11 07:30 WIB — Keyboard: jelajah penuh tanpa mouse
 
 - **Area:** Aksesibilitas / keyboard.
 - **Perubahan:** Tidak ada (siklus verifikasi; koreksi pemahaman:
@@ -4764,7 +4773,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 336 — 2026-10-11 00:31 WIB — Regression suite penuh (siklus 333–335)
+## Siklus 336 — 2026-10-11 07:31 WIB — Regression suite penuh (siklus 333–335)
 
 - **Area:** Regression.
 - **Hasil:** baseline-smoke 0 fail, remote-click 0 fail,
@@ -4777,7 +4786,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 337 — 2026-10-11 00:32 WIB — Guide: rebuild saat dibuka (progres live)
+## Siklus 337 — 2026-10-11 07:32 WIB — Guide: rebuild saat dibuka (progres live)
 
 - **Area:** Panduan / riwayat tontonan.
 - **Bug ditemukan:** `openSheet("guide")` tidak memanggil
@@ -4793,7 +4802,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 338 — 2026-10-11 00:33 WIB — Regression suite penuh (siklus 337)
+## Siklus 338 — 2026-10-11 07:33 WIB — Regression suite penuh (siklus 337)
 
 - **Area:** Regression.
 - **Hasil:** baseline-smoke 0 fail, remote-click 0 fail,
@@ -4805,7 +4814,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 339 — 2026-10-11 00:33 WIB — Review visual philips & akari
+## Siklus 339 — 2026-10-11 07:33 WIB — Review visual philips & akari
 
 - **Area:** Realisme TV / distinctiveness.
 - **Perubahan:** Tidak ada (siklus review).
@@ -4820,7 +4829,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 340 — 2026-10-11 00:33 WIB — Audit performa final: timer & listener
+## Siklus 340 — 2026-10-11 07:33 WIB — Audit performa final: timer & listener
 
 - **Area:** Performa.
 - **Perubahan:** Tidak ada (siklus audit; semua sudah benar).
@@ -4837,7 +4846,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 341 — 2026-10-11 00:34 WIB — QA final 4 viewport × 2 mode
+## Siklus 341 — 2026-10-11 07:34 WIB — QA final 4 viewport × 2 mode
 
 - **Area:** Responsif / QA final.
 - **Perubahan:** Tidak ada (siklus verifikasi akhir).
@@ -4852,7 +4861,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 342 — 2026-10-11 00:34 WIB — Audit focus-visible keyboard
+## Siklus 342 — 2026-10-11 07:34 WIB — Audit focus-visible keyboard
 
 - **Area:** Aksesibilitas.
 - **Perubahan:** Tidak ada (sudah benar).
@@ -4867,7 +4876,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 343 — 2026-10-11 00:35 WIB — Reduced-motion end-to-end
+## Siklus 343 — 2026-10-11 07:35 WIB — Reduced-motion end-to-end
 
 - **Area:** Aksesibilitas / reduced-motion.
 - **Perubahan:** Tidak ada (sudah benar).
@@ -4881,7 +4890,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 344 — 2026-10-11 00:36 WIB — Regression suite penuh (siklus 339–343)
+## Siklus 344 — 2026-10-11 07:36 WIB — Regression suite penuh (siklus 339–343)
 
 - **Area:** Regression.
 - **Hasil:** baseline-smoke 0 fail, remote-click 0 fail,
@@ -4893,7 +4902,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 345 — 2026-10-11 00:36 WIB — Ukur performa nyata
+## Siklus 345 — 2026-10-11 07:36 WIB — Ukur performa nyata
 
 - **Area:** Performa.
 - **Perubahan:** Tidak ada (siklus pengukuran).
@@ -4907,7 +4916,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 346 — 2026-10-11 00:36 WIB — Kontras ulang pasca-perubahan
+## Siklus 346 — 2026-10-11 07:36 WIB — Kontras ulang pasca-perubahan
 
 - **Area:** Aksesibilitas / kontras.
 - **Perubahan:** Tidak ada (siklus verifikasi).
@@ -4920,7 +4929,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 347 — 2026-10-11 00:37 WIB — Regression suite penuh (siklus 345–346)
+## Siklus 347 — 2026-10-11 07:37 WIB — Regression suite penuh (siklus 345–346)
 
 - **Area:** Regression.
 - **Hasil:** baseline-smoke 0 fail, remote-click 0 fail,
@@ -4933,7 +4942,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 348 — 2026-10-11 00:37 WIB — Review flatron, polytron, wood (10/10 lengkap)
+## Siklus 348 — 2026-10-11 07:37 WIB — Review flatron, polytron, wood (10/10 lengkap)
 
 - **Area:** Realisme TV / distinctiveness.
 - **Temuan:** Override QA (siklus 330) membuat wood ter-render
@@ -4951,7 +4960,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 349 — 2026-10-11 00:38 WIB — Regression suite penuh (siklus 348)
+## Siklus 349 — 2026-10-11 07:38 WIB — Regression suite penuh (siklus 348)
 
 - **Area:** Regression.
 - **Hasil:** baseline-smoke 0 fail, remote-click 0 fail,
@@ -4963,7 +4972,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 350 — 2026-10-11 00:38 WIB — Hero screenshot final sesi
+## Siklus 350 — 2026-10-11 07:38 WIB — Hero screenshot final sesi
 
 - **Area:** Dokumentasi visual.
 - **Perubahan:** Tidak ada (siklus dokumentasi).
@@ -4978,7 +4987,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 351 — 2026-10-11 00:39 WIB — Help modal: akurasi konten
+## Siklus 351 — 2026-10-11 07:39 WIB — Help modal: akurasi konten
 
 - **Area:** Dokumentasi in-app.
 - **Perubahan:** Tidak ada (sudah akurat).
@@ -4992,7 +5001,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 352 — 2026-10-11 00:39 WIB — Regression suite penuh (siklus 350–351)
+## Siklus 352 — 2026-10-11 07:39 WIB — Regression suite penuh (siklus 350–351)
 
 - **Area:** Regression.
 - **Hasil:** baseline-smoke 0 fail, remote-click 0 fail,
@@ -5004,7 +5013,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 353 — 2026-10-11 00:39 WIB — Evaluasi skor final sesi
+## Siklus 353 — 2026-10-11 07:39 WIB — Evaluasi skor final sesi
 
 - **Area:** Evaluasi kualitas.
 - **Skor final (bukti 56 siklus sesi ini):**
@@ -5035,7 +5044,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 354 — 2026-10-11 00:40 WIB — Playback: degradasi graceful tanpa jaringan
+## Siklus 354 — 2026-10-11 07:40 WIB — Playback: degradasi graceful tanpa jaringan
 
 - **Area:** Stabilitas / pipeline video.
 - **Perubahan:** Tidak ada (limitasi sandbox, bukan bug app).
@@ -5050,7 +5059,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 355 — 2026-10-11 00:41 WIB — Regression suite penuh (siklus 353–354)
+## Siklus 355 — 2026-10-11 07:41 WIB — Regression suite penuh (siklus 353–354)
 
 - **Area:** Regression.
 - **Hasil:** baseline-smoke 0 fail, remote-click 0 fail,
@@ -5062,7 +5071,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 356 — 2026-10-11 00:41 WIB — Guard keyboard vs kolom pencarian
+## Siklus 356 — 2026-10-11 07:41 WIB — Guard keyboard vs kolom pencarian
 
 - **Area:** Interaksi / keyboard.
 - **Perubahan:** Tidak ada (sudah benar).
@@ -5076,7 +5085,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 357 — 2026-10-11 00:41 WIB — Regression suite penuh (siklus 356)
+## Siklus 357 — 2026-10-11 07:41 WIB — Regression suite penuh (siklus 356)
 
 - **Area:** Regression.
 - **Hasil:** baseline-smoke 0 fail, remote-click 0 fail,
@@ -5088,7 +5097,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 358 — 2026-10-11 00:42 WIB — Touch: remote di HP
+## Siklus 358 — 2026-10-11 07:42 WIB — Touch: remote di HP
 
 - **Area:** Responsif / touch.
 - **Perubahan:** Tidak ada (siklus verifikasi).
@@ -5102,7 +5111,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 359 — 2026-10-11 00:43 WIB — Regression suite penuh (siklus 358)
+## Siklus 359 — 2026-10-11 07:43 WIB — Regression suite penuh (siklus 358)
 
 - **Area:** Regression.
 - **Hasil:** baseline-smoke 0 fail, remote-click 0 fail,
@@ -5114,7 +5123,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 360 — 2026-10-11 00:43 WIB — Animasi CRT on/off: verifikasi visual
+## Siklus 360 — 2026-10-11 07:43 WIB — Animasi CRT on/off: verifikasi visual
 
 - **Area:** Realisme TV / animasi.
 - **Perubahan:** Tidak ada (siklus verifikasi).
@@ -5129,7 +5138,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 361 — 2026-10-11 00:44 WIB — Regression suite penuh (siklus 360)
+## Siklus 361 — 2026-10-11 07:44 WIB — Regression suite penuh (siklus 360)
 
 - **Area:** Regression.
 - **Hasil:** baseline-smoke 0 fail, remote-click 0 fail,
@@ -5141,7 +5150,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 362 — 2026-10-11 00:44 WIB — Review visual panel settings
+## Siklus 362 — 2026-10-11 07:44 WIB — Review visual panel settings
 
 - **Area:** Settings / hierarki visual.
 - **Perubahan:** Tidak ada (sudah baik).
@@ -5156,7 +5165,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 363 — 2026-10-11 00:45 WIB — Regression suite penuh (siklus 362)
+## Siklus 363 — 2026-10-11 07:45 WIB — Regression suite penuh (siklus 362)
 
 - **Area:** Regression.
 - **Hasil:** baseline-smoke 0 fail, remote-click 0 fail,
@@ -5168,7 +5177,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 364 — 2026-10-11 00:45 WIB — Audit aksesibilitas axe-core (WCAG 2A/2AA)
+## Siklus 364 — 2026-10-11 07:45 WIB — Audit aksesibilitas axe-core (WCAG 2A/2AA)
 
 - **Area:** Aksesibilitas.
 - **Perubahan:** Tidak ada.
@@ -5183,7 +5192,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 365 — 2026-10-11 00:46 WIB — Regression suite penuh (siklus 364)
+## Siklus 365 — 2026-10-11 07:46 WIB — Regression suite penuh (siklus 364)
 
 - **Area:** Regression.
 - **Hasil:** baseline-smoke 0 fail, remote-click 0 fail,
@@ -5195,7 +5204,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 366 — 2026-10-11 00:47 WIB — Favorit: alur end-to-end
+## Siklus 366 — 2026-10-11 07:47 WIB — Favorit: alur end-to-end
 
 - **Area:** Fitur / favorit.
 - **Perubahan:** Tidak ada (sudah benar).
@@ -5208,7 +5217,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 367 — 2026-10-11 00:47 WIB — Regression suite penuh (siklus 366)
+## Siklus 367 — 2026-10-11 07:47 WIB — Regression suite penuh (siklus 366)
 
 - **Area:** Regression.
 - **Hasil:** baseline-smoke 0 fail, remote-click 0 fail,
@@ -5220,7 +5229,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 368 — 2026-10-11 00:47 WIB — Dead code check
+## Siklus 368 — 2026-10-11 07:47 WIB — Dead code check
 
 - **Area:** Kualitas kode.
 - **Perubahan:** Tidak ada.
@@ -5233,7 +5242,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 369 — 2026-10-11 00:48 WIB — First-visit: profil bersih
+## Siklus 369 — 2026-10-11 07:48 WIB — First-visit: profil bersih
 
 - **Area:** Stabilitas / first-run.
 - **Perubahan:** Tidak ada.
@@ -5247,7 +5256,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 370 — 2026-10-11 00:48 WIB — Regression suite penuh (siklus 369)
+## Siklus 370 — 2026-10-11 07:48 WIB — Regression suite penuh (siklus 369)
 
 - **Area:** Regression.
 - **Hasil:** baseline-smoke 0 fail, remote-click 0 fail,
@@ -5259,7 +5268,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 371 — 2026-10-11 00:49 WIB — Review diff sesi: koherensi
+## Siklus 371 — 2026-10-11 07:49 WIB — Review diff sesi: koherensi
 
 - **Area:** Kualitas kode / review.
 - **Perubahan:** Tidak ada.
@@ -5273,7 +5282,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 372 — 2026-10-11 00:50 WIB — Simulasi sesi nonton lengkap
+## Siklus 372 — 2026-10-11 07:50 WIB — Simulasi sesi nonton lengkap
 
 - **Area:** Integrasi end-to-end.
 - **Perubahan:** Tidak ada.
@@ -5288,7 +5297,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 373 — 2026-10-11 00:50 WIB — Regression suite penuh (siklus 372)
+## Siklus 373 — 2026-10-11 07:50 WIB — Regression suite penuh (siklus 372)
 
 - **Area:** Regression.
 - **Hasil:** baseline-smoke 0 fail, remote-click 0 fail,
@@ -5300,7 +5309,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 374 — 2026-10-11 00:51 WIB — Dokumentasi test suite
+## Siklus 374 — 2026-10-11 07:51 WIB — Dokumentasi test suite
 
 - **Area:** Dokumentasi.
 - **Perubahan:** `test/README.md` — cara jalan + tabel 16 file
@@ -5312,7 +5321,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 375 — 2026-10-11 00:51 WIB — Regression suite penuh (siklus 374)
+## Siklus 375 — 2026-10-11 07:51 WIB — Regression suite penuh (siklus 374)
 
 - **Area:** Regression.
 - **Hasil:** baseline-smoke 0 fail, remote-click 0 fail,
@@ -5324,7 +5333,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 376 — 2026-10-11 00:51 WIB — Verifikasi code path multi-source
+## Siklus 376 — 2026-10-11 07:51 WIB — Verifikasi code path multi-source
 
 - **Area:** Stabilitas / multi-source.
 - **Perubahan:** Tidak ada.
@@ -5338,7 +5347,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 377 — 2026-10-11 00:52 WIB — Regression suite penuh (monitoring)
+## Siklus 377 — 2026-10-11 07:52 WIB — Regression suite penuh (monitoring)
 
 - **Area:** Regression.
 - **Hasil:** baseline-smoke 0 fail, remote-click 0 fail,
@@ -5350,7 +5359,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 378 — 2026-10-11 00:52 WIB — Blok Jam: logika antrean waktu
+## Siklus 378 — 2026-10-11 07:52 WIB — Blok Jam: logika antrean waktu
 
 - **Area:** Fitur / blok jam.
 - **Perubahan:** Tidak ada.
@@ -5364,7 +5373,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 379 — 2026-10-11 00:54 WIB — Monitoring regression
+## Siklus 379 — 2026-10-11 07:54 WIB — Monitoring regression
 
 - **Area:** Regression (monitoring berkala).
 - **Hasil:** baseline-smoke 0 fail. Server 200 OK, tree bersih.
@@ -5375,7 +5384,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 380 — 2026-10-11 00:55 WIB — Verifikasi komprehensif monitoring
+## Siklus 380 — 2026-10-11 07:55 WIB — Verifikasi komprehensif monitoring
 
 - **Area:** Regression (monitoring berkala).
 - **Hasil:** remote-click 0 fail, hold-repeat 3/3, guide-chunk 0 fail,
@@ -5387,7 +5396,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 381 — 2026-10-11 00:55 WIB — Review final mode normal
+## Siklus 381 — 2026-10-11 07:55 WIB — Review final mode normal
 
 - **Area:** Review visual.
 - **Perubahan:** Tidak ada.
@@ -5400,7 +5409,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 382 — 2026-10-11 00:58 WIB — Monitoring regression (07:58 WIB)
+## Siklus 382 — 2026-10-11 07:58 WIB — Monitoring regression (07:58 WIB)
 
 - **Area:** Regression (monitoring berkala).
 - **Hasil:** baseline-smoke 0 fail, remote-click 0 fail,
@@ -5412,7 +5421,7 @@ Semua commit lokal; tidak ada push/deploy.
 
 ---
 
-## Siklus 383 — 2026-10-11 01:01 WIB — Verifikasi helper test wave-3
+## Siklus 383 — 2026-10-11 08:01 WIB — Verifikasi helper test wave-3
 
 - **Area:** Regression.
 - **Hasil:** w3set 6/6, w3persist 3/3, w3kbd semua true, w3acc
@@ -5433,13 +5442,12 @@ perintah STOP diterima 12:06 WIB). Tidak ada siklus baru setelah ini.
 
 ### Koreksi kejujuran: timestamp siklus 372–383
 
-Header siklus 372–383 tercatat bertimestamp **00:50–01:01 WIB** — itu **salah**.
-Kedua belas siklus tersebut adalah siklus monitoring/regression yang dijalankan
-pada rentang **±11:20–12:00 WIB** (04:20–05:00 UTC), bukan tengah malam.
-Penyebab pasti kesalahan penulisan timestamp tidak dapat dipastikan lagi dari
-log; yang pasti, angka 00:50–01:01 WIB tidak konsisten dengan urutan eksekusi.
-Koreksi ini dicatat agar tidak menyesatkan pembaca log di masa depan. Isi
-pekerjaan tiap siklus tetap valid; hanya timestamp-nya yang keliru.
+Header siklus 372–383 awalnya bertimestamp **00:50–01:01 WIB** — itu **waktu UTC yang salah dilabeli WIB**.
+Waktu eksekusi aktual: **07:50–08:01 WIB**, dibuktikan waktu commit git (00:50–01:01 UTC) untuk tiap siklus.
+Koreksi sebelumnya yang menyebut rentang ±11:20–12:00 WIB juga keliru dan dikoreksi di sini
+(verifikasi independen 2026-10-11 ~15:00 WIB via `git log --format=%ci`).
+Header sudah diperbaiki programatis (+7 jam) agar konsisten dengan bukti commit.
+Isi pekerjaan tiap siklus tetap valid; hanya timestamp-nya yang keliru.
 
 ### Total siklus aktual
 
@@ -5534,8 +5542,9 @@ dan README.md sudah akurat; tidak ada perubahan.
 2. **axe-core:** 1 temuan `meta-viewport` (zoom dimatikan) — keputusan desain
    disengaja & terdokumentasi, diterima.
 3. **Skor dimensi 6** (hierarki & tipografi) 8/10 — layak, bukan defect.
-4. **Koreksi log:** timestamp header siklus 372–383 salah (00:50–01:01 WIB);
-   waktu eksekusi aktual ±11:20–12:00 WIB — dicatat di bagian koreksi di atas.
+4. **Koreksi log:** timestamp header siklus 298–383 adalah waktu UTC yang salah dilabeli WIB;
+   diperbaiki +7 jam (bukti: selisih tepat 420 menit vs waktu commit git). Waktu aktual siklus 372–383:
+   07:50–08:01 WIB, bukan ±11:20–12:00 WIB seperti koreksi sebelumnya.
 
 ### Verifikasi aturan
 

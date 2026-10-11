@@ -174,6 +174,26 @@ python3 -m http.server 8000
 
 Buka http://localhost:8000. Koneksi internet diperlukan karena video disiarkan langsung dari sumbernya.
 
+## Panduan pengujian
+
+Cara menguji fitur utama secara manual dari browser desktop maupun HP:
+
+- **Fullscreen** — tekan tombol `FULL` pada remote, atau tombol fullscreen di panel pengaturan. TV tampil utuh
+  (pillarbox), bukan layar yang diregang. Tekan `Esc` untuk keluar.
+- **Remote** — klik ikon remote di pojok kanan bawah (atau tekan `H` untuk bantuan). Uji: angka 0–9 (pindah channel),
+  `CH±` / `VOL±`, `MUTE`, `ACAK`, `PANDUAN`, dan slider volume. Setiap tombol memberi umpan balik visual
+  (kilau IR) dan bunyi klik.
+- **Settings** — tekan `S` atau tombol pengaturan. Setiap perubahan (bentuk TV, finishing, scanlines, noise,
+  flicker) langsung terlihat di TV dan tersimpan otomatis di `localStorage`; muat ulang halaman untuk memastikan
+  pengaturan bertahan. Tombol reset mengembalikan bawaan.
+- **Immersive mode** — aktifkan dari pengaturan ("Mode Imersif"). TV tampil di ruang tamu (dinding, jam, lemari,
+  lampu). Ruangan meredup saat TV dimatikan. Keluar via tombol "✕ IMERSIF" atau `Esc`.
+- **Sinyal & antena** — seret antena di atas TV; OSD "SINYAL %" berubah live dan noise layar mengikuti.
+- **Favorit & riwayat** — klik bintang di panduan untuk favorit; tonton siaran dan cek penghitung
+  "Koleksi: N/656 siaran sudah ditonton".
+- **Blokir jaringan video** — untuk menguji fallback: blokir `youtube.com` di DevTools (Network → Block request URL),
+  lalu ganti channel. Layar menampilkan static + OSD tanpa macet.
+
 ## Teknologi
 
 - HTML, CSS, JavaScript murni (tanpa dependensi runtime)
