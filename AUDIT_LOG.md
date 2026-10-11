@@ -4202,3 +4202,24 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 303**
 
 ---
+
+## Siklus 304 — 2026-10-11 00:04 WIB — Settings: verifikasi live preview + hierarki header
+
+- **Area:** Settings / UX.
+- **Masalah:** (a) Belum terbukti preview kartu bentuk mengikuti finish
+  aktif; (b) header grup redup tanpa aksen; (c) tombol "CLOSE ✕"
+  berbahasa Inggris di UI Indonesia (3 panel). Insiden: perintah sed
+  merusak 2 tombol (menjadi `&/button>`) — diperbaiki via python,
+  diverifikasi.
+- **Perubahan:** `style.css` — header `.set-group h3`: tick aksen
+  emas + warna ink (lebih terbaca); `index.html` — 3× "CLOSE ✕" →
+  "TUTUP ✕" (panduan, pengaturan, bantuan).
+- **Test:** `node test/w3set.js` — 6/6: preview .pv ikut finish
+  silver (10/10 kartu), TV ikut finish+shape, kartu marked
+  aria-pressed, wood→kayu otomatis, finish terlarang disabled,
+  0 pageerror. Screenshot settings: header ber-aksen, TUTUP.
+- **Next:** Settings: restore defaults + persistensi localStorage.
+
+**Total siklus tercatat: 304**
+
+---

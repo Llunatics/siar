@@ -836,7 +836,15 @@ body:has(.tv.on) .stage::before {
 /* ---------- Pengaturan ---------- */
 .set-group { border-top: 1px solid var(--line); padding: 16px 0 6px; }
 .set-group:first-of-type { border-top: 0; }
-.set-group h3 { margin: 0 0 12px; font-size: 11px; letter-spacing: .25em; color: var(--dim); text-transform: uppercase; }
+.set-group h3 {
+  margin: 0 0 12px; font-size: 11px; letter-spacing: .25em; color: var(--ink);
+  text-transform: uppercase; display: flex; align-items: center; gap: 8px;
+}
+.set-group h3::before {
+  content: ""; width: 3px; height: 13px; border-radius: 2px; flex: 0 0 auto;
+  background: linear-gradient(180deg, var(--accent), #7a6c42);
+  box-shadow: 0 0 6px rgba(216,198,144,.35);
+}
 .set-row {
   display: flex; align-items: center; justify-content: space-between; gap: 14px;
   padding: 9px 0; font-size: 13px; cursor: pointer;
