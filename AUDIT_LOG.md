@@ -5061,3 +5061,17 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 355**
 
 ---
+
+## Siklus 356 — 2026-10-11 00:41 WIB — Guard keyboard vs kolom pencarian
+
+- **Area:** Interaksi / keyboard.
+- **Perubahan:** Tidak ada (sudah benar).
+- **Hasil:** Buka panduan → fokus di kolom cari; ketik "g" →
+  terketik di kolom (bukan menutup panduan); Escape → tutup.
+  Guard `typing` bekerja. 0 pageerror.
+- **Test:** Playwright key sequence.
+- **Next:** Regression suite (siklus 356).
+
+**Total siklus tercatat: 356**
+
+---
