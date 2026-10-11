@@ -4354,3 +4354,22 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 311**
 
 ---
+
+## Siklus 312 — 2026-10-11 00:12 WIB — Kaki TV per-model distinct
+
+- **Area:** Realisme TV / material.
+- **Masalah:** Kaki hanya beda tinggi/radius — nyaris identik antar
+  model; flatron tak punya override.
+- **Perubahan:** `style.css` — trinitron: trapesium tinggi kokoh
+  28px; flatron: kaki logam ramping miring (gradasi silver);
+  wood: balok kayu chunky 26px (radius 3, bayangan dalam);
+  akari: melebar ke bawah (splayed); philips: 18px radius 10
+  (dikembalikan setelah sempat terhapus saat edit).
+- **Test:** `node test/w3feet.js` — 5 model, 0 pageerror.
+  Strip `shots/qa/w3-feet-combo.png`: siluet kaki jelas berbeda
+  (balok kayu / ramping silver / splayed / membulat / trapesium).
+- **Next:** Panduan (guide): kepadatan & keterbacaan item.
+
+**Total siklus tercatat: 312**
+
+---

@@ -968,9 +968,23 @@ kbd {
 .shape-panasonic .tv-stand .foot { height: 13px; }
 .shape-toshiba .tv-stand .foot { height: 16px; }
 .shape-jvc .tv-stand .foot { height: 16px; border-radius: 0 0 6px 6px; }
-.shape-akari .tv-stand .foot { height: 18px; }
-.shape-philips .tv-stand .foot { height: 18px; border-radius: 0 0 8px 8px; }
-.shape-wood .tv-stand .foot { height: 20px; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+.shape-akari .tv-stand .foot { height: 20px; clip-path: polygon(0 0, 100% 0, 84% 100%, 16% 100%); } /* kaki melebar ke bawah */
+.shape-philips .tv-stand .foot { height: 18px; border-radius: 0 0 10px 10px; }
+/* Trinitron: kaki trapesium tinggi kokoh */
+.shape-trinitron .tv-stand .foot { height: 28px; clip-path: polygon(6% 0, 94% 0, 100% 100%, 0 100%); }
+/* Flatron: kaki logam ramping miring ke dalam */
+.shape-flatron .tv-stand .foot {
+  height: 15px; width: clamp(44px, 7%, 68px);
+  background: linear-gradient(180deg, #cdd2da, #646a74 70%, #3c4048);
+  clip-path: polygon(24% 0, 76% 0, 100% 100%, 0 100%);
+  box-shadow: inset 0 1px 1px rgba(255,255,255,.35);
+}
+/* Kayu 80-an: balok kayu chunky */
+.shape-wood .tv-stand .foot {
+  height: 26px; width: clamp(84px, 15%, 128px); clip-path: none; border-radius: 3px;
+  background: linear-gradient(180deg, #5f4426, #2a1c0d);
+  box-shadow: inset 0 2px 2px rgba(255,255,255,.14), inset 0 -5px 7px rgba(0,0,0,.55), 0 4px 8px rgba(0,0,0,.5);
+}
 
 /* LG Flatron (dari foto TV masa kecil user): bodi silver, speaker mesh
    full-height di KEDUA sisi mengapit layar, bezel dalam hitam, layar agak
