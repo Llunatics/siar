@@ -1109,16 +1109,24 @@ kbd {
 body.immersive .room-scene { display: block; }
 body.immersive {
   background:
+    /* semburat hangat di belakang TV: kesan lampu ruangan di sisi kiri */
+    radial-gradient(700px 420px at 22% 30%, rgba(255,190,120,.07) 0%, rgba(255,190,120,0) 62%),
     radial-gradient(760px 460px at 82% 26%, rgba(255,176,105,.10) 0%, rgba(255,176,105,0) 62%),
-    radial-gradient(1150px 720px at 50% 10%, #221c14 0%, #16120d 55%, #0a0908 100%);
-}
-body.immersive .room-scene::before { /* vignette tepi ruangan */
-  content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
-  background: radial-gradient(ellipse 118% 88% at 50% 42%, transparent 52%, rgba(0,0,0,.55) 100%);
+    /* belang plester samar skala besar */
+    radial-gradient(900px 500px at 30% 60%, rgba(0,0,0,.22) 0%, transparent 60%),
+    radial-gradient(1150px 720px at 50% 10%, #2c2216 0%, #1c150d 55%, #0e0a07 100%);
 }
 body.immersive .room-scene::after { /* grain tekstur dinding, sangat tipis */
   content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .05;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+}
+/* Belang plester skala besar di dinding: mottling cat tua, sangat samar */
+body.immersive .room-scene::before {
+  content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 118% 88% at 50% 42%, transparent 52%, rgba(0,0,0,.55) 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012 0.016' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='700' height='700' filter='url(%23m)'/%3E%3C/svg%3E");
+  background-blend-mode: normal, multiply;
 }
 body.immersive::after { /* lantai kayu gelap: gradasi shading + pantulan samar di dekat dinding */
   content: ""; position: fixed; left: -6%; right: -6%; top: 65%; bottom: -4%; z-index: -1;

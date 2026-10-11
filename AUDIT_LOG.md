@@ -4142,3 +4142,22 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 300**
 
 ---
+
+## Siklus 301 — 2026-10-11 00:00 WIB — Immersive: dinding hangat + belang plester
+
+- **Area:** Mode imersif / atmosfer.
+- **Masalah:** Dinding nyaris hitam pekat tanpa tekstur (void), tanpa
+  variasi nada.
+- **Perubahan:** `assets/css/style.css` — `body.immersive`: basis
+  dinding dihangatkan (#2c2216→#0e0a07), semburat hangat di kiri atas,
+  belang gelap samar skala besar; `.room-scene::before`: lapisan
+  mottling plester (feTurbulence baseFrequency 0.012, feColorMatrix
+  alpha .5, blend multiply) di atas vignette — cat tua organik.
+- **Test:** `node test/w3shot.js 1920 1080 wall immersive` — 0 pageerror.
+  Screenshot: belang awan organik terlihat di sisi kiri, nada hangat;
+  masih moody, tidak kartun.
+- **Next:** Immersive: dynamic lighting — layar menyala/mati & sinyal.
+
+**Total siklus tercatat: 301**
+
+---
