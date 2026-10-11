@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>Siar — TV Analog</title>
-<meta name="description" content="Siar: TV analog dalam browser. 656 siaran TV Indonesia 1990–2015 via embed resmi YouTube, Dailymotion & Vimeo — iklan jadul, opening kartun & tokusatsu, sinetron, ident stasiun — lengkap dengan remote overlay (mode mengarah ke TV), 10 bentuk TV × 8 finishing (termasuk LG Flatron tabung), antena interaktif, Blok Stasiun, Blok Jam sesuai jam tayang WIB, Mode Imersif ruang tamu, dan efek VHS.">
+<meta name="description" content="Siar: TV analog dalam browser. 656 siaran TV Indonesia 1990–2015 via embed resmi YouTube, Dailymotion & Vimeo — iklan jadul, opening kartun & tokusatsu, sinetron, ident stasiun — lengkap dengan remote overlay (mode mengarah ke TV), 10 bentuk TV × 8 finishing (termasuk LG Flatron tabung), antena interaktif, Blok Stasiun, Blok Jam sesuai jam tayang WIB, dan efek VHS.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📺</text></svg>">
 <meta property="og:title" content="Siar — TV Analog">
 <meta property="og:description" content="Televisi analog dalam browser: iklan jadul Indonesia & opening kartun legendaris.">
@@ -39,39 +39,6 @@
     </defs>
   </svg>
   <main class="room">
-    <!-- Adegan ruang tamu (hanya tampil di Mode Imersif) -->
-    <div class="room-scene" aria-hidden="true">
-      <div class="wall-frame"><span></span></div>
-      <div class="wall-cal" aria-hidden="true">
-        <div class="cal-paper">
-          <div class="cal-head">OKTOBER</div>
-          <div class="cal-grid">
-            <b>M</b><b>S</b><b>S</b><b>R</b><b>K</b><b>J</b><b>S</b>
-            <span></span><span></span><span></span><span>1</span><span>2</span><span>3</span><span>4</span>
-            <span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><b>11</b>
-            <span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><b>18</b>
-            <span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><b>25</b>
-            <span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span><span></span>
-          </div>
-        </div>
-      </div>
-      <div class="room-clock" id="roomClock">
-        <div class="clock-face">
-          <i class="hand hh" id="clockH"></i>
-          <i class="hand mh" id="clockM"></i>
-          <i class="hand sh" id="clockS"></i>
-          <span class="clock-pin"></span>
-        </div>
-        <div class="clock-digital" id="clockDigital">--:-- WIB</div>
-      </div>
-      <div class="lamp">
-        <span class="lamp-glow"></span>
-        <span class="lamp-shade"></span>
-        <span class="lamp-pole"></span>
-        <span class="lamp-base"></span>
-      </div>
-    </div>
-
     <div class="stage">
     <section class="tv shape-trinitron finish-hitam" id="tv" aria-label="Televisi analog">
       <div class="antenna" id="antenna">
@@ -98,7 +65,6 @@
               <div id="stationBug" aria-hidden="true" hidden></div>
               <div id="sleepBadge" aria-hidden="true"></div>
               <div id="powerFlash" aria-hidden="true"></div>
-              <div id="powerHint">TEKAN POWER</div>
               <div id="osd" aria-live="polite"></div>
               <div class="scanlines" id="scanlines" aria-hidden="true"></div>
               <div class="glass" aria-hidden="true"></div>
@@ -235,9 +201,6 @@
     </svg>
   </button>
 
-  <!-- Keluar Mode Imersif: hanya tampil di mode imersif -->
-  <button class="imm-exit" id="immExit" aria-label="Keluar Mode Imersif (Esc)" title="Keluar Mode Imersif (Esc)"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-close"/></svg> <span>IMERSIF</span></button>
-
   <!-- ===== Panduan Siaran (overlay) ===== -->
   <div class="backdrop" id="backdrop" hidden></div>
   <aside class="sheet" id="guideSheet" aria-label="Panduan siaran" hidden>
@@ -359,14 +322,7 @@
       <label class="set-row column"><span>Kecerahan <b id="brightVal"></b></span><input type="range" id="setBright" min="50" max="150"></label>
       <label class="set-row column"><span>Kontras <b id="contrastVal"></b></span><input type="range" id="setContrast" min="50" max="150"></label>
       <label class="set-row column"><span>Warna <b id="saturateVal"></b></span><input type="range" id="setSaturate" min="50" max="150"></label>
-    </div>
-
-    <div class="set-group">
-      <h3>Ruang &amp; Rasa (Imersif)</h3>
-      <label class="set-row"><span>Mode Imersif — ruang tamu (lampu, lemari TV, cahaya layar)</span><input type="checkbox" id="setImmersive"><i></i></label>
-      <label class="set-row"><span>Jam dinding di ruangan (Mode Imersif)</span><input type="checkbox" id="setClock"><i></i></label>
       <label class="set-row"><span>Logo bug stasiun di pojok layar</span><input type="checkbox" id="setBug"><i></i></label>
-      <p class="set-note">Ruangan remang gelap; cahaya layar &amp; lampu menyala mengikuti gambar.</p>
     </div>
 
     <div class="set-group">

@@ -11,10 +11,8 @@ const EXE = path.join(process.env.HOME, ".cache/ms-playwright/chromium-1243/chro
   await p.goto("http://localhost:8777/index.html", { waitUntil: "load" });
   await p.waitForTimeout(600);
   await p.click("#powerBtn"); await p.waitForTimeout(900);
-  if (mode === "immersive" || mode === "remote" || mode === "settings") {
-    await p.evaluate(() => { const c = document.querySelector("#setImmersive");
-      c.checked = true; c.dispatchEvent(new Event("change", { bubbles: true })); });
-    await p.waitForTimeout(1200);
+  if (mode === "remote" || mode === "settings") {
+    await p.waitForTimeout(400);
   }
   if (mode === "remote") {
     await p.evaluate(() => { document.querySelector("#remoteFab").click(); });

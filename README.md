@@ -1,6 +1,6 @@
 # Siar
 
-Televisi analog dalam browser. Memutar 364 siaran TV Indonesia era 1990–2015 (iklan jadul, opening kartun dan tokusatsu, sinetron, jingle stasiun TV) melalui embed resmi YouTube, Dailymotion, dan Vimeo — dengan bodi TV yang bisa diganti bentuknya, remote control fisik, antena interaktif, Blok Stasiun, Blok Jam sesuai jam tayang, dan Mode Imersif ruang tamu. Antarmuka sengaja bersih: halaman nyaris cuma TV, ditemani legenda shortcut ringkas di sampingnya.
+Televisi analog dalam browser. Memutar 656 siaran TV Indonesia era 1990–2015 (iklan jadul, opening kartun dan tokusatsu, sinetron, jingle stasiun TV) melalui embed resmi YouTube, Dailymotion, dan Vimeo — dengan bodi TV yang bisa diganti bentuknya, remote control fisik, antena interaktif, Blok Stasiun, Blok Jam sesuai jam tayang. Antarmuka sengaja bersih: halaman nyaris cuma TV, ditemani legenda shortcut ringkas di sampingnya.
 
 **Live:** https://tv.llunaticsys.web.id
 
@@ -23,12 +23,10 @@ Televisi analog dalam browser. Memutar 364 siaran TV Indonesia era 1990–2015 (
 - Isi remote: numpad 0–9 (angka tampil di OSD, TV lompat setelah jeda singkat), rocker CH/VOL, power, mute, acak, favorit, panduan, Blok Stasiun, sleep timer, volume slider, pengaturan, layar penuh
 - **Tahan tombol**: CH± / VOL± (remote maupun `↑` `↓` `←` `→` keyboard) bisa ditahan — channel/volume berulang otomatis setelah 450 ms
 
-### Ruang & rasa
+### Tampilan layar
 
-- **Mode Imersif**: semua teks halaman hilang, TV tampil di ruang tamu remang yang realistis — dinding hangat berbelang plester, vignette tepi, kolam cahaya lampu hangat yang lembut, lantai & lemari kayu, bingkai foto keluarga, dan pantulan cahaya layar yang hidup mengikuti kecerahan gambar, mode sinyal, dan knob kecerahan. Ruangan meredup saat TV mati (lampu jadi satu-satunya sumber cahaya) dan lampu menyesuaikan saat TV menyala
-- Keluar Mode Imersif yang jelas: tombol melayang "✕ IMERSIF" kiri-bawah atau `Esc` (bila tak ada panel terbuka)
-- **Jam dinding WIB** (analog + digital) di ruangan selama Mode Imersif; bisa dimatikan terpisah
-- **Logo bug stasiun** di pojok layar mengikuti stasiun channel yang sedang tayang, seperti watermark TV asli (disembunyikan otomatis selama OSD tampil); OSD ganti channel menampilkan "CH 01 · STASIUN"
+- **Logo bug stasiun** di pojok layar mengikuti stasiun channel yang sedang tayang, seperti watermark TV asli (disembunyikan otomatis selama OSD tampil)
+- Efek nyala/mati CRT: garis horizontal terang mengembang saat dinyalakan (lengkap dengan bunyi degauss), gambar menciut jadi garis lalu titik saat dimatikan — seperti TV tabung asli
 - Layar penuh: TV utuh (bodi + kontrol) tampil pillarbox terpusat, bukan layar yang diregang
 - Animasi mati CRT: gambar kolaps menjadi garis cahaya lalu padam saat TV dimatikan
 
@@ -104,9 +102,8 @@ Sorotan katalog: Shaun the Sheep, Upin & Ipin, Marsupilami, Curious George, The 
 | --- | --- |
 | Bentuk TV | 10 chassis (dengan preview bentuk), 8 finishing, rasio 4:3 / 16:9 |
 | Remote | Mode Mengarah ke TV / Datar, bunyi klik, getar |
-| Efek Layar | VHS, scanline + intensitas, noise, kelengkungan kaca, flicker, kecerahan/kontras/warna |
+| Efek Layar | VHS, scanline + intensitas, noise, kelengkungan kaca, flicker, kecerahan/kontras/warna, logo bug stasiun |
 | Sinyal | Antena interaktif / Selalu bersih / Acak per channel |
-| Ruang & Rasa | Mode Imersif (ruang tamu), jam dinding ruangan, logo bug stasiun |
 | Putar | Power otomatis, ingat channel terakhir, auto-pindah saat video habis |
 | Data | Reset semua pengaturan |
 
@@ -186,9 +183,8 @@ Cara menguji fitur utama secara manual dari browser desktop maupun HP:
 - **Settings** — tekan `S` atau tombol pengaturan. Setiap perubahan (bentuk TV, finishing, scanlines, noise,
   flicker) langsung terlihat di TV dan tersimpan otomatis di `localStorage`; muat ulang halaman untuk memastikan
   pengaturan bertahan. Tombol reset mengembalikan bawaan.
-- **Immersive mode** — aktifkan dari pengaturan ("Mode Imersif"). TV tampil di ruang tamu (dinding, jam, lemari,
-  lampu). Ruangan meredup saat TV dimatikan. Keluar via tombol "✕ IMERSIF" atau `Esc`.
-- **Sinyal & antena** — seret antena di atas TV; OSD "SINYAL %" berubah live dan noise layar mengikuti.
+- **Sinyal & antena** — seret antena di atas TV; noise/static layar berubah live mengikuti kualitas sinyal (tanpa angka persen, seperti TV analog asli).
+- **Power** — matikan TV: layar harus HITAM total tanpa teks apapun, hanya LED merah standby yang menyala. Nyalakan: efek garis CRT + bunyi degauss.
 - **Favorit & riwayat** — klik bintang di panduan untuk favorit; tonton siaran dan cek penghitung
   "Koleksi: N/656 siaran sudah ditonton".
 - **Blokir jaringan video** — untuk menguji fallback: blokir `youtube.com` di DevTools (Network → Block request URL),

@@ -38,7 +38,7 @@ const driver = `
   check("TV: power nyala via klik tombol power", function () {
     click("#powerBtn");
     assert(doc.querySelector("#tv").classList.contains("on"), "kelas .on tidak dipasang");
-    assert(doc.querySelector("#powerHint").classList.contains("off"), "powerHint tidak hilang");
+    assert(!doc.querySelector("#powerHint"), "#powerHint masih ada di DOM");
   });
   check("OSD: tampil nomor channel setelah power", function () {
     assert(doc.querySelector("#chNum").textContent.trim() !== "--", "chNum masih --");
@@ -85,14 +85,18 @@ const driver = `
     r.dispatchEvent(new Event("input", { bubbles: true }));
     assert(PNStore.settings.bright === 130, "bright=" + PNStore.settings.bright);
   });
-  check("Settings: toggle imersif -> body.immersive", function () {
-    var c = doc.querySelector("#setImmersive");
-    c.checked = true;
-    c.dispatchEvent(new Event("change", { bubbles: true }));
-    assert(doc.body.classList.contains("immersive"), "body tidak immersive");
-    c.checked = false;
-    c.dispatchEvent(new Event("change", { bubbles: true }));
-    assert(!doc.body.classList.contains("immersive"), "immersive tidak mati");
+  check("TV mati: layar hitam total tanpa teks (powerHint dihapus)", function () {
+    assert(!doc.querySelector("#powerHint"), "#powerHint masih ada di DOM");
+    click("#powerBtn"); // matikan TV bila sedang menyala
+    assert(doc.body.classList.contains("tv-off"), "body tidak tv-off");
+    assert(!doc.querySelector("#tv").classList.contains("on"), "kelas .on masih ada");
+    var bug = doc.querySelector("#stationBug");
+    assert(!bug || bug.hidden, "station bug masih terlihat saat TV mati");
+    assert(!doc.querySelector("#osd").classList.contains("show"), "OSD masih tampil saat TV mati");
+    // Mekanisme sembunyi OSD = class "show" (CSS: #osd{opacity:0} #osd.show{opacity:1}).
+    // jsdom tidak mengkaskade opacity dari stylesheet, jadi kehadiran class-lah yang diverifikasi.
+    click("#powerBtn"); // nyalakan kembali untuk cek berikutnya
+    assert(doc.body.classList.contains("tv-off") === false, "TV tidak menyala kembali");
   });
   check("Settings: ESC menutup panel", function () {
     key("Escape");

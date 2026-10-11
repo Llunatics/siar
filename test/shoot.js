@@ -2,7 +2,7 @@
 // Penggunaan: node test/shoot.js [tag]
 // Menghasilkan shots/<tag>/<viewport>-<state>.png
 // Viewport: 1920x1080, 1366x768, 390x844, 844x390
-// State: tv (power nyala), immersive, settings, remote, guide
+// State: tv (power nyala), settings, remote, guide
 const { chromium } = require("playwright-core");
 const path = require("path");
 const fs = require("fs");
@@ -57,18 +57,6 @@ const VIEWPORTS = [
     await page.waitForTimeout(600);
     await page.screenshot({ path: path.join(outdir, name + "-guide.png") });
     await page.keyboard.press("Escape");
-    // 5) immersive — checkbox disembunyikan CSS (toggle custom), set via JS + change
-    await page.keyboard.press("s");
-    await page.waitForTimeout(400);
-    await page.evaluate(() => {
-      const c = document.querySelector("#setImmersive");
-      c.checked = true;
-      c.dispatchEvent(new Event("change", { bubbles: true }));
-    });
-    await page.waitForTimeout(300);
-    await page.keyboard.press("Escape");
-    await page.waitForTimeout(800);
-    await page.screenshot({ path: path.join(outdir, name + "-immersive.png") });
     await page.close();
     console.log("OK " + name);
   }

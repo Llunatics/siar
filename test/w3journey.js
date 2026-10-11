@@ -38,14 +38,7 @@ const EXE = path.join(process.env.HOME, ".cache/ms-playwright/chromium-1243/chro
   await p.waitForTimeout(500);
   step.shape = await p.evaluate(() => document.querySelector("#tv").className);
   await p.keyboard.press("Escape"); await p.waitForTimeout(400);
-  // 6. imersif on/off
-  await p.evaluate(() => { const c = document.querySelector("#setImmersive"); c.checked = true; c.dispatchEvent(new Event("change", { bubbles: true })); });
-  await p.waitForTimeout(1200);
-  step.imm = await p.evaluate(() => document.body.classList.contains("immersive"));
-  await p.evaluate(() => document.querySelector("#immExit").click());
-  await p.waitForTimeout(1000);
-  step.immOff = await p.evaluate(() => !document.querySelector("#immBody") || !document.body.classList.contains("immersive"));
-  // 7. matikan TV, reload: state bertahan
+  // 6. matikan TV, reload: state bertahan
   await p.click("#powerBtn"); await p.waitForTimeout(700);
   await p.reload({ waitUntil: "load" }); await p.waitForTimeout(600);
   step.persist = await p.evaluate(() => ({

@@ -28,7 +28,7 @@
     tv: $("tv"), screen: $("screen"), osd: $("osd"), chNum: $("chNum"),
     playerBox: $("player"),
     staticC: $("staticCanvas"), shield: $("clickShield"),
-    powerHint: $("powerHint"), powerBtn: $("powerBtn"),
+    powerBtn: $("powerBtn"),
     powerFlash: $("powerFlash"), sleepBadge: $("sleepBadge"),
     vol: $("volSlider"), muteBtn: $("muteBtn"), guide: $("guideList"),
     guideSearch: $("guideSearch"), brandPlate: $("brandPlate"),
@@ -44,11 +44,8 @@
     blockExitBtn: $("blockExitBtn"), blockBadge: $("blockBadge"),
     guideProgress: $("guideProgress"), remPower: $("remPower"),
     remote: $("remote"), veil: $("remoteVeil"), fab: $("remoteFab"),
-    immExit: $("immExit"),
     irLed: $("irLed"), irEye: $("irEye"),
-    stationBug: $("stationBug"), roomClock: $("roomClock"),
-    clockDigital: $("clockDigital"), clockH: $("clockH"),
-    clockM: $("clockM"), clockS: $("clockS")
+    stationBug: $("stationBug")
   };
 
   // Plat merek mengikuti BENTUK TV (terinspirasi, bukan logo asli)
@@ -163,12 +160,7 @@
     setChk("setAutoPower", S.autoPower);
     setChk("setRemember", S.rememberCh);
     setChk("setAutoNext", S.autoNext);
-    setChk("setImmersive", S.immersive);
-    setChk("setClock", S.roomClock);
     setChk("setBug", S.stationBug);
-    document.body.classList.toggle("immersive", !!S.immersive);
-    els._clkStamp = 0; // paksa refresh jam saat mode berubah
-    document.body.classList.toggle("clock-off", !S.roomClock);
     refreshBug();
 
     applyAntenna();
@@ -273,6 +265,7 @@
     els._glowBase = glow;
     document.body.style.setProperty("--screen-glow", glow.toFixed(2));
     applyPicture();
+    updateHiss();
   }
   function bindRod(rod, key) {
     rod.addEventListener("pointerdown", function (e) {
@@ -996,12 +989,13 @@
     void els.tv.offsetWidth; // restart animasi bila dinyalakan beruntun
     els.tv.classList.add("turning-on");
     setTimeout(function () { els.tv.classList.remove("turning-on"); }, 550);
-    els.powerHint.classList.add("off");
     els.powerBtn.classList.add("on");
     els.remPower.classList.add("on");
     crtOnFx();
+    playThunk();
     flashEye();
     refreshSignal();
+    startHiss();
     staticFx(650);
     vpLoad(cur());
     showOsd();
@@ -1012,13 +1006,13 @@
     powered = false;
     document.body.classList.add("tv-off");
     els.tv.classList.remove("on");
-    els.powerHint.classList.remove("off");
     els.powerBtn.classList.remove("on");
     els.remPower.classList.remove("on");
     els.osd.classList.remove("show");
     flashEye();
     refreshSignal();
     if (!silent) { crtOffFx(); staticFx(220); }
+    stopHiss();
     vpStop();
     markActive();
     syncNow();
@@ -1138,14 +1132,6 @@
   /* ================= Mode Imersif: keluar ================= */
   // Keluar yang discoverable: tombol melayang + Escape (bila tak ada
   // panel/remote terbuka). Pengaturan checkbox tetap tersinkron.
-  function exitImmersive() {
-    if (!document.body.classList.contains("immersive")) return;
-    S.immersive = false;
-    PNStore.saveSettings();
-    applySettings();
-    showOsd("MODE NORMAL");
-  }
-  if (els.immExit) els.immExit.addEventListener("click", exitImmersive);
 
   // Bunyi klik mekanis pendek ala tombol remote (WebAudio, tanpa aset).
   function playClick() {
@@ -1161,6 +1147,64 @@
       osc.connect(g); g.connect(audioCtx.destination);
       osc.start(t); osc.stop(t + 0.05);
     } catch (e) { /* audio tidak tersedia */ }
+  }
+
+  // Bunyi degauss CRT saat dinyalakan: "thunk" rendah + desis singkat.
+  // Seperti TV tabung asli: kumparan degaussing menyala sepersekian detik.
+  function playThunk() {
+    try {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === "suspended") audioCtx.resume();
+      var t = audioCtx.currentTime;
+      var osc = audioCtx.createOscillator(), g = audioCtx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(64, t);
+      osc.frequency.exponentialRampToValueAtTime(38, t + 0.28);
+      g.gain.setValueAtTime(0.22, t);
+      g.gain.exponentialRampToValueAtTime(0.001, t + 0.32);
+      osc.connect(g); g.connect(audioCtx.destination);
+      osc.start(t); osc.stop(t + 0.35);
+    } catch (e) { /* audio tidak tersedia */ }
+  }
+
+  // Desis static ambient yang mengikuti kualitas sinyal — seperti TV analog:
+  // makin buruk sinyal makin keras kreseknya. Sangat pelan, non-intrusif.
+  var hissNodes = null;
+  function startHiss() {
+    try {
+      if (hissNodes) return;
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === "suspended") audioCtx.resume();
+      var len = audioCtx.sampleRate * 2;
+      var buf = audioCtx.createBuffer(1, len, audioCtx.sampleRate);
+      var d = buf.getChannelData(0);
+      for (var i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
+      var src = audioCtx.createBufferSource();
+      src.buffer = buf; src.loop = true;
+      var f = audioCtx.createBiquadFilter();
+      f.type = "lowpass"; f.frequency.value = 900;
+      var g = audioCtx.createGain();
+      g.gain.value = 0;
+      src.connect(f); f.connect(g); g.connect(audioCtx.destination);
+      src.start();
+      hissNodes = { src: src, gain: g };
+      updateHiss();
+    } catch (e) { hissNodes = null; }
+  }
+  function updateHiss() {
+    if (!hissNodes) return;
+    try {
+      var target = powered ? Math.max(0, (100 - signalQ) / 100) * 0.018 : 0;
+      hissNodes.gain.gain.setTargetAtTime(target, audioCtx.currentTime, 0.4);
+    } catch (e) { /* abaikan */ }
+  }
+  function stopHiss() {
+    if (!hissNodes) return;
+    try {
+      var n = hissNodes; hissNodes = null;
+      n.gain.gain.setTargetAtTime(0, audioCtx.currentTime, 0.1);
+      setTimeout(function () { try { n.src.stop(); } catch (e) {} }, 400);
+    } catch (e) { /* abaikan */ }
   }
 
   // LED inframerah remote berkedip + sensor di bodi TV menyala menerima sinyal.
@@ -1383,8 +1427,6 @@
   bindChk("setAutoPower", "autoPower");
   bindChk("setRemember", "rememberCh");
   bindChk("setAutoNext", "autoNext");
-  bindChk("setImmersive", "immersive");
-  bindChk("setClock", "roomClock");
   bindChk("setBug", "stationBug");
   // Kartu bentuk: memilih LG Flatron ikut menyamakan finishing ke Silver —
   // bodi aslinya memang silver (TV masa kecil user), user tetap bebas ganti warna sesudahnya.
@@ -1416,8 +1458,6 @@
     if (e.key === "Escape") {
       var wasOpen = anyOpen() || remoteOpen;
       closeSheets(); closeRemote();
-      // Tak ada yang terbuka + di mode imersif: Escape = keluar imersif.
-      if (!wasOpen && document.body.classList.contains("immersive")) exitImmersive();
       return;
     }
     if (typing) return;
@@ -1447,25 +1487,6 @@
     }
   });
 
-  /* ================= Jam dinding ruangan (WIB) ================= */
-  function updateClock() {
-    if (!els.clockDigital) return;
-    if (document.hidden) return; // tab tidak terlihat: jangan buang siklus
-    var now = wibNow();
-    var hh = now.getHours(), mm = now.getMinutes(), ss = now.getSeconds();
-    var stamp = hh * 3600 + mm * 60 + ss;
-    // Di luar Mode Imersif jam tidak terlihat: cukup update tiap 30 detik
-    // agar tidak stale saat user masuk imersif.
-    var vis = document.body.classList.contains("immersive");
-    if (!vis && els._clkStamp && stamp - els._clkStamp < 30) return;
-    els._clkStamp = stamp;
-    els.clockDigital.textContent = pad(hh) + ":" + pad(mm) + " WIB";
-    if (els.clockH) els.clockH.style.transform = "translateX(-50%) rotate(" + ((hh % 12) * 30 + mm * 0.5) + "deg)";
-    if (els.clockM) els.clockM.style.transform = "translateX(-50%) rotate(" + (mm * 6 + ss * 0.1) + "deg)";
-    if (els.clockS) els.clockS.style.transform = "translateX(-50%) rotate(" + (ss * 6) + "deg)";
-  }
-  setInterval(updateClock, 1000);
-
   /* ================= Init ================= */
   try { els.remote.inert = true; } catch (e) { /* abaikan */ }
   bindRod(els.rodL, "antL");
@@ -1480,7 +1501,6 @@
   applySettings();
   buildGuide();
   syncNow();
-  updateClock();
   drawStatic();
   document.body.classList.toggle("tv-off", true); /* awal: TV mati */
   if (S.autoPower && list.length) powerOn();
