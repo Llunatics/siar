@@ -5034,3 +5034,18 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 353**
 
 ---
+
+## Siklus 354 — 2026-10-11 00:40 WIB — Playback: degradasi graceful tanpa jaringan
+
+- **Area:** Stabilitas / pipeline video.
+- **Perubahan:** Tidak ada (limitasi sandbox, bukan bug app).
+- **Hasil:** `youtube.com/iframe_api` gagal dimuat (jaringan sandbox
+  dibatasi) → TV menampilkan static + station bug + OSD normal,
+  0 pageerror. App tidak crash; fallback "no signal" tematis tepat.
+  Pipeline video penuh butuh akses YouTube (produksi OK).
+- **Test:** Playwright + requestfailed listener.
+- **Next:** Regression suite (siklus 353–354).
+
+**Total siklus tercatat: 354**
+
+---
