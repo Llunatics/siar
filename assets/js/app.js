@@ -1075,7 +1075,7 @@
     closeRemote();
     closeSheets();
     els.backdrop.hidden = false;
-    if (which === "guide") { els.guideSheet.hidden = false; els.guideSheet.classList.add("open"); els.guideSearch.focus(); scrollGuideToCurrent(); }
+    if (which === "guide") { buildGuide(); els.guideSheet.hidden = false; els.guideSheet.classList.add("open"); els.guideSearch.focus(); scrollGuideToCurrent(); }
     if (which === "settings") { els.settingsSheet.hidden = false; els.settingsSheet.classList.add("open"); var sc = els.settingsSheet.querySelector("[data-close]"); if (sc) sc.focus({ preventScroll: true }); }
     if (which === "help") { els.helpModal.hidden = false; var hc = els.helpModal.querySelector("[data-close]"); if (hc) hc.focus({ preventScroll: true }); }
   }

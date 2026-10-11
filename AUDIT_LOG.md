@@ -4776,3 +4776,19 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 336**
 
 ---
+
+## Siklus 337 — 2026-10-11 00:32 WIB — Guide: rebuild saat dibuka (progres live)
+
+- **Area:** Panduan / riwayat tontonan.
+- **Bug ditemukan:** `openSheet("guide")` tidak memanggil
+  `buildGuide()` — progres "Koleksi" & penanda ✓ basi sampai
+  reload (terbukti: 0/656 setelah menonton, 1/656 setelah reload).
+- **Perubahan:** `app.js` — `openSheet`: `buildGuide()` sebelum
+  sheet dibuka.
+- **Test:** `node test/w3watch.js` — tonton CH3 → buka panduan:
+  "Koleksi: 1/656" langsung; persistensi reload tetap. 0 pageerror.
+- **Next:** Regression suite (siklus 337).
+
+**Total siklus tercatat: 337**
+
+---
