@@ -16,6 +16,9 @@ const SHAPES = ["trinitron", "toshiba", "polytron", "flatron", "philips", "sharp
       document.querySelectorAll("[data-shape]").forEach(b2 => {
         if (b2.getAttribute("data-shape") === sh) b2.click();
       });
+      // Flatron otomatis menyetel finish silver (by design) — kembalikan
+      // ke hitam supaya screenshot QA antar-bentuk konsisten.
+      if (sh === "flatron") document.querySelector('[data-finish="hitam"]').click();
     }, s);
     await p.waitForTimeout(450);
     const tv = await p.$("#tv");
