@@ -1350,6 +1350,22 @@ body.clock-off .room-clock { display: none; }
 @media (max-width: 720px) {
   .lamp { transform: scale(.72); transform-origin: bottom right; right: -8px; }
   .room-clock { transform: scale(.82); transform-origin: top left; }
+  /* Remote ringkas di HP: pangkas spacing (tinggi tombol tetap ≥44px
+     demi touch target) supaya isi muat tanpa scroll */
+  .remote { padding: 6px 12px calc(6px + env(safe-area-inset-bottom)); }
+  .remote-grip { margin-bottom: 6px; }
+  .remote-top { margin-bottom: 8px; }
+  .remote-led-wrap { margin-bottom: 4px; }
+  .numpad { padding: 8px; gap: 6px; }
+  .rockers { margin-top: 6px; gap: 6px; }
+  .remote-row { margin-top: 6px; gap: 6px; }
+  .rvol { margin-top: 4px; }
+  .rhelp { margin-top: 6px; padding: 7px 4px; }
+  .remote-hint { margin-top: 8px; }
+  /* HP tak punya keyboard fisik: tombol "Shortcut keyboard" disembunyikan
+     di layar kecil supaya slider volume muat tanpa scroll. Bantuan tetap
+     tersedia di desktop. */
+  .rhelp { display: none; }
 }
 @media (max-height: 560px) {
   .room-clock { display: none; }

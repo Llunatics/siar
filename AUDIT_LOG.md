@@ -4392,3 +4392,23 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 313**
 
 ---
+
+## Siklus 314 — 2026-10-11 00:17 WIB — Remote mobile: muat penuh tanpa scroll
+
+- **Area:** Responsif / remote.
+- **Masalah:** Di 390×844, remote overflow 103px (scrollH 760 vs
+  clientH 657) — slider volume di bawah lipatan.
+- **Perubahan:** `style.css` media ≤720px — pangkas spacing vertikal
+  (grip, top, led, numpad, rockers, rows, rvol, hint); tombol "Shortcut
+  keyboard (H)" disembunyikan di HP (tak ada keyboard fisik; bantuan
+  tetap ada di desktop). Tinggi tombol tetap ≥44/48px (touch target
+  dipertahankan — min-height dari blok media lain dihormati).
+- **Test:** scrollH 760→657 = clientH, fits=true, slider VOL terlihat
+  penuh. Screenshot `shots/qa/w3-mobrem5.png`. 0 pageerror.
+- **Catatan:** server http sempat mati (ERR_CONNECTION_REFUSED) —
+  di-restart, 200 OK.
+- **Next:** Kualitas skor 10 dimensi — evaluasi tengah jalan.
+
+**Total siklus tercatat: 314**
+
+---
