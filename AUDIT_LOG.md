@@ -4241,3 +4241,23 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 305**
 
 ---
+
+## Siklus 306 — 2026-10-11 00:06 WIB — Responsif: matriks 4 viewport × 2 mode
+
+- **Area:** Responsif.
+- **Masalah:** (a) Di 844×390, OSD channel berpotensi bertabrakan
+  dengan station bug kanan-atas saat layar mengecil; (b) perlu bukti
+  visual 8 kombinasi.
+- **Temuan positif:** fitStage sudah menangani 844×390 imersif
+  (roomH 649 → scale 0.6009, tvBottom 380 < 390) — dugaan terpotong
+  awal adalah artefak timing screenshot, terverifikasi ulang muat penuh.
+- **Perubahan:** `style.css` — `#osd` max-width 62% (wrap sebelum
+  zona bug); media ≤720px: bug pindah ke kanan-bawah.
+- **Test:** 8 screenshot `shots/qa/w3-rsp{1920,1366,390,844}-{normal,
+  immersive}` — 390×844 normal & imersif rapi; 844×390 imersif TV +
+  lemari + lampu muat penuh; pengukuran OSD/bug tak bertumpuk glif.
+- **Next:** Aksesibilitas: keyboard, focus, reduced-motion, kontras.
+
+**Total siklus tercatat: 306**
+
+---

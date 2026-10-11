@@ -263,6 +263,7 @@ body {
 
 #osd {
   position: absolute; top: 6%; left: 6%; z-index: 7; pointer-events: none;
+  max-width: 62%; /* teks wrap sebelum zona bug stasiun kanan-atas */
   color: var(--osd); font-size: clamp(15px, 2.6vw, 24px); font-weight: 700;
   letter-spacing: .12em; text-transform: uppercase;
   text-shadow: 0 0 10px rgba(141,255,158,.8), 2px 2px 0 rgba(0,0,0,.6);
@@ -1335,6 +1336,9 @@ body.clock-off .room-clock { display: none; }
   .stage { display: block; }
   .legend { display: none; }
   .tv { margin-top: 96px; }
+  /* Layar sempit: bug stasiun pindah ke bawah-kanan supaya tidak
+     bertabrakan dengan OSD channel di kiri atas */
+  #stationBug { top: auto; bottom: 5.5%; }
   .antenna .rod-l { height: 72px; }
   .antenna .rod-r { height: 88px; }
   .antenna .mount { width: 46px; height: 13px; }
