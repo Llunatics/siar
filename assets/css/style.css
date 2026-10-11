@@ -535,10 +535,12 @@ body:has(.tv.on) .stage::before {
   transform: translateY(2px);
   box-shadow: 0 1px 0 #050506, 0 2px 4px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.10);
 }
-/* Tombol karet: matte, oval, lebih empuk dipandang — untuk numpad & fungsi.
-   Beda material dari shell plastik remote. */
+/* Tombol karet: matte, oval, kubah lembut di permukaan — untuk numpad & fungsi.
+   Beda material dari shell plastik remote: highlight kubah + tepi bawah empuk. */
 .rbtn.rubber {
-  background: radial-gradient(ellipse at 50% 28%, #38383f 0%, #232329 55%, #17171c 100%);
+  background:
+    radial-gradient(ellipse 72% 46% at 50% 18%, rgba(255,255,255,.14) 0%, transparent 70%),
+    radial-gradient(ellipse at 50% 28%, #38383f 0%, #232329 55%, #17171c 100%);
   border-color: #2c2c34;
   box-shadow: 0 3px 0 #060607, 0 4px 7px rgba(0,0,0,.55),
     inset 0 1px 0 rgba(255,255,255,.10), inset 0 -3px 6px rgba(0,0,0,.6);
@@ -552,7 +554,16 @@ body:has(.tv.on) .stage::before {
   background: radial-gradient(circle at 50% 30%, #3a3a44 0%, #1d1d23 62%, #121216 100%);
 }
 .rbtn.rpower.on { color: var(--osd); text-shadow: 0 0 8px rgba(141,255,158,.8); }
-.numpad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px 7px; }
+/* Bidang keypad karet cekung: matras cetakan tempat tombol numpad duduk */
+.numpad {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px 7px;
+  padding: 12px 10px; border-radius: 18px;
+  background: rgba(0,0,0,.34);
+  box-shadow:
+    inset 0 3px 10px rgba(0,0,0,.7),
+    inset 0 -1px 0 rgba(255,255,255,.06),
+    0 1px 0 rgba(255,255,255,.05);
+}
 .numpad .rbtn {
   font-size: 15px; font-weight: 700; padding: 9px 4px;
   border-radius: 999px; /* oval karet ala remote asli */

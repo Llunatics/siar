@@ -4183,3 +4183,22 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 302**
 
 ---
+
+## Siklus 303 — 2026-10-11 00:02 WIB — Remote: kubah karet + bidang keypad cekung
+
+- **Area:** Remote / material.
+- **Masalah:** Tombol rubber vs shell plastik kurang terbedakan;
+  numpad mengambang tanpa bidang cetakan.
+- **Perubahan:** `assets/css/style.css` — `.rbtn.rubber`: highlight
+  kubah (radial 72%×46% di 50% 18%, white .14); `.numpad`: bidang
+  matras karet cekung (padding 12/10, radius 18, bg hitam .34, inset
+  shadow 3px/10px) — tombol oval duduk di dalamnya.
+- **Test:** `node test/w3shot.js 1920 1080 rmat remote` — 0 pageerror.
+  Crop `shots/qa/w3-rmat-crop.png`: matras inset terlihat jelas,
+  kubah halus di tiap tombol; rocker CH/VOL tetap glossy (kontras
+  material terjaga).
+- **Next:** Settings: hierarki visual + grouping.
+
+**Total siklus tercatat: 303**
+
+---
