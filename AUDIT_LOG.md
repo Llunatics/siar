@@ -4866,3 +4866,17 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 342**
 
 ---
+
+## Siklus 343 — 2026-10-11 00:35 WIB — Reduced-motion end-to-end
+
+- **Area:** Aksesibilitas / reduced-motion.
+- **Perubahan:** Tidak ada (sudah benar).
+- **Hasil:** Emulasi reduce: remote transition ≈0 (fungsional
+  tetap), animasi flicker kaca = none, noise digambar sekali.
+  0 pageerror.
+- **Test:** Playwright reducedMotion context, computed styles.
+- **Next:** Regression suite (siklus 339–343).
+
+**Total siklus tercatat: 343**
+
+---
