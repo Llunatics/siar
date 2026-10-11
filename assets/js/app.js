@@ -22,6 +22,7 @@
   var hourIdxs = [];                  // antrean indeks global untuk blok jam aktif
   var guideStation = "SEMUA";         // filter chip di panduan (visual saja)
   var signalQ = 100;                  // kualitas sinyal channel aktif, 0..100
+  var gesturePlayWanted = false;      // power-on = user gesture: kejar play bersuara meski API siap belakangan
 
   var $ = function (id) { return document.getElementById(id); };
   var els = {
@@ -44,7 +45,8 @@
     blockExitBtn: $("blockExitBtn"), blockBadge: $("blockBadge"),
     guideProgress: $("guideProgress"), remPower: $("remPower"),
     remote: $("remote"), veil: $("remoteVeil"), fab: $("remoteFab"),
-    irLed: $("irLed"), irEye: $("irEye"),
+    irLed: $("irLed"), pwrLed: $("pwrLed"),
+    pauseVeil: $("pauseVeil"),
     stationBug: $("stationBug")
   };
 
@@ -765,17 +767,26 @@
     els.playerBox.appendChild(slot);
     ytPlayer = new YT.Player("ytSlot", {
       width: "100%", height: "100%", videoId: ch.id,
-      playerVars: { autoplay: 1, controls: 0, modestbranding: 1, rel: 0, iv_load_policy: 3, disablekb: 1, playsinline: 1 },
+      playerVars: { autoplay: 1, controls: 0, modestbranding: 1, rel: 0, iv_load_policy: 3, disablekb: 1, fs: 0, playsinline: 1 },
       events: {
         onReady: function () {
           ytReady = true;
           vpApplyVolume();
-          try { ytPlayer.playVideo(); } catch (e) { /* abaikan */ }
+          try {
+            // Power-on adalah user gesture, tapi player dibuat async sehingga
+            // playVideo() di sini bisa diblokir autoplay policy -> kejar lagi
+            // dengan unMute+play; gesture berikutnya di mana saja juga memicu
+            // nudgePlay() sebagai jaring pengaman.
+            if (gesturePlayWanted && !S.muted) ytPlayer.unMute();
+            ytPlayer.playVideo();
+          } catch (e) { /* abaikan */ }
+          gesturePlayWanted = false;
         },
         onStateChange: function (e) {
-          if (e.data === YT.PlayerState.PLAYING) vpPlaying = true;
+          if (e.data === YT.PlayerState.PLAYING) { vpPlaying = true; gesturePlayWanted = false; }
           else if (e.data === YT.PlayerState.PAUSED) vpPlaying = false;
           else if (e.data === YT.PlayerState.ENDED) vpEnded();
+          syncPauseVeil();
         },
         onError: function () { vpError(); }
       }
@@ -809,9 +820,9 @@
         video: ch.id, width: "100%", height: "100%",
         params: { autoplay: true, controls: false, "ui-logo": false, sharing_enable: false }
       });
-      dmPlayer.addEventListener("play", function () { vpPlaying = true; });
-      dmPlayer.addEventListener("playing", function () { vpPlaying = true; });
-      dmPlayer.addEventListener("pause", function () { vpPlaying = false; });
+      dmPlayer.addEventListener("play", function () { vpPlaying = true; syncPauseVeil(); });
+      dmPlayer.addEventListener("playing", function () { vpPlaying = true; syncPauseVeil(); });
+      dmPlayer.addEventListener("pause", function () { vpPlaying = false; syncPauseVeil(); });
       dmPlayer.addEventListener("video_end", function () { vpEnded(); });
       dmPlayer.addEventListener("error", function () { vpError(); });
       dmPlayer.addEventListener("apiready", function () { vpApplyVolume(); });
@@ -866,8 +877,8 @@
         id: ch.id, width: "100%", height: "100%", autoplay: true,
         controls: false, title: false, byline: false, portrait: false, loop: false
       });
-      vmPlayer.on("play", function () { vpPlaying = true; });
-      vmPlayer.on("pause", function () { vpPlaying = false; });
+      vmPlayer.on("play", function () { vpPlaying = true; syncPauseVeil(); });
+      vmPlayer.on("pause", function () { vpPlaying = false; syncPauseVeil(); });
       vmPlayer.on("ended", function () { vpEnded(); });
       vmPlayer.on("error", function () { vpError(); });
       vmPlayer.ready().then(function () { vpApplyVolume(); });
@@ -895,13 +906,14 @@
     } catch (e) { /* abaikan */ }
     vpPlaying = false;
     els.playerBox.style.opacity = "0";
+    syncPauseVeil();
   }
   function vpToggle() {
     if (vpMode === "ia" || vpMode === "none") return; // ia: shield disembunyikan, pakai kontrol arsip
     try {
       if (vpMode === "yt" && ytPlayer && ytReady) {
         if (vpPlaying) { ytPlayer.pauseVideo(); showOsd("❚❚ PAUSE"); }
-        else { ytPlayer.playVideo(); showOsd("▶ PLAY"); }
+        else { if (!S.muted) ytPlayer.unMute(); ytPlayer.playVideo(); showOsd("▶ PLAY"); }
       } else if (vpMode === "dm" && dmPlayer) {
         if (dmPlayer.togglePlay) dmPlayer.togglePlay();
         else if (vpPlaying) dmPlayer.pause(); else dmPlayer.play();
@@ -911,6 +923,21 @@
         showOsd(vpPlaying ? "❚❚ PAUSE" : "▶ PLAY");
       }
     } catch (e) { /* abaikan */ }
+    // State pasti berubah sesaat lagi via event; sinkronkan veil optimistis.
+    setTimeout(syncPauseVeil, 60);
+  }
+
+  // Veil jeda milik sendiri: menutupi SELURUH layar saat video dijeda agar
+  // chrome YouTube (title bar, tombol raksasa, logo) tidak pernah terlihat.
+  // Klik tetap diteruskan ke click-shield di bawahnya (pointer-events: none).
+  function vpHasVideo() {
+    return (vpMode === "yt" && !!ytPlayer) || (vpMode === "dm" && !!dmPlayer) ||
+           (vpMode === "vimeo" && !!vmPlayer);
+  }
+  function syncPauseVeil() {
+    if (!els.pauseVeil) return;
+    var show = powered && !vpPlaying && vpHasVideo() && vpMode !== "ia";
+    els.pauseVeil.classList.toggle("show", !!show);
   }
 
   function tuneTo(idx) {
@@ -930,6 +957,7 @@
     markActive();
     syncNow();
     vpLoad(cur());
+    syncPauseVeil();
   }
 
   function stepChannel(dir) {
@@ -983,6 +1011,7 @@
   function powerOn() {
     if (!list.length) return;
     powered = true;
+    gesturePlayWanted = true; // klik power = user gesture: kejar play bersuara
     document.body.classList.remove("tv-off");
     els.tv.classList.add("on");
     els.tv.classList.remove("turning-on");
@@ -1001,6 +1030,7 @@
     showOsd();
     markActive();
     syncNow();
+    syncPauseVeil();
   }
   function powerOff(silent) {
     powered = false;
@@ -1016,6 +1046,7 @@
     vpStop();
     markActive();
     syncNow();
+    syncPauseVeil();
   }
 
   function updateMuteLabel() {
@@ -1208,8 +1239,9 @@
   }
 
   // LED inframerah remote berkedip + sensor di bodi TV menyala menerima sinyal.
+  // Satu LED simetris di jendela smoked: warna = status power, kedip = terima IR.
   function flashEye() {
-    var el = els.irEye;
+    var el = els.pwrLed;
     if (!el) return;
     el.classList.remove("flash");
     void el.offsetWidth; // restart animasi
@@ -1252,6 +1284,13 @@
     setTimeout(function () { btn.classList.remove("struck"); }, 160);
   }
   window.__siarStrike = strike; /* diekspos untuk test otomatis */
+  // Hook test: paksa state playing + keberadaan video, kembalikan status veil.
+  window.__siarVeilTest = function (playing, hasVideo) {
+    if (hasVideo) { vpMode = "yt"; ytPlayer = ytPlayer || {}; ytReady = true; }
+    vpPlaying = !!playing;
+    syncPauseVeil();
+    return els.pauseVeil.classList.contains("show");
+  };
   // Strike saat tekan dimulai (pointerdown/keydown), bukan saat click —
   // tombol tenggelam saat jari masih menekan, bukan setelah dilepas.
   els.powerBtn.addEventListener("pointerdown", function () { strike(els.powerBtn); });
@@ -1260,6 +1299,15 @@
   });
   els.powerBtn.addEventListener("click", function () { powered ? powerOff() : powerOn(); });
   els.screen.addEventListener("dblclick", toggleFs);
+  // Jaring pengaman autoplay: bila play bersuara diblokir browser saat power-on
+  // (player YouTube dibuat async di luar konteks gesture), gesture BERIKUTNYA
+  // di mana saja langsung mengejar play + unmute — tanpa perlu klik khusus.
+  function nudgePlay() {
+    if (!powered || vpMode !== "yt" || !ytReady || vpPlaying) return;
+    try { if (!S.muted) ytPlayer.unMute(); ytPlayer.playVideo(); } catch (e) { /* abaikan */ }
+  }
+  document.addEventListener("pointerdown", nudgePlay, { passive: true });
+  document.addEventListener("keydown", nudgePlay);
   // Klik di layar: putar / jeda lewat API pemutar aktif (dobel-klik tetap layar penuh)
   els.shield.addEventListener("click", function () {
     if (!powered) return;

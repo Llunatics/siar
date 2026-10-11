@@ -158,7 +158,7 @@ body {
 /* Serat plastik molded: noise fraktal dua skala, sangat tipis */
 .tv-body::before {
   content: ""; position: absolute; inset: 0; border-radius: inherit;
-  pointer-events: none; opacity: .06; mix-blend-mode: overlay;
+  pointer-events: none; opacity: .035; mix-blend-mode: overlay;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 /* Skrup + seam cetakan */
@@ -237,6 +237,24 @@ body {
 }
 #player.src-ia iframe { width: 100%; height: 100%; left: 0; top: 0; }
 .screen.native-ui .click-shield { display: none; }
+/* Veil jeda milik sendiri: menutupi SELURUH layar saat video dijeda agar
+   chrome YouTube (title bar, tombol raksasa, logo) tidak pernah terlihat.
+   pointer-events: none — klik diteruskan ke click-shield di atasnya. */
+#pauseVeil {
+  position: absolute; inset: 0; z-index: 3;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(2,2,3,.62);
+  opacity: 0; visibility: hidden; transition: opacity .25s ease, visibility 0s .3s;
+  pointer-events: none;
+}
+#pauseVeil.show { opacity: 1; visibility: visible; transition: opacity .25s ease; }
+#pauseVeil .ic { width: 16cqh; height: 16cqh; color: rgba(255,255,255,.92);
+  filter: drop-shadow(0 2px 10px rgba(0,0,0,.8)); }
+#pauseVeil::before {
+  content: ""; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: 30cqh; height: 30cqh; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,0,0,.45), transparent 70%);
+}
 .click-shield { position: absolute; inset: 0; z-index: 4; cursor: pointer; background: transparent; }
 #staticCanvas {
   position: absolute; inset: 0; width: 100%; height: 100%;
@@ -373,26 +391,22 @@ body {
   background-color: rgba(0,0,0,.13);
 }
 .finish-kayu .speaker { background-color: rgba(0,0,0,.30); }
+/* Sensor: SATU jendela smoked simetris dengan satu LED di tengah.
+   LED = status power (merah standby / hijau nyala) + berkedip saat terima IR. */
 .ir-zone {
-  display: flex; align-items: center; gap: .8cqw; justify-content: center;
-  padding: .9cqh .6cqw; border-radius: .9cqw;
-  background: rgba(0,0,0,.22);
-  box-shadow: inset 0 2px 6px rgba(0,0,0,.5), inset 0 -1px 0 rgba(255,255,255,.05);
+  display: flex; align-items: center; justify-content: center;
+  padding: .5cqh .3cqw; flex: 0 0 auto;
 }
-.ir-eye {
-  width: 1.5cqw; height: 1.5cqw; min-width: 8px; min-height: 8px; max-width: 13px; max-height: 13px;
-  border-radius: 50%; flex: 0 0 auto;
-  background: radial-gradient(circle at 38% 32%, #4a4a55, #17171c 70%);
-  box-shadow: inset 0 1px 2px rgba(255,255,255,.25), 0 1px 2px rgba(0,0,0,.6);
+.ir-win {
+  display: flex; align-items: center; justify-content: center;
+  width: 5cqw; height: 2.4cqh; min-width: 34px; min-height: 15px; max-width: 46px; max-height: 21px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #0b0b0d, #050506);
+  box-shadow: inset 0 2px 6px rgba(0,0,0,.9), inset 0 -1px 0 rgba(255,255,255,.05),
+    0 1px 0 rgba(255,255,255,.05);
 }
-.ir-eye.flash { animation: ir-flash .28s ease-out; }
-@keyframes ir-flash {
-  0% { background: radial-gradient(circle at 50% 50%, #ff5a4d, #a1120a 75%); box-shadow: 0 0 12px 3px rgba(255,60,45,.75); }
-  100% { background: radial-gradient(circle at 38% 32%, #4a4a55, #17171c 70%); box-shadow: inset 0 1px 2px rgba(255,255,255,.25); }
-}
-.ir-label { font-size: 1.05cqw; letter-spacing: .3em; color: var(--dim); white-space: nowrap; }
 .pwr-led {
-  width: 1.2cqw; height: 1.2cqw; min-width: 7px; min-height: 7px; max-width: 10px; max-height: 10px;
+  width: 1.15cqh; height: 1.15cqh; min-width: 7px; min-height: 7px; max-width: 11px; max-height: 11px;
   border-radius: 50%; flex: 0 0 auto;
   background: radial-gradient(circle at 38% 32%, #ff8a7a, #b02318 62%, #5d0f0a);
   box-shadow: 0 0 7px 1px rgba(255,80,60,.55), inset 0 1px 1px rgba(255,255,255,.35);
@@ -402,16 +416,20 @@ body {
   background: radial-gradient(circle at 38% 32%, #c8ffb8, #3fae52 62%, #14501f);
   box-shadow: 0 0 8px 2px rgba(90,255,130,.55), inset 0 1px 1px rgba(255,255,255,.35);
 }
+.pwr-led.flash { animation: pwr-flash .28s ease-out; }
+@keyframes pwr-flash {
+  0% { background: radial-gradient(circle at 50% 50%, #ffd9d2, #ff5a4d 70%); box-shadow: 0 0 12px 3px rgba(255,90,70,.8); }
+  100% { }
+}
 .brand-plate {
   margin-top: auto; text-align: center;
   font-size: 1.15cqw; letter-spacing: .18em; white-space: nowrap;
   padding-top: 1cqh; border-top: 1px dashed;
 }
-/* TV kecil: sembunyikan label & pelat, pertahankan mata IR + LED */
+/* TV kecil: sembunyikan pelat merek; sensor tetap simetris */
 @container (max-width: 520px) {
-  .ir-label, .brand-plate { display: none; }
+  .brand-plate { display: none; }
   .tv-side::before { display: none; }
-  .ir-zone { flex-direction: column; gap: .8cqh; padding: 1cqh 0; }
 }
 
 /* ---------- Dek kontrol: satu baris, tidak pernah wrap ---------- */
@@ -500,28 +518,45 @@ body {
     0 1px 0 rgba(255,255,255,.06);
 }
 .statusbar .front-ctrls { margin-left: auto; }
-/* Tombol favorit: bintang dalam bingkai pil */
-.fav-mini {
+/* Tombol favorit: key molded kecil, konsisten dengan klaster CH/VOL */
+.statusbar .fav-mini {
   flex: 0 0 auto; height: 9.5cqh; aspect-ratio: 1;
-  border-radius: 1.6cqw;
+  border-radius: .9cqw;
   display: inline-flex; align-items: center; justify-content: center;
   color: var(--dim);
+  background: linear-gradient(180deg, #303038 0%, #1d1d24 55%, #141419 100%);
+  border: 1px solid #43434e;
+  box-shadow: 0 2px 0 #060607, 0 4px 8px rgba(0,0,0,.5),
+    inset 0 1px 0 rgba(255,255,255,.14), inset 0 -3px 5px rgba(0,0,0,.45);
 }
-.fav-mini .ic { width: 3.6cqh; height: 3.6cqh; }
-.fav-mini.on, .btn.fav.on { color: var(--accent); border-color: var(--accent); }
-.fav-mini.on .ic { filter: drop-shadow(0 0 5px rgba(216,198,144,.7)); }
-/* Klaster CH/VOL: empat tombol molded dalam satu cetakan */
+.statusbar .fav-mini .ic { width: 3.4cqh; height: 3.4cqh; }
+.statusbar .fav-mini:active, .statusbar .fav-mini.struck { transform: translateY(2px); box-shadow: 0 0 0 #060607, inset 0 3px 7px rgba(0,0,0,.6); }
+.statusbar .fav-mini.on, .statusbar .btn.fav.on { color: var(--accent); border-color: var(--accent); }
+.statusbar .fav-mini.on .ic { filter: drop-shadow(0 0 5px rgba(216,198,144,.7)); }
+/* Klaster CH/VOL: empat key molded dalam satu cetakan — bevel tegas,
+   label seperti engraved, bukan pil datar. */
 .front-ctrls {
   flex: 0 0 auto; height: 10.5cqh;
   display: inline-flex; gap: .7cqw; padding: .7cqh .8cqw; border-radius: 1.2cqw;
   background: var(--well);
   box-shadow: inset 0 2px 7px rgba(0,0,0,.7), inset 0 -1px 0 rgba(255,255,255,.06), 0 1px 0 rgba(255,255,255,.05);
 }
-.btn.mini {
-  height: 100%; aspect-ratio: 1.5;
-  font-size: 2.2cqh; letter-spacing: .06em; border-radius: 1cqw;
+.statusbar .btn.mini {
+  height: 100%; aspect-ratio: 1.45;
+  font-size: 2.2cqh; letter-spacing: .08em; border-radius: .7cqw;
   display: inline-flex; align-items: center; justify-content: center;
   padding: 0;
+  color: #d7d7de; text-shadow: 0 1px 1px rgba(0,0,0,.85);
+  background: linear-gradient(180deg, #303038 0%, #1d1d24 55%, #141419 100%);
+  border: 1px solid #43434e;
+  box-shadow: 0 2px 0 #060607, 0 5px 9px rgba(0,0,0,.5),
+    inset 0 1px 0 rgba(255,255,255,.14), inset 0 -3px 5px rgba(0,0,0,.45);
+  transition: transform .04s, box-shadow .04s, filter .15s;
+}
+.statusbar .btn.mini:active, .statusbar .btn.mini.struck {
+  transform: translateY(2px);
+  box-shadow: 0 0 0 #060607, inset 0 3px 7px rgba(0,0,0,.6);
+  filter: brightness(.94);
 }
 /* Tombol fisik generik: plastik molded kusam — highlight tepi atas tipis,
    tanpa gradien tiga lapis yang terlihat "basah". */
@@ -856,6 +891,16 @@ body {
   transition: transform .25s ease, color .2s, border-color .2s;
 }
 .remote-fab svg { width: 26px; height: 26px; }
+/* Remote lebih kompak di HP: tetap muat tanpa mendominasi layar.
+   Touch target utama tetap >=44px (dijaga min-height .rbtn). */
+@media (max-width: 520px) {
+  .remote { width: min(300px, 94vw); padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); }
+  .remote-led-wrap { margin-bottom: 6px; }
+  .remote-top { margin-bottom: 8px; }
+  .rbtn { padding: 8px 4px; font-size: 12px; }
+  .remote-row { gap: 6px; margin-top: 8px; }
+  .numpad::before { top: -5px; }
+}
 .remote-fab:hover { color: var(--ink); transform: translateY(-2px); }
 .remote-fab.on { color: var(--osd); border-color: #35502f; }
 .remote-fab:not(.seen) { animation: fab-pulse 2.8s ease-out infinite; }
