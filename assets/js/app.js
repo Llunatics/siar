@@ -449,7 +449,7 @@
       '<span class="ttl">' + esc(ch.title) +
       '<span class="stn">' + esc(ch.station) + "</span></span>" +
       (seen ? '<span class="seen" title="Sudah ditonton">✓</span>' : "") +
-      '<button class="star' + (fav ? " on" : "") + '" data-fav="' + i + '" title="Favorit (F)">' + (fav ? "★" : "☆") + "</button>" +
+      '<button class="star' + (fav ? " on" : "") + '" data-fav="' + i + '" title="Favorit (F)" aria-label="Favorit"><svg class="ic fill" aria-hidden="true"><use href="#i-star"/></svg></button>' +
       (ch.custom ? '<button class="del" data-del="' + i + '" title="Hapus channel">✕</button>' : "") +
       "</li>";
   }
@@ -596,7 +596,9 @@
   }
   function syncFavBtn() {
     var on = list.length && PNStore.isFavorite(cur().key);
-    els.favBtn.textContent = on ? "★" : "☆";
+    // Ikon SVG dipertahankan; status hanya lewat kelas .on (warna).
+    if (!els.favBtn.querySelector("svg"))
+      els.favBtn.innerHTML = '<svg class="ic fill" aria-hidden="true"><use href="#i-star"/></svg>';
     els.favBtn.classList.toggle("on", !!on);
   }
 
