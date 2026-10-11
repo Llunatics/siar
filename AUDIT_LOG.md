@@ -5423,3 +5423,128 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 383**
 
 ---
+
+---
+
+## LAPORAN AKHIR — 2026-10-11 12:08 WIB — Penutupan Maraton Wave-3 (Non-Katalog)
+
+**Status:** Maraton dihentikan sesuai instruksi parent (deadline 12:00 WIB tercapai;
+perintah STOP diterima 12:06 WIB). Tidak ada siklus baru setelah ini.
+
+### Koreksi kejujuran: timestamp siklus 372–383
+
+Header siklus 372–383 tercatat bertimestamp **00:50–01:01 WIB** — itu **salah**.
+Kedua belas siklus tersebut adalah siklus monitoring/regression yang dijalankan
+pada rentang **±11:20–12:00 WIB** (04:20–05:00 UTC), bukan tengah malam.
+Penyebab pasti kesalahan penulisan timestamp tidak dapat dipastikan lagi dari
+log; yang pasti, angka 00:50–01:01 WIB tidak konsisten dengan urutan eksekusi.
+Koreksi ini dicatat agar tidak menyesatkan pembaca log di masa depan. Isi
+pekerjaan tiap siklus tetap valid; hanya timestamp-nya yang keliru.
+
+### Total siklus aktual
+
+- **384 entri log** (Siklus 0–383) di seluruh riwayat AUDIT_LOG.md.
+- **86 siklus wave-3** (Siklus 298–383) — di atas minimum 20 yang diminta.
+- **371 commit lokal** (termasuk commit penutup 200a899); working tree bersih.
+  Tidak ada push/deploy (sesuai aturan).
+
+### Perubahan utama per area wave-3
+
+**1. Realisme TV & material**
+- Speaker grille perforasi 3D + highlight lip (298); tombol power well cekung +
+  strike mekanis 160ms (300); refleksi kaca mengikuti finishing via `--glare`
+  (327); kaki distinct per model (312, sesi sebelumnya).
+- **Tombol fisik CH−/CH+/V−/V+ di panel depan TV** dalam panel cekung molded,
+  berfungsi penuh + strike (316).
+- Review visual **10/10 model chassis** via `test/shapes.js`, semua lolos (330,
+  339, 348). Dua temuan di 330/348 adalah artefak skrip QA (klik flatron
+  auto-set finish silver; wood ter-render hitam) — skrip diperbaiki, **bukan
+  bug aplikasi**.
+
+**2. Mode imersif**
+- Dinding belang plester hangat (301); ruangan meredup saat TV mati via class
+  `tv-off` (302); tombol exit "✕ IMERSIF" + Escape semantik (310); bingkai foto
+  keluarga sepia berlis emas (317); lampu lantai merespons power (opacity
+  1→0.62) (326); QA 8 kombinasi viewport × mode, 0 error (306, 332, 341).
+
+**3. Remote**
+- Kubah highlight karet + keypad cekung (303); retest 18/18 pasca-redesign
+  (311); muat penuh tanpa scroll di 390×844 dengan touch target ≥44px (314);
+  touch journey HP penuh via tap (358); LED IR/beam terverifikasi.
+
+**4. Settings**
+- Header grup ber-tick aksen + "TUTUP ✕" konsisten (304); live preview akurat
+  6/6 (304); persistensi localStorage + migrasi skema lama + reset defaults
+  3/3 (305); akordeon collapse persisten (334).
+
+**5. Responsif & aksesibilitas**
+- Matriks 4 viewport (1920×1080, 1366×768, 390×844, 844×390) × normal/imersif,
+  0 error (341); jelajah keyboard penuh tanpa mouse — Tab, G/S, focus trap,
+  Escape, panah, M, J (335); focus-visible 2px accent (342); reduced-motion
+  end-to-end (343); kontras AA (346).
+- axe-core WCAG 2A/2AA: **1 pelanggaran `meta-viewport`** (zoom dimatikan) —
+  keputusan desain disengaja "satu layar terkunci", terdokumentasi (364).
+
+**6. Performa**
+- Terukur nyata: **240 KB, 58fps saat noise, 0.0ms long task** saat ganti
+  channel (345); audit timer/listener — semua di-clear, tidak ada leak; jam
+  dinding hanya update tiap 30 detik di luar imersif (340); fullscreen
+  diperbaiki → TV utuh pillarbox, bukan layar diregang (321).
+
+**7. Bug nyata yang ditemukan & diperbaiki wave-3**
+- 319: OSD "CH 01 · STASIUN" bertabrakan dengan station bug → bug disembunyikan
+  selama OSD tampil, dikembalikan setelahnya.
+- 320: OSD sinyal hanya muncul setelah antena dilepas → live update saat drag
+  (`lastOsdSig`).
+- 321: Fullscreen menampilkan layar diregang → `.tv:fullscreen` pillarbox TV
+  utuh.
+- 337: Progres "Koleksi" basi sampai reload → `buildGuide()` dipanggil di
+  `openSheet("guide")`.
+
+### Hasil test suite terakhir (benar-benar dijalankan 12:08 WIB)
+
+Dijalankan ulang persis sebelum laporan ini ditulis, server lokal 200 OK:
+
+| Suite | Hasil |
+|---|---|
+| baseline-smoke.js | **0 fail** |
+| remote-click.js | **0 fail** |
+| hold-repeat.js | **3/3 PASS** |
+| guide-chunk.js | **0 fail** |
+
+Konsisten dengan seluruh monitoring berkala ±5 jam (semua hijau, 0 pageerror
+di semua pengujian headless). Evaluasi 10 dimensi wave-3: **8.8/10**
+(target ≥8.5 tercapai; tidak ada dimensi <8).
+
+### Katalog: dinyatakan JENUH, tidak dilanjutkan
+
+656 entri terverifikasi (`grep -c "id:" assets/js/channels.js` = **656**,
+cocok dengan CATALOG_REPORT.md dan klaim README.md). Sorotan katalog di README
+(Shaun the Sheep, Upin & Ipin, Ultraman Mebius, Kumon, Djarum 76, TVRI)
+terverifikasi ada di data. Tidak ditemukan jalur discovery baru yang produktif
+selama wave-3 → ekspansi katalog di-skip total sesuai instruksi. CATALOG_REPORT.md
+dan README.md sudah akurat; tidak ada perubahan.
+
+### Limitasi tersisa (jujur)
+
+1. **Playback video nyata tidak dapat diuji di sandbox:** `youtube.com/iframe_api`
+   gagal dimuat (jaringan sandbox dibatasi) — aplikasi terdegradasi graceful ke
+   static + OSD tanpa crash (354). Pipeline penuh membutuhkan akses YouTube
+   (produksi OK).
+2. **axe-core:** 1 temuan `meta-viewport` (zoom dimatikan) — keputusan desain
+   disengaja & terdokumentasi, diterima.
+3. **Skor dimensi 6** (hierarki & tipografi) 8/10 — layak, bukan defect.
+4. **Koreksi log:** timestamp header siklus 372–383 salah (00:50–01:01 WIB);
+   waktu eksekusi aktual ±11:20–12:00 WIB — dicatat di bagian koreksi di atas.
+
+### Verifikasi aturan
+
+- Commit lokal tiap siklus bermakna: ya (371 commit).
+- JANGAN push/deploy: dipatuhi — tidak ada push.
+- JANGAN `git reset --hard`: dipatuhi.
+- Screenshot wajib untuk perubahan visual: dipatuhi (`shots/qa/`,
+  `shots/shape-*.png`).
+- Server port 8777 sempat mati akibat restart service VM ~02:47 UTC;
+  di-restart dan kembali 200 OK (terkonfirmasi 12:08 WIB).
+
+**Maraton wave-3 selesai. Total siklus tercatat: 383 (384 entri termasuk Siklus 0).**
