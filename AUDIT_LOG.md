@@ -4373,3 +4373,22 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 312**
 
 ---
+
+## Siklus 313 — 2026-10-11 00:14 WIB — Guide: chips sebaris + placeholder thumbnail
+
+- **Area:** Panduan / kepadatan.
+- **Masalah:** (a) Chips stasiun wrap 7 baris, daftar baru mulai di
+  tengah panel; (b) thumbnail kosong = kotak hitam mati.
+- **Perubahan:** `style.css` — `.chips`: satu baris scroll horizontal
+  + mask fade kanan; `.th-none`: glif ▶ + inisial kategori
+  (attr data-cat). `app.js` — `rowHtml`: data-cat di span utama;
+  **bug ditemukan:** fallback `onerror` mengganti img rusak dengan
+  span tanpa data-cat → fallback kini menyertakan data-cat.
+- **Test:** chips 31px satu baris, scrollLeft 2001px; 13/13 th-none
+  ber-data-cat; screenshot: placeholder berinisial "I", daftar mulai
+  lebih atas. 0 pageerror.
+- **Next:** Immersive mobile: safe-area & remote.
+
+**Total siklus tercatat: 313**
+
+---

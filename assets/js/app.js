@@ -434,8 +434,13 @@
     var fav = PNStore.isFavorite(ch.key);
     var seen = PNStore.isWatched(ch.key);
     var th = thumbOf(ch);
+    var catL = esc(String(ch.cat || "?").charAt(0).toUpperCase());
+    var noneOpen = '<span class="th th-none" data-cat="' + catL + '" aria-hidden="true"></span>';
+    // Fallback bila gambar thumbnail gagal dimuat: pertahankan data-cat
+    // supaya placeholder tetap berinisial kategori.
+    var fb = '<span class=&quot;th th-none&quot; data-cat=&quot;' + catL + '&quot; aria-hidden=&quot;true&quot;></span>';
     return '<li data-idx="' + i + '"' + (seen ? ' class="watched"' : "") + ">" +
-      (th ? '<img class="th" src="' + th + '" alt="" loading="lazy" onerror="this.onerror=null;this.outerHTML=\'<span class=&quot;th th-none&quot; aria-hidden=&quot;true&quot;></span>\'">' : '<span class="th th-none" aria-hidden="true"></span>') +
+      (th ? '<img class="th" src="' + th + '" alt="" loading="lazy" onerror="this.onerror=null;this.outerHTML=\'' + fb + '\'">' : noneOpen) +
       '<span class="num">' + pad(i + 1) + "</span>" +
       '<span class="ttl">' + esc(ch.title) +
       '<span class="stn">' + esc(ch.station) + "</span></span>" +

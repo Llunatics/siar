@@ -599,7 +599,14 @@ body:has(.tv.on) .stage::before {
 /* ---------- Blok Stasiun di panduan ---------- */
 .guide-progress { font-size: 11px; letter-spacing: .12em; color: var(--dim); margin: 2px 0 10px; }
 .guide-progress b { color: var(--osd); font-weight: 700; }
-.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.chips {
+  display: flex; flex-wrap: nowrap; gap: 6px; margin-bottom: 12px;
+  overflow-x: auto; overscroll-behavior-x: contain;
+  scrollbar-width: thin; padding-bottom: 4px;
+  -webkit-mask-image: linear-gradient(90deg, #000 92%, transparent 100%);
+  mask-image: linear-gradient(90deg, #000 92%, transparent 100%);
+}
+.chips .chip { flex: 0 0 auto; }
 .chip {
   background: #121218; color: var(--ink); border: 1px solid var(--line); border-radius: 999px;
   padding: 6px 11px; font: inherit; font-size: 11px; letter-spacing: .06em; cursor: pointer;
@@ -1132,7 +1139,18 @@ body.immersive .room { animation: room-in .55s ease; }
 .pv-flatron { border-radius: 8px; }
 .pv-flatron .pv-screen { inset: 6px 22px 17px; border-radius: 6px / 7px; }
 .pv-wood { border-radius: 5px; } .pv-wood .pv-screen { inset: 11px 27px 11px 11px; border-radius: 4px; }
-.guide-list .th-none { background: #0a0a0d; border: 1px solid var(--line); border-radius: 6px; }
+.guide-list .th-none {
+  background: linear-gradient(160deg, #18181f, #0b0b0f);
+  border: 1px solid var(--line); border-radius: 6px;
+  display: inline-flex; align-items: center; justify-content: center;
+  position: relative;
+}
+/* Placeholder: glif putar + inisial kategori, bukan kotak hitam mati */
+.guide-list .th-none::before { content: "▶"; font-size: 15px; color: #43434e; text-shadow: 0 1px 0 #000; }
+.guide-list .th-none::after {
+  content: attr(data-cat); position: absolute; right: 5px; bottom: 3px;
+  font-size: 9px; letter-spacing: .08em; color: #55555f;
+}
 
 /* ---------- Logo bug stasiun (watermark TV asli) ---------- */
 #stationBug {
