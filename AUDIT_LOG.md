@@ -4531,3 +4531,20 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 320**
 
 ---
+
+## Siklus 321 — 2026-10-11 00:22 WIB — Fullscreen: TV utuh pillarbox
+
+- **Area:** Fullscreen.
+- **Masalah:** Fullscreen hanya menampilkan layar yang diregang;
+  chrome TV (speaker, kontrol, kaki) hilang/terpotong.
+- **Perubahan:** `style.css` — `.tv:fullscreen`: flex center,
+  latar gelap, antena disembunyikan, `.tv-body`/`.tv-stand`
+  `width: min(96vw, 94vh*1.30)`, bayangan lantai dimatikan.
+- **Test:** requestFullscreen → TV utuh 938×713 terpusat,
+  statusbar terlihat penuh; exitFullscreen → false. Screenshot
+  `shots/qa/w3-fs2.png`: pillarbox 4:3 yang jujur. 0 pageerror.
+- **Next:** Sleep timer: uji & OSD countdown.
+
+**Total siklus tercatat: 321**
+
+---

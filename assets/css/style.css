@@ -1057,7 +1057,18 @@ body.immersive .imm-exit { display: inline-flex; }
 /* Masuk imersif: fade+naik halus, bukan snap */
 body.immersive .room { animation: room-in .55s ease; }
 @keyframes room-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-/* ---------- Remote: mode mengarah ke TV ---------- */
+/* Layar penuh: TV utuh (bodi + kontrol) dipusatkan secara pillarbox —
+   bukan layar yang diregang. Antena disembunyikan karena tak muat. */
+.tv:fullscreen {
+  margin: 0; width: 100vw; height: 100vh; box-sizing: border-box;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: radial-gradient(120% 100% at 50% 20%, #101014 0%, #000 70%);
+  padding: 2vmin;
+}
+.tv:fullscreen .antenna { display: none; }
+.tv:fullscreen .tv-body,
+.tv:fullscreen .tv-stand { width: min(96vw, calc(94vh * 1.30)); flex: 0 0 auto; }
+.tv:fullscreen::after { display: none; } /* bayangan lantai tak perlu */
 .remote.point { transform: translate(-50%, 112%) perspective(950px) rotateX(30deg); }
 .remote.point.open {
   transform: translate(-50%, 0) perspective(950px) rotateX(34deg) scale(.97);
