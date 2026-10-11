@@ -4851,3 +4851,18 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 341**
 
 ---
+
+## Siklus 342 — 2026-10-11 00:34 WIB — Audit focus-visible keyboard
+
+- **Area:** Aksesibilitas.
+- **Perubahan:** Tidak ada (sudah benar).
+- **Hasil:** `:focus-visible` global (2px accent) + spesifik untuk
+  .rbtn/.btn/.chip/.star/.model-card/h3 akordeon. Terukur: Tab →
+  powerBtn outline "2px solid". Screenshot `shots/qa/w3-focus.png`.
+  0 pageerror.
+- **Test:** Computed style + screenshot.
+- **Next:** Reduced-motion end-to-end.
+
+**Total siklus tercatat: 342**
+
+---
