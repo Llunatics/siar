@@ -4161,3 +4161,25 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 301**
 
 ---
+
+## Siklus 302 — 2026-10-11 00:01 WIB — Immersive dynamic lighting: ruangan meredup saat TV mati
+
+- **Area:** Mode imersif / dynamic lighting.
+- **Masalah:** Ruangan tidak merespons power state — dinding/lantai
+  sama terangnya saat TV mati.
+- **Perubahan:** `assets/css/style.css` — `body.immersive::before`
+  lapisan peredup (rgba(4,3,2,.44), transisi opacity .9s dua arah,
+  z-index 0: di atas dinding/lantai, di bawah TV & dekorasi);
+  reduced-motion menonaktifkan transisi. `assets/js/app.js` —
+  `powerOn`/`powerOff` toggle class `tv-off` di body + state awal
+  saat init.
+- **Test:** `node test/w3dim.js` — tv-off true/false/true sesuai
+  urutan, opacity ::before 1→0, 0 pageerror. Screenshot
+  w3-dim-off.png (ruangan gelap, lampu jadi sumber cahaya utama,
+  "TEKAN POWER", LED standby merah) vs w3-dim-on.png (ruangan terang,
+  spill cahaya layar).
+- **Next:** Remote redesign: material rubberized vs shell.
+
+**Total siklus tercatat: 302**
+
+---

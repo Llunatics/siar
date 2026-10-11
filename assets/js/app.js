@@ -970,6 +970,7 @@
   function powerOn() {
     if (!list.length) return;
     powered = true;
+    document.body.classList.remove("tv-off");
     els.tv.classList.add("on");
     els.tv.classList.remove("turning-on");
     void els.tv.offsetWidth; // restart animasi bila dinyalakan beruntun
@@ -989,6 +990,7 @@
   }
   function powerOff(silent) {
     powered = false;
+    document.body.classList.add("tv-off");
     els.tv.classList.remove("on");
     els.powerHint.classList.remove("off");
     els.powerBtn.classList.remove("on");
@@ -1425,5 +1427,6 @@
   syncNow();
   updateClock();
   drawStatic();
+  document.body.classList.toggle("tv-off", true); /* awal: TV mati */
   if (S.autoPower && list.length) powerOn();
 })();

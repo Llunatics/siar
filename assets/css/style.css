@@ -1101,7 +1101,13 @@ kbd {
 .rbtn.rjam { font-size: 10px; letter-spacing: .16em; color: var(--accent); }
 .jam-btn { margin-bottom: 10px; letter-spacing: .12em; }
 
-/* ---------- Mode Imersif: ruang tamu remang, se-realistis mungkin ---------- */
+/* Peredup ruangan saat TV mati (mode imersif): dinding & lantai meredup,
+   lampu & dekorasi di sekitarnya tetap menyala — transisi halus dua arah. */
+body.immersive::before {
+  content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background: rgba(4,3,2,.44); opacity: 0; transition: opacity .9s ease;
+}
+body.immersive.tv-off::before { opacity: 1; }
 /* Palet gelap moody: dinding arang-cokelat desaturasi, grain film tipis,
    vignette tepi, kolam cahaya lampu hangat yang lembut — bukan kartun. */
 .room { position: relative; }
@@ -1289,6 +1295,7 @@ body.clock-off .room-clock { display: none; }
   .vhs-on .screen-inner, .vhs-band, .vhs-lines { animation: none !important; }
   #powerHint, .remote-fab:not(.seen) { animation: none !important; }
   .glass { animation: none !important; }
+  body.immersive::before { transition: none !important; }
 }
 /* Layar pendek (HP landscape, laptop mungil): ringkas elemen non-TV
    supaya panggung tetap besar & fokus ke TV.
