@@ -5323,3 +5323,17 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 375**
 
 ---
+
+## Siklus 376 — 2026-10-11 00:51 WIB — Verifikasi code path multi-source
+
+- **Area:** Stabilitas / multi-source.
+- **Perubahan:** Tidak ada.
+- **Hasil:** 56 entri non-YouTube (dm/vimeo/ia); mode player
+  yt|dm|vimeo|ia dengan cleanup destroy saat ganti sumber.
+  Playback nyata butuh jaringan (terbatas di sandbox).
+- **Test:** Analisis statis + degradasi graceful (354).
+- **Next:** Monitoring berkala hingga 12:00.
+
+**Total siklus tercatat: 376**
+
+---
