@@ -5113,3 +5113,18 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 359**
 
 ---
+
+## Siklus 360 — 2026-10-11 00:43 WIB — Animasi CRT on/off: verifikasi visual
+
+- **Area:** Realisme TV / animasi.
+- **Perubahan:** Tidak ada (siklus verifikasi).
+- **Hasil:** Power-off: gambar kolaps menjadi garis cahaya
+  horizontal ala CRT asli (screenshot `w3-crtoff.png` — "TEKAN
+  POWER" tampak menembus garis). Power-on: TV menyala normal.
+  0 pageerror.
+- **Test:** Screenshot mid-animation via Playwright.
+- **Next:** Regression suite (siklus 360).
+
+**Total siklus tercatat: 360**
+
+---
