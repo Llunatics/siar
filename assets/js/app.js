@@ -602,12 +602,18 @@
       (sub ? "<small>" + esc(sub) + "</small>" : "") +
       (sub2 ? '<small class="dim">' + esc(sub2) + "</small>" : "");
     els.osd.classList.add("show");
+    // Bug stasiun disembunyikan selama OSD tampil (keduanya di kanan-atas).
+    if (els.stationBug) els.stationBug.style.visibility = "hidden";
     clearTimeout(osdTimer);
-    osdTimer = setTimeout(function () { els.osd.classList.remove("show"); }, 2400);
+    osdTimer = setTimeout(function () {
+      els.osd.classList.remove("show");
+      if (els.stationBug) els.stationBug.style.visibility = "";
+    }, 2400);
   }
   function showOsd(extra) {
     if (!list.length) return;
-    osdRender("CH " + pad(current + 1), cur().title, extra || null);
+    // OSD ala TV asli: nomor + stasiun di baris utama, judul di bawahnya.
+    osdRender("CH " + pad(current + 1) + " · " + cur().station, cur().title, extra || null);
   }
   function showOsdText(main, sub) { osdRender(main, sub, null); }
 

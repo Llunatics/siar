@@ -4497,3 +4497,20 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 318**
 
 ---
+
+## Siklus 319 — 2026-10-11 00:20 WIB — OSD: stasiun di baris utama + bug menghindar
+
+- **Area:** OSD / hierarki info.
+- **Masalah:** OSD hanya "CH 01" tanpa stasiun; setelah ditambah
+  "CH 01 · STASIUN", bertabrakan dengan station bug kanan-atas.
+- **Perubahan:** `app.js` — `showOsd`: baris utama
+  "CH 01 · <stasiun>" ala OSD TV asli; `osdRender`: station bug
+  visibility hidden selama OSD tampil, dikembalikan setelah 2400ms.
+- **Test:** OSD terbaca "CH 01 · MULTI-STASIUN / judul / SINYAL 52%";
+  bug hidden saat OSD, visible setelahnya. Screenshot
+  `shots/qa/w3-osd2.png`. 0 pageerror.
+- **Next:** Antena: affordance drag di mobile.
+
+**Total siklus tercatat: 319**
+
+---
