@@ -4281,3 +4281,25 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 307**
 
 ---
+
+## Siklus 308 — 2026-10-11 00:09 WIB — Performa: will-change, flicker pause + bug sintaks
+
+- **Area:** Performa & stabilitas.
+- **Audit:** Timer: staticFx/sleep/140ms-static/updateClock semua aman
+  (clearInterval, early-return saat mati/hidden, clock throttle 30dt).
+  Listener: guide terdelegasi, antenna move/up di-remove, no leak.
+  Canvas static mungil 160×90 (pixelated upscale) — murah.
+- **Perubahan:** `style.css` — (1) `will-change: transform` hanya di
+  `.remote.open`; (2) `.tv:not(.on) .glass` animation-play-state
+  paused.
+- **BUG DITEMUKAN & DIPERBAIKI:** edit will-change saya memutus blok
+  `.remote` lebih awal (kurung tutup yatim di baris 456, deklarasi
+  transition terbuang). Terdeteksi via styleSheets kosong + brace
+  checker → diperbaiki, brace kini seimbang (0 unmatched).
+- **Test:** open → visible + will-change transform; close → hidden +
+  auto; glass paused saat TV mati; 0 pageerror.
+- **Next:** Regression suite penuh.
+
+**Total siklus tercatat: 308**
+
+---

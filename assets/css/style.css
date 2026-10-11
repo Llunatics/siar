@@ -445,9 +445,9 @@ body:has(.tv.on) .stage::before {
   transform-origin: 50% 100%;
   opacity: 0;
   visibility: hidden;
-  will-change: transform;
-  /* Tutup: meluncur turun, perspektif mereda, fade halus menjelang sampai —
-     simetris sebaliknya dari animasi buka */
+  /* will-change hanya saat terbuka (di .remote.open): lapisan kompositor
+     tak perlu permanen. Tutup: meluncur turun, perspektif mereda, fade
+     halus menjelang sampai — simetris sebaliknya dari animasi buka */
   transition:
     transform .46s cubic-bezier(.55, .06, .68, .19),
     opacity .34s ease .1s,
@@ -457,6 +457,7 @@ body:has(.tv.on) .stage::before {
   transform: translate(-50%, 0) perspective(1100px) rotateX(5deg);
   opacity: 1;
   visibility: visible;
+  will-change: transform;
   /* Buka: naik dengan pegas lembut */
   transition:
     transform .55s cubic-bezier(.22, 1.18, .36, 1),
@@ -998,6 +999,8 @@ kbd {
 .tv.curve-off .screen { border-radius: 6px / 8px; }
 .tv.curve-off .screen::after { background: none; }
 .tv.flicker-off .glass { animation: none; }
+/* TV mati: jeda animasi flicker kaca — tak ada gunanya berdenyut */
+.tv:not(.on) .glass { animation-play-state: paused; }
 
 /* ---------- Remote: mode mengarah ke TV ---------- */
 .remote.point { transform: translate(-50%, 112%) perspective(950px) rotateX(30deg); }
