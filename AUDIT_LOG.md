@@ -4339,3 +4339,18 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 310**
 
 ---
+
+## Siklus 311 — 2026-10-11 00:12 WIB — Retest menyeluruh fungsi remote pasca-redesign
+
+- **Area:** Remote / regression fungsional.
+- **Perubahan:** Tidak ada (siklus verifikasi).
+- **Test:** `node test/remote-click.js` — 18/18 PASS: power+LED,
+  buka remote, CH±, numpad 5→CH 05, MUTE, ACAK, FAV, PANDUAN,
+  BLOK JAM on/off, SET, SLEEP 15, VOL+, tutup, IR flash.
+  Uji tambahan: HELP buka modal, FULL tanpa error, slider volume
+  remote 70→30, mode point→flat. 0 pageerror di semua.
+- **Next:** TV: kaki/stand per-model lebih distinct.
+
+**Total siklus tercatat: 311**
+
+---
