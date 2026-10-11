@@ -4303,3 +4303,18 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 308**
 
 ---
+
+## Siklus 309 — 2026-10-11 00:10 WIB — Regression suite penuh (siklus 304–308)
+
+- **Area:** Regression.
+- **Hasil:** baseline-smoke 18 PASS + ringkasan (0 fail),
+  remote-click 18 PASS (0 fail), hold-repeat 3/3 PASS,
+  guide-chunk 7 PASS. Semua dijalankan nyata via node.
+  (Selisih 18 vs 19 dibanding hitungan sebelumnya = anchor grep,
+  bukan kegagalan — grep FAIL/✗ kosong di semua suite.)
+- **Test:** 4 file test suite.
+- **Next:** Immersive: transisi masuk/keluar + tombol exit.
+
+**Total siklus tercatat: 309**
+
+---
