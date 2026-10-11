@@ -5167,3 +5167,18 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 363**
 
 ---
+
+## Siklus 364 — 2026-10-11 00:45 WIB — Audit aksesibilitas axe-core (WCAG 2A/2AA)
+
+- **Area:** Aksesibilitas.
+- **Perubahan:** Tidak ada.
+- **Hasil:** `axe-core` runOnly wcag2a+wcag2aa → **1 pelanggaran**:
+  `meta-viewport` (zoom dimatikan). Ini keputusan desain yang
+  disengaja & terdokumentasi ("satu layar terkunci"), bukan bug —
+  diterima. Nol pelanggaran kontras/label/ARIA/keyboard.
+- **Test:** axe-core via Playwright (TV menyala).
+- **Next:** Regression suite (siklus 364).
+
+**Total siklus tercatat: 364**
+
+---
