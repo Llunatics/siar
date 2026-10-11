@@ -4613,3 +4613,17 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 326**
 
 ---
+
+## Siklus 327 — 2026-10-11 00:24 WIB — Refleksi kaca mengikuti finishing
+
+- **Area:** Realisme TV / material.
+- **Perubahan:** `style.css` — `.glass` memakai `--glare`;
+  kayu/marun → hangat (255,214,170), ivory/krem → krem,
+  dongker/grafit → sejuk. Default putih netral.
+- **Test:** Klik finish kayu → computed --glare "255, 214, 170"
+  (selektor ancestor .finish-kayu .glass cocok). 0 pageerror.
+- **Next:** Skor akhir 10 dimensi + docs.
+
+**Total siklus tercatat: 327**
+
+---
