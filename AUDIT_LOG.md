@@ -4977,3 +4977,17 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 350**
 
 ---
+
+## Siklus 351 — 2026-10-11 00:39 WIB — Help modal: akurasi konten
+
+- **Area:** Dokumentasi in-app.
+- **Perubahan:** Tidak ada (sudah akurat).
+- **Hasil:** 17 baris shortcut cocok dengan binding aktual
+  (terverifikasi di w3kbd.js) + "Klik layar" + "Seret antena".
+  Esc mencakup keluar imersif.
+- **Test:** Perbandingan manual binding vs konten.
+- **Next:** Regression suite (siklus 350–351).
+
+**Total siklus tercatat: 351**
+
+---
