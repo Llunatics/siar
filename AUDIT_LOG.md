@@ -4261,3 +4261,23 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 306**
 
 ---
+
+## Siklus 307 — 2026-10-11 00:07 WIB — Aksesibilitas: focus management + verifikasi
+
+- **Area:** Aksesibilitas.
+- **Masalah:** Fokus tidak masuk ke remote/panel saat dibuka via
+  keyboard (Tab pertama jatuh ke entah); panel settings/help tanpa
+  fokus awal.
+- **Perubahan:** `app.js` — `openRemote` fokus ke #remClose;
+  `closeRemote` kembalikan fokus ke fab; `openSheet` fokus ke
+  tombol TUTUP untuk settings & help (guide sudah fokus ke search).
+- **Test:** Emulasi reduced-motion: animasi glass 0s, transisi remote
+  ~0.01ms. Kontras terhitung: dim 5.53, aksen 11.45, ink 15.53 (lolos
+  AA). Keyboard: Enter di fab → fokus remClose; Tab → tombol remote;
+  Escape → fokus kembali ke fab; "s" → fokus TUTUP settings.
+  aria-hidden/inert toggle benar. 0 pageerror.
+- **Next:** Performa: audit timer, listener, repaint mahal.
+
+**Total siklus tercatat: 307**
+
+---

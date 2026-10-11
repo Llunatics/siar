@@ -1060,8 +1060,8 @@
     closeSheets();
     els.backdrop.hidden = false;
     if (which === "guide") { els.guideSheet.hidden = false; els.guideSheet.classList.add("open"); els.guideSearch.focus(); scrollGuideToCurrent(); }
-    if (which === "settings") { els.settingsSheet.hidden = false; els.settingsSheet.classList.add("open"); }
-    if (which === "help") { els.helpModal.hidden = false; }
+    if (which === "settings") { els.settingsSheet.hidden = false; els.settingsSheet.classList.add("open"); var sc = els.settingsSheet.querySelector("[data-close]"); if (sc) sc.focus({ preventScroll: true }); }
+    if (which === "help") { els.helpModal.hidden = false; var hc = els.helpModal.querySelector("[data-close]"); if (hc) hc.focus({ preventScroll: true }); }
   }
   function closeSheets() {
     els.backdrop.hidden = true;
@@ -1096,6 +1096,9 @@
     els.fab.classList.add("seen");
     els.fab.setAttribute("aria-expanded", "true");
     els.fab.setAttribute("aria-label", "Tutup remote");
+    // Fokus masuk ke remote supaya navigasi keyboard langsung operasional.
+    var first = els.remote.querySelector("#remClose");
+    if (first) first.focus({ preventScroll: true });
   }
   function closeRemote() {
     if (!remoteOpen) return;
@@ -1107,6 +1110,8 @@
     els.fab.classList.remove("on");
     els.fab.setAttribute("aria-expanded", "false");
     els.fab.setAttribute("aria-label", "Buka remote");
+    // Kembalikan fokus ke pemicu remote.
+    if (els.fab) els.fab.focus({ preventScroll: true });
   }
   function toggleRemote() { remoteOpen ? closeRemote() : openRemote(); }
 
