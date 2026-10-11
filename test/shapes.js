@@ -17,8 +17,10 @@ const SHAPES = ["trinitron", "toshiba", "polytron", "flatron", "philips", "sharp
         if (b2.getAttribute("data-shape") === sh) b2.click();
       });
       // Flatron otomatis menyetel finish silver (by design) — kembalikan
-      // ke hitam supaya screenshot QA antar-bentuk konsisten.
+      // ke hitam supaya screenshot QA antar-bentuk konsisten; wood
+      // dikembalikan ke kayu supaya kabinet kayunya terlihat.
       if (sh === "flatron") document.querySelector('[data-finish="hitam"]').click();
+      if (sh === "wood") document.querySelector('[data-finish="kayu"]').click();
     }, s);
     await p.waitForTimeout(450);
     const tv = await p.$("#tv");
