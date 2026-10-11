@@ -1300,7 +1300,12 @@ body.immersive .tv::after { /* bayangan kontak tepat di bawah lemari */
   position: absolute; top: -70px; left: 50%; transform: translateX(-50%);
   width: 360px; height: 360px; border-radius: 50%;
   background: radial-gradient(circle, rgba(255,178,100,.17) 0%, rgba(255,178,100,.06) 45%, transparent 70%);
+  transition: opacity 1.1s ease;
 }
+/* TV menyala: cahaya layar mendominasi, lampu meredup sebagian.
+   TV mati: lampu jadi satu-satunya sumber cahaya ruangan. */
+body.immersive:not(.tv-off) .lamp-glow { opacity: .62; }
+body.immersive.tv-off .lamp-glow { opacity: 1; }
 .lamp-shade {
   position: absolute; top: 0; left: 50%; transform: translateX(-50%);
   width: 74px; height: 56px;

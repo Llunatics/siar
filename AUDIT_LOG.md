@@ -4600,3 +4600,16 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 325**
 
 ---
+
+## Siklus 326 — 2026-10-11 00:24 WIB — Dynamic lighting: lampu merespons power
+
+- **Area:** Mode imersif / dynamic lighting.
+- **Perubahan:** `style.css` — `.lamp-glow` transisi opacity 1.1s;
+  TV menyala → 0.62 (cahaya layar dominan), TV mati → 1.0 (lampu
+  satu-satunya sumber cahaya).
+- **Test:** opacity terukur 1 → 0.62 sesuai power state. 0 pageerror.
+- **Next:** Kaca layar: refleksi mengikuti finishing.
+
+**Total siklus tercatat: 326**
+
+---
