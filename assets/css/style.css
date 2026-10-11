@@ -1002,6 +1002,27 @@ kbd {
 /* TV mati: jeda animasi flicker kaca — tak ada gunanya berdenyut */
 .tv:not(.on) .glass { animation-play-state: paused; }
 
+/* Tombol keluar Mode Imersif: kecil, kiri-bawah, aman dari safe-area */
+.imm-exit {
+  display: none;
+  position: fixed;
+  left: calc(16px + env(safe-area-inset-left));
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  z-index: 45;
+  align-items: center; gap: 7px;
+  padding: 10px 14px; border-radius: 999px;
+  background: rgba(10,10,14,.72); color: var(--dim);
+  border: 1px solid #2c2c34; font: inherit; font-size: 10px; letter-spacing: .22em;
+  cursor: pointer; backdrop-filter: blur(3px);
+  box-shadow: 0 8px 22px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.08);
+  transition: color .2s, border-color .2s, transform .2s;
+}
+.imm-exit:hover { color: var(--ink); border-color: var(--accent); transform: translateY(-1px); }
+.imm-exit span { font-size: 9px; }
+body.immersive .imm-exit { display: inline-flex; }
+/* Masuk imersif: fade+naik halus, bukan snap */
+body.immersive .room { animation: room-in .55s ease; }
+@keyframes room-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 /* ---------- Remote: mode mengarah ke TV ---------- */
 .remote.point { transform: translate(-50%, 112%) perspective(950px) rotateX(30deg); }
 .remote.point.open {

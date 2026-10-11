@@ -44,6 +44,7 @@
     blockExitBtn: $("blockExitBtn"), blockBadge: $("blockBadge"),
     guideProgress: $("guideProgress"), remPower: $("remPower"),
     remote: $("remote"), veil: $("remoteVeil"), fab: $("remoteFab"),
+    immExit: $("immExit"),
     irLed: $("irLed"), irEye: $("irEye"),
     stationBug: $("stationBug"), roomClock: $("roomClock"),
     clockDigital: $("clockDigital"), clockH: $("clockH"),
@@ -1115,6 +1116,18 @@
   }
   function toggleRemote() { remoteOpen ? closeRemote() : openRemote(); }
 
+  /* ================= Mode Imersif: keluar ================= */
+  // Keluar yang discoverable: tombol melayang + Escape (bila tak ada
+  // panel/remote terbuka). Pengaturan checkbox tetap tersinkron.
+  function exitImmersive() {
+    if (!document.body.classList.contains("immersive")) return;
+    S.immersive = false;
+    PNStore.saveSettings();
+    applySettings();
+    showOsd("MODE NORMAL");
+  }
+  if (els.immExit) els.immExit.addEventListener("click", exitImmersive);
+
   // Bunyi klik mekanis pendek ala tombol remote (WebAudio, tanpa aset).
   function playClick() {
     try {
@@ -1369,7 +1382,13 @@
   document.addEventListener("keydown", function (e) {
     var tag = e.target.tagName;
     var typing = (tag === "INPUT" && e.target.type !== "range") || tag === "TEXTAREA" || tag === "SELECT";
-    if (e.key === "Escape") { closeSheets(); closeRemote(); return; }
+    if (e.key === "Escape") {
+      var wasOpen = anyOpen() || remoteOpen;
+      closeSheets(); closeRemote();
+      // Tak ada yang terbuka + di mode imersif: Escape = keluar imersif.
+      if (!wasOpen && document.body.classList.contains("immersive")) exitImmersive();
+      return;
+    }
     if (typing) return;
     // preventDefault untuk shortcut yang menangani tombol: tanpanya, karakter
     // tombol ikut terketik ke input yang baru difokuskan (mis. "g" membuka

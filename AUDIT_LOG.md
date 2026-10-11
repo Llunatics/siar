@@ -4318,3 +4318,24 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 309**
 
 ---
+
+## Siklus 310 — 2026-10-11 00:11 WIB — Immersive: exit discoverable + Escape
+
+- **Area:** Mode imersif / interaksi.
+- **Masalah:** Tak ada jalan keluar imersif yang discoverable (harus
+  buka settings → uncheck); Escape tak keluar dari imersif.
+- **Perubahan:** `index.html` — tombol `.imm-exit` ("✕ IMERSIF",
+  kiri-bawah, safe-area, hanya tampil di imersif); `style.css` —
+  gaya + animasi `room-in` (fade+naik .55s saat masuk imersif);
+  `app.js` — `exitImmersive()` (sinkron S + checkbox + OSD
+  "MODE NORMAL"); Escape: bila tak ada panel/remote terbuka dan sedang
+  imersif → keluar imersif.
+- **Test:** Tombol tampil (display flex) di imersif; Escape saat remote
+  terbuka → tutup remote saja (tetap imersif); Escape kosong → keluar
+  imersif + checkbox tersinkron; klik tombol → keluar. 0 pageerror.
+  Screenshot `shots/qa/w3-immexit.png`: tombol kiri-bawah terlihat.
+- **Next:** Remote: retest SEMUA fungsi setelah redesign.
+
+**Total siklus tercatat: 310**
+
+---
