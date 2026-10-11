@@ -4659,3 +4659,20 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 328**
 
 ---
+
+## Siklus 329 — 2026-10-11 00:25 WIB — README disinkronkan
+
+- **Area:** Dokumentasi.
+- **Masalah:** README menyebut 364 channel (kini 656), fitur baru
+  sesi ini belum terdokumentasi.
+- **Perubahan:** `README.md` — tabel kategori & stasiun = angka
+  terverifikasi CATALOG_REPORT.md (656); fitur: tombol depan TV,
+  OSD sinyal live antena, remote mobile tanpa scroll, imersif
+  (peredup power, lampu responsif, exit jelas), bug menghindar OSD,
+  fullscreen pillarbox, chips sebaris, placeholder thumbnail.
+- **Test:** Angka dari CATALOG_REPORT.md (terverifikasi).
+- **Next:** Final QA menyeluruh + penyelesaian.
+
+**Total siklus tercatat: 329**
+
+---

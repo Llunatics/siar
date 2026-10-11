@@ -12,12 +12,12 @@ Televisi analog dalam browser. Memutar 364 siaran TV Indonesia era 1990–2015 (
 - **8 warna/finishing terpisah dari bentuk**: Hitam, Silver, Grafit, Putih gading, Krem retro, Kayu, Marun, Biru dongker (finishing metalik tidak ditawari untuk kabinet Kayu 80-an)
 - **Satu layar terkunci**: halaman tidak bisa di-scroll atau di-zoom (pinch/double-tap dimatikan); panggung TV otomatis diskalakan agar pas viewport di semua ukuran termasuk HP landscape pendek — panduan & pengaturan tetap bisa scroll di dalam panelnya
 - Chassis persegi panjang lebar: layar + kolom speaker grille + sensor IR dalam satu bodi, strip status (power, display CH, meteran sinyal) di bawah layar, kaki/stand dengan bayangan lantai, cahaya layar memantul halus ke ruangan saat TV menyala
-- Tombol fisik timbul yang tenggelam saat ditekan; antena teleskopik dua batang yang bisa diseret
+- Tombol fisik timbul yang tenggelam saat ditekan (umpan balik mekanis 160 ms, terlihat juga saat aktivasi keyboard); klaster tombol depan CH−/CH+/V−/V+ dalam panel cekung; antena teleskopik dua batang yang bisa diseret (OSD sinyal live saat digeser)
 
 ### Remote control
 
 - **Dua mode tampilan**: *Mengarah ke TV* (perspektif 3D — ujung jauh mengecil, LED IR menembak ke TV) atau *Datar*. Mode mengarah ke TV adalah default
-- Ukuran mobile kompak (maks. 330px, ≤78% tinggi layar, tombol tetap ≥44px), nyaman satu tangan
+- Ukuran mobile kompak (maks. 330px, ≤78% tinggi layar, tombol tetap ≥44px), nyaman satu tangan — seluruh isi remote muat tanpa scroll di HP portrait
 - LED inframerah remote berkedip + sensor di bodi TV menyala tiap tombol ditekan; bunyi klik mekanis dan getar halus (keduanya bisa dimatikan)
 - Remote membuka dengan animasi naik berpegas dan menutup dengan animasi meluncur turun (perspektif mereda + fade) lewat tombol melayang, ketukan di luar, atau `Esc`
 - Isi remote: numpad 0–9 (angka tampil di OSD, TV lompat setelah jeda singkat), rocker CH/VOL, power, mute, acak, favorit, panduan, Blok Stasiun, sleep timer, volume slider, pengaturan, layar penuh
@@ -25,9 +25,11 @@ Televisi analog dalam browser. Memutar 364 siaran TV Indonesia era 1990–2015 (
 
 ### Ruang & rasa
 
-- **Mode Imersif**: semua teks halaman hilang, TV tampil di ruang tamu remang yang realistis — dinding arang-cokelat desaturasi bertekstur grain tipis, vignette tepi, kolam cahaya lampu hangat yang lembut, lantai & lemari kayu nada gelap, dan pantulan cahaya layar tipis yang hidup mengikuti kecerahan gambar, mode sinyal, dan knob kecerahan
+- **Mode Imersif**: semua teks halaman hilang, TV tampil di ruang tamu remang yang realistis — dinding hangat berbelang plester, vignette tepi, kolam cahaya lampu hangat yang lembut, lantai & lemari kayu, bingkai foto keluarga, dan pantulan cahaya layar yang hidup mengikuti kecerahan gambar, mode sinyal, dan knob kecerahan. Ruangan meredup saat TV mati (lampu jadi satu-satunya sumber cahaya) dan lampu menyesuaikan saat TV menyala
+- Keluar Mode Imersif yang jelas: tombol melayang "✕ IMERSIF" kiri-bawah atau `Esc` (bila tak ada panel terbuka)
 - **Jam dinding WIB** (analog + digital) di ruangan selama Mode Imersif; bisa dimatikan terpisah
-- **Logo bug stasiun** di pojok layar mengikuti stasiun channel yang sedang tayang, seperti watermark TV asli
+- **Logo bug stasiun** di pojok layar mengikuti stasiun channel yang sedang tayang, seperti watermark TV asli (disembunyikan otomatis selama OSD tampil); OSD ganti channel menampilkan "CH 01 · STASIUN"
+- Layar penuh: TV utuh (bodi + kontrol) tampil pillarbox terpusat, bukan layar yang diregang
 - Animasi mati CRT: gambar kolaps menjadi garis cahaya lalu padam saat TV dimatikan
 
 ### Layar & sinyal
@@ -47,39 +49,43 @@ Televisi analog dalam browser. Memutar 364 siaran TV Indonesia era 1990–2015 (
 
 - **Blok Stasiun**: chip filter per stasiun + **PUTAR BLOK** untuk marathon satu stasiun (dimulai dari ident stasiunnya); CH+/CH−, auto-next, dan numpad tetap di dalam blok
 - **Blok Jam** (tombol ⏰ di remote atau `J`): antrean otomatis mengikuti jam tayang asli WIB — pagi kartun, siang iklan, sore sinetron, malam acara, tengah malam iklan & ident
-- Panduan berkategori dengan thumbnail per sumber, pencarian, label stasiun, penanda ✓ sudah-ditonton, progres koleksi (X/364)
+- Panduan berkategori dengan thumbnail per sumber (placeholder berinisial kategori bila kosong), chip stasiun sebaris yang bisa digeser, pencarian, label stasiun, penanda ✓ sudah-ditonton, progres koleksi (X/656)
 - Favorit (grup teratas panduan), channel kustom via URL/ID YouTube
 
 Semua pengaturan, favorit, channel kustom, posisi antena, dan riwayat tontonan tersimpan di `localStorage` browser. Skema lama otomatis dimigrasikan (model TV lama → bentuk + warna).
 
 ## Siaran bawaan
 
-Total **364 channel**:
+Total **656 channel** (terverifikasi 2026-10-11; lihat `CATALOG_REPORT.md`):
 
 | Kategori | Jumlah |
 | --- | --- |
-| Iklan Jadul | 165 |
-| Opening Kartun | 106 |
-| Opening Tokusatsu | 14 |
-| Sinetron & Acara TV | 30 |
-| Jingle & Ident | 49 |
+| Iklan Jadul | 370 |
+| Opening Kartun | 150 |
+| Jingle & Ident | 80 |
+| Sinetron & Acara TV | 41 |
+| Opening Tokusatsu | 15 |
 
 | Stasiun | Jumlah |
 | --- | --- |
-| Multi-Stasiun (iklan TVC) | 196 |
-| RCTI | 54 |
-| Indosiar | 41 |
-| SCTV | 17 |
-| Global TV | 16 |
+| Multi-Stasiun (iklan TVC) | 335 |
+| RCTI | 77 |
+| Indosiar | 54 |
+| SCTV | 24 |
+| Global TV | 17 |
+| Trans7 | 12 |
+| TVRI | 12 |
+| MNCTV/TPI | 9 |
 | ANTV | 9 |
-| MNCTV/TPI | 8 |
-| TVRI | 7 |
-| Trans7 | 4 |
-| NET. | 3 |
+| TPI | 6 |
+| NET. | 4 |
 | RTV | 3 |
-| Trans TV | 2 |
-| B Channel | 2 |
-| TPI | 2 |
+| B Channel | 3 |
+| Metro TV | 3 |
+| Spacetoon | 2 |
+| TV7 | 1 |
+| MNCTV | 1 |
+| Lativi | 1 |
 
 | Sumber | Jumlah |
 | --- | --- |
