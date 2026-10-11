@@ -4514,3 +4514,20 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 319**
 
 ---
+
+## Siklus 320 — 2026-10-11 00:21 WIB — Antena: drag teruji + OSD sinyal live
+
+- **Area:** Interaksi antena.
+- **Masalah:** Drag antena belum pernah diuji nyata; OSD sinyal hanya
+  muncul setelah batang dilepas.
+- **Perubahan:** `app.js` — `bindRod`: `lastOsdSig` + `showOsd
+  (signalHint())` saat nilai sinyal berubah di tengah drag.
+- **Test:** Drag batang kiri: sinyal 52%→44%, sudut tersimpan
+  (antL=28), cursor grab, touch-action none; OSD tampil live saat
+  masih ditekan ("SINYAL 44% — GESER ANTENA"). Affordance blink
+  ujung batang saat sig-bad terverifikasi ada. 0 pageerror.
+- **Next:** Fullscreen: perilaku & transisi.
+
+**Total siklus tercatat: 320**
+
+---

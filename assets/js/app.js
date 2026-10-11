@@ -277,6 +277,7 @@
       try { rod.setPointerCapture(e.pointerId); } catch (err) { /* abaikan */ }
       var pivot = els.antenna.getBoundingClientRect();
       var px = pivot.left, py = pivot.top;
+      var lastOsdSig = -1;
       function move(ev) {
         var dx = ev.clientX - px, dy = py - ev.clientY;
         if (dy < 8) dy = 8;
@@ -286,6 +287,9 @@
           S[key] = deg;
           applyAntenna();
           refreshSignal();
+          // Umpan balik live: OSD sinyal diperbarui saat digeser, bukan
+          // hanya setelah dilepas.
+          if (powered && signalQ !== lastOsdSig) { lastOsdSig = signalQ; showOsd(signalHint()); }
           if (powered && signalQ < 60 && Math.random() < 0.25) playNoise(50);
         }
       }
