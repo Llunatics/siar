@@ -1244,6 +1244,17 @@
     if (anyOpen()) closeSheets();
     toggleRemote();
   });
+  // Tombol fisik depan TV: CH± / VOL± — dengan umpan balik mekanis.
+  [["tvChUp", function () { if (powered) nextChannel(); }],
+   ["tvChDn", function () { if (powered) prevChannel(); }],
+   ["tvVolUp", function () { bumpVolume(5); }],
+   ["tvVolDn", function () { bumpVolume(-5); }]].forEach(function (pair) {
+    var b = $(pair[0]);
+    if (!b) return;
+    b.addEventListener("pointerdown", function () { strike(b); });
+    b.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") strike(b); });
+    b.addEventListener("click", pair[1]);
+  });
   els.veil.addEventListener("click", closeRemote);
   // Tiap tombol remote ditekan: LED IR + sensor TV berkedip, klik, getar halus.
   els.remote.addEventListener("pointerdown", function (e) {

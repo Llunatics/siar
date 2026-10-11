@@ -4449,3 +4449,21 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 315**
 
 ---
+
+## Siklus 316 — 2026-10-11 00:18 WIB — Tombol fisik CH/VOL di panel depan TV
+
+- **Area:** Realisme TV / kontrol.
+- **Masalah:** Strip status TV punya area kosong lebar di kanan —
+  tidak seperti TV asli yang punya deretan tombol depan.
+- **Perubahan:** `index.html` — klaster `.front-ctrls` (CH−/CH+/
+  V−/V+); `style.css` — panel cekung molded + `.btn.mini`;
+  `app.js` — binding ke nextChannel/prevChannel/bumpVolume +
+  strike() mekanis (pointerdown/keydown).
+- **Test:** CH+ 01→02, CH− 02→01, VOL 70→75→70; saat TV mati CH tak
+  berubah (benar). Screenshot: klaster duduk di panel cekung,
+  selaras dengan tombol power. 0 pageerror.
+- **Next:** Immersive: bingkai foto dinding lebih terbaca.
+
+**Total siklus tercatat: 316**
+
+---
