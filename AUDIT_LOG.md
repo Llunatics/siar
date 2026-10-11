@@ -4548,3 +4548,16 @@ Semua commit lokal; tidak ada push/deploy.
 **Total siklus tercatat: 321**
 
 ---
+
+## Siklus 322 — 2026-10-11 00:22 WIB — Sleep timer: countdown & deadline nyata
+
+- **Area:** Fitur / sleep timer.
+- **Perubahan:** Tidak ada (siklus verifikasi).
+- **Test:** Set 15 mnt via remote → badge "SLEEP 14:59" terlihat &
+  berdetak; percepat Date.now +16 mnt → TV mati (powerOff),
+  badge hidden, select kembali "0". 0 pageerror.
+- **Next:** Blok stasiun: uji alur & badge.
+
+**Total siklus tercatat: 322**
+
+---
