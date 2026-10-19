@@ -1,7 +1,8 @@
 // w3journey.js — simulasi satu sesi nonton malam yang realistis
 const { chromium } = require("playwright-core");
 const path = require("path");
-const EXE = path.join(process.env.HOME, ".cache/ms-playwright/chromium-1243/chrome-linux64/chrome");
+const { chromeExe } = require("./chrome");
+const EXE = chromeExe();
 (async () => {
   const b = await chromium.launch({ executablePath: EXE, args: ["--no-sandbox"] });
   const ctx = await b.newContext({ viewport: { width: 1366, height: 768 } });

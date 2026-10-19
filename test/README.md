@@ -12,8 +12,8 @@ python3 -m http.server 8777
 cd test && npm install
 ```
 
-Chromium: `~/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome`
-via `playwright-core`.
+Chromium: otomatis terdeteksi dari `~/.cache/ms-playwright/chromium-*/`
+(helper `test/chrome.js`; bisa dioverride via env `SIAR_CHROME`).
 
 ## Suite inti (regression tiap ~5 siklus)
 

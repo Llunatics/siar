@@ -3,7 +3,8 @@
 const { chromium } = require("playwright-core");
 const path = require("path");
 
-const EXE = path.join(process.env.HOME, ".cache/ms-playwright/chromium-1243/chrome-linux64/chrome");
+const { chromeExe } = require("./chrome");
+const EXE = chromeExe();
 const URL = "http://localhost:8777/index.html";
 
 (async () => {
@@ -47,7 +48,11 @@ const URL = "http://localhost:8777/index.html";
   check("ACAK ganti channel", true); // tidak throw = ok
 
   await page.click("#remFav"); await page.waitForTimeout(300);
-  check("FAV toggle bintang", (await page.textContent("#favBtn")) === "★");
+  // Tombol FAV memakai ikon SVG; status aktif lewat kelas .on (bukan teks ★).
+  check("FAV toggle aktif (kelas .on)", await page.$eval("#favBtn", e => e.classList.contains("on")));
+  check("FAV tersimpan di pn-favorites-v1", await page.evaluate(() => (JSON.parse(localStorage.getItem("pn-favorites-v1") || "[]")).length > 0));
+  await page.click("#remFav"); await page.waitForTimeout(300);
+  check("FAV toggle mati lagi", await page.evaluate(() => !document.querySelector("#favBtn").classList.contains("on")));
 
   await page.click("#remGuide"); await page.waitForTimeout(400);
   check("PANDUAN buka guide", !(await page.$eval("#guideSheet", e => e.hidden)));

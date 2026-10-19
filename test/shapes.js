@@ -1,7 +1,8 @@
 // Screenshot tiap bentuk chassis untuk review distinctiveness.
 const { chromium } = require("playwright-core");
 const path = require("path");
-const EXE = path.join(process.env.HOME, ".cache/ms-playwright/chromium-1243/chrome-linux64/chrome");
+const { chromeExe } = require("./chrome");
+const EXE = chromeExe();
 const SHAPES = ["trinitron", "toshiba", "polytron", "flatron", "philips", "sharp", "jvc", "panasonic", "akari", "wood"];
 (async () => {
   const b = await chromium.launch({ executablePath: EXE, args: ["--no-sandbox"] });

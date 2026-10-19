@@ -1,7 +1,8 @@
 // Screenshot cepat satu viewport TANPA proxy (hanya localhost) — untuk QA layout.
 const { chromium } = require("playwright-core");
 const path = require("path");
-const EXE = path.join(process.env.HOME, ".cache/ms-playwright/chromium-1243/chrome-linux64/chrome");
+const { chromeExe } = require("./chrome");
+const EXE = chromeExe();
 (async () => {
   const [w, h, tag, act] = [ +process.argv[2] || 390, +process.argv[3] || 844,
     process.argv[4] || "tmp", process.argv[5] || "tv" ];

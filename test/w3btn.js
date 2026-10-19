@@ -1,7 +1,8 @@
 // w3: uji tombol fisik TV — struck class muncul & hilang, power tetap toggle.
 const { chromium } = require("playwright-core");
 const path = require("path");
-const EXE = path.join(process.env.HOME, ".cache/ms-playwright/chromium-1243/chrome-linux64/chrome");
+const { chromeExe } = require("./chrome");
+const EXE = chromeExe();
 (async () => {
   const b = await chromium.launch({ executablePath: EXE, args: ["--no-sandbox"] });
   const p = await b.newPage({ viewport: { width: 1366, height: 768 } });

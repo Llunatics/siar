@@ -1,7 +1,8 @@
 // w3 helper: screenshot skenario umum untuk QA gelombang 3.
 const { chromium } = require("playwright-core");
 const path = require("path");
-const EXE = path.join(process.env.HOME, ".cache/ms-playwright/chromium-1243/chrome-linux64/chrome");
+const { chromeExe } = require("./chrome");
+const EXE = chromeExe();
 (async () => {
   const [w, h, tag, mode] = [+process.argv[2] || 1920, +process.argv[3] || 1080,
     process.argv[4] || "w3", process.argv[5] || "normal"];

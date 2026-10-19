@@ -7,7 +7,8 @@ const { chromium } = require("playwright-core");
 const path = require("path");
 const fs = require("fs");
 
-const EXE = path.join(process.env.HOME, ".cache/ms-playwright/chromium-1243/chrome-linux64/chrome");
+const { chromeExe } = require("./chrome");
+const EXE = chromeExe();
 const URL = "http://localhost:8777/index.html";
 // Chromium headless di sandbox ini butuh proxy egress eksplisit (env) agar
 // bisa memuat thumbnail/embed eksternal — tanpa ini screenshot menyesatkan.
