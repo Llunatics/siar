@@ -1,6 +1,6 @@
 # CATALOG_REPORT.md — Laporan Katalog Siar
 
-> Status: **2026-10-11 06:54 WIB** · **656 entri terverifikasi** · target 5.300
+> Status: **2026-10-11 06:54 WIB** (disinkronkan ulang 2026-10-20) · **656 entri terverifikasi** · target 5.300
 > (sesi lanjutan 05:27–12:00 WIB; 296 siklus tercatat
 
 ## 1. Ringkasan angka
@@ -27,25 +27,27 @@
 
 ## 3. Komposisi per stasiun
 
+(dihitung ulang dari `assets/js/channels.js` pada 2026-10-20 — tabel 2026-10-11 di bawah sudah tidak konsisten dengan katalog)
+
 | Stasiun | Entri | Stasiun | Entri |
 |---|---|---|---|
-| Multi-Stasiun | 335 | TPI | 6 |
-| RCTI | 77 | NET. | 4 |
-| Indosiar | 54 | RTV | 3 |
-| SCTV | 24 | B Channel | 3 |
+| Multi-Stasiun | 374 | TPI | 8 |
+| RCTI | 84 | NET. | 4 |
+| Indosiar | 59 | RTV | 5 |
+| SCTV | 26 | B Channel | 3 |
 | Global TV | 17 | Metro TV | 3 |
-| Trans7 | 12 | Spacetoon | 2 |
-| TVRI | 12 | TV7 | 1 |
-| MNCTV/TPI | 9 | MNCTV | 1 |
-| ANTV | 9 | Lativi | 1 |
-| Trans TV | 7 | tvOne | 1 |
-| | | Sindo TV | 1 |
+| TVRI | 13 | Lativi | 3 |
+| Trans7 | 12 | tvOne | 3 |
+| Spacetoon | 10 | TV7 | 2 |
+| ANTV | 10 | MNCTV | 1 |
+| Trans TV | 9 | Sindo TV | 1 |
+| MNCTV/TPI | 9 | | |
 
 ## 4. Komposisi per sumber
 
 | Sumber | Entri |
 |---|---|
-| YouTube (`yt`) | 538 |
+| YouTube (`yt`) | 599 |
 | Dailymotion (`dm`) | 27 |
 | Internet Archive (`ia`) | 29 |
 | Vimeo (`vimeo`) | 1 |

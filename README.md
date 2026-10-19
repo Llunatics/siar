@@ -66,35 +66,40 @@ Total **656 channel** (terverifikasi 2026-10-11; lihat `CATALOG_REPORT.md`):
 
 | Stasiun | Jumlah |
 | --- | --- |
-| Multi-Stasiun (iklan TVC) | 335 |
-| RCTI | 77 |
-| Indosiar | 54 |
-| SCTV | 24 |
+| Multi-Stasiun (iklan TVC) | 374 |
+| RCTI | 84 |
+| Indosiar | 59 |
+| SCTV | 26 |
 | Global TV | 17 |
+| TVRI | 13 |
 | Trans7 | 12 |
-| TVRI | 12 |
+| Spacetoon | 10 |
+| ANTV | 10 |
+| Trans TV | 9 |
 | MNCTV/TPI | 9 |
-| ANTV | 9 |
-| TPI | 6 |
+| TPI | 8 |
+| RTV | 5 |
 | NET. | 4 |
-| RTV | 3 |
 | B Channel | 3 |
 | Metro TV | 3 |
-| Spacetoon | 2 |
-| TV7 | 1 |
+| Lativi | 3 |
+| tvOne | 3 |
+| TV7 | 2 |
 | MNCTV | 1 |
-| Lativi | 1 |
+| Sindo TV | 1 |
+
+(Dihitung ulang dari `assets/js/channels.js` pada 2026-10-20; total 656.)
 
 | Sumber | Jumlah |
 | --- | --- |
-| YouTube | 475 |
-| Dailymotion | 25 |
-| Internet Archive | 23 |
+| YouTube | 599 |
+| Dailymotion | 27 |
+| Internet Archive | 29 |
 | Vimeo | 1 |
 
 Sorotan katalog: Shaun the Sheep, Upin & Ipin, Marsupilami, Curious George, The Jungle Book (Shōnen Mowgli), Dragon Quest, Digimon Adventure/Tamers/Frontier, Ultraman Mebius/Tiga/Dyna/Gaia/Cosmos, Ninja Ranger, Kobo-chan, Cyborg Kurochan, Captain Tsubasa, Detektif Conan, iklan Kumon, Djarum 76, Gudang Garam, Teh Sosro, kompilasi iklan rokok & sabun & mie 90-an, dan puluhan ident stasiun (TVRI, RCTI Sawah 1994, SCTV Satu Untuk Semua, TPI 1999).
 
-**Verifikasi:** seluruh 654 id dicek satu per satu ke endpoint resmi (YouTube/Dailymotion/Vimeo oEmbed, metadata Internet Archive, HTTP 200, judul = klip iklan/opening/bumper asli — bukan video lirik, episode, atau cover) dan disapu ulang penuh pada audit terakhir. Arsip verifikasi disimpan di luar repo bersama state program. Tidak ada berkas video yang disimpan atau diunggah ulang di repositori ini.
+**Verifikasi:** seluruh 656 id dicek satu per satu ke endpoint resmi (YouTube/Dailymotion/Vimeo oEmbed, metadata Internet Archive, HTTP 200, judul = klip iklan/opening/bumper asli — bukan video lirik, episode, atau cover) dan disapu ulang penuh pada audit terakhir. Arsip verifikasi disimpan di luar repo bersama state program. Tidak ada berkas video yang disimpan atau diunggah ulang di repositori ini.
 
 ## Pengaturan
 
