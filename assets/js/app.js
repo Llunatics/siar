@@ -23,6 +23,7 @@
   var guideStation = "SEMUA";         // filter chip di panduan (visual saja)
   var signalQ = 100;                  // kualitas sinyal channel aktif, 0..100
   var gesturePlayWanted = false;      // power-on = user gesture: kejar play bersuara meski API siap belakangan
+  var playedSinceTune = false;        // video sudah pernah PLAYING sejak tuneTo/powerOn terakhir
 
   var $ = function (id) { return document.getElementById(id); };
   var els = {
@@ -783,7 +784,7 @@
           gesturePlayWanted = false;
         },
         onStateChange: function (e) {
-          if (e.data === YT.PlayerState.PLAYING) { vpPlaying = true; gesturePlayWanted = false; }
+          if (e.data === YT.PlayerState.PLAYING) { vpPlaying = true; gesturePlayWanted = false; playedSinceTune = true; }
           else if (e.data === YT.PlayerState.PAUSED) vpPlaying = false;
           else if (e.data === YT.PlayerState.ENDED) vpEnded();
           syncPauseVeil();
@@ -943,6 +944,7 @@
   function tuneTo(idx) {
     if (!list.length) return;
     current = ((idx % list.length) + list.length) % list.length;
+    playedSinceTune = false; // jaring pengaman autoplay boleh bekerja untuk video baru ini
     // Keluar dari blok kalau pindah ke stasiun lain (mis. lewat panduan)
     if (blockStation && cur().station !== blockStation) exitBlock(false);
     // Keluar dari blok jam kalau pindah ke siaran di luar antrean jam
@@ -987,7 +989,7 @@
     digitTimer = setTimeout(commitDigit, 900);
   }
   function commitDigit() {
-    if (!digitBuf) return;
+    if (!digitBuf || !powered) { digitBuf = ""; return; }
     var n = parseInt(digitBuf, 10);
     digitBuf = "";
     var nav = navList();
@@ -1012,6 +1014,10 @@
     if (!list.length) return;
     powered = true;
     gesturePlayWanted = true; // klik power = user gesture: kejar play bersuara
+    playedSinceTune = false;
+    // Timer sleep yang sudah kedaluwarsa saat TV mati tidak boleh membunuh
+    // power-on berikutnya seketika (dulu: langsung powerOff dalam 500ms).
+    if (sleepDeadline && sleepDeadline <= Date.now()) startSleep(0);
     document.body.classList.remove("tv-off");
     els.tv.classList.add("on");
     els.tv.classList.remove("turning-on");
@@ -1034,6 +1040,10 @@
   }
   function powerOff(silent) {
     powered = false;
+    // Batalkan digit channel yang belum di-commit: tanpanya, timer 900ms
+    // bisa me-tune (dan memuat video + OSD) saat TV sudah mati.
+    clearTimeout(digitTimer);
+    digitBuf = "";
     document.body.classList.add("tv-off");
     els.tv.classList.remove("on");
     els.powerBtn.classList.remove("on");
@@ -1067,6 +1077,7 @@
       sleepDeadline = 0;
       els.sleepLeft.hidden = true;
       els.sleepBadge.textContent = "";
+      els.sleepSelect.value = "0";
       return;
     }
     sleepDeadline = Date.now() + mins * 60000;
@@ -1075,6 +1086,7 @@
       var left = sleepDeadline - Date.now();
       if (left <= 0) {
         clearInterval(sleepTick);
+        sleepDeadline = 0;
         els.sleepLeft.hidden = true;
         els.sleepBadge.textContent = "";
         els.sleepSelect.value = "0";
@@ -1291,6 +1303,11 @@
     syncPauseVeil();
     return els.pauseVeil.classList.contains("show");
   };
+  // Hook test: baca/atur deadline sleep (epoch ms) untuk simulasi kedaluwarsa.
+  window.__siarSleepDeadline = function (v) {
+    if (typeof v === "number") sleepDeadline = v;
+    return sleepDeadline;
+  };
   // Strike saat tekan dimulai (pointerdown/keydown), bukan saat click —
   // tombol tenggelam saat jari masih menekan, bukan setelah dilepas.
   els.powerBtn.addEventListener("pointerdown", function () { strike(els.powerBtn); });
@@ -1302,8 +1319,11 @@
   // Jaring pengaman autoplay: bila play bersuara diblokir browser saat power-on
   // (player YouTube dibuat async di luar konteks gesture), gesture BERIKUTNYA
   // di mana saja langsung mengejar play + unmute — tanpa perlu klik khusus.
+  // Penjaga playedSinceTune: jaring ini HANYA berlaku sampai video pertama
+  // kali berhasil PLAYING. Tanpanya, jeda yang disengaja user ikut dibatalkan:
+  // tiap keydown/pointerdown berikutnya memanggil playVideo() lagi.
   function nudgePlay() {
-    if (!powered || vpMode !== "yt" || !ytReady || vpPlaying) return;
+    if (!powered || vpMode !== "yt" || !ytReady || vpPlaying || playedSinceTune) return;
     try { if (!S.muted) ytPlayer.unMute(); ytPlayer.playVideo(); } catch (e) { /* abaikan */ }
   }
   document.addEventListener("pointerdown", nudgePlay, { passive: true });
@@ -1386,8 +1406,14 @@
     });
     function stop() { clearTimeout(t1); clearInterval(t2); t1 = t2 = null; }
     el.addEventListener("pointerup", stop);
-    el.addEventListener("pointercancel", stop);
-    el.addEventListener("pointerleave", stop);
+    // pointercancel / pointerleave: klik takkan datang untuk tekanan ini,
+    // jadi flag suppress harus dibersihkan — kalau tidak, klik berikutnya
+    // (mis. via keyboard) ikut tertelan sekali.
+    el.addEventListener("pointercancel", function () { el._suppress = false; stop(); });
+    el.addEventListener("pointerleave", function () { el._suppress = false; stop(); });
+    // Seret keluar lalu kembali masuk dengan tombol masih ditekan, lepas di
+    // atas tombol: klik tetap datang dan harus tetap ter-suppress.
+    el.addEventListener("pointerenter", function (e) { if (e.buttons > 0) el._suppress = true; });
   }
   holdRepeat("remChUp", function () { if (powered) nextChannel(); }, 450, 350);
   holdRepeat("remChDn", function () { if (powered) prevChannel(); }, 450, 350);
