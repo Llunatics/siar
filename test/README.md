@@ -19,10 +19,13 @@ Chromium: otomatis terdeteksi dari `~/.cache/ms-playwright/chromium-*/`
 
 | File | Uji |
 | --- | --- |
-| `baseline-smoke.js` | Smoke test dasar (18–19 cek) |
-| `remote-click.js` | Semua fungsi remote (18 cek) |
+| `baseline-smoke.js` | Smoke test dasar & invarian katalog (21 cek) |
 | `hold-repeat.js` | Tahan CH±/VOL± (3/3) |
-| `guide-chunk.js` | Render bertahap panduan |
+| `guide-chunk.js` | Render bertahap panduan (7/7) |
+| `power-pause.js` | State TV, power, jeda, OSD, error cleanup (28 cek) |
+| `remote-click.js` | Semua fungsi remote (18 cek) |
+| `verify-iter.js` | Verifikasi iterasi visual & responsif 390x844 (14 cek) |
+| `fuzz-xss.js` | Fuzzing keamanan & sanitasi HTML (10 cek) |
 
 ## Helper w3 (wave-3)
 
@@ -30,7 +33,6 @@ Chromium: otomatis terdeteksi dari `~/.cache/ms-playwright/chromium-*/`
 | --- | --- |
 | `w3shot.js <w> <h> <nama> [normal\|immersive]` | Screenshot QA |
 | `w3btn.js` | Tombol power & strike |
-| `w3dim.js` | Peredup imersif saat TV mati |
 | `w3set.js` | Live preview settings (6/6) |
 | `w3persist.js` | Persistensi + migrasi + reset (3/3) |
 | `w3feet.js` | Kaki TV per model |

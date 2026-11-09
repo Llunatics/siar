@@ -262,11 +262,9 @@
     els.tv.classList.toggle("sig-bad", powered && signalQ < 45);
     els.tv.classList.toggle("sig-mid", powered && signalQ >= 45 && signalQ < 75);
     // Pantulan cahaya layar ke ruangan (dipakai Mode Imersif): hidup mengikuti
-    // nyala TV, kecerahan knob, dan bersihnya sinyal. Var dipasang di body agar
-    // bisa dibaca ::before TV maupun ::after lantai (var menurun, bukan naik).
+    // nyala TV, kecerahan knob, dan bersihnya sinyal.
     var glow = powered ? Math.min(1, (S.bright / 150) * (0.45 + signalQ / 100 * 0.55)) : 0;
     els._glowBase = glow;
-    document.body.style.setProperty("--screen-glow", glow.toFixed(2));
     applyPicture();
     updateHiss();
   }
@@ -612,7 +610,11 @@
       if (els.stationBug) els.stationBug.style.visibility = "";
     }, 4000);
   }
-  function showOsd() {
+  function showOsd(main, sub) {
+    if (typeof main === "string" && main) {
+      osdRender(main, sub, null);
+      return;
+    }
     if (!list.length) return;
     // OSD ala TV tabung asli: angka kecil di pojok kanan atas, muncul
     // sebentar saat ganti channel lalu hilang otomatis (±4 detik).
@@ -622,16 +624,33 @@
   function showOsdText(main, sub) { osdRender(main, sub, null); }
 
   /* ================= Static / noise ================= */
+  var staticCtx = null, staticImg = null, staticU32 = null;
   function drawStatic() {
-    var c = els.staticC, ctx = c.getContext("2d");
-    var img = ctx.createImageData(c.width, c.height);
-    var d = img.data;
-    for (var i = 0; i < d.length; i += 4) {
-      var v = (Math.random() * 255) | 0;
-      d[i] = d[i + 1] = d[i + 2] = v;
-      d[i + 3] = 255;
+    var c = els.staticC;
+    if (!c) return;
+    if (!staticCtx) staticCtx = c.getContext("2d");
+    if (!staticCtx) return;
+    var w = c.width, h = c.height;
+    if (!staticImg || staticImg.width !== w || staticImg.height !== h) {
+      staticImg = staticCtx.createImageData(w, h);
+      staticU32 = (staticImg && staticImg.data && staticImg.data.buffer instanceof ArrayBuffer) ?
+        new Uint32Array(staticImg.data.buffer) : null;
     }
-    ctx.putImageData(img, 0, 0);
+    if (staticU32) {
+      var len = staticU32.length;
+      for (var j = 0; j < len; j++) {
+        var val = (Math.random() * 256) | 0;
+        staticU32[j] = 0xff000000 | (val << 16) | (val << 8) | val;
+      }
+    } else if (staticImg && staticImg.data) {
+      var d = staticImg.data;
+      for (var i = 0; i < d.length; i += 4) {
+        var v = (Math.random() * 255) | 0;
+        d[i] = d[i + 1] = d[i + 2] = v;
+        d[i + 3] = 255;
+      }
+    }
+    if (staticImg) staticCtx.putImageData(staticImg, 0, 0);
   }
 
   var burstTimer = null;
@@ -653,15 +672,13 @@
   var rmDrawn = false;
   setInterval(function () {
     if (!powered || document.hidden) return;
+    if (anyOpen() && window.innerWidth <= 720) return;
     if (els.staticC.classList.contains("burst")) return;
     var eff = Math.min(100, S.noise + (100 - signalQ) * 0.5);
     if (eff <= 0) { els.staticC.style.opacity = "0"; return; }
     els.staticC.style.opacity = (eff / 100 * 0.55).toFixed(2);
     if (RM) { if (!rmDrawn) { drawStatic(); rmDrawn = true; } return; }
     drawStatic();
-    // Cahaya TV "bernapas": pantulan ke ruangan berdenyut halus mengikuti konten.
-    var gb = els._glowBase || 0;
-    document.body.style.setProperty("--screen-glow", (gb * (0.93 + Math.random() * 0.14)).toFixed(2));
   }, 140);
 
   function playNoise(ms) {
@@ -754,12 +771,35 @@
   function vpLoadYt(ch) {
     var reuse = (vpMode === "yt" && ytPlayer && ytReady);
     vpMode = "yt"; vpSetBox();
-    if (reuse) { try { ytPlayer.loadVideoById(ch.id); } catch (e) { /* abaikan */ } vpApplyVolume(); return; }
+    if (reuse) {
+      try {
+        ytPlayer.loadVideoById(ch.id);
+      } catch (e) {
+        vpTeardown("none");
+        buildYt(ch);
+      }
+      vpApplyVolume();
+      return;
+    }
     vpTeardown("yt");
     ytWanted = ch;
     if (window.YT && YT.Player) { buildYt(ch); return; }
-    window.onYouTubeIframeAPIReady = function () { if (vpMode === "yt" && ytWanted) buildYt(ytWanted); };
-    if (!apiLoading.yt) { apiLoading.yt = true; vpInject("https://www.youtube.com/iframe_api", function () {}); }
+    window.onYouTubeIframeAPIReady = function () {
+      if (!powered) return;
+      if (vpMode === "yt" && ytWanted) buildYt(ytWanted);
+    };
+    if (!apiLoading.yt) {
+      apiLoading.yt = true;
+      vpInject("https://www.youtube.com/iframe_api", function (ok) {
+        if (!ok) {
+          apiLoading.yt = false;
+          if (powered && els.staticC) {
+            els.staticC.style.opacity = "1";
+            drawStatic();
+          }
+        }
+      });
+    }
   }
   function buildYt(ch) {
     els.playerBox.innerHTML = "";
@@ -798,6 +838,7 @@
     els.playerBox.innerHTML = '<iframe src="https://www.dailymotion.com/embed/video/' +
       encodeURIComponent(ch.id) + '?autoplay=1" allow="autoplay; fullscreen" allowfullscreen title=""></iframe>';
     vpPlaying = true;
+    syncPauseVeil();
   }
   function vpLoadDm(ch) {
     vpMode = "dm"; vpSetBox();
@@ -806,6 +847,7 @@
     if (!apiLoading.dm) {
       apiLoading.dm = true;
       vpInject("https://api.dmcdn.net/all.js", function (ok) {
+        if (!powered) return;
         if (ok && vpMode === "dm" && list.length) buildDm(cur());
         else if (!ok) { apiLoading.dm = false; if (vpMode === "dm" && list.length) vpFallbackDm(cur()); }
       });
@@ -831,6 +873,8 @@
       dmPlayer = null;
       els.playerBox.innerHTML = '<iframe src="https://www.dailymotion.com/embed/video/' +
         encodeURIComponent(ch.id) + '?autoplay=1" allow="autoplay; fullscreen" allowfullscreen title=""></iframe>';
+      vpPlaying = true;
+      syncPauseVeil();
     }
   }
 
@@ -851,6 +895,7 @@
     if (!apiLoading.vm) {
       apiLoading.vm = true;
       vpInject("https://player.vimeo.com/api/player.js", function (ok) {
+        if (!powered) return;
         if (ok && vpMode === "vimeo" && list.length) buildVm(cur());
         else if (!ok) {
           apiLoading.vm = false;
@@ -863,6 +908,7 @@
             els.playerBox.innerHTML = "";
             els.playerBox.appendChild(f);
             vpPlaying = true;
+            syncPauseVeil();
           }
         }
       });
@@ -896,6 +942,7 @@
     f.title = ch.title;
     els.playerBox.appendChild(f);
     vpPlaying = true; // kontrol play/pause dari UI bawaan arsip
+    syncPauseVeil();
   }
 
   function vpStop() {
@@ -1043,6 +1090,7 @@
     // Batalkan digit channel yang belum di-commit: tanpanya, timer 900ms
     // bisa me-tune (dan memuat video + OSD) saat TV sudah mati.
     clearTimeout(digitTimer);
+    clearTimeout(vpErrorTimer);
     digitBuf = "";
     document.body.classList.add("tv-off");
     els.tv.classList.remove("on");
@@ -1370,31 +1418,11 @@
     if (anyOpen()) closeSheets();
     toggleRemote();
   });
-  // Tombol fisik depan TV: CH± / VOL± — dengan umpan balik mekanis.
-  [["tvChUp", function () { if (powered) nextChannel(); }],
-   ["tvChDn", function () { if (powered) prevChannel(); }],
-   ["tvVolUp", function () { bumpVolume(5); }],
-   ["tvVolDn", function () { bumpVolume(-5); }]].forEach(function (pair) {
-    var b = $(pair[0]);
-    if (!b) return;
-    b.addEventListener("pointerdown", function () { strike(b); });
-    b.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") strike(b); });
-    b.addEventListener("click", pair[1]);
-  });
-  els.veil.addEventListener("click", closeRemote);
-  // Tiap tombol remote ditekan: LED IR + sensor TV berkedip, klik, getar halus.
-  els.remote.addEventListener("pointerdown", function (e) {
-    if (e.target.closest(".rbtn")) flashIR();
-  });
-  $("remClose").addEventListener("click", closeRemote);
-  els.remPower.addEventListener("click", function () { powered ? powerOff() : powerOn(); });
-  Array.prototype.forEach.call(document.querySelectorAll("[data-digit]"), function (b) {
-    b.addEventListener("click", function () { pushDigit(b.getAttribute("data-digit")); });
-  });
   // Tahan tombol = mengulang (seperti remote asli): tekan-sekali jalan normal,
   // pointerdown menandai agar klik berikutnya tidak menggandakan aksi.
   function holdRepeat(id, fn, delay, rate) {
     var el = $(id), t1 = null, t2 = null;
+    if (!el) return;
     el.addEventListener("click", function () {
       if (el._suppress) { el._suppress = false; return; }
       fn();
@@ -1406,15 +1434,33 @@
     });
     function stop() { clearTimeout(t1); clearInterval(t2); t1 = t2 = null; }
     el.addEventListener("pointerup", stop);
-    // pointercancel / pointerleave: klik takkan datang untuk tekanan ini,
-    // jadi flag suppress harus dibersihkan — kalau tidak, klik berikutnya
-    // (mis. via keyboard) ikut tertelan sekali.
     el.addEventListener("pointercancel", function () { el._suppress = false; stop(); });
     el.addEventListener("pointerleave", function () { el._suppress = false; stop(); });
-    // Seret keluar lalu kembali masuk dengan tombol masih ditekan, lepas di
-    // atas tombol: klik tetap datang dan harus tetap ter-suppress.
     el.addEventListener("pointerenter", function (e) { if (e.buttons > 0) el._suppress = true; });
   }
+
+  // Tombol fisik depan TV: CH± / VOL± — dengan umpan balik mekanis & hold-repeat.
+  [["tvChUp", function () { if (powered) nextChannel(); }, 450, 350],
+   ["tvChDn", function () { if (powered) prevChannel(); }, 450, 350],
+   ["tvVolUp", function () { bumpVolume(5); }, 450, 130],
+   ["tvVolDn", function () { bumpVolume(-5); }, 450, 130]].forEach(function (tuple) {
+    var id = tuple[0], fn = tuple[1], delay = tuple[2], rate = tuple[3];
+    var b = $(id);
+    if (!b) return;
+    b.addEventListener("pointerdown", function () { strike(b); });
+    b.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") strike(b); });
+    holdRepeat(id, fn, delay, rate);
+  });
+  els.veil.addEventListener("click", closeRemote);
+  // Tiap tombol remote ditekan: LED IR + sensor TV berkedip, klik, getar halus.
+  els.remote.addEventListener("pointerdown", function (e) {
+    if (e.target.closest(".rbtn")) flashIR();
+  });
+  $("remClose").addEventListener("click", closeRemote);
+  els.remPower.addEventListener("click", function () { powered ? powerOff() : powerOn(); });
+  Array.prototype.forEach.call(document.querySelectorAll("[data-digit]"), function (b) {
+    b.addEventListener("click", function () { pushDigit(b.getAttribute("data-digit")); });
+  });
   holdRepeat("remChUp", function () { if (powered) nextChannel(); }, 450, 350);
   holdRepeat("remChDn", function () { if (powered) prevChannel(); }, 450, 350);
   holdRepeat("remVolUp", function () { bumpVolume(5); }, 450, 130);
@@ -1478,8 +1524,37 @@
   function bindChk(id, key) {
     $(id).addEventListener("change", function (e) { S[key] = e.target.checked; saveAndApply(); });
   }
+  var saveSettingsTimer = null;
+  function deferSaveSettings() {
+    clearTimeout(saveSettingsTimer);
+    saveSettingsTimer = setTimeout(PNStore.saveSettings, 150);
+  }
+  function updateRangeTarget(key) {
+    if (key === "scanIntensity") {
+      setLbl("scanVal", S.scanIntensity + "%");
+      els.tv.style.setProperty("--scan-alpha", (S.scanIntensity / 100 * 0.5).toFixed(2));
+    } else if (key === "noise") {
+      setLbl("noiseVal", S.noise + "%");
+      var eff = Math.min(100, S.noise + (100 - signalQ) * 0.5);
+      if (eff <= 0) els.staticC.style.opacity = "0";
+      else els.staticC.style.opacity = (eff / 100 * 0.55).toFixed(2);
+    } else if (key === "bright" || key === "contrast" || key === "saturate") {
+      if (key === "bright") setLbl("brightVal", S.bright + "%");
+      else if (key === "contrast") setLbl("contrastVal", S.contrast + "%");
+      else if (key === "saturate") setLbl("saturateVal", S.saturate + "%");
+      applyPicture();
+    }
+  }
   function bindRange(id, key) {
-    $(id).addEventListener("input", function (e) { S[key] = parseInt(e.target.value, 10); saveAndApply(); });
+    var el = $(id);
+    el.addEventListener("input", function (e) {
+      S[key] = parseInt(e.target.value, 10);
+      updateRangeTarget(key);
+      deferSaveSettings();
+    });
+    el.addEventListener("change", function () {
+      PNStore.saveSettings();
+    });
   }
   function bindCards(attr, key) {
     Array.prototype.forEach.call(document.querySelectorAll("[data-" + attr + "]"), function (b) {
@@ -1515,17 +1590,22 @@
   bindCards("rmode", "remoteMode");
   bindCards("sig", "signalMode");
   bindCards("tex", "texture");
+  var setHelp = $("setHelpBtn");
+  if (setHelp) setHelp.addEventListener("click", function () { openSheet("help"); });
   $("resetBtn").addEventListener("click", function () {
     if (!window.confirm("Reset SEMUA pengaturan, favorit, riwayat & channel kustom ke bawaan? Tindakan ini tidak bisa dibatalkan.")) return;
     PNStore.resetAll();
     S = PNStore.settings;
     blockStation = null;
+    hourBlock = null; hourIdxs = []; guideStation = "SEMUA";
+    startSleep(0);
     refreshList();
     els.vol.value = S.volume;
     applySettings(); buildGuide(); syncNow();
   });
 
   /* ================= Keyboard ================= */
+  var lastKeyCh = 0, lastKeyVol = 0;
   document.addEventListener("keydown", function (e) {
     var tag = e.target.tagName;
     var typing = (tag === "INPUT" && e.target.type !== "range") || tag === "TEXTAREA" || tag === "SELECT";
@@ -1544,10 +1624,38 @@
         if (e.target.closest && e.target.closest("button, select, a")) break;
         if (powered) { vpToggle(); e.preventDefault(); }
         break;
-      case "ArrowUp": if (powered) { nextChannel(); e.preventDefault(); } break;
-      case "ArrowDown": if (powered) { prevChannel(); e.preventDefault(); } break;
-      case "ArrowRight": bumpVolume(5); break;
-      case "ArrowLeft": bumpVolume(-5); break;
+      case "ArrowUp":
+        e.preventDefault();
+        if (powered) {
+          var nowUp = Date.now();
+          if (e.repeat && nowUp - lastKeyCh < 300) break;
+          lastKeyCh = nowUp;
+          nextChannel();
+        }
+        break;
+      case "ArrowDown":
+        e.preventDefault();
+        if (powered) {
+          var nowDn = Date.now();
+          if (e.repeat && nowDn - lastKeyCh < 300) break;
+          lastKeyCh = nowDn;
+          prevChannel();
+        }
+        break;
+      case "ArrowRight":
+        e.preventDefault();
+        var nowR = Date.now();
+        if (e.repeat && nowR - lastKeyVol < 100) break;
+        lastKeyVol = nowR;
+        bumpVolume(5);
+        break;
+      case "ArrowLeft":
+        e.preventDefault();
+        var nowL = Date.now();
+        if (e.repeat && nowL - lastKeyVol < 100) break;
+        lastKeyVol = nowL;
+        bumpVolume(-5);
+        break;
       case "m": case "M": els.muteBtn.click(); e.preventDefault(); break;
       case "r": case "R": if (powered) randomChannel(); e.preventDefault(); break;
       case "j": case "J": toggleHourBlock(); e.preventDefault(); break;

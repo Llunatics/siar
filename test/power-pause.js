@@ -35,6 +35,7 @@ function makeDom(ytStub) {
           PlayerState: { PLAYING: 1, PAUSED: 2, ENDED: 0, CUED: 5 },
           Player: function (id, opts) {
             const events = opts.events;
+            window.__ytEvents = events;
             const api = {
               playVideo() {
                 window.__ytCalls.play++;
@@ -191,6 +192,69 @@ function makeDom(ytStub) {
       ok($("tv").classList.contains("on"), "4a. TV tetap menyala setelah power-on (tidak dibunuh sleep basi)");
       ok($("sleepSelect").value === "0", "4b. pilihan sleep di-reset ke Mati (value=" + $("sleepSelect").value + ")");
     }
+    window.close();
+  }
+
+  // ---------- 6: OSD custom text rendering (showOsd / showOsdText) ----------
+  {
+    const window = makeDom({ blockFirst: false });
+    const doc = window.document;
+    const $ = (id) => doc.getElementById(id);
+    const click = (sel) => doc.querySelector(sel).dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
+    const key = (k) => doc.dispatchEvent(new window.KeyboardEvent("keydown", { key: k, bubbles: true }));
+
+    click("#powerBtn");
+    await sleep(250);
+
+    // Spasi: jeda (PAUSE)
+    key(" ");
+    await sleep(100);
+    ok($("osd").textContent.includes("PAUSE"), "6a. OSD menampilkan PAUSE saat spasi jeda");
+
+    // Spasi: putar lagi (PLAY)
+    key(" ");
+    await sleep(100);
+    ok($("osd").textContent.includes("PLAY"), "6b. OSD menampilkan PLAY saat spasi putar");
+
+    // Blok Jam: tekan j
+    key("j");
+    await sleep(100);
+    ok($("osd").textContent.includes("SIARAN"), "6c. OSD menampilkan info blok siaran saat shortcut j ditekan");
+
+    // Exit Blok Jam: tekan j lagi
+    key("j");
+    await sleep(100);
+    ok($("osd").textContent.includes("BLOK JAM MATI"), "6d. OSD menampilkan pesan keluar blok jam");
+
+    window.close();
+  }
+
+  // ---------- 7: vpError() onError + powerOff() cleanup ----------
+  {
+    const window = makeDom({ blockFirst: false });
+    const doc = window.document;
+    const $ = (id) => doc.getElementById(id);
+    const click = (sel) => doc.querySelector(sel).dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
+
+    click("#powerBtn");
+    await sleep(250);
+
+    // Picu onError pada embed YouTube
+    ok(typeof window.__ytEvents.onError === "function", "7a. handler onError ytPlayer tersedia");
+    window.__ytEvents.onError();
+    await sleep(100);
+    ok($("osd").textContent.includes("SINYAL HILANG"), "7b. OSD menampilkan SINYAL HILANG saat embed error");
+
+    // Matikan TV SEBELUM timer 2600ms habis
+    click("#powerBtn");
+    await sleep(200);
+    ok(doc.body.classList.contains("tv-off"), "7c. TV mati setelah powerOff");
+
+    // Tunggu lewat dari 2600ms (2800ms) untuk memastikan vpErrorTimer dibersihkan dan tidak memajukan channel saat mati
+    await sleep(2800);
+    ok(doc.body.classList.contains("tv-off"), "7d. TV TETAP mati setelah timer error lewat");
+    ok($("chNum").textContent.trim() === "--", "7e. display channel tetap -- (chNum=" + $("chNum").textContent.trim() + ")");
+
     window.close();
   }
 

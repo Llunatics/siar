@@ -144,7 +144,23 @@ var PNStore = (function () {
   function markWatched(key) {
     if (!hasKey(watched, key)) { watched.push(key); saveWatched(); }
   }
-  function watchedCount() { return watched.length; }
+  function watchedCount() {
+    var valid = {};
+    var all = allChannels();
+    for (var i = 0; i < all.length; i++) {
+      valid[keyOf(all[i].src || "yt", all[i].id)] = true;
+    }
+    var count = 0;
+    var seen = {};
+    for (var j = 0; j < watched.length; j++) {
+      var k = watched[j];
+      if (valid[k] && !seen[k]) {
+        seen[k] = true;
+        count++;
+      }
+    }
+    return count;
+  }
 
   function isFavorite(key) { return hasKey(favorites, key); }
   function toggleFavorite(key) {
@@ -178,6 +194,11 @@ var PNStore = (function () {
   function removeCustom(id) {
     customs = customs.filter(function (c) { return c.id !== id; });
     saveCustoms();
+    var k = keyOf("yt", id);
+    dropKey(favorites, k);
+    saveFavorites();
+    dropKey(watched, k);
+    saveWatched();
   }
 
   return {

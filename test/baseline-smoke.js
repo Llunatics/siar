@@ -29,6 +29,24 @@ const driver = `
     assert(typeof CHANNELS !== "undefined", "CHANNELS undefined");
     assert(CHANNELS.length >= 265, "jumlah=" + CHANNELS.length + " (< baseline 265!)");
   });
+  check("katalog: tepat 656 entri, id unik, judul unik, tanpa hashtag/spam", function () {
+    assert(CHANNELS.length === 656, "jumlah entri=" + CHANNELS.length + " (harus tepat 656)");
+    var keys = {}, titles = {}, dupKeys = 0, dupTitles = 0;
+    var badTitles = 0;
+    CHANNELS.forEach(function (c) {
+      var k = (c.src || "yt") + ":" + c.id;
+      if (keys[k]) dupKeys++; keys[k] = 1;
+      var t = c.title.trim().toLowerCase();
+      if (titles[t]) dupTitles++; titles[t] = 1;
+      if (/#(?:shorts|fyp|harga|beranda|rcti|sctv)/i.test(c.title)) badTitles++;
+      var op = (c.title.match(/\\(/g) || []).length;
+      var cp = (c.title.match(/\\)/g) || []).length;
+      if (op !== cp) badTitles++;
+    });
+    assert(dupKeys === 0, dupKeys + " duplikat src:id");
+    assert(dupTitles === 0, dupTitles + " judul duplikat");
+    assert(badTitles === 0, badTitles + " judul mengandung hashtag atau tanda kurung rusak");
+  });
   check("katalog: tidak ada id duplikat", function () {
     var keys = CHANNELS.map(function (c) { return (c.src || "yt") + ":" + c.id; });
     var seen = {}, dup = 0;
@@ -134,6 +152,26 @@ const driver = `
     s.dispatchEvent(new Event("input", { bubbles: true }));
     var n = doc.querySelectorAll("#guideList li").length;
     assert(n >= 1 && n < 265, "hasil search=" + n);
+  });
+  check("Front-panel: tombol CH±/VOL± tersedia", function () {
+    ["tvChUp", "tvChDn", "tvVolUp", "tvVolDn"].forEach(function (id) {
+      assert(doc.getElementById(id), id + " tidak ditemukan");
+    });
+  });
+  check("Reset & WatchedCount: reset menghapus custom dan sinkron dengan watched", function () {
+    var fakeId = "customTest1";
+    PNStore.addCustom(fakeId, "Channel Kustom Uji");
+    var kId = PNStore.keyOf("yt", fakeId);
+    PNStore.markWatched(kId);
+    var w0 = PNStore.watchedCount();
+    assert(PNStore.isWatched(kId), "kustom belum ditandai watched");
+    PNStore.removeCustom(fakeId);
+    assert(!PNStore.isWatched(kId), "kustom masih di watched setelah removeCustom");
+    assert(PNStore.watchedCount() === w0 - 1, "watchedCount tidak berkurang setelah removeCustom");
+
+    key("s");
+    click("#resetBtn");
+    assert(PNStore.settings.shape === "trinitron", "shape bukan trinitron setelah reset");
   });
   check("Reset: mengembalikan shape default", function () {
     key("s");
